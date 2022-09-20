@@ -2,6 +2,7 @@
   "language": "language",
   "sign_in": "sign_in",
   "wellcome_back": "Welcome back!",
+  "remember_acc": "Remember me",
   "no_acc": "You don't have any account",
   "email": "Email",
   "username": "Username",
@@ -56,5 +57,17 @@
   "no_comment": "No comment",
   "start": "Start",
   "building_management": "Building management",
-  "operation": "Operation"
+  "operation": "Operation",
+  "contact_receptionist": "Please contact with management committee or receptionist in order to be provided account and password.",
+  "success": "Success",
+  "failure": "Failure",
+  "reg_success": "Registration successful, please login",
+  "missing": "Missing required fields",
+  "not_match": "Password not match",
+  "val_pass": "Password must be at least 8 characters. It must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character",
+  "account_existed": "Account already exists, please login with other account",
+  "acoount_not_avaiable": "User information is not available on the system, please contact Admin.",
+  "invalid_code": "Invalid authentication code",
+  "systeme_error": "System error",
+  "not_active": "Account has not been activated"
 }

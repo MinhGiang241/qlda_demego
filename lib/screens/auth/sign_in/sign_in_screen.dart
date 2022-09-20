@@ -52,6 +52,32 @@ class SignInScreen extends StatelessWidget {
                         return null;
                       },
                     ),
+                    vpad(24),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          child: Row(
+                            children: [
+                              Checkbox(value: true, onChanged: (v) {}),
+                              Text(
+                                S.of(context).remember_acc,
+                                style: txtBodySmallRegular(
+                                    color: grayScaleColorBase),
+                              )
+                            ],
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {},
+                          borderRadius: BorderRadius.circular(5),
+                          child: Text(
+                            S.of(context).forgot_pass,
+                            style: txtLinkSmall(color: primaryColorBase),
+                          ),
+                        )
+                      ],
+                    ),
                     vpad(32),
                     PrimaryButton(
                         onTap: () async {
@@ -60,14 +86,16 @@ class SignInScreen extends StatelessWidget {
                         text: S.of(context).sign_in,
                         isLoading: false,
                         width: double.infinity),
-                    InkWell(
-                      onTap: () {},
-                      borderRadius: BorderRadius.circular(5),
-                      child: Text(
-                        S.of(context).no_acc,
-                        style: txtLinkSmall(color: primaryColorBase),
-                      ),
-                    )
+                    vpad(32),
+                    Text(S.of(context).no_acc,
+                        style: txtRegular(12, grayScaleColor2, .78)),
+                    vpad(5),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 6),
+                      child: Text(S.of(context).contact_receptionist,
+                          textAlign: TextAlign.center,
+                          style: txtRegular(14, grayScaleColor1, .6)),
+                    ),
                   ],
                 ),
               )

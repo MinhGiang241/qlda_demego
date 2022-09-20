@@ -1,6 +1,7 @@
 {
   "sign_in": "Đăng Nhập",
   "sign_up": "Đăng ký",
+  "remember_acc": "Ghi nhớ tài khoản",
   "wellcome_back": "Chào mừng trở lại!",
   "no_acc": "Bạn chưa có tài khoản ?",
   "email": "Email",
@@ -57,5 +58,17 @@
   "no_comment": "Chưa có bình luận nào",
   "start": "Bắt đầu",
   "building_management": "Quản lý chung cư",
-  "operation": "Vận hành"
+  "operation": "Vận hành",
+  "contact_receptionist": "Hãy liên lạc với BQL hoặc lễ tân để được cấp tài khoản và mật khẩu",
+  "success": "Thành công",
+  "failure": "Thất bại",
+  "reg_success": "Đăng ký thành công, vui lòng đăng nhập",
+  "missing": "Thiếu trường thông tin bắt buộc",
+  "not_match": "Mật khẩu không khớp",
+  "val_pass": "Mật khẩu phải có ít nhất 8 kí tự. Trong đó phải có ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt",
+  "account_existed": "Tài khoản đã tồn tại, vui lòng đăng nhập",
+  "acoount_not_avaiable": "Thông tin người dùng không có sẵn trên hệ thống, vui lòng liên hệ với Admin.",
+  "invalid_code": "Mã xác thực không hợp lệ",
+  "systeme_error": "Lỗi hệ thống",
+  "not_active": "Tài khoản chưa được kích hoạt"
 }

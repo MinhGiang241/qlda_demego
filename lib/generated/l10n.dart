@@ -80,6 +80,16 @@ class S {
     );
   }
 
+  /// `Remember me`
+  String get remember_acc {
+    return Intl.message(
+      'Remember me',
+      name: 'remember_acc',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `You don't have any account`
   String get no_acc {
     return Intl.message(
@@ -625,6 +635,126 @@ class S {
     return Intl.message(
       'Operation',
       name: 'operation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please contact with management committee or receptionist in order to be provided account and password.`
+  String get contact_receptionist {
+    return Intl.message(
+      'Please contact with management committee or receptionist in order to be provided account and password.',
+      name: 'contact_receptionist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Success`
+  String get success {
+    return Intl.message(
+      'Success',
+      name: 'success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failure`
+  String get failure {
+    return Intl.message(
+      'Failure',
+      name: 'failure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Registration successful, please login`
+  String get reg_success {
+    return Intl.message(
+      'Registration successful, please login',
+      name: 'reg_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Missing required fields`
+  String get missing {
+    return Intl.message(
+      'Missing required fields',
+      name: 'missing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password not match`
+  String get not_match {
+    return Intl.message(
+      'Password not match',
+      name: 'not_match',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must be at least 8 characters. It must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character`
+  String get val_pass {
+    return Intl.message(
+      'Password must be at least 8 characters. It must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character',
+      name: 'val_pass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account already exists, please login with other account`
+  String get account_existed {
+    return Intl.message(
+      'Account already exists, please login with other account',
+      name: 'account_existed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User information is not available on the system, please contact Admin.`
+  String get acoount_not_avaiable {
+    return Intl.message(
+      'User information is not available on the system, please contact Admin.',
+      name: 'acoount_not_avaiable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid authentication code`
+  String get invalid_code {
+    return Intl.message(
+      'Invalid authentication code',
+      name: 'invalid_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `System error`
+  String get systeme_error {
+    return Intl.message(
+      'System error',
+      name: 'systeme_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account has not been activated`
+  String get not_active {
+    return Intl.message(
+      'Account has not been activated',
+      name: 'not_active',
       desc: '',
       args: [],
     );

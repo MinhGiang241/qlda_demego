@@ -22,6 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "account_existed": MessageLookupByLibrary.simpleMessage(
+            "Account already exists, please login with other account"),
+        "acoount_not_avaiable": MessageLookupByLibrary.simpleMessage(
+            "User information is not available on the system, please contact Admin."),
         "add_new": MessageLookupByLibrary.simpleMessage("Add new"),
         "app_version": MessageLookupByLibrary.simpleMessage("App version"),
         "building_management":
@@ -36,6 +40,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "confirm_pass":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "contact_receptionist": MessageLookupByLibrary.simpleMessage(
+            "Please contact with management committee or receptionist in order to be provided account and password."),
         "create_acc": MessageLookupByLibrary.simpleMessage("Create an account"),
         "current_pass":
             MessageLookupByLibrary.simpleMessage("Current password"),
@@ -51,20 +57,28 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_pas": MessageLookupByLibrary.simpleMessage("Enter password"),
         "enter_username":
             MessageLookupByLibrary.simpleMessage("Enter username"),
+        "failure": MessageLookupByLibrary.simpleMessage("Failure"),
         "forgot_pass": MessageLookupByLibrary.simpleMessage("Forgot password"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full name"),
         "have_acc":
             MessageLookupByLibrary.simpleMessage("already have an account "),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "info": MessageLookupByLibrary.simpleMessage("Infomation"),
+        "invalid_code":
+            MessageLookupByLibrary.simpleMessage("Invalid authentication code"),
         "language": MessageLookupByLibrary.simpleMessage("language"),
+        "missing":
+            MessageLookupByLibrary.simpleMessage("Missing required fields"),
         "new_pass": MessageLookupByLibrary.simpleMessage("New Password"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "no_acc":
             MessageLookupByLibrary.simpleMessage("You don\'t have any account"),
         "no_comment": MessageLookupByLibrary.simpleMessage("No comment"),
+        "not_active": MessageLookupByLibrary.simpleMessage(
+            "Account has not been activated"),
         "not_get_otp":
             MessageLookupByLibrary.simpleMessage("Did not receive OTP?"),
+        "not_match": MessageLookupByLibrary.simpleMessage("Password not match"),
         "operation": MessageLookupByLibrary.simpleMessage("Operation"),
         "otp_msg": MessageLookupByLibrary.simpleMessage(
             "We have sent OTP code to your registered phone number. Please enter the OTP code to perform authentication."),
@@ -74,6 +88,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Personal Infomation"),
         "phone_num": MessageLookupByLibrary.simpleMessage("Phone number"),
         "prev": MessageLookupByLibrary.simpleMessage("Previous"),
+        "reg_success": MessageLookupByLibrary.simpleMessage(
+            "Registration successful, please login"),
+        "remember_acc": MessageLookupByLibrary.simpleMessage("Remember me"),
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
         "reset_pass": MessageLookupByLibrary.simpleMessage("Reset password"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
@@ -85,11 +102,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Do you want to sign out?"),
         "start": MessageLookupByLibrary.simpleMessage("Start"),
         "status": MessageLookupByLibrary.simpleMessage("Status"),
+        "success": MessageLookupByLibrary.simpleMessage("Success"),
+        "systeme_error": MessageLookupByLibrary.simpleMessage("System error"),
         "terms_services":
             MessageLookupByLibrary.simpleMessage("Terms services"),
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "type": MessageLookupByLibrary.simpleMessage("Type"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),
+        "val_pass": MessageLookupByLibrary.simpleMessage(
+            "Password must be at least 8 characters. It must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character"),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),
         "vi": MessageLookupByLibrary.simpleMessage("Vietnamese"),
         "wellcome_back": MessageLookupByLibrary.simpleMessage("Welcome back!")

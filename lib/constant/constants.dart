@@ -173,6 +173,11 @@ TextStyle txtLinkXSmall({Color? color}) => TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.w600,
     color: color);
+TextStyle txtLinkXXSmall({Color? color}) => TextStyle(
+    fontFamily: family,
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    color: color);
 
 TextStyle txtBodyLargeRegular({Color? color}) =>
     TextStyle(fontSize: 20, fontWeight: FontWeight.w400, color: color);
