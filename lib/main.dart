@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'DEMEGO',
       theme: AppTheme.lightTheme(),
       onGenerateRoute: _appRouter.onGenerateRoute,
+      locale: const Locale.fromSubtags(languageCode: 'vi'),
       localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,

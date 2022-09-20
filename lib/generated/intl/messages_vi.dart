@@ -24,6 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "add_new": MessageLookupByLibrary.simpleMessage("Thêm mới"),
         "app_version": MessageLookupByLibrary.simpleMessage("App version"),
+        "building_management":
+            MessageLookupByLibrary.simpleMessage("Quản lý chung cư"),
         "c_new_pass":
             MessageLookupByLibrary.simpleMessage("Nhập lại mật khẩu mới"),
         "can_not_empty":
@@ -48,6 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_name": MessageLookupByLibrary.simpleMessage("Nhập tên"),
         "enter_num": MessageLookupByLibrary.simpleMessage("Nhập số"),
         "enter_pas": MessageLookupByLibrary.simpleMessage("Nhập mật khẩu"),
+        "enter_username":
+            MessageLookupByLibrary.simpleMessage("Nhập tên tài khoản"),
         "forgot_pass": MessageLookupByLibrary.simpleMessage("Quên mật khẩu"),
         "full_name": MessageLookupByLibrary.simpleMessage("Họ và Tên"),
         "have_acc":
@@ -63,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Chưa có bình luận nào"),
         "not_get_otp":
             MessageLookupByLibrary.simpleMessage("Không nhận được OTP?"),
+        "operation": MessageLookupByLibrary.simpleMessage("Vận hành"),
         "otp_msg": MessageLookupByLibrary.simpleMessage(
             "Chúng tôi đã gửi mã OTP đến Số điện thoại đăng ký của quý khách. Vui lòng nhập mã OTP để thực hiện xác thực."),
         "otp_verify": MessageLookupByLibrary.simpleMessage("Xác thực OTP"),
@@ -76,15 +81,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "save": MessageLookupByLibrary.simpleMessage("Lưu"),
         "send_verify": MessageLookupByLibrary.simpleMessage("Gửi xác thực"),
         "setting": MessageLookupByLibrary.simpleMessage("Cài đặt"),
-        "sign_in": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
+        "sign_in": MessageLookupByLibrary.simpleMessage("Đăng Nhập"),
         "sign_out": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
         "sign_out_msg": MessageLookupByLibrary.simpleMessage(
             "Bạn có muốn đăng xuất không ?"),
+        "start": MessageLookupByLibrary.simpleMessage("Bắt đầu"),
         "status": MessageLookupByLibrary.simpleMessage("Trạng thái"),
         "terms_services":
             MessageLookupByLibrary.simpleMessage("Điều khoản dịch vụ"),
         "title": MessageLookupByLibrary.simpleMessage("Tiêu đề"),
         "type": MessageLookupByLibrary.simpleMessage("Loại"),
+        "username": MessageLookupByLibrary.simpleMessage("Tài khoản"),
         "verify": MessageLookupByLibrary.simpleMessage("Xác thực"),
         "vi": MessageLookupByLibrary.simpleMessage("Tiếng Việt"),
         "wellcome_back":

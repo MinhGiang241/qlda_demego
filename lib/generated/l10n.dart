@@ -100,6 +100,16 @@ class S {
     );
   }
 
+  /// `Username`
+  String get username {
+    return Intl.message(
+      'Username',
+      name: 'username',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Phone number`
   String get phone_num {
     return Intl.message(
@@ -185,6 +195,16 @@ class S {
     return Intl.message(
       'Enter name',
       name: 'enter_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter username`
+  String get enter_username {
+    return Intl.message(
+      'Enter username',
+      name: 'enter_username',
       desc: '',
       args: [],
     );
@@ -575,6 +595,36 @@ class S {
     return Intl.message(
       'No comment',
       name: 'no_comment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start`
+  String get start {
+    return Intl.message(
+      'Start',
+      name: 'start',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Building management`
+  String get building_management {
+    return Intl.message(
+      'Building management',
+      name: 'building_management',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Operation`
+  String get operation {
+    return Intl.message(
+      'Operation',
+      name: 'operation',
       desc: '',
       args: [],
     );

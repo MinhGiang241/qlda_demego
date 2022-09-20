@@ -24,6 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "add_new": MessageLookupByLibrary.simpleMessage("Add new"),
         "app_version": MessageLookupByLibrary.simpleMessage("App version"),
+        "building_management":
+            MessageLookupByLibrary.simpleMessage("Building management"),
         "c_new_pass":
             MessageLookupByLibrary.simpleMessage("Re-enter new password"),
         "can_not_empty": MessageLookupByLibrary.simpleMessage("Can not empty"),
@@ -47,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_name": MessageLookupByLibrary.simpleMessage("Enter name"),
         "enter_num": MessageLookupByLibrary.simpleMessage("Enter Number"),
         "enter_pas": MessageLookupByLibrary.simpleMessage("Enter password"),
+        "enter_username":
+            MessageLookupByLibrary.simpleMessage("Enter username"),
         "forgot_pass": MessageLookupByLibrary.simpleMessage("Forgot password"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full name"),
         "have_acc":
@@ -61,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_comment": MessageLookupByLibrary.simpleMessage("No comment"),
         "not_get_otp":
             MessageLookupByLibrary.simpleMessage("Did not receive OTP?"),
+        "operation": MessageLookupByLibrary.simpleMessage("Operation"),
         "otp_msg": MessageLookupByLibrary.simpleMessage(
             "We have sent OTP code to your registered phone number. Please enter the OTP code to perform authentication."),
         "otp_verify": MessageLookupByLibrary.simpleMessage("OTP verify"),
@@ -78,11 +83,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "sign_out": MessageLookupByLibrary.simpleMessage("Sign out"),
         "sign_out_msg":
             MessageLookupByLibrary.simpleMessage("Do you want to sign out?"),
+        "start": MessageLookupByLibrary.simpleMessage("Start"),
         "status": MessageLookupByLibrary.simpleMessage("Status"),
         "terms_services":
             MessageLookupByLibrary.simpleMessage("Terms services"),
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "type": MessageLookupByLibrary.simpleMessage("Type"),
+        "username": MessageLookupByLibrary.simpleMessage("Username"),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),
         "vi": MessageLookupByLibrary.simpleMessage("Vietnamese"),
         "wellcome_back": MessageLookupByLibrary.simpleMessage("Welcome back!")

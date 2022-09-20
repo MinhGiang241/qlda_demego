@@ -1,9 +1,10 @@
 {
-  "sign_in": "Đăng nhập",
+  "sign_in": "Đăng Nhập",
   "sign_up": "Đăng ký",
   "wellcome_back": "Chào mừng trở lại!",
   "no_acc": "Bạn chưa có tài khoản ?",
   "email": "Email",
+  "username": "Tài khoản",
   "phone_num": "Số điện thoại",
   "enter_email_phone": "Nhập Email / Số điện thoại",
   "password": "Mật khẩu",
@@ -13,6 +14,7 @@
   "have_acc": "Bạn đã có tài khoản ?",
   "full_name": "Họ và Tên",
   "enter_name": "Nhập tên",
+  "enter_username": "Nhập tên tài khoản",
   "confirm_pass": "Nhập lại mật khẩu",
   "can_not_empty": "Không được để trống",
   "terms_services": "Điều khoản dịch vụ",
@@ -52,5 +54,8 @@
   "title": "Tiêu đề",
   "reset_pass": "Đặt lại mật khẩu",
   "send_verify": "Gửi xác thực",
-  "no_comment": "Chưa có bình luận nào"
+  "no_comment": "Chưa có bình luận nào",
+  "start": "Bắt đầu",
+  "building_management": "Quản lý chung cư",
+  "operation": "Vận hành"
 }

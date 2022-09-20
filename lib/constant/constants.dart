@@ -15,7 +15,9 @@ double bottomSafePad(BuildContext context) =>
 double topSafePad(BuildContext context) => MediaQuery.of(context).padding.top;
 double appbarHeight(BuildContext context) => AppBar().preferredSize.height;
 
-const Color backgroundColor = Color(0xffF5F7FC);
+// const Color backgroundColor = Color(0xffF5F7FC);
+const Color backgroundColor = Color(0xffF8FAFE);
+const Color shadowColor = Color(0xff6575A7);
 
 const Color primaryColorBase = Color(0xff466FFF);
 const Color primaryColor1 = Color(0xff3462FF);
@@ -190,26 +192,28 @@ TextStyle txtBodySmallBold({Color? color}) =>
 TextStyle txtBodyXSmallBold({Color? color}) =>
     TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: color);
 
-TextStyle txtBold([double? size, Color? color]) => TextStyle(
+TextStyle txtBold([double? size, Color? color, double? opacity]) => TextStyle(
     fontFamily: family,
     fontSize: size,
     fontWeight: FontWeight.w700,
-    color: color);
-TextStyle txtSemiBold([double? size, Color? color]) => TextStyle(
-    fontFamily: family,
-    fontSize: size,
-    fontWeight: FontWeight.w600,
-    color: color);
-TextStyle txtMedium([double? size, Color? color]) => TextStyle(
+    color: opacity != null ? color!.withOpacity(opacity) : color);
+TextStyle txtSemiBold([double? size, Color? color, double? opacity]) =>
+    TextStyle(
+        fontFamily: family,
+        fontSize: size,
+        fontWeight: FontWeight.w600,
+        color: opacity != null ? color!.withOpacity(opacity) : color);
+TextStyle txtMedium([double? size, Color? color, double? opacity]) => TextStyle(
     fontFamily: family,
     fontSize: size,
     fontWeight: FontWeight.w500,
-    color: color);
-TextStyle txtRegular([double? size, Color? color]) => TextStyle(
-    fontFamily: family,
-    fontSize: size,
-    fontWeight: FontWeight.w400,
-    color: color);
+    color: opacity != null ? color!.withOpacity(opacity) : color);
+TextStyle txtRegular([double? size, Color? color, double? opacity]) =>
+    TextStyle(
+        fontFamily: family,
+        fontSize: size,
+        fontWeight: FontWeight.w400,
+        color: opacity != null ? color!.withOpacity(opacity) : color);
 
 class AppImage {
   static const String qltnLogo = "assets/images/qltn_logo.png";
