@@ -10,7 +10,7 @@
   "enter_email_phone": "Enter email /phone",
   "password": "Password",
   "enter_pas": "Enter password",
-  "forgot_pass": "Forgot password",
+  "forgot_pass": "Forgot password?",
   "create_acc": "Create an account",
   "have_acc": "already have an account ",
   "full_name": "Full name",
@@ -69,5 +69,6 @@
   "acoount_not_avaiable": "User information is not available on the system, please contact Admin.",
   "invalid_code": "Invalid authentication code",
   "systeme_error": "System error",
-  "not_active": "Account has not been activated"
+  "not_active": "Account has not been activated",
+  "wrong_sign_in": "Username or password is incorrect"
 }

@@ -160,10 +160,10 @@ class S {
     );
   }
 
-  /// `Forgot password`
+  /// `Forgot password?`
   String get forgot_pass {
     return Intl.message(
-      'Forgot password',
+      'Forgot password?',
       name: 'forgot_pass',
       desc: '',
       args: [],
@@ -755,6 +755,16 @@ class S {
     return Intl.message(
       'Account has not been activated',
       name: 'not_active',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username or password is incorrect`
+  String get wrong_sign_in {
+    return Intl.message(
+      'Username or password is incorrect',
+      name: 'wrong_sign_in',
       desc: '',
       args: [],
     );

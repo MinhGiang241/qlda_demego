@@ -5,7 +5,9 @@ import 'package:qlda_demego/widgets/primary_screen.dart';
 
 import '../../../constant/constants.dart';
 import '../../../generated/l10n.dart';
+import '../../../util/utils.dart';
 import '../../../widgets/primary_button.dart';
+import '../../../widgets/primary_dialog.dart';
 import '../../../widgets/primary_text_field.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -42,6 +44,7 @@ class SignInScreen extends StatelessWidget {
                     ),
                     vpad(24),
                     PrimaryTextField(
+                      obscureText: true,
                       lable: S.of(context).password,
                       hint: S.of(context).enter_pas,
                       isRequired: true,
@@ -69,7 +72,27 @@ class SignInScreen extends StatelessWidget {
                           ),
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () async {
+                            await Utils.showDialog(
+                                context: context,
+                                dailog: PrimaryDialog.custom(
+                                  title: S.of(context).forgot_pass,
+                                  content: Column(children: [
+                                    Text(
+                                      S.of(context).contact_receptionist,
+                                      textAlign: TextAlign.center,
+                                      style: txtRegular(14, grayScaleColorBase),
+                                    ),
+                                    vpad(27),
+                                    PrimaryButton(
+                                      text: S.of(context).close,
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                    )
+                                  ]),
+                                ));
+                          },
                           borderRadius: BorderRadius.circular(5),
                           child: Text(
                             S.of(context).forgot_pass,

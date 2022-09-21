@@ -56,7 +56,8 @@ class PrimaryTextField extends StatelessWidget {
         if (lable != null)
           Row(
             children: [
-              Text(lable!, style: txtBodySmallRegular()),
+              Text(lable!,
+                  style: txtBodySmallRegular(color: grayScaleColorBase)),
               if (isRequired) hpad(4),
               if (isRequired)
                 Text("*", style: txtBodySmallRegular(color: redColorBase))

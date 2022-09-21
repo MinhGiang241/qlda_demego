@@ -59,7 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_username":
             MessageLookupByLibrary.simpleMessage("Nhập tên tài khoản"),
         "failure": MessageLookupByLibrary.simpleMessage("Thất bại"),
-        "forgot_pass": MessageLookupByLibrary.simpleMessage("Quên mật khẩu"),
+        "forgot_pass": MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Họ và Tên"),
         "have_acc":
             MessageLookupByLibrary.simpleMessage("Bạn đã có tài khoản ?"),
@@ -118,6 +118,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "verify": MessageLookupByLibrary.simpleMessage("Xác thực"),
         "vi": MessageLookupByLibrary.simpleMessage("Tiếng Việt"),
         "wellcome_back":
-            MessageLookupByLibrary.simpleMessage("Chào mừng trở lại!")
+            MessageLookupByLibrary.simpleMessage("Chào mừng trở lại!"),
+        "wrong_sign_in":
+            MessageLookupByLibrary.simpleMessage("Sai tài khoản hoặc mật khẩu")
       };
 }

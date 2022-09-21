@@ -50,6 +50,10 @@ dev_dependencies:
   intl: ^0.17.0
   badges: ^2.0.3
   flutter_svg: ^1.1.5
+  oauth2: ^2.0.0
+  graphql: ^5.1.1
+  dio: ^4.0.6
+  path_provider: ^2.0.11
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

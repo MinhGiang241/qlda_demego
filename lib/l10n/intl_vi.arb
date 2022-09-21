@@ -10,7 +10,7 @@
   "enter_email_phone": "Nhập Email / Số điện thoại",
   "password": "Mật khẩu",
   "enter_pas": "Nhập mật khẩu",
-  "forgot_pass": "Quên mật khẩu",
+  "forgot_pass": "Quên mật khẩu?",
   "create_acc": "Tạo tài khoản",
   "have_acc": "Bạn đã có tài khoản ?",
   "full_name": "Họ và Tên",
@@ -70,5 +70,6 @@
   "acoount_not_avaiable": "Thông tin người dùng không có sẵn trên hệ thống, vui lòng liên hệ với Admin.",
   "invalid_code": "Mã xác thực không hợp lệ",
   "systeme_error": "Lỗi hệ thống",
-  "not_active": "Tài khoản chưa được kích hoạt"
+  "not_active": "Tài khoản chưa được kích hoạt",
+  "wrong_sign_in": "Sai tài khoản hoặc mật khẩu"
 }

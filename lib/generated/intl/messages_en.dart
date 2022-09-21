@@ -58,7 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_username":
             MessageLookupByLibrary.simpleMessage("Enter username"),
         "failure": MessageLookupByLibrary.simpleMessage("Failure"),
-        "forgot_pass": MessageLookupByLibrary.simpleMessage("Forgot password"),
+        "forgot_pass": MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full name"),
         "have_acc":
             MessageLookupByLibrary.simpleMessage("already have an account "),
@@ -113,6 +113,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Password must be at least 8 characters. It must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character"),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),
         "vi": MessageLookupByLibrary.simpleMessage("Vietnamese"),
-        "wellcome_back": MessageLookupByLibrary.simpleMessage("Welcome back!")
+        "wellcome_back": MessageLookupByLibrary.simpleMessage("Welcome back!"),
+        "wrong_sign_in": MessageLookupByLibrary.simpleMessage(
+            "Username or password is incorrect")
       };
 }

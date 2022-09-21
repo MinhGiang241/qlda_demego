@@ -12,7 +12,7 @@ enum DialogType { success, error, custom }
 class CustomDialog extends StatelessWidget {
   const CustomDialog(
       {super.key,
-      this.title,
+      this.title = '',
       this.msg,
       this.code,
       this.content,
@@ -28,55 +28,60 @@ class CustomDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Dialog(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(24))),
         elevation: 0,
         insetAnimationCurve: Curves.bounceInOut,
         insetPadding: const EdgeInsets.all(40),
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(24),
             color: Colors.white.withOpacity(0.9),
             border: Border.all(color: Colors.white54, width: 0.5),
+            borderRadius: BorderRadius.circular(24),
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Column(children: [
-              vpad(24),
-              if (type != DialogType.custom)
-                PrimaryIcon(
-                  icons: type == DialogType.success
-                      ? PrimaryIcons.check
-                      : PrimaryIcons.error,
-                  color: Colors.white,
-                  style: PrimaryIconStyle.gradient,
-                  gradients: type == DialogType.success
-                      ? PrimaryIconGradient.green
-                      : PrimaryIconGradient.red,
-                  size: 32,
-                  padding: const EdgeInsets.all(12),
-                ),
-              if (type != DialogType.custom) vpad(16),
-              Text(_title(), style: txtDisplayMedium()),
-              vpad(8),
-              if (type != DialogType.custom)
-                code == null
-                    ? Text(msg ?? "",
-                        style: txtBodySmallRegular(),
-                        textAlign: TextAlign.center)
-                    : Text(errorCodeToString(context, code),
-                        style: txtBodySmallRegular(),
-                        textAlign: TextAlign.center),
-              if (type != DialogType.custom) vpad(20),
-              if (type != DialogType.custom)
-                PrimaryButton(
-                  text: S.of(context).close,
-                  buttonSize: ButtonSize.medium,
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                ),
-              if (content != null) content!,
-              vpad(24),
-            ]),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  vpad(24),
+                  if (type != DialogType.custom)
+                    PrimaryIcon(
+                      icons: type == DialogType.success
+                          ? PrimaryIcons.check
+                          : PrimaryIcons.error,
+                      color: Colors.white,
+                      style: PrimaryIconStyle.gradient,
+                      gradients: type == DialogType.success
+                          ? PrimaryIconGradient.green
+                          : PrimaryIconGradient.red,
+                      size: 32,
+                      padding: const EdgeInsets.all(12),
+                    ),
+                  if (type != DialogType.custom) vpad(16),
+                  Text(_title(), style: txtDisplayMedium()),
+                  vpad(16),
+                  if (type != DialogType.custom)
+                    code == null
+                        ? Text(msg ?? "",
+                            style: txtBodySmallRegular(),
+                            textAlign: TextAlign.center)
+                        : Text(errorCodeToString(context, code),
+                            style: txtBodySmallRegular(),
+                            textAlign: TextAlign.center),
+                  if (type != DialogType.custom) vpad(20),
+                  if (type != DialogType.custom)
+                    PrimaryButton(
+                      text: S.of(context).close,
+                      buttonSize: ButtonSize.medium,
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  if (content != null) content!,
+                  vpad(24),
+                ]),
           ),
         ),
       ),
