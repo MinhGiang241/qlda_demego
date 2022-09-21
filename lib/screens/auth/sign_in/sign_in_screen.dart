@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:qlda_demego/services/api/api_auth.dart';
 import 'package:qlda_demego/widgets/primary_screen.dart';
 
 import '../../../constant/constants.dart';
@@ -105,6 +106,8 @@ class SignInScreen extends StatelessWidget {
                     PrimaryButton(
                         onTap: () async {
                           FocusScope.of(context).unfocus();
+                          await ApiAuth.signIn(
+                              username: 'admin', password: 'admin');
                         },
                         text: S.of(context).sign_in,
                         isLoading: false,

@@ -21,7 +21,7 @@ class ApiService {
 
   final Dio _dio = Dio(BaseOptions(baseUrl: '$baseURL/content/'));
   String tokenEndpointUrl = ApiConstants.authorizationEndpoint;
-  String clientId = "importer";
+  String clientId = ApiConstants.clientId; //"importer";
   String scope = "content offline_access";
 
   String userName = '';
