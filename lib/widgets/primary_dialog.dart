@@ -112,7 +112,7 @@ class CustomDialog extends StatelessWidget {
       case 5:
         return S.of(context).account_existed;
       case 7:
-        return S.of(context).acoount_not_avaiable;
+        return S.of(context).account_not_avaiable;
       case 8:
         return S.of(context).invalid_code;
       case 9:

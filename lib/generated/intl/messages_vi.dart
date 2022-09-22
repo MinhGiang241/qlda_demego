@@ -24,7 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account_existed": MessageLookupByLibrary.simpleMessage(
             "Tài khoản đã tồn tại, vui lòng đăng nhập"),
-        "acoount_not_avaiable": MessageLookupByLibrary.simpleMessage(
+        "account_not_avaiable": MessageLookupByLibrary.simpleMessage(
             "Thông tin người dùng không có sẵn trên hệ thống, vui lòng liên hệ với Admin."),
         "add_new": MessageLookupByLibrary.simpleMessage("Thêm mới"),
         "app_version": MessageLookupByLibrary.simpleMessage("App version"),
@@ -68,6 +68,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalid_code":
             MessageLookupByLibrary.simpleMessage("Mã xác thực không hợp lệ"),
         "language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
+        "min_max_pass": MessageLookupByLibrary.simpleMessage(
+            "Mật khẩu gồm ít nhất 4 kí tự và nhiều nhất 20 ký tự"),
         "missing": MessageLookupByLibrary.simpleMessage(
             "Thiếu trường thông tin bắt buộc"),
         "new_pass": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
@@ -82,6 +84,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Không nhận được OTP?"),
         "not_match":
             MessageLookupByLibrary.simpleMessage("Mật khẩu không khớp"),
+        "not_vietnamese": MessageLookupByLibrary.simpleMessage(
+            "Mật khẩu không được chứa ký tự tiếng Việt có dấu"),
         "operation": MessageLookupByLibrary.simpleMessage("Vận hành"),
         "otp_msg": MessageLookupByLibrary.simpleMessage(
             "Chúng tôi đã gửi mã OTP đến Số điện thoại đăng ký của quý khách. Vui lòng nhập mã OTP để thực hiện xác thực."),
@@ -95,6 +99,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Đăng ký thành công, vui lòng đăng nhập"),
         "remember_acc":
             MessageLookupByLibrary.simpleMessage("Ghi nhớ tài khoản"),
+        "require_lowercase": MessageLookupByLibrary.simpleMessage(
+            "Mật khẩu phải gồm ít nhất 1 chữ cái thường"),
+        "require_number": MessageLookupByLibrary.simpleMessage(
+            "Mật khẩu phải gồm ít nhất 1 chữ số"),
+        "require_special_char": MessageLookupByLibrary.simpleMessage(
+            "Mật khẩu phải gồm ít nhất 1 ký tự đặc biệt"),
+        "require_uppercase": MessageLookupByLibrary.simpleMessage(
+            "Mật khẩu phải gồm ít nhất 1 chữ cái hoa"),
         "resend": MessageLookupByLibrary.simpleMessage("Gửi lại"),
         "reset_pass": MessageLookupByLibrary.simpleMessage("Đặt lại mật khẩu"),
         "save": MessageLookupByLibrary.simpleMessage("Lưu"),

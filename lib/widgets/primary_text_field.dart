@@ -121,9 +121,6 @@ class PrimaryTextField extends StatelessWidget {
                     validator: isRequired
                         ? validator
                         : (val) {
-                            if (val!.isEmpty) {
-                              return S.of(context).can_not_empty;
-                            }
                             return null;
                           },
                   ),

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 const String family = "Lexend";
 
-const String baseURL = "https://tenant1-qltn-dev.metechvn.com";
-
 double dvHeight(BuildContext context) => MediaQuery.of(context).size.height;
 double dvWidth(BuildContext context) => MediaQuery.of(context).size.width;
 

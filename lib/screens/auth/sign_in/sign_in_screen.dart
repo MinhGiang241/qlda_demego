@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:qlda_demego/services/api/api_auth.dart';
+import 'package:qlda_demego/services/provider/sign_in_provider.dart';
 import 'package:qlda_demego/widgets/primary_screen.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constant/constants.dart';
 import '../../../generated/l10n.dart';
@@ -11,16 +13,23 @@ import '../../../widgets/primary_button.dart';
 import '../../../widgets/primary_dialog.dart';
 import '../../../widgets/primary_text_field.dart';
 
-class SignInScreen extends StatelessWidget {
+class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
   static const routeName = '/login';
 
+  @override
+  State<SignInScreen> createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen> {
+  bool rememberAccount = false;
   @override
   Widget build(BuildContext context) {
     return PrimaryScreen(
         appBar: AppBar(backgroundColor: Colors.transparent),
         body: Form(
           // autovalidateMode: AutovalidateMode.onUserInteraction,
+          key: context.read<SignInProvider>().formKey,
           child: Column(
             children: [
               vpad(24 + topSafePad(context) + appbarHeight(context)),
@@ -33,27 +42,30 @@ class SignInScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     PrimaryTextField(
+                      validateString:
+                          context.read<SignInProvider>().usernameValidate,
+                      controller:
+                          context.read<SignInProvider>().usernameController,
                       lable: S.of(context).username,
                       hint: S.of(context).enter_username,
                       isRequired: true,
                       validator: (v) {
-                        if (v!.isEmpty) {
-                          return "";
-                        }
-                        return null;
+                        return context
+                            .read<SignInProvider>()
+                            .validationAccount();
                       },
                     ),
                     vpad(24),
                     PrimaryTextField(
+                      validateString:
+                          context.read<SignInProvider>().passValidate,
+                      controller: context.read<SignInProvider>().passController,
                       obscureText: true,
                       lable: S.of(context).password,
                       hint: S.of(context).enter_pas,
                       isRequired: true,
                       validator: (v) {
-                        if (v!.isEmpty) {
-                          return "";
-                        }
-                        return null;
+                        return context.read<SignInProvider>().validationPass();
                       },
                     ),
                     vpad(24),
@@ -63,7 +75,13 @@ class SignInScreen extends StatelessWidget {
                         SizedBox(
                           child: Row(
                             children: [
-                              Checkbox(value: true, onChanged: (v) {}),
+                              Checkbox(
+                                  value: rememberAccount,
+                                  onChanged: (_) {
+                                    setState(() {
+                                      rememberAccount = !rememberAccount;
+                                    });
+                                  }),
                               Text(
                                 S.of(context).remember_acc,
                                 style: txtBodySmallRegular(
@@ -106,11 +124,12 @@ class SignInScreen extends StatelessWidget {
                     PrimaryButton(
                         onTap: () async {
                           FocusScope.of(context).unfocus();
-                          await ApiAuth.signIn(
-                              username: 'admin', password: 'admin');
+
+                          await context.read<SignInProvider>().signIn(context);
+                          setState(() {});
                         },
                         text: S.of(context).sign_in,
-                        isLoading: false,
+                        isLoading: context.watch<SignInProvider>().isLoading,
                         width: double.infinity),
                     vpad(32),
                     Text(S.of(context).no_acc,

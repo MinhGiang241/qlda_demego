@@ -66,9 +66,15 @@
   "not_match": "Password not match",
   "val_pass": "Password must be at least 8 characters. It must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character",
   "account_existed": "Account already exists, please login with other account",
-  "acoount_not_avaiable": "User information is not available on the system, please contact Admin.",
+  "account_not_avaiable": "User information is not available on the system, please contact Admin.",
   "invalid_code": "Invalid authentication code",
   "systeme_error": "System error",
   "not_active": "Account has not been activated",
-  "wrong_sign_in": "Username or password is incorrect"
+  "wrong_sign_in": "Username or password is incorrect",
+  "require_lowercase": "Password must contain at least 1 lowercase letter",
+  "require_uppercase": "Password must contain at least 1 uppercase letter",
+  "not_vietnamese": "Password must not contain Vietnamese character",
+  "require_number": "Password must contain at least 1 number",
+  "require_special_char": "Password must contain at least 1 special symbol",
+  "min_max_pass": "Password must contain at least 4 letter and at most 20 letter"
 }

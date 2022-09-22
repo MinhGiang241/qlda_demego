@@ -7,8 +7,9 @@ class ApiAuth {
       {required String username,
       required String password,
       OnError? onError}) async {
-    await ApiService.shared
+    var client = await ApiService.shared
         .getClient(username: username, password: password, onError: onError);
+    return client;
   }
 
   static Future<void> signOut({OnError? onError}) async {

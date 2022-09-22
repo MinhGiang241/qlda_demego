@@ -67,9 +67,15 @@
   "not_match": "Mật khẩu không khớp",
   "val_pass": "Mật khẩu phải có ít nhất 8 kí tự. Trong đó phải có ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt",
   "account_existed": "Tài khoản đã tồn tại, vui lòng đăng nhập",
-  "acoount_not_avaiable": "Thông tin người dùng không có sẵn trên hệ thống, vui lòng liên hệ với Admin.",
+  "account_not_avaiable": "Thông tin người dùng không có sẵn trên hệ thống, vui lòng liên hệ với Admin.",
   "invalid_code": "Mã xác thực không hợp lệ",
   "systeme_error": "Lỗi hệ thống",
   "not_active": "Tài khoản chưa được kích hoạt",
-  "wrong_sign_in": "Sai tài khoản hoặc mật khẩu"
+  "wrong_sign_in": "Sai tài khoản hoặc mật khẩu",
+  "require_lowercase": "Mật khẩu phải gồm ít nhất 1 chữ cái thường",
+  "require_uppercase": "Mật khẩu phải gồm ít nhất 1 chữ cái hoa",
+  "not_vietnamese": "Mật khẩu không được chứa ký tự tiếng Việt có dấu",
+  "require_number": "Mật khẩu phải gồm ít nhất 1 chữ số",
+  "require_special_char": "Mật khẩu phải gồm ít nhất 1 ký tự đặc biệt",
+  "min_max_pass": "Mật khẩu gồm ít nhất 4 kí tự và nhiều nhất 20 ký tự"
 }

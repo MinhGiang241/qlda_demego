@@ -721,10 +721,10 @@ class S {
   }
 
   /// `User information is not available on the system, please contact Admin.`
-  String get acoount_not_avaiable {
+  String get account_not_avaiable {
     return Intl.message(
       'User information is not available on the system, please contact Admin.',
-      name: 'acoount_not_avaiable',
+      name: 'account_not_avaiable',
       desc: '',
       args: [],
     );
@@ -765,6 +765,66 @@ class S {
     return Intl.message(
       'Username or password is incorrect',
       name: 'wrong_sign_in',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain at least 1 lowercase letter`
+  String get require_lowercase {
+    return Intl.message(
+      'Password must contain at least 1 lowercase letter',
+      name: 'require_lowercase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain at least 1 uppercase letter`
+  String get require_uppercase {
+    return Intl.message(
+      'Password must contain at least 1 uppercase letter',
+      name: 'require_uppercase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must not contain Vietnamese character`
+  String get not_vietnamese {
+    return Intl.message(
+      'Password must not contain Vietnamese character',
+      name: 'not_vietnamese',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain at least 1 number`
+  String get require_number {
+    return Intl.message(
+      'Password must contain at least 1 number',
+      name: 'require_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain at least 1 special symbol`
+  String get require_special_char {
+    return Intl.message(
+      'Password must contain at least 1 special symbol',
+      name: 'require_special_char',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain at least 4 letter and at most 20 letter`
+  String get min_max_pass {
+    return Intl.message(
+      'Password must contain at least 4 letter and at most 20 letter',
+      name: 'min_max_pass',
       desc: '',
       args: [],
     );

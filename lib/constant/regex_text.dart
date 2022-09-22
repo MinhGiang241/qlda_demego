@@ -4,7 +4,7 @@ class RegexText {
       .hasMatch(value);
 
   static bool minMaxString({required String value, int? min, int? max}) =>
-      RegExp("^\\w{$min,$max}\$").hasMatch(value);
+      RegExp("^.{$min,$max}\$").hasMatch(value);
 
   static bool isEmail(String value) =>
       RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value);

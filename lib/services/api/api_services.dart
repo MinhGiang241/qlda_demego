@@ -14,15 +14,17 @@ import 'package:oauth2/oauth2.dart' as oauth2;
 import 'package:path_provider/path_provider.dart';
 
 typedef OnSendProgress = Function(int, int);
-typedef OnError = Function();
+typedef OnError = Function<AuthorizationException>();
 
 class ApiService {
   static ApiService shared = ApiService();
 
-  final Dio _dio = Dio(BaseOptions(baseUrl: '$baseURL/content/'));
+  final Dio _dio =
+      Dio(BaseOptions(baseUrl: '${ApiConstants.baseUrl}}/content/'));
   String tokenEndpointUrl = ApiConstants.authorizationEndpoint;
   String clientId = ApiConstants.clientId; //"importer";
-  String scope = "content offline_access";
+  String secret = ApiConstants.clientSecret;
+  String scope = ApiConstants.scope;
 
   String userName = '';
   String passWord = '';
@@ -37,7 +39,8 @@ class ApiService {
       OnError? onError}) async {
     userName = username;
     passWord = password;
-    final client = await getExistClient();
+    final client = null;
+    // final client = await getExistClient();
     if (client != null) {
       if (client.credentials.isExpired) {
         return await _getCre(username, password, onError);
@@ -55,7 +58,7 @@ class ApiService {
     try {
       final cli = await oauth2.resourceOwnerPasswordGrant(
           authorizationEndpoint, username, password,
-          identifier: clientId, secret: "", scopes: [scope]);
+          identifier: clientId, secret: secret, scopes: [scope]);
       final path = await getApplicationDocumentsDirectory();
       final credentialsFile = File('${path.path}/credential.json');
       await credentialsFile.writeAsString(cli.credentials.toJson());

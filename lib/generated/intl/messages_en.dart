@@ -24,7 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account_existed": MessageLookupByLibrary.simpleMessage(
             "Account already exists, please login with other account"),
-        "acoount_not_avaiable": MessageLookupByLibrary.simpleMessage(
+        "account_not_avaiable": MessageLookupByLibrary.simpleMessage(
             "User information is not available on the system, please contact Admin."),
         "add_new": MessageLookupByLibrary.simpleMessage("Add new"),
         "app_version": MessageLookupByLibrary.simpleMessage("App version"),
@@ -67,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalid_code":
             MessageLookupByLibrary.simpleMessage("Invalid authentication code"),
         "language": MessageLookupByLibrary.simpleMessage("language"),
+        "min_max_pass": MessageLookupByLibrary.simpleMessage(
+            "Password must contain at least 4 letter and at most 20 letter"),
         "missing":
             MessageLookupByLibrary.simpleMessage("Missing required fields"),
         "new_pass": MessageLookupByLibrary.simpleMessage("New Password"),
@@ -79,6 +81,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "not_get_otp":
             MessageLookupByLibrary.simpleMessage("Did not receive OTP?"),
         "not_match": MessageLookupByLibrary.simpleMessage("Password not match"),
+        "not_vietnamese": MessageLookupByLibrary.simpleMessage(
+            "Password must not contain Vietnamese character"),
         "operation": MessageLookupByLibrary.simpleMessage("Operation"),
         "otp_msg": MessageLookupByLibrary.simpleMessage(
             "We have sent OTP code to your registered phone number. Please enter the OTP code to perform authentication."),
@@ -91,6 +95,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "reg_success": MessageLookupByLibrary.simpleMessage(
             "Registration successful, please login"),
         "remember_acc": MessageLookupByLibrary.simpleMessage("Remember me"),
+        "require_lowercase": MessageLookupByLibrary.simpleMessage(
+            "Password must contain at least 1 lowercase letter"),
+        "require_number": MessageLookupByLibrary.simpleMessage(
+            "Password must contain at least 1 number"),
+        "require_special_char": MessageLookupByLibrary.simpleMessage(
+            "Password must contain at least 1 special symbol"),
+        "require_uppercase": MessageLookupByLibrary.simpleMessage(
+            "Password must contain at least 1 uppercase letter"),
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
         "reset_pass": MessageLookupByLibrary.simpleMessage("Reset password"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),

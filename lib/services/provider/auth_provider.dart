@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:qlda_demego/services/api/api_auth.dart';
+import 'package:oauth2/oauth2.dart' as oauth2;
 
 import '../../generated/l10n.dart';
 import '../../util/utils.dart';
@@ -27,17 +28,19 @@ class AuthProvider with ChangeNotifier {
     });
   }
 
-  Future<void> onSignIn(
+  Future<oauth2.Client?> onSignIn(
       BuildContext context, String username, String password) async {
-    isLoading = true;
-    notifyListeners();
-    await ApiAuth.signIn(
+    var credentials = await ApiAuth.signIn(
         username: username,
         password: password,
-        onError: () {
+        onError: () async {
           Utils.showDialog(
               context: context,
               dailog: PrimaryDialog.error(msg: S.of(context).wrong_sign_in));
-        }).then((value) async {});
+          isLoading = false;
+        });
+    isLoading = false;
+    notifyListeners();
+    return credentials;
   }
 }
