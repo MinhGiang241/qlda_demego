@@ -57,6 +57,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_pas": MessageLookupByLibrary.simpleMessage("Enter password"),
         "enter_username":
             MessageLookupByLibrary.simpleMessage("Enter username"),
+        "err_conn": MessageLookupByLibrary.simpleMessage("Error Connection"),
+        "err_unknown": MessageLookupByLibrary.simpleMessage("Unknown Error"),
         "failure": MessageLookupByLibrary.simpleMessage("Failure"),
         "forgot_pass": MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full name"),

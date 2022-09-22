@@ -829,6 +829,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Error Connection`
+  String get err_conn {
+    return Intl.message(
+      'Error Connection',
+      name: 'err_conn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown Error`
+  String get err_unknown {
+    return Intl.message(
+      'Unknown Error',
+      name: 'err_unknown',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

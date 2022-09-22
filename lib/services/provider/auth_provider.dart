@@ -3,7 +3,7 @@ import 'package:qlda_demego/services/api/api_auth.dart';
 import 'package:oauth2/oauth2.dart' as oauth2;
 
 import '../../generated/l10n.dart';
-import '../../util/utils.dart';
+import '../../utils/utils.dart';
 import '../../widgets/primary_dialog.dart';
 import '../api/api_services.dart';
 
@@ -33,12 +33,26 @@ class AuthProvider with ChangeNotifier {
     var credentials = await ApiAuth.signIn(
         username: username,
         password: password,
-        onError: () async {
-          Utils.showDialog(
-              context: context,
-              dailog: PrimaryDialog.error(msg: S.of(context).wrong_sign_in));
-          isLoading = false;
+        onError: (e) {
+          if (e.code == 1) {
+            Utils.showDialog(
+                context: context,
+                dailog: PrimaryDialog.error(msg: S.of(context).wrong_sign_in));
+          } else if (e.code == 2) {
+            Utils.showDialog(
+                context: context,
+                dailog: PrimaryDialog.error(msg: S.of(context).err_conn));
+          } else {
+            Utils.showDialog(
+                context: context,
+                dailog: PrimaryDialog.error(msg: S.of(context).err_unknown));
+          }
         });
+    if (credentials != null) {
+      authStatus = AuthStatus.auth;
+      Utils.showDialog(context: context, dailog: const PrimaryDialog.success());
+    }
+
     isLoading = false;
     notifyListeners();
     return credentials;

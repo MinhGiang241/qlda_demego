@@ -77,5 +77,7 @@
   "not_vietnamese": "Mật khẩu không được chứa ký tự tiếng Việt có dấu",
   "require_number": "Mật khẩu phải gồm ít nhất 1 chữ số",
   "require_special_char": "Mật khẩu phải gồm ít nhất 1 ký tự đặc biệt",
-  "min_max_pass": "Mật khẩu gồm ít nhất 4 kí tự và nhiều nhất 20 ký tự"
+  "min_max_pass": "Mật khẩu gồm ít nhất 4 kí tự và nhiều nhất 20 ký tự",
+  "err_conn":"Lỗi kết nối",
+  "err_unknown":"Lỗi Không xác định"
 }

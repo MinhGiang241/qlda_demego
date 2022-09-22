@@ -58,6 +58,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_pas": MessageLookupByLibrary.simpleMessage("Nhập mật khẩu"),
         "enter_username":
             MessageLookupByLibrary.simpleMessage("Nhập tên tài khoản"),
+        "err_conn": MessageLookupByLibrary.simpleMessage("Lỗi kết nối"),
+        "err_unknown":
+            MessageLookupByLibrary.simpleMessage("Lỗi Không xác định"),
         "failure": MessageLookupByLibrary.simpleMessage("Thất bại"),
         "forgot_pass": MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Họ và Tên"),

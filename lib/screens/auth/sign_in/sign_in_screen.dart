@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 
 import '../../../constant/constants.dart';
 import '../../../generated/l10n.dart';
-import '../../../util/utils.dart';
+import '../../../utils/utils.dart';
 import '../../../widgets/primary_button.dart';
 import '../../../widgets/primary_dialog.dart';
 import '../../../widgets/primary_text_field.dart';

@@ -40,9 +40,6 @@ class SignInProvider with ChangeNotifier {
       return '';
     } else if (!RegexText.minMaxString(
         value: passController.text, min: 4, max: 20)) {
-      print(passController.text);
-      print(
-          RegexText.minMaxString(value: passController.text, min: 4, max: 20));
       passValidate = S.current.min_max_pass;
       return '';
     } else if (!RegexText.requiredLowerCase(passController.text)) {

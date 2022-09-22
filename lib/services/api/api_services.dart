@@ -5,6 +5,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:qlda_demego/constant/api_constant.dart';
+import 'package:qlda_demego/generated/intl/messages_vi.dart';
 
 import '../../constant/constants.dart';
 import 'package:dio/dio.dart';
@@ -13,8 +14,11 @@ import 'package:graphql/client.dart';
 import 'package:oauth2/oauth2.dart' as oauth2;
 import 'package:path_provider/path_provider.dart';
 
+import '../../generated/l10n.dart';
+import '../../utils/error_handler.dart';
+
 typedef OnSendProgress = Function(int, int);
-typedef OnError = Function<AuthorizationException>();
+typedef OnError = Function(ErrorHandle);
 
 class ApiService {
   static ApiService shared = ApiService();
@@ -39,7 +43,7 @@ class ApiService {
       OnError? onError}) async {
     userName = username;
     passWord = password;
-    final client = null;
+    const client = null;
     // final client = await getExistClient();
     if (client != null) {
       if (client.credentials.isExpired) {
@@ -64,8 +68,16 @@ class ApiService {
       await credentialsFile.writeAsString(cli.credentials.toJson());
       return cli;
     } catch (e) {
-      print(e);
-      onError?.call();
+      if (e.runtimeType.toString() == "AuthorizationException") {
+        var authErr = ErrorHandle(
+            msg: (e as oauth2.AuthorizationException).description!, code: 1);
+        onError?.call(authErr);
+      } else if (e.runtimeType.toString() == '_ClientSocketException') {
+        onError?.call(ErrorHandle(code: 2));
+      } else {
+        onError?.call(ErrorHandle(code: 3));
+      }
+
       return null;
     }
   }
@@ -122,7 +134,7 @@ class ApiService {
     if (useToken) {
       var client = await getExistClient();
       if (client == null) {
-        onError?.call();
+        onError?.call(ErrorHandle(msg: ''));
       } else {
         //print(client.credentials.expiration);
         if (client.credentials.isExpired) {
@@ -178,7 +190,7 @@ class ApiService {
     if (useToken) {
       var client = await getExistClient();
       if (client == null) {
-        onError?.call();
+        onError?.call(ErrorHandle(msg: ''));
       } else {
         //print(client.credentials.expiration);
         if (client.credentials.isExpired) {
@@ -235,7 +247,7 @@ class ApiService {
     if (useToken) {
       var client = await getExistClient();
       if (client == null) {
-        onError?.call();
+        onError?.call(ErrorHandle(msg: ''));
       } else {
         //print(client.credentials.expiration);
         if (client.credentials.isExpired) {
@@ -286,7 +298,7 @@ class ApiService {
     late AuthLink authLink;
     var client = await getExistClient();
     if (client == null) {
-      onError?.call();
+      onError?.call(ErrorHandle(msg: ''));
     } else {
       //print(client.credentials.expiration);
       if (client.credentials.isExpired) {

@@ -76,5 +76,7 @@
   "not_vietnamese": "Password must not contain Vietnamese character",
   "require_number": "Password must contain at least 1 number",
   "require_special_char": "Password must contain at least 1 special symbol",
-  "min_max_pass": "Password must contain at least 4 letter and at most 20 letter"
+  "min_max_pass": "Password must contain at least 4 letter and at most 20 letter",
+  "err_conn":"Error Connection",
+  "err_unknown":"Unknown Error"
 }
