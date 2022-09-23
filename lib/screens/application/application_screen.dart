@@ -5,6 +5,7 @@ import 'package:qlda_demego/widgets/main_drawer.dart';
 import 'package:qlda_demego/widgets/primary_screen.dart';
 import 'package:qlda_demego/widgets/search_bar.dart';
 
+import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
 import '../../widgets/primary_appbar.dart';
 
@@ -19,8 +20,11 @@ class ApplicationScreen extends StatelessWidget {
         appBar: PrimaryAppbar(
           title: S.of(context).list_apl,
         ),
-        body: Column(
-          children: [SearchBar()],
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Column(
+            children: [vpad(76), SearchBar()],
+          ),
         ));
   }
 }
