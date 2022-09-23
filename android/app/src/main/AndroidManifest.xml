@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.qlda_demego">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="qlda_demego"
         android:name="${applicationName}"

@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "User information is not available on the system, please contact Admin."),
         "add_new": MessageLookupByLibrary.simpleMessage("Add new"),
         "app_version": MessageLookupByLibrary.simpleMessage("App version"),
+        "application": MessageLookupByLibrary.simpleMessage("Application"),
         "building_management":
             MessageLookupByLibrary.simpleMessage("Building management"),
         "c_new_pass":
@@ -45,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "create_acc": MessageLookupByLibrary.simpleMessage("Create an account"),
         "current_pass":
             MessageLookupByLibrary.simpleMessage("Current password"),
+        "customer": MessageLookupByLibrary.simpleMessage("Customer"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -59,6 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter username"),
         "err_conn": MessageLookupByLibrary.simpleMessage("Error Connection"),
         "err_unknown": MessageLookupByLibrary.simpleMessage("Unknown Error"),
+        "extr_tast": MessageLookupByLibrary.simpleMessage("Extra task"),
         "failure": MessageLookupByLibrary.simpleMessage("Failure"),
         "forgot_pass": MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full name"),
@@ -69,6 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalid_code":
             MessageLookupByLibrary.simpleMessage("Invalid authentication code"),
         "language": MessageLookupByLibrary.simpleMessage("language"),
+        "list_apl": MessageLookupByLibrary.simpleMessage("Application List"),
         "min_max_pass": MessageLookupByLibrary.simpleMessage(
             "Password must contain at least 4 letter and at most 20 letter"),
         "missing":
@@ -89,11 +93,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "otp_msg": MessageLookupByLibrary.simpleMessage(
             "We have sent OTP code to your registered phone number. Please enter the OTP code to perform authentication."),
         "otp_verify": MessageLookupByLibrary.simpleMessage("OTP verify"),
+        "parcel": MessageLookupByLibrary.simpleMessage("Parcel"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "penetration": MessageLookupByLibrary.simpleMessage("Penetration"),
+        "period_task":
+            MessageLookupByLibrary.simpleMessage("Periodically task"),
         "personal_info":
             MessageLookupByLibrary.simpleMessage("Personal Infomation"),
         "phone_num": MessageLookupByLibrary.simpleMessage("Phone number"),
         "prev": MessageLookupByLibrary.simpleMessage("Previous"),
+        "property": MessageLookupByLibrary.simpleMessage("Property"),
+        "reception": MessageLookupByLibrary.simpleMessage("Reception"),
         "reg_success": MessageLookupByLibrary.simpleMessage(
             "Registration successful, please login"),
         "remember_acc": MessageLookupByLibrary.simpleMessage("Remember me"),
@@ -107,6 +117,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Password must contain at least 1 uppercase letter"),
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
         "reset_pass": MessageLookupByLibrary.simpleMessage("Reset password"),
+        "resident_card":
+            MessageLookupByLibrary.simpleMessage("Resident identity card"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "send_verify": MessageLookupByLibrary.simpleMessage("Send verify"),
         "setting": MessageLookupByLibrary.simpleMessage("Setting"),
@@ -125,6 +137,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "val_pass": MessageLookupByLibrary.simpleMessage(
             "Password must be at least 8 characters. It must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character"),
+        "verhicle_card":
+            MessageLookupByLibrary.simpleMessage("Vehicle registration card"),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),
         "vi": MessageLookupByLibrary.simpleMessage("Vietnamese"),
         "wellcome_back": MessageLookupByLibrary.simpleMessage("Welcome back!"),

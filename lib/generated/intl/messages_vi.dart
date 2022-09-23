@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Thông tin người dùng không có sẵn trên hệ thống, vui lòng liên hệ với Admin."),
         "add_new": MessageLookupByLibrary.simpleMessage("Thêm mới"),
         "app_version": MessageLookupByLibrary.simpleMessage("App version"),
+        "application": MessageLookupByLibrary.simpleMessage("Đơn từ"),
         "building_management":
             MessageLookupByLibrary.simpleMessage("Quản lý chung cư"),
         "c_new_pass":
@@ -46,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "create_acc": MessageLookupByLibrary.simpleMessage("Tạo tài khoản"),
         "current_pass":
             MessageLookupByLibrary.simpleMessage("Mật khẩu hiện tại"),
+        "customer": MessageLookupByLibrary.simpleMessage("Khách hàng"),
         "description": MessageLookupByLibrary.simpleMessage("Mô tả"),
         "edit": MessageLookupByLibrary.simpleMessage("Chỉnh sửa"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -61,6 +63,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "err_conn": MessageLookupByLibrary.simpleMessage("Lỗi kết nối"),
         "err_unknown":
             MessageLookupByLibrary.simpleMessage("Lỗi Không xác định"),
+        "extr_tast":
+            MessageLookupByLibrary.simpleMessage("Công việc phát sinh"),
         "failure": MessageLookupByLibrary.simpleMessage("Thất bại"),
         "forgot_pass": MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Họ và Tên"),
@@ -71,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalid_code":
             MessageLookupByLibrary.simpleMessage("Mã xác thực không hợp lệ"),
         "language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
+        "list_apl": MessageLookupByLibrary.simpleMessage("Danh sách đơn từ"),
         "min_max_pass": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu gồm ít nhất 4 kí tự và nhiều nhất 20 ký tự"),
         "missing": MessageLookupByLibrary.simpleMessage(
@@ -93,11 +98,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "otp_msg": MessageLookupByLibrary.simpleMessage(
             "Chúng tôi đã gửi mã OTP đến Số điện thoại đăng ký của quý khách. Vui lòng nhập mã OTP để thực hiện xác thực."),
         "otp_verify": MessageLookupByLibrary.simpleMessage("Xác thực OTP"),
+        "parcel": MessageLookupByLibrary.simpleMessage("Bưu phẩm"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
+        "penetration": MessageLookupByLibrary.simpleMessage("Ra vào tòa nhà"),
+        "period_task":
+            MessageLookupByLibrary.simpleMessage("Công việc định kỳ"),
         "personal_info":
             MessageLookupByLibrary.simpleMessage("Thông tin cá nhân"),
         "phone_num": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
         "prev": MessageLookupByLibrary.simpleMessage("Trở lại"),
+        "property": MessageLookupByLibrary.simpleMessage("Tài sản"),
+        "reception": MessageLookupByLibrary.simpleMessage("Quản lý Lễ tân"),
         "reg_success": MessageLookupByLibrary.simpleMessage(
             "Đăng ký thành công, vui lòng đăng nhập"),
         "remember_acc":
@@ -112,6 +123,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Mật khẩu phải gồm ít nhất 1 chữ cái hoa"),
         "resend": MessageLookupByLibrary.simpleMessage("Gửi lại"),
         "reset_pass": MessageLookupByLibrary.simpleMessage("Đặt lại mật khẩu"),
+        "resident_card": MessageLookupByLibrary.simpleMessage("Thẻ cư dân"),
         "save": MessageLookupByLibrary.simpleMessage("Lưu"),
         "send_verify": MessageLookupByLibrary.simpleMessage("Gửi xác thực"),
         "setting": MessageLookupByLibrary.simpleMessage("Cài đặt"),
@@ -130,6 +142,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "username": MessageLookupByLibrary.simpleMessage("Tài khoản"),
         "val_pass": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu phải có ít nhất 8 kí tự. Trong đó phải có ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt"),
+        "verhicle_card": MessageLookupByLibrary.simpleMessage("Thẻ gửi xe"),
         "verify": MessageLookupByLibrary.simpleMessage("Xác thực"),
         "vi": MessageLookupByLibrary.simpleMessage("Tiếng Việt"),
         "wellcome_back":

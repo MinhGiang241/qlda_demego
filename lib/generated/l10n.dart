@@ -849,6 +849,116 @@ class S {
       args: [],
     );
   }
+
+  /// `Application`
+  String get application {
+    return Intl.message(
+      'Application',
+      name: 'application',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Extra task`
+  String get extr_tast {
+    return Intl.message(
+      'Extra task',
+      name: 'extr_tast',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Periodically task`
+  String get period_task {
+    return Intl.message(
+      'Periodically task',
+      name: 'period_task',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Property`
+  String get property {
+    return Intl.message(
+      'Property',
+      name: 'property',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reception`
+  String get reception {
+    return Intl.message(
+      'Reception',
+      name: 'reception',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Parcel`
+  String get parcel {
+    return Intl.message(
+      'Parcel',
+      name: 'parcel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Penetration`
+  String get penetration {
+    return Intl.message(
+      'Penetration',
+      name: 'penetration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resident identity card`
+  String get resident_card {
+    return Intl.message(
+      'Resident identity card',
+      name: 'resident_card',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vehicle registration card`
+  String get verhicle_card {
+    return Intl.message(
+      'Vehicle registration card',
+      name: 'verhicle_card',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customer`
+  String get customer {
+    return Intl.message(
+      'Customer',
+      name: 'customer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Application List`
+  String get list_apl {
+    return Intl.message(
+      'Application List',
+      name: 'list_apl',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

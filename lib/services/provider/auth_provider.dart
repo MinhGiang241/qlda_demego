@@ -1,4 +1,7 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/cupertino.dart';
+import 'package:qlda_demego/screens/home/home_screen.dart';
 import 'package:qlda_demego/services/api/api_auth.dart';
 import 'package:oauth2/oauth2.dart' as oauth2;
 
@@ -50,7 +53,9 @@ class AuthProvider with ChangeNotifier {
         });
     if (credentials != null) {
       authStatus = AuthStatus.auth;
-      Utils.showDialog(context: context, dailog: const PrimaryDialog.success());
+      // Utils.showDialog(context: context, dailog: const PrimaryDialog.success());
+      Navigator.pushNamedAndRemoveUntil(
+          context, HomeScreen.routeName, (Route route) => route.isFirst);
     }
 
     isLoading = false;

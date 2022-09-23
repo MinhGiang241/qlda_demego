@@ -78,6 +78,17 @@
   "require_number": "Mật khẩu phải gồm ít nhất 1 chữ số",
   "require_special_char": "Mật khẩu phải gồm ít nhất 1 ký tự đặc biệt",
   "min_max_pass": "Mật khẩu gồm ít nhất 4 kí tự và nhiều nhất 20 ký tự",
-  "err_conn":"Lỗi kết nối",
-  "err_unknown":"Lỗi Không xác định"
+  "err_conn": "Lỗi kết nối",
+  "err_unknown": "Lỗi Không xác định",
+  "application": "Đơn từ",
+  "extr_tast": "Công việc phát sinh",
+  "period_task": "Công việc định kỳ",
+  "property": "Tài sản",
+  "reception": "Quản lý Lễ tân",
+  "parcel": "Bưu phẩm",
+  "penetration": "Ra vào tòa nhà",
+  "resident_card": "Thẻ cư dân",
+  "verhicle_card": "Thẻ gửi xe",
+  "customer": "Khách hàng",
+  "list_apl": "Danh sách đơn từ"
 }
