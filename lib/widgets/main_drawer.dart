@@ -123,17 +123,19 @@ class MainDrawer extends StatelessWidget {
               ],
             ),
           ),
-          Positioned(
-              child: Column(
-            children: [
-              const Divider(thickness: 2),
-              buildListTile(
-                  S.of(context).sign_out,
-                  Icons.logout,
-                  () => Navigator.pushReplacementNamed(
-                      context, HomeScreen.routeName)),
-            ],
-          ))
+          Stack(children: [
+            Positioned(
+                child: Column(
+              children: [
+                const Divider(thickness: 2),
+                buildListTile(
+                    S.of(context).sign_out,
+                    Icons.logout,
+                    () => Navigator.pushReplacementNamed(
+                        context, HomeScreen.routeName)),
+              ],
+            )),
+          ])
         ],
       ),
     );
