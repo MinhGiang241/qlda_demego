@@ -1,12 +1,15 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/cupertino.dart';
+import 'package:qlda_demego/screens/auth/sign_in/sign_in_screen.dart';
 import 'package:qlda_demego/screens/home/home_screen.dart';
 import 'package:qlda_demego/services/api/api_auth.dart';
 import 'package:oauth2/oauth2.dart' as oauth2;
 
+import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
 import '../../utils/utils.dart';
+import '../../widgets/primary_button.dart';
 import '../../widgets/primary_dialog.dart';
 import '../api/api_services.dart';
 
@@ -61,5 +64,51 @@ class AuthProvider with ChangeNotifier {
     isLoading = false;
     notifyListeners();
     return credentials;
+  }
+
+  Future<void> onSignOut(BuildContext context) async {
+    Utils.showDialog(
+        context: context,
+        dailog: PrimaryDialog.custom(
+          title: S.of(context).sign_out,
+          content: Column(
+            children: [
+              Text(S.of(context).sign_out_msg),
+              vpad(16),
+              Row(
+                children: [
+                  Expanded(
+                    child: PrimaryButton(
+                      text: S.of(context).sign_out,
+                      buttonSize: ButtonSize.medium,
+                      isFit: true,
+                      buttonType: ButtonType.secondary,
+                      secondaryBackgroundColor: redColor2,
+                      onTap: () {
+                        Navigator.pop(context, true);
+                        authStatus = AuthStatus.unauthen;
+                        Navigator.pushReplacementNamed(
+                            context, SignInScreen.routeName);
+                      },
+                    ),
+                  ),
+                  hpad(24),
+                  Expanded(
+                    child: PrimaryButton(
+                      text: S.of(context).cancel,
+                      buttonSize: ButtonSize.medium,
+                      buttonType: ButtonType.secondary,
+                      secondaryBackgroundColor: primaryColor4,
+                      textColor: primaryColorBase,
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
+        ));
   }
 }

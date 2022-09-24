@@ -252,6 +252,8 @@ class _ApplicationScreenState extends State<ApplicationScreen> {
                         hpad(18),
                         Text(
                           "Chờ trưởng ca duyệt",
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
                           style: txtBodySmallRegular(color: grayScaleColorBase),
                         )
                       ]),
