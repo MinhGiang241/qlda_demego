@@ -8,7 +8,9 @@ import 'package:qlda_demego/widgets/primary_text_field.dart';
 import '../generated/l10n.dart';
 
 class SearchBar extends StatelessWidget {
-  const SearchBar({super.key});
+  SearchBar({super.key, this.onPress});
+
+  final Function()? onPress;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class SearchBar extends StatelessWidget {
             children: [
               Expanded(
                 child: PrimaryTextField(
-                  hint: S.of(context).save,
+                  hint: S.of(context).search,
                   prefixIcon: const Padding(
                     padding: EdgeInsets.all(12.0),
                     child: PrimaryIcon(
@@ -54,7 +56,7 @@ class SearchBar extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                     color: Colors.white),
                 child: IconButton(
-                    onPressed: () {},
+                    onPressed: onPress,
                     icon: const Icon(
                       Icons.filter_alt,
                       size: 30,

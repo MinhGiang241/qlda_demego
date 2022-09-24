@@ -44,6 +44,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nhập lại mật khẩu"),
         "contact_receptionist": MessageLookupByLibrary.simpleMessage(
             "Hãy liên lạc với BQL hoặc lễ tân để được cấp tài khoản và mật khẩu"),
+        "cr_change_shift":
+            MessageLookupByLibrary.simpleMessage("Tạo đơn đổi ca"),
+        "cr_off_day": MessageLookupByLibrary.simpleMessage("Tạo đơn nghỉ phép"),
+        "cr_off_on":
+            MessageLookupByLibrary.simpleMessage("Tạo đơn nghỉ giữa giờ"),
         "create_acc": MessageLookupByLibrary.simpleMessage("Tạo tài khoản"),
         "current_pass":
             MessageLookupByLibrary.simpleMessage("Mật khẩu hiện tại"),
@@ -66,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "extr_tast":
             MessageLookupByLibrary.simpleMessage("Công việc phát sinh"),
         "failure": MessageLookupByLibrary.simpleMessage("Thất bại"),
+        "filter": MessageLookupByLibrary.simpleMessage("Bộ lọc"),
         "forgot_pass": MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Họ và Tên"),
         "have_acc":
@@ -125,6 +131,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "reset_pass": MessageLookupByLibrary.simpleMessage("Đặt lại mật khẩu"),
         "resident_card": MessageLookupByLibrary.simpleMessage("Thẻ cư dân"),
         "save": MessageLookupByLibrary.simpleMessage("Lưu"),
+        "search": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
         "send_verify": MessageLookupByLibrary.simpleMessage("Gửi xác thực"),
         "setting": MessageLookupByLibrary.simpleMessage("Cài đặt"),
         "sign_in": MessageLookupByLibrary.simpleMessage("Đăng Nhập"),

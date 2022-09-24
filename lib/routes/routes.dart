@@ -31,8 +31,7 @@ class AppRoutes {
       case HomeScreen.routeName:
         return MaterialPageRoute(builder: (context) => const HomeScreen());
       case ApplicationScreen.routeName:
-        return MaterialPageRoute(
-            builder: (context) => const ApplicationScreen());
+        return MaterialPageRoute(builder: (context) => ApplicationScreen());
       default:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
     }

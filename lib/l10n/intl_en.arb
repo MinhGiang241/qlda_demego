@@ -89,5 +89,10 @@
   "resident_card": "Resident identity card",
   "verhicle_card": "Vehicle registration card",
   "customer": "Customer",
-  "list_apl": "Application List"
+  "list_apl": "Application List",
+  "cr_off_day": "Create Leave of Absence Letter",
+  "cr_off_on": "Create Leave of Break Letter",
+  "cr_change_shift": "Create change shift Letter",
+  "filter": "Filter",
+  "search": "Search"
 }

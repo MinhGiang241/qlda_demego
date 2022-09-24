@@ -959,6 +959,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Create Leave of Absence Letter`
+  String get cr_off_day {
+    return Intl.message(
+      'Create Leave of Absence Letter',
+      name: 'cr_off_day',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Leave of Break Letter`
+  String get cr_off_on {
+    return Intl.message(
+      'Create Leave of Break Letter',
+      name: 'cr_off_on',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create change shift Letter`
+  String get cr_change_shift {
+    return Intl.message(
+      'Create change shift Letter',
+      name: 'cr_change_shift',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filter`
+  String get filter {
+    return Intl.message(
+      'Filter',
+      name: 'filter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search`
+  String get search {
+    return Intl.message(
+      'Search',
+      name: 'search',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

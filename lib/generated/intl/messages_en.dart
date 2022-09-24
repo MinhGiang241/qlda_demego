@@ -43,6 +43,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "contact_receptionist": MessageLookupByLibrary.simpleMessage(
             "Please contact with management committee or receptionist in order to be provided account and password."),
+        "cr_change_shift":
+            MessageLookupByLibrary.simpleMessage("Create change shift Letter"),
+        "cr_off_day": MessageLookupByLibrary.simpleMessage(
+            "Create Leave of Absence Letter"),
+        "cr_off_on": MessageLookupByLibrary.simpleMessage(
+            "Create Leave of Break Letter"),
         "create_acc": MessageLookupByLibrary.simpleMessage("Create an account"),
         "current_pass":
             MessageLookupByLibrary.simpleMessage("Current password"),
@@ -63,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "err_unknown": MessageLookupByLibrary.simpleMessage("Unknown Error"),
         "extr_tast": MessageLookupByLibrary.simpleMessage("Extra task"),
         "failure": MessageLookupByLibrary.simpleMessage("Failure"),
+        "filter": MessageLookupByLibrary.simpleMessage("Filter"),
         "forgot_pass": MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full name"),
         "have_acc":
@@ -120,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "resident_card":
             MessageLookupByLibrary.simpleMessage("Resident identity card"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
         "send_verify": MessageLookupByLibrary.simpleMessage("Send verify"),
         "setting": MessageLookupByLibrary.simpleMessage("Setting"),
         "sign_in": MessageLookupByLibrary.simpleMessage("sign_in"),

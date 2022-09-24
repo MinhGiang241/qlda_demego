@@ -15,6 +15,7 @@ double appbarHeight(BuildContext context) => AppBar().preferredSize.height;
 
 // const Color backgroundColor = Color(0xffF5F7FC);
 const Color backgroundColor = Color(0xffF8FAFE);
+
 const Color shadowColor = Color(0xff6575A7);
 
 const Color primaryColorBase = Color(0xff466FFF);

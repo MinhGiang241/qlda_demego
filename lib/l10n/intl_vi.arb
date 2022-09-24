@@ -90,5 +90,10 @@
   "resident_card": "Thẻ cư dân",
   "verhicle_card": "Thẻ gửi xe",
   "customer": "Khách hàng",
-  "list_apl": "Danh sách đơn từ"
+  "list_apl": "Danh sách đơn từ",
+  "cr_off_day": "Tạo đơn nghỉ phép",
+  "cr_off_on": "Tạo đơn nghỉ giữa giờ",
+  "cr_change_shift": "Tạo đơn đổi ca",
+  "filter": "Bộ lọc",
+  "search": "Tìm kiếm"
 }

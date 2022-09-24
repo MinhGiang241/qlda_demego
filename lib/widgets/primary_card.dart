@@ -8,13 +8,15 @@ class PrimaryCard extends StatelessWidget {
       this.onTap,
       this.borderRadius,
       this.height,
-      this.width})
+      this.width,
+      this.margin})
       : super(key: key);
   final Widget child;
   final Function()? onTap;
   final BorderRadius? borderRadius;
   final double? height;
   final double? width;
+  final EdgeInsetsGeometry? margin;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +24,12 @@ class PrimaryCard extends StatelessWidget {
       duration: const Duration(milliseconds: 300),
       alignment: Alignment.topCenter,
       child: Container(
+        margin: margin,
         height: height,
         width: width,
         decoration: BoxDecoration(
             borderRadius: borderRadius ?? BorderRadius.circular(12),
-            color: Colors.white.withOpacity(0.9),
+            color: Colors.white,
             border: Border.all(color: Colors.white54, width: 0.5),
             boxShadow: [
               BoxShadow(

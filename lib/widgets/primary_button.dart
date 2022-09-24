@@ -11,7 +11,7 @@ enum ButtonSize { large, medium, small, xsmall }
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton(
       {super.key,
-      required this.text,
+      this.text,
       this.onTap,
       this.margin,
       this.secondaryBackgroundColor,
