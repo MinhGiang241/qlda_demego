@@ -1179,6 +1179,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Rely`
+  String get rely {
+    return Intl.message(
+      'Rely',
+      name: 'rely',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -25,7 +25,7 @@ const Color primaryColor3 = Color(0xff789CFF);
 const Color primaryColor4 = Color(0xffB1C7FF);
 const Color primaryColor5 = Color(0xffECF1FF);
 
-const Color secondaryColorBase = Color(0xff00BCE5);
+const Color secondaryColorBase = Color(0xff00C3B8);
 const Color secondaryColor1 = Color(0xff02AACF);
 const Color secondaryColor2 = Color(0xff15CAF2);
 const Color secondaryColor3 = Color(0xff31D6FA);

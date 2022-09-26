@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 import '../../../constant/constants.dart';
 import '../../../generated/l10n.dart';
@@ -49,10 +50,12 @@ void filterApplication(context) {
                         onChanged: (_) {}),
                   ),
                   hpad(18),
-                  Text(
+                  AutoSizeText(
                     "Tất cả",
+                    maxLines: 2,
+                    minFontSize: 1,
                     style: txtBodySmallRegular(color: grayScaleColorBase),
-                  )
+                  ),
                 ],
               ),
               vpad(15),
@@ -70,10 +73,12 @@ void filterApplication(context) {
                             onChanged: (_) {}),
                       ),
                       hpad(18),
-                      Text(
+                      AutoSizeText(
                         "Đơn nghỉ phép",
+                        maxLines: 2,
+                        minFontSize: 1,
                         style: txtBodySmallRegular(color: grayScaleColorBase),
-                      )
+                      ),
                     ]),
                   ),
                   Expanded(
@@ -88,10 +93,12 @@ void filterApplication(context) {
                             onChanged: (_) {}),
                       ),
                       hpad(18),
-                      Text(
+                      AutoSizeText(
                         "Đơn nghỉ giữa giờ",
+                        maxLines: 1,
+                        minFontSize: 1,
                         style: txtBodySmallRegular(color: grayScaleColorBase),
-                      )
+                      ),
                     ]),
                   ),
                 ],
@@ -108,10 +115,12 @@ void filterApplication(context) {
                         onChanged: (_) {}),
                   ),
                   hpad(18),
-                  Text(
+                  AutoSizeText(
                     "Đơn đổi ca",
+                    maxLines: 2,
+                    minFontSize: 1,
                     style: txtBodySmallRegular(color: grayScaleColorBase),
-                  )
+                  ),
                 ],
               ),
               vpad(15),
@@ -130,10 +139,12 @@ void filterApplication(context) {
                         onChanged: (_) {}),
                   ),
                   hpad(18),
-                  Text(
+                  AutoSizeText(
                     "Tất cả",
+                    maxLines: 2,
+                    minFontSize: 1,
                     style: txtBodySmallRegular(color: grayScaleColorBase),
-                  )
+                  ),
                 ],
               ),
               vpad(15),
@@ -151,8 +162,14 @@ void filterApplication(context) {
                             onChanged: (_) {}),
                       ),
                       hpad(18),
-                      Text(
+                      AutoSizeText(
                         "Đã duyệt",
+                        maxLines: 2,
+                        minFontSize: 1,
+                        style: txtBodySmallRegular(color: grayScaleColorBase),
+                      ),
+                      Text(
+                        "",
                         style: txtBodySmallRegular(color: grayScaleColorBase),
                       )
                     ]),
@@ -169,10 +186,12 @@ void filterApplication(context) {
                             onChanged: (_) {}),
                       ),
                       hpad(18),
-                      Text(
+                      AutoSizeText(
                         "Từ chối",
+                        maxLines: 2,
+                        minFontSize: 1,
                         style: txtBodySmallRegular(color: grayScaleColorBase),
-                      )
+                      ),
                     ]),
                   ),
                 ],
@@ -192,10 +211,12 @@ void filterApplication(context) {
                             onChanged: (_) {}),
                       ),
                       hpad(18),
-                      Text(
+                      AutoSizeText(
                         "Chờ trưởng ca duyệt",
+                        maxLines: 2,
+                        minFontSize: 1,
                         style: txtBodySmallRegular(color: grayScaleColorBase),
-                      )
+                      ),
                     ]),
                   ),
                   Expanded(
@@ -210,12 +231,12 @@ void filterApplication(context) {
                             onChanged: (_) {}),
                       ),
                       hpad(18),
-                      Text(
+                      AutoSizeText(
                         "Chờ trưởng ca duyệt",
-                        softWrap: true,
-                        overflow: TextOverflow.fade,
+                        maxLines: 2,
+                        minFontSize: 1,
                         style: txtBodySmallRegular(color: grayScaleColorBase),
-                      )
+                      ),
                     ]),
                   ),
                 ],
@@ -235,10 +256,12 @@ void filterApplication(context) {
                             onChanged: (_) {}),
                       ),
                       hpad(18),
-                      Text(
+                      AutoSizeText(
                         "Chờ xác nhận",
+                        maxLines: 2,
+                        minFontSize: 1,
                         style: txtBodySmallRegular(color: grayScaleColorBase),
-                      )
+                      ),
                     ]),
                   ),
                   Expanded(
@@ -253,10 +276,12 @@ void filterApplication(context) {
                             onChanged: (_) {}),
                       ),
                       hpad(18),
-                      Text(
+                      AutoSizeText(
                         "Chưa duyệt",
+                        maxLines: 2,
+                        minFontSize: 1,
                         style: txtBodySmallRegular(color: grayScaleColorBase),
-                      )
+                      ),
                     ]),
                   ),
                 ],

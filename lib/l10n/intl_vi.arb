@@ -112,5 +112,6 @@
   "detail_letter": "Chi tiết đơn từ",
   "category": "Danh mục",
   "history_update": "Lịch sử cập nhật",
-  "history_approve": "Lịch sử phê duyệt"
+  "history_approve": "Lịch sử phê duyệt",
+  "rely":"Phản hồi"
 }

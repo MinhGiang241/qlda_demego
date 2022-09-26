@@ -134,6 +134,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "reception": MessageLookupByLibrary.simpleMessage("Quản lý Lễ tân"),
         "reg_success": MessageLookupByLibrary.simpleMessage(
             "Đăng ký thành công, vui lòng đăng nhập"),
+        "rely": MessageLookupByLibrary.simpleMessage("Phản hồi"),
         "remember_acc":
             MessageLookupByLibrary.simpleMessage("Ghi nhớ tài khoản"),
         "require_lowercase": MessageLookupByLibrary.simpleMessage(

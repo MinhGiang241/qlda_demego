@@ -17,7 +17,7 @@ class CategoryTab extends StatelessWidget {
       children: [
         vpad(12),
         PrimaryCard(
-            padding: const EdgeInsets.fromLTRB(24, 16, 30, 16),
+            padding: const EdgeInsets.fromLTRB(24, 16, 0, 16),
             child: Row(
               // ignore: prefer_const_literals_to_create_immutables
               children: [
@@ -30,44 +30,50 @@ class CategoryTab extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                hpad(30),
+                hpad(24),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        SizedBox(
-                            width: 100,
-                            child: Text(
-                              textAlign: TextAlign.start,
-                              "Mã đơn từ :",
-                              style: txtBodySmallRegular(
-                                  color: grayScaleColorBase),
-                            )),
-                        SizedBox(
-                            child: Text(
-                          "0001",
-                          style: txtBodySmallBold(color: grayScaleColorBase),
-                        )),
-                      ],
+                    IntrinsicWidth(
+                      child: Row(
+                        children: [
+                          SizedBox(
+                              width: 80,
+                              child: Text(
+                                textAlign: TextAlign.start,
+                                "Mã đơn từ :",
+                                style: txtBodySmallRegular(
+                                    color: grayScaleColorBase),
+                              )),
+                          Expanded(
+                              child: Text(
+                            "0001",
+                            style: txtBodySmallBold(color: grayScaleColorBase),
+                          )),
+                        ],
+                      ),
                     ),
                     vpad(16),
-                    Row(
-                      children: [
-                        SizedBox(
-                            width: 100,
-                            child: Text(
-                              textAlign: TextAlign.start,
-                              "Trạng thái :",
-                              style: txtBodySmallRegular(
-                                  color: grayScaleColorBase),
-                            )),
-                        SizedBox(
-                            child: Text(
-                          "Đã duyệt",
-                          style: txtBodySmallBold(color: grayScaleColorBase),
-                        )),
-                      ],
+                    IntrinsicWidth(
+                      child: Row(
+                        children: [
+                          SizedBox(
+                              width: 80,
+                              child: Text(
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.start,
+                                "Trạng thái :",
+                                style: txtBodySmallRegular(
+                                    color: grayScaleColorBase),
+                              )),
+                          Expanded(
+                              child: Text(
+                            overflow: TextOverflow.ellipsis,
+                            data["Trạng thái"] as String,
+                            style: txtBodySmallBold(color: grayScaleColorBase),
+                          )),
+                        ],
+                      ),
                     ),
                   ],
                 )

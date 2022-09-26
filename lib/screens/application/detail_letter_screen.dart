@@ -9,6 +9,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 
 import '../../generated/l10n.dart';
 import '../../widgets/primary_appbar.dart';
+import '../../widgets/primary_button.dart';
 import '../../widgets/primary_screen.dart';
 import 'application_screen.dart';
 import 'components/category_tab.dart';
@@ -40,53 +41,75 @@ class _DetailLetterScreenState extends State<DetailLetterScreen>
           leading: BackButton(
               onPressed: () => Navigator.pushReplacementNamed(
                   context, ApplicationScreen.routeName))),
-      body: Column(
-        children: [
-          SafeArea(
-            child: Container(
-              decoration: const BoxDecoration(color: Colors.white),
-              child: TabBar(
-                  labelStyle: txtBodySmallBold(),
-                  labelColor: grayScaleColorBase,
-                  controller: _tabController,
-                  tabs: [
-                    Tab(
-                        child: AutoSizeText(
-                      S.of(context).category,
-                      maxLines: 1,
-                      minFontSize: 1,
-                      style: txtBodySmallBold(),
-                    )),
-                    Tab(
-                        child: AutoSizeText(
-                      S.of(context).history_update,
-                      maxLines: 1,
-                      minFontSize: 1,
-                      style: txtBodySmallBold(),
-                    )),
-                    Tab(
-                        child: AutoSizeText(
-                      S.of(context).history_approve,
-                      maxLines: 1,
-                      minFontSize: 1,
-                      style: txtBodySmallBold(),
-                    )),
-                  ]),
+      body: Stack(children: [
+        Column(
+          children: [
+            SafeArea(
+              child: Container(
+                decoration: const BoxDecoration(color: Colors.white),
+                child: TabBar(
+                    labelStyle: txtBodySmallBold(),
+                    labelColor: grayScaleColorBase,
+                    controller: _tabController,
+                    tabs: [
+                      Tab(
+                          child: AutoSizeText(
+                        S.of(context).category,
+                        maxLines: 1,
+                        minFontSize: 1,
+                        style: txtBodySmallBold(),
+                      )),
+                      Tab(
+                          child: AutoSizeText(
+                        S.of(context).history_update,
+                        maxLines: 1,
+                        minFontSize: 1,
+                        style: txtBodySmallBold(),
+                      )),
+                      Tab(
+                          child: AutoSizeText(
+                        S.of(context).history_approve,
+                        maxLines: 1,
+                        minFontSize: 1,
+                        style: txtBodySmallBold(),
+                      )),
+                    ]),
+              ),
             ),
-          ),
-          Expanded(
-            child: TabBarView(
-              controller: _tabController,
-              // ignore: prefer_const_literals_to_create_immutables
-              children: [
-                CategoryTab(data: arg),
-                HistoryUpdateTab(),
-                HistoryApproveTab(),
-              ],
-            ),
-          )
-        ],
-      ),
+            Expanded(
+              child: TabBarView(
+                controller: _tabController,
+                // ignore: prefer_const_literals_to_create_immutables
+                children: [
+                  CategoryTab(data: arg),
+                  HistoryUpdateTab(),
+                  HistoryApproveTab(),
+                ],
+              ),
+            )
+          ],
+        ),
+        Positioned(
+            bottom: 12,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: Column(
+                children: [
+                  PrimaryButton(
+                    width: dvWidth(context) - 24,
+                    text: S.of(context).confirm,
+                  ),
+                  vpad(12),
+                  PrimaryButton(
+                    buttonType: ButtonType.secondary,
+                    secondaryBackgroundColor: secondaryColorBase,
+                    width: dvWidth(context) - 24,
+                    text: S.of(context).rely,
+                  )
+                ],
+              ),
+            ))
+      ]),
     );
   }
 }

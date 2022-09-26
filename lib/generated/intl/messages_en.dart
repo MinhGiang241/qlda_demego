@@ -131,6 +131,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "reception": MessageLookupByLibrary.simpleMessage("Reception"),
         "reg_success": MessageLookupByLibrary.simpleMessage(
             "Registration successful, please login"),
+        "rely": MessageLookupByLibrary.simpleMessage("Rely"),
         "remember_acc": MessageLookupByLibrary.simpleMessage("Remember me"),
         "require_lowercase": MessageLookupByLibrary.simpleMessage(
             "Password must contain at least 1 lowercase letter"),
