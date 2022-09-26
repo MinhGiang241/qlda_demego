@@ -36,31 +36,40 @@ class MessageLookup extends MessageLookupByLibrary {
         "can_not_empty":
             MessageLookupByLibrary.simpleMessage("Không được để trống"),
         "cancel": MessageLookupByLibrary.simpleMessage("Huỷ"),
+        "category": MessageLookupByLibrary.simpleMessage("Danh mục"),
         "change_pass": MessageLookupByLibrary.simpleMessage("Đổi mật khẩu"),
         "choices": MessageLookupByLibrary.simpleMessage("Lựa chọn"),
+        "choose_off": MessageLookupByLibrary.simpleMessage("Chọn loại nghỉ"),
         "close": MessageLookupByLibrary.simpleMessage("Đóng"),
         "confirm": MessageLookupByLibrary.simpleMessage("Xác nhận"),
         "confirm_pass":
             MessageLookupByLibrary.simpleMessage("Nhập lại mật khẩu"),
         "contact_receptionist": MessageLookupByLibrary.simpleMessage(
             "Hãy liên lạc với BQL hoặc lễ tân để được cấp tài khoản và mật khẩu"),
+        "cr_absent": MessageLookupByLibrary.simpleMessage("Tạo đơn nghỉ phép"),
+        "cr_break":
+            MessageLookupByLibrary.simpleMessage("Tạo đơn nghỉ giữa giờ"),
         "cr_change_shift":
             MessageLookupByLibrary.simpleMessage("Tạo đơn đổi ca"),
-        "cr_off_day": MessageLookupByLibrary.simpleMessage("Tạo đơn nghỉ phép"),
-        "cr_off_on":
-            MessageLookupByLibrary.simpleMessage("Tạo đơn nghỉ giữa giờ"),
         "create_acc": MessageLookupByLibrary.simpleMessage("Tạo tài khoản"),
         "current_pass":
             MessageLookupByLibrary.simpleMessage("Mật khẩu hiện tại"),
         "customer": MessageLookupByLibrary.simpleMessage("Khách hàng"),
+        "date": MessageLookupByLibrary.simpleMessage("Ngày"),
+        "date_change_fr": MessageLookupByLibrary.simpleMessage("Ngày đổi"),
+        "date_change_to": MessageLookupByLibrary.simpleMessage("Đổi sang ngày"),
         "description": MessageLookupByLibrary.simpleMessage("Mô tả"),
+        "detail_letter":
+            MessageLookupByLibrary.simpleMessage("Chi tiết đơn từ"),
         "edit": MessageLookupByLibrary.simpleMessage("Chỉnh sửa"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "en": MessageLookupByLibrary.simpleMessage("Tiếng Anh"),
+        "end_time": MessageLookupByLibrary.simpleMessage("Giờ kết thúc"),
         "enter": MessageLookupByLibrary.simpleMessage("Nhập"),
         "enter_email_phone":
             MessageLookupByLibrary.simpleMessage("Nhập Email / Số điện thoại"),
         "enter_name": MessageLookupByLibrary.simpleMessage("Nhập tên"),
+        "enter_note": MessageLookupByLibrary.simpleMessage("Nhập ghi chú"),
         "enter_num": MessageLookupByLibrary.simpleMessage("Nhập số"),
         "enter_pas": MessageLookupByLibrary.simpleMessage("Nhập mật khẩu"),
         "enter_username":
@@ -76,6 +85,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "full_name": MessageLookupByLibrary.simpleMessage("Họ và Tên"),
         "have_acc":
             MessageLookupByLibrary.simpleMessage("Bạn đã có tài khoản ?"),
+        "history_approve":
+            MessageLookupByLibrary.simpleMessage("Lịch sử phê duyệt"),
+        "history_update":
+            MessageLookupByLibrary.simpleMessage("Lịch sử cập nhật"),
         "home": MessageLookupByLibrary.simpleMessage("Trang chủ"),
         "info": MessageLookupByLibrary.simpleMessage("Thông tin"),
         "invalid_code":
@@ -100,6 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mật khẩu không khớp"),
         "not_vietnamese": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu không được chứa ký tự tiếng Việt có dấu"),
+        "note": MessageLookupByLibrary.simpleMessage("Ghi chú"),
         "operation": MessageLookupByLibrary.simpleMessage("Vận hành"),
         "otp_msg": MessageLookupByLibrary.simpleMessage(
             "Chúng tôi đã gửi mã OTP đến Số điện thoại đăng ký của quý khách. Vui lòng nhập mã OTP để thực hiện xác thực."),
@@ -114,6 +128,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone_num": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
         "prev": MessageLookupByLibrary.simpleMessage("Trở lại"),
         "property": MessageLookupByLibrary.simpleMessage("Tài sản"),
+        "reason_change_shift":
+            MessageLookupByLibrary.simpleMessage("Lý do đổi ca"),
+        "reason_off": MessageLookupByLibrary.simpleMessage("Lý do nghỉ"),
         "reception": MessageLookupByLibrary.simpleMessage("Quản lý Lễ tân"),
         "reg_success": MessageLookupByLibrary.simpleMessage(
             "Đăng ký thành công, vui lòng đăng nhập"),
@@ -132,18 +149,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "resident_card": MessageLookupByLibrary.simpleMessage("Thẻ cư dân"),
         "save": MessageLookupByLibrary.simpleMessage("Lưu"),
         "search": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
+        "send": MessageLookupByLibrary.simpleMessage("Gửi"),
         "send_verify": MessageLookupByLibrary.simpleMessage("Gửi xác thực"),
         "setting": MessageLookupByLibrary.simpleMessage("Cài đặt"),
+        "shift": MessageLookupByLibrary.simpleMessage("Ca làm"),
         "sign_in": MessageLookupByLibrary.simpleMessage("Đăng Nhập"),
         "sign_out": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
         "sign_out_msg": MessageLookupByLibrary.simpleMessage(
             "Bạn có muốn đăng xuất không ?"),
         "start": MessageLookupByLibrary.simpleMessage("Bắt đầu"),
+        "start_time": MessageLookupByLibrary.simpleMessage("Giờ bắt đầu"),
         "status": MessageLookupByLibrary.simpleMessage("Trạng thái"),
         "success": MessageLookupByLibrary.simpleMessage("Thành công"),
         "systeme_error": MessageLookupByLibrary.simpleMessage("Lỗi hệ thống"),
         "terms_services":
             MessageLookupByLibrary.simpleMessage("Điều khoản dịch vụ"),
+        "time_off": MessageLookupByLibrary.simpleMessage("Thời gian nghỉ"),
         "title": MessageLookupByLibrary.simpleMessage("Tiêu đề"),
         "type": MessageLookupByLibrary.simpleMessage("Loại"),
         "username": MessageLookupByLibrary.simpleMessage("Tài khoản"),

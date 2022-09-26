@@ -35,32 +35,42 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Re-enter new password"),
         "can_not_empty": MessageLookupByLibrary.simpleMessage("Can not empty"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "category": MessageLookupByLibrary.simpleMessage("Category"),
         "change_pass": MessageLookupByLibrary.simpleMessage("Change password"),
         "choices": MessageLookupByLibrary.simpleMessage("Choice"),
+        "choose_off": MessageLookupByLibrary.simpleMessage("Choose type"),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "confirm_pass":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "contact_receptionist": MessageLookupByLibrary.simpleMessage(
             "Please contact with management committee or receptionist in order to be provided account and password."),
+        "cr_absent": MessageLookupByLibrary.simpleMessage(
+            "Create Leave of Absence Letter"),
+        "cr_break": MessageLookupByLibrary.simpleMessage(
+            "Create Leave of Break Letter"),
         "cr_change_shift":
             MessageLookupByLibrary.simpleMessage("Create change shift Letter"),
-        "cr_off_day": MessageLookupByLibrary.simpleMessage(
-            "Create Leave of Absence Letter"),
-        "cr_off_on": MessageLookupByLibrary.simpleMessage(
-            "Create Leave of Break Letter"),
         "create_acc": MessageLookupByLibrary.simpleMessage("Create an account"),
         "current_pass":
             MessageLookupByLibrary.simpleMessage("Current password"),
         "customer": MessageLookupByLibrary.simpleMessage("Customer"),
+        "date": MessageLookupByLibrary.simpleMessage("Date"),
+        "date_change_fr":
+            MessageLookupByLibrary.simpleMessage("Change from date"),
+        "date_change_to":
+            MessageLookupByLibrary.simpleMessage(" Change to date"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
+        "detail_letter": MessageLookupByLibrary.simpleMessage("Detail letter"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "en": MessageLookupByLibrary.simpleMessage("English"),
+        "end_time": MessageLookupByLibrary.simpleMessage("End time"),
         "enter": MessageLookupByLibrary.simpleMessage("Enter"),
         "enter_email_phone":
             MessageLookupByLibrary.simpleMessage("Enter email /phone"),
         "enter_name": MessageLookupByLibrary.simpleMessage("Enter name"),
+        "enter_note": MessageLookupByLibrary.simpleMessage("Enter note"),
         "enter_num": MessageLookupByLibrary.simpleMessage("Enter Number"),
         "enter_pas": MessageLookupByLibrary.simpleMessage("Enter password"),
         "enter_username":
@@ -74,6 +84,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "full_name": MessageLookupByLibrary.simpleMessage("Full name"),
         "have_acc":
             MessageLookupByLibrary.simpleMessage("already have an account "),
+        "history_approve":
+            MessageLookupByLibrary.simpleMessage("History approve"),
+        "history_update":
+            MessageLookupByLibrary.simpleMessage("History update"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "info": MessageLookupByLibrary.simpleMessage("Infomation"),
         "invalid_code":
@@ -96,6 +110,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "not_match": MessageLookupByLibrary.simpleMessage("Password not match"),
         "not_vietnamese": MessageLookupByLibrary.simpleMessage(
             "Password must not contain Vietnamese character"),
+        "note": MessageLookupByLibrary.simpleMessage("Note"),
         "operation": MessageLookupByLibrary.simpleMessage("Operation"),
         "otp_msg": MessageLookupByLibrary.simpleMessage(
             "We have sent OTP code to your registered phone number. Please enter the OTP code to perform authentication."),
@@ -110,6 +125,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone_num": MessageLookupByLibrary.simpleMessage("Phone number"),
         "prev": MessageLookupByLibrary.simpleMessage("Previous"),
         "property": MessageLookupByLibrary.simpleMessage("Property"),
+        "reason_change_shift":
+            MessageLookupByLibrary.simpleMessage("Reason change shift"),
+        "reason_off": MessageLookupByLibrary.simpleMessage("Reason"),
         "reception": MessageLookupByLibrary.simpleMessage("Reception"),
         "reg_success": MessageLookupByLibrary.simpleMessage(
             "Registration successful, please login"),
@@ -128,18 +146,22 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Resident identity card"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "send": MessageLookupByLibrary.simpleMessage("Send"),
         "send_verify": MessageLookupByLibrary.simpleMessage("Send verify"),
         "setting": MessageLookupByLibrary.simpleMessage("Setting"),
+        "shift": MessageLookupByLibrary.simpleMessage("Shift"),
         "sign_in": MessageLookupByLibrary.simpleMessage("sign_in"),
         "sign_out": MessageLookupByLibrary.simpleMessage("Sign out"),
         "sign_out_msg":
             MessageLookupByLibrary.simpleMessage("Do you want to sign out?"),
         "start": MessageLookupByLibrary.simpleMessage("Start"),
+        "start_time": MessageLookupByLibrary.simpleMessage("Start time"),
         "status": MessageLookupByLibrary.simpleMessage("Status"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),
         "systeme_error": MessageLookupByLibrary.simpleMessage("System error"),
         "terms_services":
             MessageLookupByLibrary.simpleMessage("Terms services"),
+        "time_off": MessageLookupByLibrary.simpleMessage("Date/Time"),
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "type": MessageLookupByLibrary.simpleMessage("Type"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),

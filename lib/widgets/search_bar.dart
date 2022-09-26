@@ -14,7 +14,7 @@ class SearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return SafeArea(
         child: Row(
       children: [
         Expanded(
@@ -24,6 +24,7 @@ class SearchBar extends StatelessWidget {
             children: [
               Expanded(
                 child: PrimaryTextField(
+                  margin: const EdgeInsets.fromLTRB(0, 0, 12, 0),
                   hint: S.of(context).search,
                   prefixIcon: const Padding(
                     padding: EdgeInsets.all(12.0),
@@ -45,7 +46,6 @@ class SearchBar extends StatelessWidget {
               //       color: grayScaleColor2),
               // ),
               Container(
-                margin: const EdgeInsets.only(left: 15),
                 decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(

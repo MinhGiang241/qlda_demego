@@ -42,11 +42,12 @@ class _SignInScreenState extends State<SignInScreen> {
                 child: Column(
                   children: [
                     PrimaryTextField(
+                      margin: EdgeInsets.zero,
                       validateString:
                           context.read<SignInProvider>().usernameValidate,
                       controller:
                           context.read<SignInProvider>().usernameController,
-                      lable: S.of(context).username,
+                      label: S.of(context).username,
                       hint: S.of(context).enter_username,
                       isRequired: true,
                       validator: (v) {
@@ -57,11 +58,12 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     vpad(24),
                     PrimaryTextField(
+                      margin: EdgeInsets.zero,
                       validateString:
                           context.read<SignInProvider>().passValidate,
                       controller: context.read<SignInProvider>().passController,
                       obscureText: true,
-                      lable: S.of(context).password,
+                      label: S.of(context).password,
                       hint: S.of(context).enter_pas,
                       isRequired: true,
                       validator: (v) {

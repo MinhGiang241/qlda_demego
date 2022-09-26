@@ -10,16 +10,18 @@ class PrimaryAppbar extends StatelessWidget with PreferredSizeWidget {
       this.actions,
       this.tabController,
       this.tabs,
-      this.isTabScrollable = true,
+      this.isTabScrollabel = true,
       this.child,
+      this.leading,
       this.height})
       : super(key: key);
   final String? title;
   final List<Widget>? actions;
   final TabController? tabController;
   final List<Widget>? tabs;
-  final bool isTabScrollable;
+  final bool isTabScrollabel;
   final Widget? child;
+  final Widget? leading;
   final double? height;
 
   @override
@@ -42,6 +44,7 @@ class PrimaryAppbar extends StatelessWidget with PreferredSizeWidget {
                     AppBar(
                       backgroundColor: Colors.transparent,
                       elevation: 0,
+                      leading: leading,
                       centerTitle: true,
                       title: Text(title ?? ""),
                       actions: actions,
@@ -57,7 +60,7 @@ class PrimaryAppbar extends StatelessWidget with PreferredSizeWidget {
                         labelStyle: txtLinkSmall(),
                         indicatorColor: primaryColor1,
                         indicatorWeight: 4,
-                        isScrollable: isTabScrollable,
+                        isScrollable: isTabScrollabel,
                       ),
                     if ((tabController == null && tabs == null) &&
                         child != null)

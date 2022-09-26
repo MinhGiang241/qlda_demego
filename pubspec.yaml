@@ -56,6 +56,8 @@ dev_dependencies:
   path_provider: ^2.0.11
   json_serializable: ^6.4.0
   flutter_speed_dial: ^6.0.0
+  syncfusion_flutter_datepicker: ^20.2.50
+  auto_size_text: ^3.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

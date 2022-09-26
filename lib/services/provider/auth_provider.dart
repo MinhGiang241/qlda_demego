@@ -58,7 +58,7 @@ class AuthProvider with ChangeNotifier {
       authStatus = AuthStatus.auth;
       // Utils.showDialog(context: context, dailog: const PrimaryDialog.success());
       Navigator.pushNamedAndRemoveUntil(
-          context, HomeScreen.routeName, (Route route) => route.isFirst);
+          context, HomeScreen.routeName, (Route route) => false);
     }
 
     isLoading = false;

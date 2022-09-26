@@ -961,20 +961,20 @@ class S {
   }
 
   /// `Create Leave of Absence Letter`
-  String get cr_off_day {
+  String get cr_absent {
     return Intl.message(
       'Create Leave of Absence Letter',
-      name: 'cr_off_day',
+      name: 'cr_absent',
       desc: '',
       args: [],
     );
   }
 
   /// `Create Leave of Break Letter`
-  String get cr_off_on {
+  String get cr_break {
     return Intl.message(
       'Create Leave of Break Letter',
-      name: 'cr_off_on',
+      name: 'cr_break',
       desc: '',
       args: [],
     );
@@ -1005,6 +1005,176 @@ class S {
     return Intl.message(
       'Search',
       name: 'search',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reason`
+  String get reason_off {
+    return Intl.message(
+      'Reason',
+      name: 'reason_off',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date/Time`
+  String get time_off {
+    return Intl.message(
+      'Date/Time',
+      name: 'time_off',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note`
+  String get note {
+    return Intl.message(
+      'Note',
+      name: 'note',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter note`
+  String get enter_note {
+    return Intl.message(
+      'Enter note',
+      name: 'enter_note',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose type`
+  String get choose_off {
+    return Intl.message(
+      'Choose type',
+      name: 'choose_off',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send`
+  String get send {
+    return Intl.message(
+      'Send',
+      name: 'send',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date`
+  String get date {
+    return Intl.message(
+      'Date',
+      name: 'date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start time`
+  String get start_time {
+    return Intl.message(
+      'Start time',
+      name: 'start_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `End time`
+  String get end_time {
+    return Intl.message(
+      'End time',
+      name: 'end_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reason change shift`
+  String get reason_change_shift {
+    return Intl.message(
+      'Reason change shift',
+      name: 'reason_change_shift',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change from date`
+  String get date_change_fr {
+    return Intl.message(
+      'Change from date',
+      name: 'date_change_fr',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` Change to date`
+  String get date_change_to {
+    return Intl.message(
+      ' Change to date',
+      name: 'date_change_to',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shift`
+  String get shift {
+    return Intl.message(
+      'Shift',
+      name: 'shift',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Detail letter`
+  String get detail_letter {
+    return Intl.message(
+      'Detail letter',
+      name: 'detail_letter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Category`
+  String get category {
+    return Intl.message(
+      'Category',
+      name: 'category',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `History update`
+  String get history_update {
+    return Intl.message(
+      'History update',
+      name: 'history_update',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `History approve`
+  String get history_approve {
+    return Intl.message(
+      'History approve',
+      name: 'history_approve',
       desc: '',
       args: [],
     );

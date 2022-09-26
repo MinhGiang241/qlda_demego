@@ -9,27 +9,28 @@ import '../constant/constants.dart';
 import '../generated/l10n.dart';
 
 class PrimaryTextField extends StatelessWidget {
-  PrimaryTextField({
-    super.key,
-    this.lable,
-    this.initialValue,
-    this.hint,
-    this.controller,
-    this.obscureText = false,
-    this.isReadOnly = false,
-    this.onTap,
-    this.keyboardType,
-    this.textCapitalization = TextCapitalization.none,
-    this.textInputAction,
-    this.validator,
-    this.prefixIcon,
-    this.suffixIcon,
-    this.isRequired = false,
-    this.maxLines = 1,
-    this.autoFocus = false,
-    this.validateString,
-  });
-  final String? lable;
+  PrimaryTextField(
+      {super.key,
+      this.label,
+      this.initialValue,
+      this.hint,
+      this.controller,
+      this.obscureText = false,
+      this.isReadOnly = false,
+      this.onTap,
+      this.keyboardType,
+      this.textCapitalization = TextCapitalization.none,
+      this.textInputAction,
+      this.validator,
+      this.prefixIcon,
+      this.suffixIcon,
+      this.enable = true,
+      this.isRequired = false,
+      this.maxLines = 1,
+      this.autoFocus = false,
+      this.validateString,
+      this.margin});
+  final String? label;
   final String? initialValue;
   final String? hint;
   final TextEditingController? controller;
@@ -45,7 +46,9 @@ class PrimaryTextField extends StatelessWidget {
   final bool isRequired;
   final int? maxLines;
   final bool autoFocus;
+  final bool enable;
   final String? validateString;
+  EdgeInsetsGeometry? margin;
   late StreamController<bool>? showPassController = StreamController<bool>();
 
   @override
@@ -53,17 +56,17 @@ class PrimaryTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (lable != null)
+        if (label != null)
           Row(
             children: [
-              Text(lable!,
+              Text(label!,
                   style: txtBodySmallRegular(color: grayScaleColorBase)),
               if (isRequired) hpad(4),
               if (isRequired)
                 Text("*", style: txtBodySmallRegular(color: redColorBase))
             ],
           ),
-        if (lable != null) vpad(8),
+        if (label != null) vpad(8),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -73,13 +76,16 @@ class PrimaryTextField extends StatelessWidget {
               builder: (context, snapshot) {
                 final showPass = snapshot.data!;
                 return PrimaryCard(
+                  margin: margin,
+                  onTap: onTap,
                   child: TextFormField(
+                    enabled: enable,
                     autofocus: autoFocus,
                     controller: controller,
                     initialValue: initialValue,
                     obscureText: !showPass && obscureText,
                     readOnly: isReadOnly,
-                    onTap: onTap,
+                    // onTap: onTap,
                     cursorHeight: 15,
                     keyboardType: keyboardType,
                     textCapitalization: textCapitalization,

@@ -9,7 +9,8 @@ class PrimaryCard extends StatelessWidget {
       this.borderRadius,
       this.height,
       this.width,
-      this.margin})
+      this.margin,
+      this.padding})
       : super(key: key);
   final Widget child;
   final Function()? onTap;
@@ -17,6 +18,7 @@ class PrimaryCard extends StatelessWidget {
   final double? height;
   final double? width;
   final EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,8 @@ class PrimaryCard extends StatelessWidget {
       duration: const Duration(milliseconds: 300),
       alignment: Alignment.topCenter,
       child: Container(
-        margin: margin,
+        padding: padding,
+        margin: margin ?? const EdgeInsets.symmetric(horizontal: 12),
         height: height,
         width: width,
         decoration: BoxDecoration(

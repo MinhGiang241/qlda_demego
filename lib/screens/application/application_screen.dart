@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:qlda_demego/screens/application/break_time_letter.dart';
+import 'package:qlda_demego/screens/application/change_shift_letter.dart';
 import 'package:qlda_demego/widgets/main_drawer.dart';
 import 'package:qlda_demego/widgets/primary_button.dart';
 import 'package:qlda_demego/widgets/primary_icon.dart';
@@ -13,6 +15,36 @@ import '../../generated/l10n.dart';
 import '../../widgets/float_button.dart';
 import '../../widgets/primary_appbar.dart';
 import './components/application_card.dart';
+import 'absent_letter.dart';
+import 'components/fake_filter.dart';
+import 'detail_letter_screen.dart';
+
+const data = [
+  {
+    "Loại đơn": "Đơn xin nghỉ phép",
+    "Người tạo": "Nguyên Văn A",
+    "Phòng ban": "Phòng kỹ thuật",
+    "Chức danh": "Nhân viên",
+    "Ngày tạo": "06/08/2022 10:00",
+    "Trạng thái": "Chờ tổ trưởng duyệt",
+  },
+  {
+    "Loại đơn": "Đơn xin nghỉ giữa giờ",
+    "Người tạo": "Nguyên Văn A",
+    "Phòng ban": "Phòng kỹ thuật",
+    "Chức danh": "Kỹ thuật",
+    "Ngày tạo": "06/08/2022 10:00",
+    "Trạng thái": "Đã duyệt",
+  },
+  {
+    "Loại đơn": "Đơn xin đổi ca",
+    "Người tạo": "Nguyên Văn A",
+    "Phòng ban": "Phòng kỹ thuật",
+    "Chức danh": "Nhân viên",
+    "Ngày tạo": "06/08/2022 10:00",
+    "Trạng thái": "Chờ tổ trưởng duyệt",
+  },
+];
 
 class ApplicationScreen extends StatefulWidget {
   const ApplicationScreen({super.key});
@@ -25,293 +57,6 @@ class ApplicationScreen extends StatefulWidget {
 class _ApplicationScreenState extends State<ApplicationScreen> {
   final isDialOpen = ValueNotifier(false);
 
-  void filterApplication() {
-    showModalBottomSheet(
-        isScrollControlled: true,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-        ),
-        context: context,
-        builder: ((context) {
-          return Container(
-            height: 450,
-            padding: const EdgeInsets.symmetric(horizontal: 28),
-            child: ListView(
-              children: [
-                Row(
-                  children: [
-                    IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(Icons.close)),
-                    const Spacer(),
-                    Text(S.of(context).filter, style: txtBold(16)),
-                    const Spacer(),
-                    IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(Icons.check)),
-                  ],
-                ),
-                vpad(32),
-                Container(
-                    width: double.infinity,
-                    child: Text("Loại đơn từ", style: txtBold(14))),
-                vpad(16),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 22.0,
-                      height: 22.0,
-                      child: Checkbox(
-                          value: true,
-                          activeColor: secondaryColorBase,
-                          onChanged: (_) {
-                            setState(() {});
-                          }),
-                    ),
-                    hpad(18),
-                    Text(
-                      "Tất cả",
-                      style: txtBodySmallRegular(color: grayScaleColorBase),
-                    )
-                  ],
-                ),
-                vpad(15),
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Flex(direction: Axis.horizontal, children: [
-                        SizedBox(
-                          width: 22.0,
-                          height: 22.0,
-                          child: Checkbox(
-                              value: true,
-                              activeColor: secondaryColorBase,
-                              onChanged: (_) {
-                                setState(() {});
-                              }),
-                        ),
-                        hpad(18),
-                        Text(
-                          "Đơn nghỉ phép",
-                          style: txtBodySmallRegular(color: grayScaleColorBase),
-                        )
-                      ]),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Flex(direction: Axis.horizontal, children: [
-                        SizedBox(
-                          width: 22.0,
-                          height: 22.0,
-                          child: Checkbox(
-                              value: true,
-                              activeColor: secondaryColorBase,
-                              onChanged: (_) {
-                                setState(() {});
-                              }),
-                        ),
-                        hpad(18),
-                        Text(
-                          "Đơn nghỉ giữa giờ",
-                          style: txtBodySmallRegular(color: grayScaleColorBase),
-                        )
-                      ]),
-                    ),
-                  ],
-                ),
-                vpad(15),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 22.0,
-                      height: 22.0,
-                      child: Checkbox(
-                          value: true,
-                          activeColor: secondaryColorBase,
-                          onChanged: (_) {
-                            setState(() {});
-                          }),
-                    ),
-                    hpad(18),
-                    Text(
-                      "Đơn đổi ca",
-                      style: txtBodySmallRegular(color: grayScaleColorBase),
-                    )
-                  ],
-                ),
-                vpad(15),
-                Container(
-                    width: double.infinity,
-                    child: Text("Trạng thái", style: txtBold(14))),
-                vpad(15),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 22.0,
-                      height: 22.0,
-                      child: Checkbox(
-                          value: true,
-                          activeColor: secondaryColorBase,
-                          onChanged: (_) {
-                            setState(() {});
-                          }),
-                    ),
-                    hpad(18),
-                    Text(
-                      "Tất cả",
-                      style: txtBodySmallRegular(color: grayScaleColorBase),
-                    )
-                  ],
-                ),
-                vpad(15),
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Flex(direction: Axis.horizontal, children: [
-                        SizedBox(
-                          width: 22.0,
-                          height: 22.0,
-                          child: Checkbox(
-                              value: true,
-                              activeColor: secondaryColorBase,
-                              onChanged: (_) {
-                                setState(() {});
-                              }),
-                        ),
-                        hpad(18),
-                        Text(
-                          "Đã duyệt",
-                          style: txtBodySmallRegular(color: grayScaleColorBase),
-                        )
-                      ]),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Flex(direction: Axis.horizontal, children: [
-                        SizedBox(
-                          width: 22.0,
-                          height: 22.0,
-                          child: Checkbox(
-                              value: true,
-                              activeColor: secondaryColorBase,
-                              onChanged: (_) {
-                                setState(() {});
-                              }),
-                        ),
-                        hpad(18),
-                        Text(
-                          "Từ chối",
-                          style: txtBodySmallRegular(color: grayScaleColorBase),
-                        )
-                      ]),
-                    ),
-                  ],
-                ),
-                vpad(15),
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Flex(direction: Axis.horizontal, children: [
-                        SizedBox(
-                          width: 22.0,
-                          height: 22.0,
-                          child: Checkbox(
-                              value: true,
-                              activeColor: secondaryColorBase,
-                              onChanged: (_) {
-                                setState(() {});
-                              }),
-                        ),
-                        hpad(18),
-                        Text(
-                          "Chờ trưởng ca duyệt",
-                          style: txtBodySmallRegular(color: grayScaleColorBase),
-                        )
-                      ]),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Flex(direction: Axis.horizontal, children: [
-                        SizedBox(
-                          width: 22.0,
-                          height: 22.0,
-                          child: Checkbox(
-                              value: true,
-                              activeColor: secondaryColorBase,
-                              onChanged: (_) {
-                                setState(() {});
-                              }),
-                        ),
-                        hpad(18),
-                        Text(
-                          "Chờ trưởng ca duyệt",
-                          softWrap: true,
-                          overflow: TextOverflow.fade,
-                          style: txtBodySmallRegular(color: grayScaleColorBase),
-                        )
-                      ]),
-                    ),
-                  ],
-                ),
-                vpad(15),
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Flex(direction: Axis.horizontal, children: [
-                        SizedBox(
-                          width: 22.0,
-                          height: 22.0,
-                          child: Checkbox(
-                              value: true,
-                              activeColor: secondaryColorBase,
-                              onChanged: (_) {
-                                setState(() {});
-                              }),
-                        ),
-                        hpad(18),
-                        Text(
-                          "Chờ xác nhận",
-                          style: txtBodySmallRegular(color: grayScaleColorBase),
-                        )
-                      ]),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Flex(direction: Axis.horizontal, children: [
-                        SizedBox(
-                          width: 22.0,
-                          height: 22.0,
-                          child: Checkbox(
-                              value: true,
-                              activeColor: secondaryColorBase,
-                              onChanged: (_) {
-                                setState(() {});
-                              }),
-                        ),
-                        hpad(18),
-                        Text(
-                          "Chưa duyệt",
-                          style: txtBodySmallRegular(color: grayScaleColorBase),
-                        )
-                      ]),
-                    ),
-                  ],
-                ),
-                vpad(50)
-              ],
-            ),
-          );
-        }));
-  }
-
   @override
   Widget build(BuildContext context) {
     return PrimaryScreen(
@@ -323,9 +68,28 @@ class _ApplicationScreenState extends State<ApplicationScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
           children: [
-            vpad(76),
-            SearchBar(onPress: filterApplication),
-            const ApllicationCard()
+            // vpad(80),
+            SearchBar(onPress: () => filterApplication(context)),
+            // const ApllicationCard()
+
+            Flexible(
+              child: ListView.builder(
+                  padding: EdgeInsets.zero,
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemCount: data.length,
+                  itemBuilder: (context, i) {
+                    return ApllicationCard(
+                      onTap: () {
+                        print('sdasdasda');
+                        Navigator.of(context).pushNamed(
+                            DetailLetterScreen.routeName,
+                            arguments: data[i]);
+                      },
+                      data: data[i],
+                    );
+                  }),
+            )
           ],
         ),
       ),
@@ -347,22 +111,26 @@ class _ApplicationScreenState extends State<ApplicationScreen> {
           closeManually: false,
           openCloseDial: isDialOpen,
           animatedIcon: AnimatedIcons.menu_close,
+          onClose: () {},
           children: [
             SpeedDialChild(
                 labelWidget: FloatLabelButton(
               icon: Icons.remove_circle,
-              label: S.of(context).cr_off_day,
+              label: S.of(context).cr_absent,
               onPress: () {
-                print("Click");
+                isDialOpen.value = false;
+                Navigator.of(context).popAndPushNamed(AbsentLetter.routeName);
               },
               primary: redColor2,
             )),
             SpeedDialChild(
                 labelWidget: FloatLabelButton(
               icon: Icons.access_time_filled,
-              label: S.of(context).cr_off_on,
+              label: S.of(context).cr_break,
               onPress: () {
-                print("Click");
+                isDialOpen.value = false;
+                Navigator.of(context)
+                    .popAndPushNamed(BreakTimeLetter.routeName);
               },
               primary: yellowColor,
             )),
@@ -371,7 +139,9 @@ class _ApplicationScreenState extends State<ApplicationScreen> {
               icon: Icons.compare_arrows_outlined,
               label: S.of(context).cr_change_shift,
               onPress: () {
-                print("Click");
+                isDialOpen.value = false;
+                Navigator.of(context)
+                    .popAndPushNamed(ChangeShiftLetter.routeName);
               },
               primary: secondaryColorBase,
             )),
