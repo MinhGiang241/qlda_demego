@@ -27,7 +27,7 @@ class PrimaryCard extends StatelessWidget {
       alignment: Alignment.topCenter,
       child: Container(
         padding: padding,
-        margin: margin ?? const EdgeInsets.symmetric(horizontal: 12),
+        margin: margin,
         height: height,
         width: width,
         decoration: BoxDecoration(

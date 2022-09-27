@@ -18,8 +18,8 @@ class HomeScreen extends StatelessWidget {
       ),
       drawer: MainDrawer(),
       body: Center(
-        child: Text("Wellcome",
-            style: txtBodyLargeBold(color: grayScaleColorBase)),
+        child:
+            Text("Welcome", style: txtBodyLargeBold(color: grayScaleColorBase)),
       ),
     );
   }

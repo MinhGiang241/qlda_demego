@@ -71,9 +71,9 @@ class AbsentLetter extends StatelessWidget {
         Positioned(
           bottom: 11,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 12),
             child: PrimaryButton(
-              width: dvWidth(context) - 32,
+              width: dvWidth(context) - 24,
               text: S.of(context).send,
             ),
           ),

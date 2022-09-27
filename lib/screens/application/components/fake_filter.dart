@@ -5,6 +5,7 @@ import '../../../constant/constants.dart';
 import '../../../generated/l10n.dart';
 
 void filterApplication(context) {
+  FocusScope.of(context).unfocus();
   showModalBottomSheet(
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(

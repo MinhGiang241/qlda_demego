@@ -26,25 +26,20 @@ class SearchBar extends StatelessWidget {
                 child: PrimaryTextField(
                   margin: const EdgeInsets.fromLTRB(0, 0, 12, 0),
                   hint: S.of(context).search,
-                  prefixIcon: const Padding(
-                    padding: EdgeInsets.all(12.0),
-                    child: PrimaryIcon(
-                        icons: PrimaryIcons.search_outline,
-                        color: grayScaleColor2),
+                  prefixIcon: InkWell(
+                    onTap: () {
+                      print('tabb');
+                      FocusScope.of(context).unfocus();
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.all(12.0),
+                      child: PrimaryIcon(
+                          icons: PrimaryIcons.search_outline,
+                          color: grayScaleColor2),
+                    ),
                   ),
                 ),
               ),
-              // Container(
-              //   decoration:
-              //       BoxDecoration(borderRadius: BorderRadius.circular(5)),
-              //   height: 50,
-              //   color: Colors.white,
-              //   margin: const EdgeInsets.only(left: 15),
-              //   child: const PrimaryIcon(
-              //       padding: EdgeInsets.symmetric(horizontal: 15),
-              //       icons: PrimaryIcons.filter,
-              //       color: grayScaleColor2),
-              // ),
               Container(
                 decoration: BoxDecoration(
                     boxShadow: [

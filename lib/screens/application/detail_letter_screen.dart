@@ -13,6 +13,8 @@ import '../../widgets/primary_button.dart';
 import '../../widgets/primary_screen.dart';
 import 'application_screen.dart';
 import 'components/category_tab.dart';
+import 'confirm_letter_screen.dart';
+import 'reply_letter_screen.dart';
 
 class DetailLetterScreen extends StatefulWidget {
   const DetailLetterScreen({super.key});
@@ -79,11 +81,10 @@ class _DetailLetterScreenState extends State<DetailLetterScreen>
             Expanded(
               child: TabBarView(
                 controller: _tabController,
-                // ignore: prefer_const_literals_to_create_immutables
                 children: [
                   CategoryTab(data: arg),
-                  HistoryUpdateTab(),
-                  HistoryApproveTab(),
+                  HistoryUpdateTab(data: arg),
+                  HistoryApproveTab(data: arg),
                 ],
               ),
             )
@@ -91,20 +92,30 @@ class _DetailLetterScreenState extends State<DetailLetterScreen>
         ),
         Positioned(
             bottom: 12,
-            child: Padding(
+            child: Container(
+              color: Colors.transparent.withOpacity(0),
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Column(
                 children: [
                   PrimaryButton(
+                    onTap: () {
+                      Navigator.pushNamed(
+                          context, ConfirmLetterScreen.routeName,
+                          arguments: arg);
+                    },
                     width: dvWidth(context) - 24,
                     text: S.of(context).confirm,
                   ),
                   vpad(12),
                   PrimaryButton(
+                    onTap: () {
+                      Navigator.pushNamed(context, ReplyLetterScreen.routeName,
+                          arguments: arg);
+                    },
                     buttonType: ButtonType.secondary,
                     secondaryBackgroundColor: secondaryColorBase,
                     width: dvWidth(context) - 24,
-                    text: S.of(context).rely,
+                    text: S.of(context).reply,
                   )
                 ],
               ),

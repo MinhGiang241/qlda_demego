@@ -62,7 +62,7 @@ class _PrimaryDropDownState extends State<PrimaryDropDown> {
           fillColor: Colors.white,
           hintStyle: txtBodySmallBold(color: grayScaleColor3),
           contentPadding:
-              const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+              const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(color: primaryColor2, width: 2)),

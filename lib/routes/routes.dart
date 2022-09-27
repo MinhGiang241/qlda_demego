@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:qlda_demego/screens/application/absent_letter.dart';
 import 'package:qlda_demego/screens/application/break_time_letter.dart';
@@ -8,7 +10,9 @@ import 'package:qlda_demego/services/provider/auth_provider.dart';
 import 'package:qlda_demego/services/provider/sign_in_provider.dart';
 import 'package:provider/provider.dart';
 import '../screens/application/application_screen.dart';
+import '../screens/application/confirm_letter_screen.dart';
 import '../screens/application/detail_letter_screen.dart';
+import '../screens/application/reply_letter_screen.dart';
 import '../screens/auth/sign_in/sign_in_screen.dart';
 import '../screens/home/home_screen.dart';
 
@@ -29,7 +33,6 @@ class AppRoutes {
                           SignInProvider(authPrv: context.read<AuthProvider>()),
                     ),
                   ],
-                  // ignore: prefer_const_constructors
                   builder: ((context, child) => SignInScreen()),
                 ));
       case HomeScreen.routeName:
@@ -44,10 +47,17 @@ class AppRoutes {
       case ChangeShiftLetter.routeName:
         return MaterialPageRoute(builder: ((context) => ChangeShiftLetter()));
       case DetailLetterScreen.routeName:
-        //  if (settings.arguments is DetailLetterScreen){}
         return MaterialPageRoute(
             settings: routeSetting,
             builder: ((context) => DetailLetterScreen()));
+      case ReplyLetterScreen.routeName:
+        return MaterialPageRoute(
+            settings: routeSetting,
+            builder: ((context) => ReplyLetterScreen()));
+      case ConfirmLetterScreen.routeName:
+        return MaterialPageRoute(
+            settings: routeSetting,
+            builder: ((context) => ConfirmLetterScreen()));
       default:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
     }

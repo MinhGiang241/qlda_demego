@@ -113,5 +113,15 @@
   "category": "Danh mục",
   "history_update": "Lịch sử cập nhật",
   "history_approve": "Lịch sử phê duyệt",
-  "rely":"Phản hồi"
+  "reply": "Phản hồi",
+  "reply_absent_letter": "Phản hồi đơn xin nghỉ phép",
+  "reply_break_letter": "Phản hồi đơn xin nghỉ giữa giờ",
+  "reply_change_shift": "Phản hồi đơn xin đổi ca",
+  "reply_refuse_ext": "Phản hồi từ chối cv phát sinh",
+  "reply_change_death": "Phản hồi từ chối thời hạn cv",
+  "confirm_letter": "Xác nhận phụ trách đơn nghỉ ngày",
+  "confirm_change_letter": "Xác nhận đổi ca",
+  "res_person": "Nhân sự được đổi",
+  "assign_person": "Nhân sự được đổi",
+  "decision": "Quyết định"
 }

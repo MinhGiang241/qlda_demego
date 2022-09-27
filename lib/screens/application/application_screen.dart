@@ -23,26 +23,55 @@ const data = [
   {
     "Loại đơn": "Đơn xin nghỉ phép",
     "Người tạo": "Nguyên Văn A",
+    "Thời gian tạo": "22/02/2022 10:00",
     "Phòng ban": "Phòng kỹ thuật",
     "Chức danh": "Nhân viên",
     "Ngày tạo": "06/08/2022 10:00",
     "Trạng thái": "Chờ tổ trưởng duyệt",
+    "Lịch sử cập nhật": [
+      {"Người thực hiện": "Nguyễn Văn A", "Thời gian": "22/02/2022 10:00"},
+      {"Người thực hiện": "Nguyễn Văn A", "Thời gian": "22/02/2022 10:00"}
+    ]
   },
   {
     "Loại đơn": "Đơn xin nghỉ giữa giờ",
     "Người tạo": "Nguyên Văn A",
+    "Thời gian tạo": "22/02/2022 10:00",
     "Phòng ban": "Phòng kỹ thuật",
     "Chức danh": "Kỹ thuật",
     "Ngày tạo": "06/08/2022 10:00",
     "Trạng thái": "Đã duyệt",
+    "Lịch sử cập nhật": [
+      {"Người thực hiện": "Nguyễn Văn A", "Thời gian": "22/02/2022 10:00"},
+      {"Người thực hiện": "Nguyễn Văn A", "Thời gian": "22/02/2022 10:00"}
+    ],
+    "Lịch sử phê duyệt": [
+      {
+        "Quyết định": "Phê duyệt",
+        "Người thực hiện": "Nguyễn VĂn A",
+        "Ngày phê duyệt": "22/02/2022 10:0",
+        "Ghi chú": "Đồng ý phê duyệt"
+      },
+      {
+        "Quyết định": "Phê duyệt",
+        "Người thực hiện": "Nguyễn VĂn A",
+        "Ngày phê duyệt": "22/02/2022 10:0",
+        "Ghi chú": "Đồng ý phê duyệt"
+      }
+    ]
   },
   {
     "Loại đơn": "Đơn xin đổi ca",
     "Người tạo": "Nguyên Văn A",
+    "Thời gian tạo": "22/02/2022 10:00",
     "Phòng ban": "Phòng kỹ thuật",
     "Chức danh": "Nhân viên",
     "Ngày tạo": "06/08/2022 10:00",
     "Trạng thái": "Chờ tổ trưởng duyệt",
+    "Lịch sử cập nhật": [
+      {"Người thực hiện": "Nguyễn Văn A", "Thời gian": "22/02/2022 10:00"},
+      {"Người thực hiện": "Nguyễn Văn A", "Thời gian": "22/02/2022 10:00"}
+    ]
   },
 ];
 
@@ -81,7 +110,6 @@ class _ApplicationScreenState extends State<ApplicationScreen> {
                   itemBuilder: (context, i) {
                     return ApllicationCard(
                       onTap: () {
-                        print('sdasdasda');
                         Navigator.of(context).pushNamed(
                             DetailLetterScreen.routeName,
                             arguments: data[i]);

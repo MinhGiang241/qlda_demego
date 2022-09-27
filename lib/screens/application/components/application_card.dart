@@ -6,11 +6,20 @@ import '../../../constant/constants.dart';
 import '../../../widgets/primary_card.dart';
 
 class ApllicationCard extends StatelessWidget {
-  ApllicationCard({super.key, this.data, this.onTap});
+  ApllicationCard({super.key, this.data, this.onTap, this.title});
   final data;
   void Function()? onTap;
+  String? title;
   @override
   Widget build(BuildContext context) {
+    var infoData = {};
+
+    for (var entry in data.entries) {
+      if (entry.value.runtimeType == String) {
+        infoData.putIfAbsent(entry.key, () => entry.value);
+      }
+    }
+
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -21,33 +30,46 @@ class ApllicationCard extends StatelessWidget {
               border: Border.all(color: shadowColor.withOpacity(0.1), width: 1),
               boxShadow: [
                 BoxShadow(
-                    spreadRadius: 1,
-                    blurRadius: 4,
+                    spreadRadius: 4,
+                    blurRadius: 8,
                     color: shadowColor.withOpacity(0.1),
                     offset: const Offset(0, 2))
               ]),
           width: double.infinity,
-          child: ListView.builder(
-            padding: EdgeInsets.zero,
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: 6,
-            itemBuilder: (ctx, j) => Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              child: Row(children: [
-                hpad(24),
-                Expanded(
-                    flex: 1,
-                    child: Text('${data.keys.elementAt(j)} :',
-                        style: txtBodySmallRegular(color: grayScaleColor2))),
-                Expanded(
-                    flex: 1,
-                    child: Text(data.values.elementAt(j),
-                        style: txtBodySmallRegular(color: grayScaleColorBase))),
-                hpad(24),
-              ]),
+          child: Column(children: [
+            if (title != null) vpad(12),
+            if (title != null)
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                width: double.infinity,
+                child: Text(
+                  title!,
+                  textAlign: TextAlign.start,
+                  style: txtBodyMediumBold(),
+                ),
+              ),
+            ListView.builder(
+              padding: EdgeInsets.zero,
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: infoData.keys.length,
+              itemBuilder: (ctx, j) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: Row(children: [
+                  hpad(24),
+                  Expanded(
+                      flex: 1,
+                      child: Text('${infoData.keys.elementAt(j)} :',
+                          style: txtBodySmallRegular(color: grayScaleColor2))),
+                  Expanded(
+                      flex: 1,
+                      child: Text(infoData.values.elementAt(j),
+                          style: txtBodySmallBold(color: grayScaleColorBase))),
+                  hpad(24),
+                ]),
+              ),
             ),
-          )),
+          ])),
     );
   }
 }

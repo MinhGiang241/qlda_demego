@@ -1180,11 +1180,111 @@ class S {
     );
   }
 
-  /// `Rely`
-  String get rely {
+  /// `Reply`
+  String get reply {
     return Intl.message(
-      'Rely',
-      name: 'rely',
+      'Reply',
+      name: 'reply',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reply absent letter`
+  String get reply_absent_letter {
+    return Intl.message(
+      'Reply absent letter',
+      name: 'reply_absent_letter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reply break time letter`
+  String get reply_break_letter {
+    return Intl.message(
+      'Reply break time letter',
+      name: 'reply_break_letter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reply break time letter`
+  String get reply_change_shift {
+    return Intl.message(
+      'Reply break time letter',
+      name: 'reply_change_shift',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reply refusing extra-work`
+  String get reply_refuse_ext {
+    return Intl.message(
+      'Reply refusing extra-work',
+      name: 'reply_refuse_ext',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reply changing work deathtime`
+  String get reply_change_death {
+    return Intl.message(
+      'Reply changing work deathtime',
+      name: 'reply_change_death',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm letter`
+  String get confirm_letter {
+    return Intl.message(
+      'Confirm letter',
+      name: 'confirm_letter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm shift changing letter`
+  String get confirm_change_letter {
+    return Intl.message(
+      'Confirm shift changing letter',
+      name: 'confirm_change_letter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Responsible person`
+  String get res_person {
+    return Intl.message(
+      'Responsible person',
+      name: 'res_person',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Assign person`
+  String get assign_person {
+    return Intl.message(
+      'Assign person',
+      name: 'assign_person',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Decision`
+  String get decision {
+    return Intl.message(
+      'Decision',
+      name: 'decision',
       desc: '',
       args: [],
     );

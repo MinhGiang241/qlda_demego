@@ -36,7 +36,7 @@ class _BreakTimeLetterState extends State<BreakTimeLetter> {
                 onPressed: () => Navigator.pushReplacementNamed(
                     context, ApplicationScreen.routeName))),
         body: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 12),
             child: ListView(
               children: [
                 vpad(16),

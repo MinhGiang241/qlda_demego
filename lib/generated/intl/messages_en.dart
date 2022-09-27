@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_new": MessageLookupByLibrary.simpleMessage("Add new"),
         "app_version": MessageLookupByLibrary.simpleMessage("App version"),
         "application": MessageLookupByLibrary.simpleMessage("Application"),
+        "assign_person": MessageLookupByLibrary.simpleMessage("Assign person"),
         "building_management":
             MessageLookupByLibrary.simpleMessage("Building management"),
         "c_new_pass":
@@ -41,6 +42,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "choose_off": MessageLookupByLibrary.simpleMessage("Choose type"),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "confirm_change_letter": MessageLookupByLibrary.simpleMessage(
+            "Confirm shift changing letter"),
+        "confirm_letter":
+            MessageLookupByLibrary.simpleMessage("Confirm letter"),
         "confirm_pass":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "contact_receptionist": MessageLookupByLibrary.simpleMessage(
@@ -60,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change from date"),
         "date_change_to":
             MessageLookupByLibrary.simpleMessage(" Change to date"),
+        "decision": MessageLookupByLibrary.simpleMessage("Decision"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "detail_letter": MessageLookupByLibrary.simpleMessage("Detail letter"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
@@ -131,8 +137,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "reception": MessageLookupByLibrary.simpleMessage("Reception"),
         "reg_success": MessageLookupByLibrary.simpleMessage(
             "Registration successful, please login"),
-        "rely": MessageLookupByLibrary.simpleMessage("Rely"),
         "remember_acc": MessageLookupByLibrary.simpleMessage("Remember me"),
+        "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+        "reply_absent_letter":
+            MessageLookupByLibrary.simpleMessage("Reply absent letter"),
+        "reply_break_letter":
+            MessageLookupByLibrary.simpleMessage("Reply break time letter"),
+        "reply_change_death": MessageLookupByLibrary.simpleMessage(
+            "Reply changing work deathtime"),
+        "reply_change_shift":
+            MessageLookupByLibrary.simpleMessage("Reply break time letter"),
+        "reply_refuse_ext":
+            MessageLookupByLibrary.simpleMessage("Reply refusing extra-work"),
         "require_lowercase": MessageLookupByLibrary.simpleMessage(
             "Password must contain at least 1 lowercase letter"),
         "require_number": MessageLookupByLibrary.simpleMessage(
@@ -141,6 +157,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Password must contain at least 1 special symbol"),
         "require_uppercase": MessageLookupByLibrary.simpleMessage(
             "Password must contain at least 1 uppercase letter"),
+        "res_person":
+            MessageLookupByLibrary.simpleMessage("Responsible person"),
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
         "reset_pass": MessageLookupByLibrary.simpleMessage("Reset password"),
         "resident_card":

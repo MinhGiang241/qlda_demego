@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_new": MessageLookupByLibrary.simpleMessage("Thêm mới"),
         "app_version": MessageLookupByLibrary.simpleMessage("App version"),
         "application": MessageLookupByLibrary.simpleMessage("Đơn từ"),
+        "assign_person":
+            MessageLookupByLibrary.simpleMessage("Nhân sự được đổi"),
         "building_management":
             MessageLookupByLibrary.simpleMessage("Quản lý chung cư"),
         "c_new_pass":
@@ -42,6 +44,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "choose_off": MessageLookupByLibrary.simpleMessage("Chọn loại nghỉ"),
         "close": MessageLookupByLibrary.simpleMessage("Đóng"),
         "confirm": MessageLookupByLibrary.simpleMessage("Xác nhận"),
+        "confirm_change_letter":
+            MessageLookupByLibrary.simpleMessage("Xác nhận đổi ca"),
+        "confirm_letter": MessageLookupByLibrary.simpleMessage(
+            "Xác nhận phụ trách đơn nghỉ ngày"),
         "confirm_pass":
             MessageLookupByLibrary.simpleMessage("Nhập lại mật khẩu"),
         "contact_receptionist": MessageLookupByLibrary.simpleMessage(
@@ -58,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "date": MessageLookupByLibrary.simpleMessage("Ngày"),
         "date_change_fr": MessageLookupByLibrary.simpleMessage("Ngày đổi"),
         "date_change_to": MessageLookupByLibrary.simpleMessage("Đổi sang ngày"),
+        "decision": MessageLookupByLibrary.simpleMessage("Quyết định"),
         "description": MessageLookupByLibrary.simpleMessage("Mô tả"),
         "detail_letter":
             MessageLookupByLibrary.simpleMessage("Chi tiết đơn từ"),
@@ -134,9 +141,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "reception": MessageLookupByLibrary.simpleMessage("Quản lý Lễ tân"),
         "reg_success": MessageLookupByLibrary.simpleMessage(
             "Đăng ký thành công, vui lòng đăng nhập"),
-        "rely": MessageLookupByLibrary.simpleMessage("Phản hồi"),
         "remember_acc":
             MessageLookupByLibrary.simpleMessage("Ghi nhớ tài khoản"),
+        "reply": MessageLookupByLibrary.simpleMessage("Phản hồi"),
+        "reply_absent_letter":
+            MessageLookupByLibrary.simpleMessage("Phản hồi đơn xin nghỉ phép"),
+        "reply_break_letter": MessageLookupByLibrary.simpleMessage(
+            "Phản hồi đơn xin nghỉ giữa giờ"),
+        "reply_change_death": MessageLookupByLibrary.simpleMessage(
+            "Phản hồi từ chối thời hạn cv"),
+        "reply_change_shift":
+            MessageLookupByLibrary.simpleMessage("Phản hồi đơn xin đổi ca"),
+        "reply_refuse_ext": MessageLookupByLibrary.simpleMessage(
+            "Phản hồi từ chối cv phát sinh"),
         "require_lowercase": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu phải gồm ít nhất 1 chữ cái thường"),
         "require_number": MessageLookupByLibrary.simpleMessage(
@@ -145,6 +162,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Mật khẩu phải gồm ít nhất 1 ký tự đặc biệt"),
         "require_uppercase": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu phải gồm ít nhất 1 chữ cái hoa"),
+        "res_person": MessageLookupByLibrary.simpleMessage("Nhân sự được đổi"),
         "resend": MessageLookupByLibrary.simpleMessage("Gửi lại"),
         "reset_pass": MessageLookupByLibrary.simpleMessage("Đặt lại mật khẩu"),
         "resident_card": MessageLookupByLibrary.simpleMessage("Thẻ cư dân"),

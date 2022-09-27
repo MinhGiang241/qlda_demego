@@ -112,5 +112,15 @@
   "category": "Category",
   "history_update": "History update",
   "history_approve": "History approve",
-  "rely":"Rely"
+  "reply": "Reply",
+  "reply_absent_letter": "Reply absent letter",
+  "reply_break_letter": "Reply break time letter",
+  "reply_change_shift": "Reply break time letter",
+  "reply_refuse_ext": "Reply refusing extra-work",
+  "reply_change_death": "Reply changing work deathtime",
+  "confirm_letter": "Confirm letter",
+  "confirm_change_letter": "Confirm shift changing letter",
+  "res_person": "Responsible person",
+  "assign_person": "Assign person",
+  "decision": "Decision"
 }
