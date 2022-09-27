@@ -22,7 +22,7 @@ import 'detail_letter_screen.dart';
 const data = [
   {
     "Loại đơn": "Đơn xin nghỉ phép",
-    "Người tạo": "Nguyên Văn A",
+    "Người tạo": "Nguyễn Văn A",
     "Thời gian tạo": "22/02/2022 10:00",
     "Phòng ban": "Phòng kỹ thuật",
     "Chức danh": "Nhân viên",
@@ -54,7 +54,7 @@ const data = [
       },
       {
         "Quyết định": "Phê duyệt",
-        "Người thực hiện": "Nguyễn VĂn A",
+        "Người thực hiện": "Nguyễn Văn A",
         "Ngày phê duyệt": "22/02/2022 10:0",
         "Ghi chú": "Đồng ý phê duyệt"
       }
@@ -62,7 +62,7 @@ const data = [
   },
   {
     "Loại đơn": "Đơn xin đổi ca",
-    "Người tạo": "Nguyên Văn A",
+    "Người tạo": "Nguyễn Văn A",
     "Thời gian tạo": "22/02/2022 10:00",
     "Phòng ban": "Phòng kỹ thuật",
     "Chức danh": "Nhân viên",

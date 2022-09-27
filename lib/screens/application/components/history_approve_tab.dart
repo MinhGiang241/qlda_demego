@@ -30,7 +30,6 @@ class HistoryApproveTab extends StatelessWidget {
                     itemBuilder: ((context, index) => Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 12),
                           child: ApllicationCard(
-                            title: "Cập nhật",
                             data: data['Lịch sử phê duyệt'][index],
                           ),
                         ))),
