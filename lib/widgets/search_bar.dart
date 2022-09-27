@@ -24,6 +24,7 @@ class SearchBar extends StatelessWidget {
             children: [
               Expanded(
                 child: PrimaryTextField(
+                  textInputAction: TextInputAction.go,
                   margin: const EdgeInsets.fromLTRB(0, 0, 12, 0),
                   hint: S.of(context).search,
                   prefixIcon: InkWell(
