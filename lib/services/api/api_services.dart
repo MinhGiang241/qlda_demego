@@ -32,6 +32,7 @@ class ApiService {
 
   String userName = '';
   String passWord = '';
+  bool remember = false;
 
   final _graphqlLink = HttpLink(
     ApiConstants.baseUrl,
@@ -40,11 +41,17 @@ class ApiService {
   Future<oauth2.Client?> getClient(
       {required String username,
       required String password,
-      OnError? onError}) async {
+      OnError? onError,
+      bool remmember = false}) async {
     userName = username;
     passWord = password;
-    const client = null;
-    // final client = await getExistClient();
+    remmember = remmember;
+    var client = null;
+    if (remmember) {
+      client = await getExistClient();
+    }
+    // const client = null;
+
     if (client != null) {
       if (client.credentials.isExpired) {
         return await _getCre(username, password, onError);

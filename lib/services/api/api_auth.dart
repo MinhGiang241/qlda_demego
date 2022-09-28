@@ -6,9 +6,13 @@ class ApiAuth {
   static Future<oauth2.Client?> signIn(
       {required String username,
       required String password,
+      bool remmenber = false,
       OnError? onError}) async {
-    var client = await ApiService.shared
-        .getClient(username: username, password: password, onError: onError);
+    var client = await ApiService.shared.getClient(
+        username: username,
+        password: password,
+        onError: onError,
+        remmember: remmenber);
     return client;
   }
 
