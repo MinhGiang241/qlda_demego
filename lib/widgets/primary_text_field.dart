@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:qlda_demego/widgets/primary_card.dart';
@@ -29,7 +30,9 @@ class PrimaryTextField extends StatelessWidget {
       this.maxLines = 1,
       this.autoFocus = false,
       this.validateString,
-      this.margin});
+      this.margin,
+      this.blockSpace = false});
+
   final String? label;
   final String? initialValue;
   final String? hint;
@@ -47,6 +50,7 @@ class PrimaryTextField extends StatelessWidget {
   final int? maxLines;
   final bool autoFocus;
   final bool enable;
+  final bool blockSpace;
   final String? validateString;
   EdgeInsetsGeometry? margin;
   late StreamController<bool>? showPassController = StreamController<bool>();
@@ -79,6 +83,11 @@ class PrimaryTextField extends StatelessWidget {
                   margin: margin,
                   onTap: onTap,
                   child: TextFormField(
+                    inputFormatters: blockSpace
+                        ? <TextInputFormatter>[
+                            FilteringTextInputFormatter.deny(RegExp(r'[ ]'))
+                          ]
+                        : null,
                     enabled: enable,
                     autofocus: autoFocus,
                     controller: controller,

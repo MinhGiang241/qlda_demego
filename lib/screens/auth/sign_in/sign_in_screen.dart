@@ -48,6 +48,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 child: Column(
                   children: [
                     PrimaryTextField(
+                      blockSpace: true,
                       margin: EdgeInsets.zero,
                       validateString:
                           context.read<SignInProvider>().usernameValidate,
@@ -64,6 +65,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     vpad(24),
                     PrimaryTextField(
+                      blockSpace: true,
                       margin: EdgeInsets.zero,
                       validateString:
                           context.read<SignInProvider>().passValidate,
@@ -133,7 +135,9 @@ class _SignInScreenState extends State<SignInScreen> {
                         onTap: () async {
                           FocusScope.of(context).unfocus();
 
-                          await context.read<SignInProvider>().signIn(context);
+                          await context
+                              .read<SignInProvider>()
+                              .signIn(context, rememberAccount);
                           setState(() {});
                         },
                         text: S.of(context).sign_in,

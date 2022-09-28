@@ -20,7 +20,7 @@ class SignInProvider with ChangeNotifier {
   bool isLoading = false;
 
   validationAccount() {
-    if (usernameController.text.isEmpty) {
+    if (usernameController.text.trim().isEmpty) {
       usernameValidate = S.current.can_not_empty;
       return '';
     }
@@ -31,30 +31,31 @@ class SignInProvider with ChangeNotifier {
 
   validationPass() {
 // remove later
-    if (usernameController.text == 'admin' && passController.text == 'admin') {
+    if (usernameController.text.trim() == 'admin' &&
+        passController.text.trim() == 'admin') {
       return null;
     }
 
-    if (passController.text.isEmpty) {
+    if (passController.text.trim().isEmpty) {
       passValidate = S.current.can_not_empty;
       return '';
     } else if (!RegexText.minMaxString(
-        value: passController.text, min: 4, max: 20)) {
+        value: passController.text.trim(), min: 4, max: 20)) {
       passValidate = S.current.min_max_pass;
       return '';
-    } else if (!RegexText.requiredLowerCase(passController.text)) {
+    } else if (!RegexText.requiredLowerCase(passController.text.trim())) {
       passValidate = S.current.require_lowercase;
       return '';
-    } else if (!RegexText.requiredUpperCase(passController.text)) {
+    } else if (!RegexText.requiredUpperCase(passController.text.trim())) {
       passValidate = S.current.require_uppercase;
       return '';
-    } else if (!RegexText.requiredNumber(passController.text)) {
+    } else if (!RegexText.requiredNumber(passController.text.trim())) {
       passValidate = S.current.require_number;
       return '';
-    } else if (RegexText.vietNameseChar(passController.text)) {
+    } else if (RegexText.vietNameseChar(passController.text.trim())) {
       passValidate = S.current.not_vietnamese;
       return '';
-    } else if (!RegexText.requiredSpecialChar(passController.text)) {
+    } else if (!RegexText.requiredSpecialChar(passController.text.trim())) {
       passValidate = S.current.require_special_char;
       return '';
     }
@@ -64,14 +65,14 @@ class SignInProvider with ChangeNotifier {
     return null;
   }
 
-  signIn(BuildContext context) async {
+  signIn(BuildContext context, bool remember) async {
     if (formKey.currentState!.validate()) {
       usernameValidate = passValidate = null;
       isLoading = true;
       notifyListeners();
 
-      await authPrv.onSignIn(
-          context, usernameController.text, passController.text);
+      await authPrv.onSignIn(context, usernameController.text.trim(),
+          passController.text.trim(), remember);
 
       isLoading = false;
       notifyListeners();

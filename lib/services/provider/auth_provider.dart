@@ -34,8 +34,9 @@ class AuthProvider with ChangeNotifier {
     });
   }
 
-  Future<oauth2.Client?> onSignIn(
-      BuildContext context, String username, String password) async {
+  Future<oauth2.Client?> onSignIn(BuildContext context, String username,
+      String password, bool remember) async {
+    print(remember);
     var credentials = await ApiAuth.signIn(
         username: username,
         password: password,
@@ -51,10 +52,7 @@ class AuthProvider with ChangeNotifier {
           } else {
             Utils.showDialog(
                 context: context,
-                dailog:
-                    PrimaryDialog.error(msg: e.msg //S.of(context).err_unknown
-
-                        ));
+                dailog: PrimaryDialog.error(msg: S.of(context).err_unknown));
           }
         });
     if (credentials != null) {
@@ -88,8 +86,10 @@ class AuthProvider with ChangeNotifier {
                       buttonType: ButtonType.secondary,
                       secondaryBackgroundColor: redColor2,
                       onTap: () {
-                        Navigator.pop(context, true);
                         authStatus = AuthStatus.unauthen;
+                        notifyListeners();
+                        Navigator.pop(context, true);
+
                         Navigator.pushReplacementNamed(
                             context, SignInScreen.routeName);
                       },
