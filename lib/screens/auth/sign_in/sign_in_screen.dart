@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:qlda_demego/screens/splash/splash_screen.dart';
 import 'package:qlda_demego/services/api/api_auth.dart';
 import 'package:qlda_demego/services/provider/sign_in_provider.dart';
 import 'package:qlda_demego/widgets/primary_screen.dart';
@@ -12,6 +13,7 @@ import '../../../utils/utils.dart';
 import '../../../widgets/primary_button.dart';
 import '../../../widgets/primary_dialog.dart';
 import '../../../widgets/primary_text_field.dart';
+import '../../home/home_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -26,7 +28,11 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return PrimaryScreen(
-        appBar: AppBar(backgroundColor: Colors.transparent),
+        appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            leading: BackButton(
+                onPressed: () => Navigator.pushReplacementNamed(
+                    context, SplashScreen.routeName))),
         body: Form(
           // autovalidateMode: AutovalidateMode.onUserInteraction,
           key: context.read<SignInProvider>().formKey,

@@ -8,6 +8,7 @@ import '../../widgets/primary_button.dart';
 import '../auth/sign_in/sign_in_screen.dart';
 
 class SplashScreen extends StatelessWidget {
+  static const routeName = '/splash';
   const SplashScreen({super.key});
 
   @override

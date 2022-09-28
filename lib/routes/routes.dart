@@ -21,6 +21,8 @@ class AppRoutes {
     switch (routeSetting.name) {
       case RootScreen.routeName:
         return MaterialPageRoute(builder: (_) => const RootScreen());
+      case SplashScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
       case SignInScreen.routeName:
         return MaterialPageRoute(
             builder: (_) => MultiProvider(
