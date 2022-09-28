@@ -51,7 +51,10 @@ class AuthProvider with ChangeNotifier {
           } else {
             Utils.showDialog(
                 context: context,
-                dailog: PrimaryDialog.error(msg: S.of(context).err_unknown));
+                dailog:
+                    PrimaryDialog.error(msg: e.msg //S.of(context).err_unknown
+
+                        ));
           }
         });
     if (credentials != null) {

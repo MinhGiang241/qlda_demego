@@ -75,7 +75,9 @@ class ApiService {
       } else if (e.runtimeType.toString() == '_ClientSocketException') {
         onError?.call(ErrorHandle(code: 2));
       } else {
-        onError?.call(ErrorHandle(code: 3));
+        onError?.call(ErrorHandle(
+          code: 3,
+        ));
       }
 
       return null;
