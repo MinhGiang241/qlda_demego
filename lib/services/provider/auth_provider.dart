@@ -40,6 +40,7 @@ class AuthProvider with ChangeNotifier {
     var credentials = await ApiAuth.signIn(
         username: username,
         password: password,
+        remmenber: remember,
         onError: (e) {
           if (e.code == 1) {
             Utils.showDialog(
@@ -85,7 +86,8 @@ class AuthProvider with ChangeNotifier {
                       isFit: true,
                       buttonType: ButtonType.secondary,
                       secondaryBackgroundColor: redColor2,
-                      onTap: () {
+                      onTap: () async {
+                        await ApiAuth.signOut();
                         authStatus = AuthStatus.unauthen;
                         notifyListeners();
                         Navigator.pop(context, true);

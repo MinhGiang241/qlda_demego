@@ -11,8 +11,10 @@ import 'package:qlda_demego/services/provider/sign_in_provider.dart';
 import 'package:provider/provider.dart';
 import '../screens/application/application_screen.dart';
 import '../screens/application/confirm_letter_screen.dart';
-import '../screens/application/detail_letter_screen.dart';
+import '../screens/application/letter_detail_screen.dart';
 import '../screens/application/reply_letter_screen.dart';
+import '../screens/assets/asset_detail.dart';
+import '../screens/assets/asset_screen.dart';
 import '../screens/auth/sign_in/sign_in_screen.dart';
 import '../screens/home/home_screen.dart';
 
@@ -20,11 +22,17 @@ class AppRoutes {
   Route onGenerateRoute(RouteSettings routeSetting) {
     switch (routeSetting.name) {
       case RootScreen.routeName:
-        return MaterialPageRoute(builder: (_) => const RootScreen());
+        return MaterialPageRoute(
+            settings: routeSetting, builder: (_) => const RootScreen());
       case SplashScreen.routeName:
-        return MaterialPageRoute(builder: (_) => const SplashScreen());
+        return MaterialPageRoute(
+            settings: routeSetting,
+            builder: (_) => ChangeNotifierProvider<AuthProvider>(
+                create: (context) => AuthProvider()..start(),
+                builder: (context, child) => SplashScreen()));
       case SignInScreen.routeName:
         return MaterialPageRoute(
+            settings: routeSetting,
             builder: (_) => MultiProvider(
                   providers: [
                     ChangeNotifierProvider(
@@ -38,20 +46,26 @@ class AppRoutes {
                   builder: ((context, child) => SignInScreen()),
                 ));
       case HomeScreen.routeName:
-        return MaterialPageRoute(builder: (context) => const HomeScreen());
+        return MaterialPageRoute(
+            settings: routeSetting, builder: (context) => const HomeScreen());
       case ApplicationScreen.routeName:
         return MaterialPageRoute(
+            settings: routeSetting,
             builder: (context) => const ApplicationScreen());
       case AbsentLetter.routeName:
-        return MaterialPageRoute(builder: ((context) => AbsentLetter()));
+        return MaterialPageRoute(
+            settings: routeSetting, builder: ((context) => AbsentLetter()));
       case BreakTimeLetter.routeName:
-        return MaterialPageRoute(builder: ((context) => BreakTimeLetter()));
+        return MaterialPageRoute(
+            settings: routeSetting, builder: ((context) => BreakTimeLetter()));
       case ChangeShiftLetter.routeName:
-        return MaterialPageRoute(builder: ((context) => ChangeShiftLetter()));
-      case DetailLetterScreen.routeName:
         return MaterialPageRoute(
             settings: routeSetting,
-            builder: ((context) => DetailLetterScreen()));
+            builder: ((context) => ChangeShiftLetter()));
+      case LetterDetailScreen.routeName:
+        return MaterialPageRoute(
+            settings: routeSetting,
+            builder: ((context) => LetterDetailScreen()));
       case ReplyLetterScreen.routeName:
         return MaterialPageRoute(
             settings: routeSetting,
@@ -60,8 +74,16 @@ class AppRoutes {
         return MaterialPageRoute(
             settings: routeSetting,
             builder: ((context) => ConfirmLetterScreen()));
+      case AssetScreen.routeName:
+        return MaterialPageRoute(
+            settings: routeSetting, builder: ((context) => AssetScreen()));
+      case AssetDetailScreen.routeName:
+        return MaterialPageRoute(
+            settings: routeSetting,
+            builder: ((context) => AssetDetailScreen()));
       default:
-        return MaterialPageRoute(builder: (_) => const SplashScreen());
+        return MaterialPageRoute(
+            settings: routeSetting, builder: (_) => const SplashScreen());
     }
   }
 }

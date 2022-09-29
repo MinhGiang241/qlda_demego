@@ -14,10 +14,10 @@ import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
 import '../../widgets/float_button.dart';
 import '../../widgets/primary_appbar.dart';
-import './components/application_card.dart';
+import '../../widgets/Info_table.dart';
 import 'absent_letter.dart';
 import 'components/fake_filter.dart';
-import 'detail_letter_screen.dart';
+import 'letter_detail_screen.dart';
 
 const data = [
   {
@@ -88,94 +88,71 @@ class _ApplicationScreenState extends State<ApplicationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return PrimaryScreen(
-      drawer: MainDrawer(),
-      appBar: PrimaryAppbar(
-        title: S.of(context).list_apl,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: Column(
-          children: [
-            // vpad(80),
-            SearchBar(onPress: () => filterApplication(context)),
-            // const ApllicationCard()
-
-            Flexible(
-              child: ListView.builder(
-                  padding: EdgeInsets.zero,
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  itemCount: data.length,
-                  itemBuilder: (context, i) {
-                    return ApllicationCard(
-                      onTap: () {
-                        Navigator.of(context).pushNamed(
-                            DetailLetterScreen.routeName,
-                            arguments: data[i]);
-                      },
-                      data: data[i],
-                    );
-                  }),
-            )
-          ],
-        ),
-      ),
-      floatingActionButton: WillPopScope(
-        onWillPop: () async {
-          if (isDialOpen.value) {
-            isDialOpen.value = false;
-            return false;
-          } else {
-            return true;
-          }
+    final floatbuttons = [
+      DialChildren(
+        icon: Icons.remove_circle,
+        label: S.of(context).cr_absent,
+        onPress: () {
+          isDialOpen.value = false;
+          Navigator.of(context).popAndPushNamed(AbsentLetter.routeName);
         },
-        child: SpeedDial(
-          backgroundColor: primaryColorBase,
-          overlayColor: Colors.black,
-          overlayOpacity: 0.38,
-          spacing: 3,
-          spaceBetweenChildren: 3,
-          closeManually: false,
-          openCloseDial: isDialOpen,
-          animatedIcon: AnimatedIcons.menu_close,
-          onClose: () {},
-          children: [
-            SpeedDialChild(
-                labelWidget: FloatLabelButton(
-              icon: Icons.remove_circle,
-              label: S.of(context).cr_absent,
-              onPress: () {
-                isDialOpen.value = false;
-                Navigator.of(context).popAndPushNamed(AbsentLetter.routeName);
-              },
-              primary: redColor2,
-            )),
-            SpeedDialChild(
-                labelWidget: FloatLabelButton(
-              icon: Icons.access_time_filled,
-              label: S.of(context).cr_break,
-              onPress: () {
-                isDialOpen.value = false;
-                Navigator.of(context)
-                    .popAndPushNamed(BreakTimeLetter.routeName);
-              },
-              primary: yellowColor,
-            )),
-            SpeedDialChild(
-                labelWidget: FloatLabelButton(
-              icon: Icons.compare_arrows_outlined,
-              label: S.of(context).cr_change_shift,
-              onPress: () {
-                isDialOpen.value = false;
-                Navigator.of(context)
-                    .popAndPushNamed(ChangeShiftLetter.routeName);
-              },
-              primary: secondaryColorBase,
-            )),
-          ],
-        ),
+        primary: redColor2,
       ),
-    );
+      DialChildren(
+        icon: Icons.access_time_filled,
+        label: S.of(context).cr_break,
+        onPress: () {
+          isDialOpen.value = false;
+          Navigator.of(context).popAndPushNamed(BreakTimeLetter.routeName);
+        },
+        primary: yellowColor,
+      ),
+      DialChildren(
+        icon: Icons.compare_arrows_outlined,
+        label: S.of(context).cr_change_shift,
+        onPress: () {
+          isDialOpen.value = false;
+          Navigator.of(context).popAndPushNamed(ChangeShiftLetter.routeName);
+        },
+        primary: secondaryColorBase,
+      ),
+    ];
+
+    return PrimaryScreen(
+        drawer: MainDrawer(),
+        appBar: PrimaryAppbar(
+          title: S.of(context).list_apl,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: Column(
+            children: [
+              // vpad(80),
+              SearchBar(onPress: () => filterApplication(context)),
+              // const ApllicationCard()
+
+              Flexible(
+                child: ListView.builder(
+                    padding: EdgeInsets.zero,
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    itemCount: data.length,
+                    itemBuilder: (context, i) {
+                      return InfoTable(
+                        onTap: () {
+                          Navigator.of(context).pushNamed(
+                              LetterDetailScreen.routeName,
+                              arguments: data[i]);
+                        },
+                        data: data[i],
+                      );
+                    }),
+              )
+            ],
+          ),
+        ),
+        floatingActionButton: FloatDialButton(
+          data: floatbuttons,
+        ));
   }
 }

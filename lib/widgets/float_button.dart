@@ -6,8 +6,8 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 import '../constant/constants.dart';
 
-class FloatLabelButton extends StatelessWidget {
-  FloatLabelButton(
+class Dial extends StatelessWidget {
+  Dial(
       {super.key,
       this.onPress,
       required this.icon,
@@ -43,6 +43,68 @@ class FloatLabelButton extends StatelessWidget {
               child: Icon(icon, color: Colors.white),
             )
           ],
+        ));
+  }
+}
+
+class DialChildren {
+  DialChildren(
+      {required this.label,
+      this.onPress,
+      this.primary,
+      this.onPrimary,
+      required this.icon});
+  final IconData icon;
+  final String label;
+  final Function()? onPress;
+  Color? primary;
+  Color? onPrimary;
+}
+
+class FloatDialButton extends StatefulWidget {
+  FloatDialButton({required this.data});
+
+  final List<DialChildren> data;
+  @override
+  State<FloatDialButton> createState() => _FloatDialButtonState();
+}
+
+class _FloatDialButtonState extends State<FloatDialButton> {
+  @override
+  final isDialOpen = ValueNotifier(false);
+  Widget build(BuildContext context) {
+    return WillPopScope(
+        onWillPop: () async {
+          if (isDialOpen.value) {
+            isDialOpen.value = false;
+            return false;
+          } else {
+            return true;
+          }
+        },
+        child: SpeedDial(
+          backgroundColor: primaryColorBase,
+          overlayColor: Colors.black,
+          overlayOpacity: 0.38,
+          spacing: 0,
+          spaceBetweenChildren: 0,
+          closeManually: false,
+          openCloseDial: isDialOpen,
+          animatedIcon: AnimatedIcons.menu_close,
+          children: widget.data
+              .map((DialChildren e) => SpeedDialChild(
+                    labelWidget: Dial(
+                      icon: e.icon,
+                      label: e.label,
+                      onPress: () {
+                        isDialOpen.value = false;
+                        e.onPress!();
+                      },
+                      primary: e.primary,
+                      onPrimary: e.onPrimary,
+                    ),
+                  ))
+              .toList(),
         ));
   }
 }

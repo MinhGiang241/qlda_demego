@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:qlda_demego/constant/constants.dart';
-import 'package:qlda_demego/screens/application/components/history_approve_tab.dart';
-import 'package:qlda_demego/screens/application/components/history_update_tab.dart';
+import 'package:qlda_demego/screens/application/tabs/history_approve_tab.dart';
+import 'package:qlda_demego/screens/application/tabs/history_update_tab.dart';
 import 'package:qlda_demego/widgets/primary_card.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
@@ -11,20 +11,21 @@ import '../../generated/l10n.dart';
 import '../../widgets/primary_appbar.dart';
 import '../../widgets/primary_button.dart';
 import '../../widgets/primary_screen.dart';
+import '../../widgets/primary_tabbar.dart';
 import 'application_screen.dart';
-import 'components/category_tab.dart';
+import 'tabs/category_tab.dart';
 import 'confirm_letter_screen.dart';
 import 'reply_letter_screen.dart';
 
-class DetailLetterScreen extends StatefulWidget {
-  const DetailLetterScreen({super.key});
+class LetterDetailScreen extends StatefulWidget {
+  const LetterDetailScreen({super.key});
   static const routeName = "/application/detail";
 
   @override
-  State<DetailLetterScreen> createState() => _DetailLetterScreenState();
+  State<LetterDetailScreen> createState() => _LetterDetailScreenState();
 }
 
-class _DetailLetterScreenState extends State<DetailLetterScreen>
+class _LetterDetailScreenState extends State<LetterDetailScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   //  =new TabController(length: 3, vsync: TickerProvider());
@@ -39,45 +40,18 @@ class _DetailLetterScreenState extends State<DetailLetterScreen>
 
     return PrimaryScreen(
       appBar: PrimaryAppbar(
-          title: S.of(context).detail_letter,
+          title: S.of(context).letter_detail,
           leading: BackButton(
               onPressed: () => Navigator.pushReplacementNamed(
                   context, ApplicationScreen.routeName))),
       body: Stack(children: [
         Column(
           children: [
-            SafeArea(
-              child: Container(
-                decoration: const BoxDecoration(color: Colors.white),
-                child: TabBar(
-                    labelStyle: txtBodySmallBold(),
-                    labelColor: grayScaleColorBase,
-                    controller: _tabController,
-                    tabs: [
-                      Tab(
-                          child: AutoSizeText(
-                        S.of(context).category,
-                        maxLines: 1,
-                        minFontSize: 1,
-                        style: txtBodySmallBold(),
-                      )),
-                      Tab(
-                          child: AutoSizeText(
-                        S.of(context).history_update,
-                        maxLines: 1,
-                        minFontSize: 1,
-                        style: txtBodySmallBold(),
-                      )),
-                      Tab(
-                          child: AutoSizeText(
-                        S.of(context).history_approve,
-                        maxLines: 1,
-                        minFontSize: 1,
-                        style: txtBodySmallBold(),
-                      )),
-                    ]),
-              ),
-            ),
+            PrimaryTabBar(controller: _tabController, titles: [
+              S.of(context).category,
+              S.of(context).history_update,
+              S.of(context).history_approve,
+            ]),
             Expanded(
               child: TabBarView(
                 controller: _tabController,

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../generated/l10n.dart';
 import '../screens/application/application_screen.dart';
+import '../screens/assets/asset_screen.dart';
 import '../screens/auth/sign_in/sign_in_screen.dart';
 import '../services/provider/auth_provider.dart';
 
@@ -101,6 +102,11 @@ class MainDrawer extends StatelessWidget {
                       Icons.receipt,
                       () => Navigator.pushReplacementNamed(
                           context, HomeScreen.routeName)),
+                  buildListTile(
+                      S.of(context).asset_manage,
+                      Icons.money,
+                      () => Navigator.pushReplacementNamed(
+                          context, AssetScreen.routeName)),
                   buildListTile(
                       S.of(context).parcel,
                       Icons.gif_box,

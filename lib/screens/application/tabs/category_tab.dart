@@ -5,8 +5,8 @@ import 'package:qlda_demego/widgets/primary_card.dart';
 import 'package:qlda_demego/widgets/primary_screen.dart';
 
 import '../../../constant/constants.dart';
-import 'application_card.dart';
-import 'code_status_letter.dart';
+import '../../../widgets/Info_table.dart';
+import '../components/code_status_letter.dart';
 
 class CategoryTab extends StatelessWidget {
   CategoryTab({super.key, this.data});
@@ -24,7 +24,7 @@ class CategoryTab extends StatelessWidget {
         vpad(16),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: ApllicationCard(
+          child: InfoTable(
             data: data,
           ),
         )

@@ -9,8 +9,8 @@ import '../../widgets/primary_button.dart';
 import '../../widgets/primary_dropdown.dart';
 import '../../widgets/primary_screen.dart';
 import '../../widgets/primary_text_field.dart';
-import 'components/application_card.dart';
-import 'detail_letter_screen.dart';
+import '../../widgets/Info_table.dart';
+import 'letter_detail_screen.dart';
 
 class ReplyLetterScreen extends StatelessWidget {
   const ReplyLetterScreen({
@@ -63,7 +63,7 @@ class ReplyLetterScreen extends StatelessWidget {
                     isRequired: true,
                   ),
                 vpad(16),
-                ApllicationCard(data: arg),
+                InfoTable(data: arg),
                 vpad(70),
               ],
             ),

@@ -1140,11 +1140,11 @@ class S {
     );
   }
 
-  /// `Detail letter`
-  String get detail_letter {
+  /// `Letter Detail`
+  String get letter_detail {
     return Intl.message(
-      'Detail letter',
-      name: 'detail_letter',
+      'Letter Detail',
+      name: 'letter_detail',
       desc: '',
       args: [],
     );
@@ -1285,6 +1285,186 @@ class S {
     return Intl.message(
       'Decision',
       name: 'decision',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Asset management`
+  String get asset_manage {
+    return Intl.message(
+      'Asset management',
+      name: 'asset_manage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recommend purchasing`
+  String get recommend_purchase {
+    return Intl.message(
+      'Recommend purchasing',
+      name: 'recommend_purchase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request for exporting`
+  String get req_export {
+    return Intl.message(
+      'Request for exporting',
+      name: 'req_export',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request for importing`
+  String get req_import {
+    return Intl.message(
+      'Request for importing',
+      name: 'req_import',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inventory`
+  String get inventory {
+    return Intl.message(
+      'Inventory',
+      name: 'inventory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Asset detail`
+  String get asset_detail {
+    return Intl.message(
+      'Asset detail',
+      name: 'asset_detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `History delivery`
+  String get history_delivery {
+    return Intl.message(
+      'History delivery',
+      name: 'history_delivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Related asset`
+  String get related_asset {
+    return Intl.message(
+      'Related asset',
+      name: 'related_asset',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Comming`
+  String get comming {
+    return Intl.message(
+      'Comming',
+      name: 'comming',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Import`
+  String get import {
+    return Intl.message(
+      'Import',
+      name: 'import',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hand over`
+  String get hand_over {
+    return Intl.message(
+      'Hand over',
+      name: 'hand_over',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Summary`
+  String get sum {
+    return Intl.message(
+      'Summary',
+      name: 'sum',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stock`
+  String get stock {
+    return Intl.message(
+      'Stock',
+      name: 'stock',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Borrowing`
+  String get borrow {
+    return Intl.message(
+      'Borrowing',
+      name: 'borrow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customer borrowing`
+  String get borrow_cus {
+    return Intl.message(
+      'Customer borrowing',
+      name: 'borrow_cus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not distribution`
+  String get not_distribute {
+    return Intl.message(
+      'Not distribution',
+      name: 'not_distribute',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Export`
+  String get export {
+    return Intl.message(
+      'Export',
+      name: 'export',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Detail`
+  String get detail {
+    return Intl.message(
+      'Detail',
+      name: 'detail',
       desc: '',
       args: [],
     );

@@ -4,8 +4,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:qlda_demego/widgets/primary_screen.dart';
 
 import '../../../constant/constants.dart';
-import 'application_card.dart';
-import 'code_status_letter.dart';
+import '../../../widgets/Info_table.dart';
+import '../components/code_status_letter.dart';
 
 class HistoryApproveTab extends StatelessWidget {
   const HistoryApproveTab({super.key, this.data});
@@ -29,7 +29,7 @@ class HistoryApproveTab extends StatelessWidget {
                     itemCount: data['Lịch sử phê duyệt'].length,
                     itemBuilder: ((context, index) => Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 12),
-                          child: ApllicationCard(
+                          child: InfoTable(
                             data: data['Lịch sử phê duyệt'][index],
                           ),
                         ))),

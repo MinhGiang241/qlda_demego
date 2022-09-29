@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:qlda_demego/constant/constants.dart';
+import 'package:provider/provider.dart';
+import 'package:qlda_demego/services/provider/auth_provider.dart';
 
 import '../../generated/l10n.dart';
+import '../../services/api/api_services.dart';
 import '../../widgets/primary_button.dart';
 import '../auth/sign_in/sign_in_screen.dart';
+import '../home/home_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   static const routeName = '/splash';
@@ -77,9 +81,24 @@ class SplashScreen extends StatelessWidget {
                               child: PrimaryButton(
                                   text: S.of(context).start,
                                   width: dvWidth(context) * 0.7,
-                                  onTap: () {
-                                    Navigator.pushNamed(
-                                        context, SignInScreen.routeName);
+                                  onTap: () async {
+                                    var cre = await ApiService.shared
+                                        .getExistClient();
+                                    if (cre != null) {
+                                      if (cre.credentials.expiration!
+                                              .compareTo(DateTime.now()) >
+                                          0) {
+                                        await ApiService.shared.deleteCre();
+                                        await Navigator.of(context)
+                                            .pushReplacementNamed(
+                                                HomeScreen.routeName);
+                                        return;
+                                      }
+                                    }
+
+                                    // ignore: use_build_context_synchronously
+                                    Navigator.of(context)
+                                        .pushNamed(SignInScreen.routeName);
                                   }),
                             ),
                           )

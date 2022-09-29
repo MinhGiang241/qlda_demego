@@ -9,7 +9,7 @@ import '../../widgets/primary_button.dart';
 import '../../widgets/primary_dropdown.dart';
 import '../../widgets/primary_screen.dart';
 import '../../widgets/primary_text_field.dart';
-import 'components/application_card.dart';
+import '../../widgets/Info_table.dart';
 
 class ConfirmLetterScreen extends StatelessWidget {
   const ConfirmLetterScreen({super.key});
@@ -41,7 +41,7 @@ class ConfirmLetterScreen extends StatelessWidget {
                   hint: S.of(context).enter_note,
                 ),
                 vpad(16),
-                ApllicationCard(data: arg),
+                InfoTable(data: arg),
                 vpad(70),
               ],
             ),

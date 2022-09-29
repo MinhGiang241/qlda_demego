@@ -23,31 +23,30 @@ class PrimaryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSize(
-      duration: const Duration(milliseconds: 300),
-      alignment: Alignment.topCenter,
-      child: Container(
-        padding: padding,
-        margin: margin,
-        height: height,
-        width: width,
-        decoration: BoxDecoration(
-            borderRadius: borderRadius ?? BorderRadius.circular(12),
-            color: Colors.white,
-            border: Border.all(color: Colors.white54, width: 0.5),
-            boxShadow: [
-              BoxShadow(
-                  blurRadius: 32,
-                  color: shadowColor.withOpacity(0.12),
-                  offset: const Offset(0, 8))
-            ]),
-        child: Material(
-            borderRadius: borderRadius ?? BorderRadius.circular(12),
-            color: Colors.transparent,
-            child: InkWell(
-                borderRadius: borderRadius ?? BorderRadius.circular(12),
-                onTap: onTap,
-                child: child)),
-      ),
-    );
+        duration: const Duration(milliseconds: 300),
+        alignment: Alignment.topCenter,
+        child: Container(
+          padding: padding,
+          margin: margin,
+          height: height,
+          width: width,
+          decoration: BoxDecoration(
+              borderRadius: borderRadius ?? BorderRadius.circular(12),
+              color: Colors.white,
+              border: Border.all(color: Colors.white54, width: 0.5),
+              boxShadow: [
+                BoxShadow(
+                    blurRadius: 32,
+                    color: shadowColor.withOpacity(0.12),
+                    offset: const Offset(0, 8))
+              ]),
+          child: Material(
+              borderRadius: borderRadius ?? BorderRadius.circular(12),
+              color: Colors.transparent,
+              child: InkWell(
+                  borderRadius: borderRadius ?? BorderRadius.circular(12),
+                  onTap: onTap,
+                  child: child)),
+        ));
   }
 }

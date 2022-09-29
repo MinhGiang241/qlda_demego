@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import '../../../constant/constants.dart';
-import '../../../widgets/primary_card.dart';
+import '../constant/constants.dart';
+import 'primary_card.dart';
 
-class ApllicationCard extends StatelessWidget {
-  ApllicationCard({super.key, this.data, this.onTap, this.title});
+class InfoTable extends StatelessWidget {
+  InfoTable({super.key, this.data, this.onTap, this.title});
   final data;
   void Function()? onTap;
   String? title;
@@ -59,11 +59,11 @@ class ApllicationCard extends StatelessWidget {
                   hpad(24),
                   Expanded(
                       flex: 1,
-                      child: Text('${infoData.keys.elementAt(j)} :',
+                      child: Text('${infoData.keys.elementAt(j).toString()} :',
                           style: txtBodySmallRegular(color: grayScaleColor2))),
                   Expanded(
                       flex: 1,
-                      child: Text(infoData.values.elementAt(j),
+                      child: Text(infoData.values.elementAt(j).toString(),
                           style: txtBodySmallBold(color: grayScaleColorBase))),
                   hpad(24),
                 ]),

@@ -5,8 +5,8 @@ import 'package:qlda_demego/widgets/primary_screen.dart';
 
 import '../../../constant/constants.dart';
 import '../../../widgets/primary_card.dart';
-import 'application_card.dart';
-import 'code_status_letter.dart';
+import '../../../widgets/Info_table.dart';
+import '../components/code_status_letter.dart';
 
 class HistoryUpdateTab extends StatelessWidget {
   const HistoryUpdateTab({super.key, this.data});
@@ -25,14 +25,14 @@ class HistoryUpdateTab extends StatelessWidget {
         vpad(16),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: ApllicationCard(
+          child: InfoTable(
             title: "Cập nhật",
             data: data['Lịch sử cập nhật'][0],
           ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: ApllicationCard(
+          child: InfoTable(
             title: "Tạo mới",
             data: {
               "Người thực hiện": data["Người tạo"],
