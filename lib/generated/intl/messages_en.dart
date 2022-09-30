@@ -26,16 +26,29 @@ class MessageLookup extends MessageLookupByLibrary {
             "Account already exists, please login with other account"),
         "account_not_avaiable": MessageLookupByLibrary.simpleMessage(
             "User information is not available on the system, please contact Admin."),
+        "add_file": MessageLookupByLibrary.simpleMessage("Add file"),
         "add_new": MessageLookupByLibrary.simpleMessage("Add new"),
+        "add_photo": MessageLookupByLibrary.simpleMessage("Add photo"),
+        "add_request_asset":
+            MessageLookupByLibrary.simpleMessage("Add requesting asset"),
+        "add_supplier": MessageLookupByLibrary.simpleMessage("Add supplier"),
+        "amount": MessageLookupByLibrary.simpleMessage("Amount"),
         "app_version": MessageLookupByLibrary.simpleMessage("App version"),
         "application": MessageLookupByLibrary.simpleMessage("Application"),
         "asset_detail": MessageLookupByLibrary.simpleMessage("Asset detail"),
+        "asset_group": MessageLookupByLibrary.simpleMessage("Asset group"),
+        "asset_list": MessageLookupByLibrary.simpleMessage("Asset List"),
         "asset_manage":
             MessageLookupByLibrary.simpleMessage("Asset management"),
+        "asset_type": MessageLookupByLibrary.simpleMessage("Asset type"),
+        "assign": MessageLookupByLibrary.simpleMessage("Assign"),
         "assign_person": MessageLookupByLibrary.simpleMessage("Assign person"),
+        "attached_photo":
+            MessageLookupByLibrary.simpleMessage("Attached photos"),
         "borrow": MessageLookupByLibrary.simpleMessage("Borrowing"),
         "borrow_cus":
             MessageLookupByLibrary.simpleMessage("Customer borrowing"),
+        "branch": MessageLookupByLibrary.simpleMessage("Branch"),
         "building_management":
             MessageLookupByLibrary.simpleMessage("Building management"),
         "c_new_pass":
@@ -63,6 +76,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Create Leave of Break Letter"),
         "cr_change_shift":
             MessageLookupByLibrary.simpleMessage("Create change shift Letter"),
+        "cr_purchase_req_letter": MessageLookupByLibrary.simpleMessage(
+            "Create  purchasing request letter"),
         "create_acc": MessageLookupByLibrary.simpleMessage("Create an account"),
         "current_pass":
             MessageLookupByLibrary.simpleMessage("Current password"),
@@ -72,6 +87,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change from date"),
         "date_change_to":
             MessageLookupByLibrary.simpleMessage(" Change to date"),
+        "deathline_ex":
+            MessageLookupByLibrary.simpleMessage("Execute deathline"),
         "decision": MessageLookupByLibrary.simpleMessage("Decision"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "detail": MessageLookupByLibrary.simpleMessage("Detail"),
@@ -86,6 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_note": MessageLookupByLibrary.simpleMessage("Enter note"),
         "enter_num": MessageLookupByLibrary.simpleMessage("Enter Number"),
         "enter_pas": MessageLookupByLibrary.simpleMessage("Enter password"),
+        "enter_title": MessageLookupByLibrary.simpleMessage("Enter title"),
         "enter_username":
             MessageLookupByLibrary.simpleMessage("Enter username"),
         "err_conn": MessageLookupByLibrary.simpleMessage("Error Connection"),
@@ -134,6 +152,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Password must not contain Vietnamese character"),
         "note": MessageLookupByLibrary.simpleMessage("Note"),
         "operation": MessageLookupByLibrary.simpleMessage("Operation"),
+        "origin": MessageLookupByLibrary.simpleMessage("Origin"),
         "otp_msg": MessageLookupByLibrary.simpleMessage(
             "We have sent OTP code to your registered phone number. Please enter the OTP code to perform authentication."),
         "otp_verify": MessageLookupByLibrary.simpleMessage("OTP verify"),
@@ -145,8 +164,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "personal_info":
             MessageLookupByLibrary.simpleMessage("Personal Infomation"),
         "phone_num": MessageLookupByLibrary.simpleMessage("Phone number"),
+        "piority": MessageLookupByLibrary.simpleMessage("Piority"),
         "prev": MessageLookupByLibrary.simpleMessage("Previous"),
         "property": MessageLookupByLibrary.simpleMessage("Property"),
+        "purchase_req_letter":
+            MessageLookupByLibrary.simpleMessage("Purchasing request letter"),
+        "quotation": MessageLookupByLibrary.simpleMessage("Quotation"),
+        "reason": MessageLookupByLibrary.simpleMessage("Reason"),
         "reason_change_shift":
             MessageLookupByLibrary.simpleMessage("Reason change shift"),
         "reason_off": MessageLookupByLibrary.simpleMessage("Reason"),
@@ -172,6 +196,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Request for exporting"),
         "req_import":
             MessageLookupByLibrary.simpleMessage("Request for importing"),
+        "request_letter":
+            MessageLookupByLibrary.simpleMessage("Request letter"),
         "require_lowercase": MessageLookupByLibrary.simpleMessage(
             "Password must contain at least 1 lowercase letter"),
         "require_number": MessageLookupByLibrary.simpleMessage(
@@ -187,7 +213,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "resident_card":
             MessageLookupByLibrary.simpleMessage("Resident identity card"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
+        "save_temp": MessageLookupByLibrary.simpleMessage("Temporary save"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "select": MessageLookupByLibrary.simpleMessage("Chọn"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "send_verify": MessageLookupByLibrary.simpleMessage("Send verify"),
         "setting": MessageLookupByLibrary.simpleMessage("Setting"),
@@ -208,6 +236,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "time_off": MessageLookupByLibrary.simpleMessage("Date/Time"),
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "type": MessageLookupByLibrary.simpleMessage("Type"),
+        "unit": MessageLookupByLibrary.simpleMessage("Unit"),
+        "update_asset":
+            MessageLookupByLibrary.simpleMessage(" Update Asset information"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "val_pass": MessageLookupByLibrary.simpleMessage(
             "Password must be at least 8 characters. It must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character"),
@@ -215,6 +246,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vehicle registration card"),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),
         "vi": MessageLookupByLibrary.simpleMessage("Vietnamese"),
+        "warranty": MessageLookupByLibrary.simpleMessage("Warranty department"),
         "wellcome_back": MessageLookupByLibrary.simpleMessage("Welcome back!"),
         "wrong_sign_in": MessageLookupByLibrary.simpleMessage(
             "Username or password is incorrect")

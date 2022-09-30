@@ -1469,6 +1469,256 @@ class S {
       args: [],
     );
   }
+
+  /// `Amount`
+  String get amount {
+    return Intl.message(
+      'Amount',
+      name: 'amount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Assign`
+  String get assign {
+    return Intl.message(
+      'Assign',
+      name: 'assign',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` Update Asset information`
+  String get update_asset {
+    return Intl.message(
+      ' Update Asset information',
+      name: 'update_asset',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Asset type`
+  String get asset_type {
+    return Intl.message(
+      'Asset type',
+      name: 'asset_type',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Asset group`
+  String get asset_group {
+    return Intl.message(
+      'Asset group',
+      name: 'asset_group',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unit`
+  String get unit {
+    return Intl.message(
+      'Unit',
+      name: 'unit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Origin`
+  String get origin {
+    return Intl.message(
+      'Origin',
+      name: 'origin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Branch`
+  String get branch {
+    return Intl.message(
+      'Branch',
+      name: 'branch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Warranty department`
+  String get warranty {
+    return Intl.message(
+      'Warranty department',
+      name: 'warranty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Attached photos`
+  String get attached_photo {
+    return Intl.message(
+      'Attached photos',
+      name: 'attached_photo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add photo`
+  String get add_photo {
+    return Intl.message(
+      'Add photo',
+      name: 'add_photo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add file`
+  String get add_file {
+    return Intl.message(
+      'Add file',
+      name: 'add_file',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create  purchasing request letter`
+  String get cr_purchase_req_letter {
+    return Intl.message(
+      'Create  purchasing request letter',
+      name: 'cr_purchase_req_letter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Purchasing request letter`
+  String get purchase_req_letter {
+    return Intl.message(
+      'Purchasing request letter',
+      name: 'purchase_req_letter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request letter`
+  String get request_letter {
+    return Intl.message(
+      'Request letter',
+      name: 'request_letter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Piority`
+  String get piority {
+    return Intl.message(
+      'Piority',
+      name: 'piority',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reason`
+  String get reason {
+    return Intl.message(
+      'Reason',
+      name: 'reason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Execute deathline`
+  String get deathline_ex {
+    return Intl.message(
+      'Execute deathline',
+      name: 'deathline_ex',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Asset List`
+  String get asset_list {
+    return Intl.message(
+      'Asset List',
+      name: 'asset_list',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add requesting asset`
+  String get add_request_asset {
+    return Intl.message(
+      'Add requesting asset',
+      name: 'add_request_asset',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quotation`
+  String get quotation {
+    return Intl.message(
+      'Quotation',
+      name: 'quotation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add supplier`
+  String get add_supplier {
+    return Intl.message(
+      'Add supplier',
+      name: 'add_supplier',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Temporary save`
+  String get save_temp {
+    return Intl.message(
+      'Temporary save',
+      name: 'save_temp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter title`
+  String get enter_title {
+    return Intl.message(
+      'Enter title',
+      name: 'enter_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chọn`
+  String get select {
+    return Intl.message(
+      'Chọn',
+      name: 'select',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -71,8 +71,12 @@ class SignInProvider with ChangeNotifier {
       isLoading = true;
       notifyListeners();
 
-      await authPrv.onSignIn(context, usernameController.text.trim(),
-          passController.text.trim(), remember);
+      await authPrv.onSignIn(
+        context,
+        usernameController.text.trim(),
+        passController.text.trim(),
+        remember,
+      );
 
       isLoading = false;
       notifyListeners();

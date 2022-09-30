@@ -9,10 +9,11 @@ class ApiAuth {
       bool remmenber = false,
       OnError? onError}) async {
     var client = await ApiService.shared.getClient(
-        username: username,
-        password: password,
-        onError: onError,
-        remmember: remmenber);
+      username: username,
+      password: password,
+      onError: onError,
+      remmember: remmenber,
+    );
     return client;
   }
 

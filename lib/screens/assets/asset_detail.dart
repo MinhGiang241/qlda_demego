@@ -12,6 +12,7 @@ import '../../widgets/primary_tabbar.dart';
 import 'asset_screen.dart';
 import 'tabs/detail_tab.dart';
 import 'tabs/related_asset_tab.dart';
+import 'update_asset_screen.dart';
 
 class AssetDetailScreen extends StatefulWidget {
   static const routeName = "/asset/detail";
@@ -37,29 +38,35 @@ class _AssetDetailScreenState extends State<AssetDetailScreen>
           leading: BackButton(
               onPressed: () => Navigator.pushReplacementNamed(
                   context, AssetScreen.routeName))),
-      body: Column(children: [
-        PrimaryTabBar(
-          controller: _tabController,
-          titles: [
-            S.of(context).detail,
-            S.of(context).history_delivery,
-            S.of(context).related_asset
-          ],
-        ),
-        Expanded(
-          child: TabBarView(
+      body: Column(
+        children: [
+          PrimaryTabBar(
+            controller: _tabController,
+            titles: [
+              S.of(context).detail,
+              S.of(context).history_delivery,
+              S.of(context).related_asset
+            ],
+          ),
+          Expanded(
+            child: TabBarView(
               controller: _tabController,
-              children: [DetailTab(), HistoryDeliveryTab(), RelatedAssetTab()]),
-        )
-      ]),
+              children: [DetailTab(), HistoryDeliveryTab(), RelatedAssetTab()],
+            ),
+          )
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
-          backgroundColor: primaryColorBase,
-          onPressed: () {},
-          child: const Icon(
-            Icons.edit_note,
-            size: 35,
-            color: Colors.white,
-          )),
+        backgroundColor: primaryColorBase,
+        onPressed: () {
+          Navigator.of(context).pushNamed(UpadteAssetScreen.routeName);
+        },
+        child: const Icon(
+          Icons.edit_note,
+          size: 35,
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }

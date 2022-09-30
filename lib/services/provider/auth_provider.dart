@@ -34,8 +34,12 @@ class AuthProvider with ChangeNotifier {
     });
   }
 
-  Future<oauth2.Client?> onSignIn(BuildContext context, String username,
-      String password, bool remember) async {
+  Future<oauth2.Client?> onSignIn(
+    BuildContext context,
+    String username,
+    String password,
+    bool remember,
+  ) async {
     print(remember);
     var credentials = await ApiAuth.signIn(
         username: username,

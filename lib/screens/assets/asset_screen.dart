@@ -12,6 +12,7 @@ import '../../widgets/Info_table.dart';
 import '../../widgets/float_button.dart';
 import '../../widgets/search_bar.dart';
 import 'asset_detail.dart';
+import 'create_request_purchase_screen.dart';
 
 var data = [
   {
@@ -54,54 +55,65 @@ class _AssetScreenState extends State<AssetScreen> {
   Widget build(BuildContext context) {
     var floatButtons = [
       DialChildren(
-          label: S.of(context).req_export,
-          icon: Icons.logout,
-          primary: primaryColor1,
-          onPress: () {}),
+        label: S.of(context).req_export,
+        icon: Icons.logout,
+        primary: primaryColor1,
+        onPress: () {},
+      ),
       DialChildren(
-          label: S.of(context).req_import,
-          icon: Icons.login,
-          primary: yellowColor,
-          onPress: () {}),
+        label: S.of(context).req_import,
+        icon: Icons.login,
+        primary: yellowColor,
+        onPress: () {},
+      ),
       DialChildren(
-          label: S.of(context).inventory,
-          icon: Icons.check_circle,
-          primary: greenColor,
-          onPress: () {}),
+        label: S.of(context).inventory,
+        icon: Icons.check_circle,
+        primary: greenColor,
+        onPress: () {},
+      ),
       DialChildren(
-          label: S.of(context).recommend_purchase,
-          icon: Icons.shopping_cart,
-          primary: purpleColor,
-          onPress: () {}),
+        label: S.of(context).recommend_purchase,
+        icon: Icons.shopping_cart,
+        primary: purpleColor,
+        onPress: () {
+          Navigator.of(context)
+              .pushNamed(CreateRequestPurchaseScreen.routeName);
+        },
+      ),
     ];
 
     return PrimaryScreen(
-        appBar: PrimaryAppbar(title: S.of(context).asset_manage),
-        drawer: MainDrawer(),
-        body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: Column(
-              children: [
-                SearchBar(onPress: () {}),
-                Flexible(
-                  child: ListView.builder(
-                      padding: EdgeInsets.zero,
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      itemCount: data.length,
-                      itemBuilder: (context, i) {
-                        return InfoTable(
-                            onTap: () {
-                              Navigator.of(context)
-                                  .pushNamed(AssetDetailScreen.routeName);
-                            },
-                            data: data[i]);
-                      }),
-                )
-              ],
-            )),
-        floatingActionButton: FloatDialButton(
-          data: floatButtons,
-        ));
+      appBar: PrimaryAppbar(title: S.of(context).asset_manage),
+      drawer: MainDrawer(),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        child: Column(
+          children: [
+            SearchBar(onPress: () {}),
+            Flexible(
+              child: ListView.builder(
+                padding: EdgeInsets.zero,
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemCount: data.length,
+                itemBuilder: (context, i) {
+                  return InfoTable(
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed(AssetDetailScreen.routeName);
+                    },
+                    data: data[i],
+                  );
+                },
+              ),
+            )
+          ],
+        ),
+      ),
+      floatingActionButton: FloatDialButton(
+        data: floatButtons,
+      ),
+    );
   }
 }

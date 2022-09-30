@@ -46,6 +46,8 @@ const Color yellowColor3 = Color(0xffFFDE70);
 const Color yellowColor4 = Color(0xffFFEEB7);
 const Color yellowColor5 = Color(0xffFFF6DA);
 
+const Color yellowColor6 = Color(0xffFFC700);
+
 const Color purpleColorBase = Color(0xff6C4DDA);
 const Color purpleColor1 = Color(0xff522ED2);
 const Color purpleColor2 = Color(0xff8268DF);
@@ -60,12 +62,18 @@ const Color redColor3 = Color(0xffFF9898);
 const Color redColor4 = Color(0xffFFC6C6);
 const Color redColor5 = Color(0xffFFE2E2);
 
+const Color redColor6 = Color(0xffFF0000);
+const Color redColor7 = Color(0xffFF9D9D);
+const Color redColor8 = Color(0xffDDD3D3);
+
 const Color greenColorBase = Color(0xff23D2C3);
 const Color greenColor1 = Color(0xff01BCAD);
 const Color greenColor2 = Color(0xff42E1D4);
 const Color greenColor3 = Color(0xff76ECE2);
 const Color greenColor4 = Color(0xff9FF2EB);
 const Color greenColor5 = Color(0xffDAF5F3);
+
+const Color greenColor6 = Color(0xff00C950);
 
 const Color pinkColorBase = Color(0xffFF4E98);
 const Color pinkColor1 = Color(0xffFF227F);
@@ -85,6 +93,7 @@ final gradientPrimary = LinearGradient(colors: [
 ], begin: Alignment.centerLeft, end: Alignment.centerRight);
 
 const Color blueColor = Color(0xff466FFF);
+const Color blueColor2 = Color(0xff4975FF);
 const Color turquoiseColor = Color(0xff00BCE5);
 const Color greenColor = Color(0xff23D2C3);
 const Color pinkColor = Color(0xffFF4E98);

@@ -15,6 +15,8 @@ import '../screens/application/letter_detail_screen.dart';
 import '../screens/application/reply_letter_screen.dart';
 import '../screens/assets/asset_detail.dart';
 import '../screens/assets/asset_screen.dart';
+import '../screens/assets/create_request_purchase_screen.dart';
+import '../screens/assets/update_asset_screen.dart';
 import '../screens/auth/sign_in/sign_in_screen.dart';
 import '../screens/home/home_screen.dart';
 
@@ -23,67 +25,98 @@ class AppRoutes {
     switch (routeSetting.name) {
       case RootScreen.routeName:
         return MaterialPageRoute(
-            settings: routeSetting, builder: (_) => const RootScreen());
+          settings: routeSetting,
+          builder: (_) => const RootScreen(),
+        );
       case SplashScreen.routeName:
         return MaterialPageRoute(
-            settings: routeSetting,
-            builder: (_) => ChangeNotifierProvider<AuthProvider>(
-                create: (context) => AuthProvider()..start(),
-                builder: (context, child) => SplashScreen()));
+          settings: routeSetting,
+          builder: (_) => ChangeNotifierProvider<AuthProvider>(
+            create: (context) => AuthProvider()..start(),
+            builder: (context, child) => SplashScreen(),
+          ),
+        );
       case SignInScreen.routeName:
         return MaterialPageRoute(
-            settings: routeSetting,
-            builder: (_) => MultiProvider(
-                  providers: [
-                    ChangeNotifierProvider(
-                      create: (context) => AuthProvider()..start(),
-                    ),
-                    ChangeNotifierProvider(
-                      create: (context) =>
-                          SignInProvider(authPrv: context.read<AuthProvider>()),
-                    ),
-                  ],
-                  builder: ((context, child) => SignInScreen()),
-                ));
+          settings: routeSetting,
+          builder: (_) => MultiProvider(
+            providers: [
+              ChangeNotifierProvider(
+                create: (context) => AuthProvider()..start(),
+              ),
+              ChangeNotifierProvider(
+                create: (context) =>
+                    SignInProvider(authPrv: context.read<AuthProvider>()),
+              ),
+            ],
+            builder: ((context, child) => SignInScreen()),
+          ),
+        );
       case HomeScreen.routeName:
         return MaterialPageRoute(
-            settings: routeSetting, builder: (context) => const HomeScreen());
+          settings: routeSetting,
+          builder: (context) => const HomeScreen(),
+        );
       case ApplicationScreen.routeName:
         return MaterialPageRoute(
-            settings: routeSetting,
-            builder: (context) => const ApplicationScreen());
+          settings: routeSetting,
+          builder: (context) => const ApplicationScreen(),
+        );
       case AbsentLetter.routeName:
         return MaterialPageRoute(
-            settings: routeSetting, builder: ((context) => AbsentLetter()));
+          settings: routeSetting,
+          builder: ((context) => AbsentLetter()),
+        );
       case BreakTimeLetter.routeName:
         return MaterialPageRoute(
-            settings: routeSetting, builder: ((context) => BreakTimeLetter()));
+          settings: routeSetting,
+          builder: ((context) => BreakTimeLetter()),
+        );
       case ChangeShiftLetter.routeName:
         return MaterialPageRoute(
-            settings: routeSetting,
-            builder: ((context) => ChangeShiftLetter()));
+          settings: routeSetting,
+          builder: ((context) => ChangeShiftLetter()),
+        );
       case LetterDetailScreen.routeName:
         return MaterialPageRoute(
-            settings: routeSetting,
-            builder: ((context) => LetterDetailScreen()));
+          settings: routeSetting,
+          builder: ((context) => LetterDetailScreen()),
+        );
       case ReplyLetterScreen.routeName:
         return MaterialPageRoute(
-            settings: routeSetting,
-            builder: ((context) => ReplyLetterScreen()));
+          settings: routeSetting,
+          builder: ((context) => ReplyLetterScreen()),
+        );
       case ConfirmLetterScreen.routeName:
         return MaterialPageRoute(
-            settings: routeSetting,
-            builder: ((context) => ConfirmLetterScreen()));
+          settings: routeSetting,
+          builder: ((context) => ConfirmLetterScreen()),
+        );
       case AssetScreen.routeName:
         return MaterialPageRoute(
-            settings: routeSetting, builder: ((context) => AssetScreen()));
+          settings: routeSetting,
+          builder: ((context) => AssetScreen()),
+        );
       case AssetDetailScreen.routeName:
         return MaterialPageRoute(
-            settings: routeSetting,
-            builder: ((context) => AssetDetailScreen()));
+          settings: routeSetting,
+          builder: ((context) => AssetDetailScreen()),
+        );
+      case UpadteAssetScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => UpadteAssetScreen()),
+        );
+      case CreateRequestPurchaseScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => CreateRequestPurchaseScreen()),
+        );
       default:
         return MaterialPageRoute(
-            settings: routeSetting, builder: (_) => const SplashScreen());
+          settings: routeSetting,
+          builder: (_) => const SplashScreen(),
+        );
     }
   }
 }

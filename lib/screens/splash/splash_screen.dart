@@ -84,17 +84,19 @@ class SplashScreen extends StatelessWidget {
                                   onTap: () async {
                                     var cre = await ApiService.shared
                                         .getExistClient();
+
                                     if (cre != null) {
                                       if (cre.credentials.expiration!
                                               .compareTo(DateTime.now()) >
                                           0) {
-                                        await ApiService.shared.deleteCre();
+                                        // ignore: use_build_context_synchronously
                                         await Navigator.of(context)
                                             .pushReplacementNamed(
                                                 HomeScreen.routeName);
                                         return;
                                       }
                                     }
+                                    await ApiService.shared.deleteCre();
 
                                     // ignore: use_build_context_synchronously
                                     Navigator.of(context)

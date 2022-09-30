@@ -38,41 +38,56 @@ class ApiService {
     ApiConstants.baseUrl,
   );
 
-  Future<oauth2.Client?> getClient(
-      {required String username,
-      required String password,
-      OnError? onError,
-      bool remmember = false}) async {
+  Future<oauth2.Client?> getClient({
+    required String username,
+    required String password,
+    OnError? onError,
+    bool remmember = false,
+  }) async {
     userName = username;
     passWord = password;
     remmember = remmember;
     var client = null;
     if (remmember) {
       client = await getExistClient();
+    } else {
+      await deleteCre();
     }
     // const client = null;
 
     if (client != null) {
       if (client.credentials.isExpired) {
-        return await _getCre(username, password, onError);
+        return await _getCre(username, password, onError, remmember);
       } else {
         return client;
       }
     } else {
-      return await _getCre(username, password, onError);
+      return await _getCre(username, password, onError, remmember);
     }
   }
 
   Future<oauth2.Client?> _getCre(
-      String username, String password, OnError? onError) async {
+    String username,
+    String password,
+    OnError? onError,
+    bool remember,
+  ) async {
     final authorizationEndpoint = Uri.parse(tokenEndpointUrl);
     try {
       final cli = await oauth2.resourceOwnerPasswordGrant(
-          authorizationEndpoint, username, password,
-          identifier: clientId, secret: secret, scopes: [scope]);
+        authorizationEndpoint,
+        username,
+        password,
+        identifier: clientId,
+        secret: secret,
+        scopes: [scope],
+      );
       final path = await getApplicationDocumentsDirectory();
       final credentialsFile = File('${path.path}/credential.json');
-      await credentialsFile.writeAsString(cli.credentials.toJson());
+      if (remember) {
+        await credentialsFile.writeAsString(cli.credentials.toJson());
+      }
+
       return cli;
     } catch (e) {
       if (e.runtimeType.toString() == "AuthorizationException") {

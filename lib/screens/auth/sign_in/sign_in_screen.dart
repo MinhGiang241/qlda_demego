@@ -86,12 +86,13 @@ class _SignInScreenState extends State<SignInScreen> {
                           child: Row(
                             children: [
                               Checkbox(
-                                  value: rememberAccount,
-                                  onChanged: (_) {
-                                    setState(() {
-                                      rememberAccount = !rememberAccount;
-                                    });
-                                  }),
+                                value: rememberAccount,
+                                onChanged: (_) {
+                                  setState(() {
+                                    rememberAccount = !rememberAccount;
+                                  });
+                                },
+                              ),
                               Text(
                                 S.of(context).remember_acc,
                                 style: txtBodySmallRegular(
@@ -103,10 +104,11 @@ class _SignInScreenState extends State<SignInScreen> {
                         InkWell(
                           onTap: () async {
                             await Utils.showDialog(
-                                context: context,
-                                dailog: PrimaryDialog.custom(
-                                  title: S.of(context).forgot_pass,
-                                  content: Column(children: [
+                              context: context,
+                              dailog: PrimaryDialog.custom(
+                                title: S.of(context).forgot_pass,
+                                content: Column(
+                                  children: [
                                     Text(
                                       S.of(context).contact_receptionist,
                                       textAlign: TextAlign.center,
@@ -119,8 +121,10 @@ class _SignInScreenState extends State<SignInScreen> {
                                         Navigator.pop(context);
                                       },
                                     )
-                                  ]),
-                                ));
+                                  ],
+                                ),
+                              ),
+                            );
                           },
                           borderRadius: BorderRadius.circular(5),
                           child: Text(
@@ -132,26 +136,31 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     vpad(32),
                     PrimaryButton(
-                        onTap: () async {
-                          FocusScope.of(context).unfocus();
+                      onTap: () async {
+                        FocusScope.of(context).unfocus();
 
-                          await context
-                              .read<SignInProvider>()
-                              .signIn(context, rememberAccount);
-                          setState(() {});
-                        },
-                        text: S.of(context).sign_in,
-                        isLoading: context.watch<SignInProvider>().isLoading,
-                        width: double.infinity),
+                        await context
+                            .read<SignInProvider>()
+                            .signIn(context, rememberAccount);
+                        setState(() {});
+                      },
+                      text: S.of(context).sign_in,
+                      isLoading: context.watch<SignInProvider>().isLoading,
+                      width: double.infinity,
+                    ),
                     vpad(32),
-                    Text(S.of(context).no_acc,
-                        style: txtRegular(12, grayScaleColor2, .78)),
+                    Text(
+                      S.of(context).no_acc,
+                      style: txtRegular(12, grayScaleColor2, .78),
+                    ),
                     vpad(5),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 6),
-                      child: Text(S.of(context).contact_receptionist,
-                          textAlign: TextAlign.center,
-                          style: txtRegular(14, grayScaleColor1, .6)),
+                      child: Text(
+                        S.of(context).contact_receptionist,
+                        textAlign: TextAlign.center,
+                        style: txtRegular(14, grayScaleColor1, .6),
+                      ),
                     ),
                   ],
                 ),

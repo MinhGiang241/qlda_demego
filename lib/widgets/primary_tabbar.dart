@@ -17,17 +17,18 @@ class PrimaryTabBar extends StatelessWidget {
       child: Container(
         decoration: const BoxDecoration(color: Colors.white),
         child: TabBar(
-            labelStyle: txtBodySmallBold(),
-            labelColor: grayScaleColorBase,
-            controller: controller,
-            tabs: titles
-                .map(
-                  (e) => Tab(
-                    child: AutoSizeText(e,
-                        maxLines: 2, minFontSize: 1, style: txtBodySmallBold()),
-                  ),
-                )
-                .toList()),
+          labelStyle: txtBodySmallBold(),
+          labelColor: grayScaleColorBase,
+          controller: controller,
+          tabs: titles
+              .map(
+                (e) => Tab(
+                  child: AutoSizeText(e,
+                      maxLines: 2, minFontSize: 1, style: txtBodySmallBold()),
+                ),
+              )
+              .toList(),
+        ),
       ),
     );
   }
