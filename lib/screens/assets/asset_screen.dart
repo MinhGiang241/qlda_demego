@@ -8,6 +8,7 @@ import 'package:qlda_demego/widgets/primary_screen.dart';
 
 import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
+import '../../services/api/api_asset.dart';
 import '../../widgets/Info_table.dart';
 import '../../widgets/float_button.dart';
 import '../../widgets/search_bar.dart';
@@ -90,7 +91,11 @@ class _AssetScreenState extends State<AssetScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Column(
           children: [
-            SearchBar(onPress: () {}),
+            SearchBar(
+              onPress: () async {
+                await ApiAsset.getAssetList();
+              },
+            ),
             Flexible(
               child: ListView.builder(
                 padding: EdgeInsets.zero,

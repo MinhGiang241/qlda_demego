@@ -47,7 +47,7 @@ class ApiService {
     userName = username;
     passWord = password;
     remmember = remmember;
-    var client = null;
+    var client;
     if (remmember) {
       client = await getExistClient();
     } else {
@@ -84,7 +84,7 @@ class ApiService {
       );
       final path = await getApplicationDocumentsDirectory();
       final credentialsFile = File('${path.path}/credential.json');
-      if (remember) {
+      if (!remember) {
         await credentialsFile.writeAsString(cli.credentials.toJson());
       }
 

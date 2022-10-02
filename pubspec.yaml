@@ -47,6 +47,9 @@ dependencies:
   flutter_speed_dial: ^6.0.0
   syncfusion_flutter_datepicker: ^20.2.50
   auto_size_text: ^3.0.0
+  flutter_bloc: ^8.1.1
+  bloc: ^8.1.0
+  
 
 dev_dependencies:
   flutter_test:
