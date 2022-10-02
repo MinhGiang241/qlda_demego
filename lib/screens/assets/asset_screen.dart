@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:qlda_demego/bloc/asset/asset_list_action.dart';
+import 'package:qlda_demego/bloc/asset/asset_list_state.dart';
 import 'package:qlda_demego/widgets/main_drawer.dart';
 import 'package:qlda_demego/widgets/primary_appbar.dart';
 import 'package:qlda_demego/widgets/primary_screen.dart';
 
+import '../../bloc/asset/asset_list_bloc.dart';
 import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
 import '../../services/api/api_asset.dart';
@@ -52,6 +56,12 @@ class AssetScreen extends StatefulWidget {
 
 class _AssetScreenState extends State<AssetScreen> {
   final isDialOpen = ValueNotifier(false);
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     var floatButtons = [
@@ -89,31 +99,42 @@ class _AssetScreenState extends State<AssetScreen> {
       drawer: MainDrawer(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: Column(
-          children: [
-            SearchBar(
-              onPress: () async {
-                await ApiAsset.getAssetList();
-              },
-            ),
-            Flexible(
-              child: ListView.builder(
-                padding: EdgeInsets.zero,
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                itemCount: data.length,
-                itemBuilder: (context, i) {
-                  return InfoTable(
-                    onTap: () {
-                      Navigator.of(context)
-                          .pushNamed(AssetDetailScreen.routeName);
+        child: BlocBuilder<AssetListBloc, AssetListState>(
+          builder: (context, state) {
+            if (state.isLoading) {
+              context.read<AssetListBloc>().add(LoadAssetListAction());
+              return const Expanded(
+                child: Center(child: CircularProgressIndicator()),
+              );
+            }
+            return Column(
+              children: [
+                SearchBar(
+                  onPress: () async {
+                    // await ApiAsset.getAssetList();
+                    context.read<AssetListBloc>().add(LoadAssetListAction());
+                  },
+                ),
+                Flexible(
+                  child: ListView.builder(
+                    padding: EdgeInsets.zero,
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    itemCount: data.length,
+                    itemBuilder: (context, i) {
+                      return InfoTable(
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushNamed(AssetDetailScreen.routeName);
+                        },
+                        data: state.assetList?[i],
+                      );
                     },
-                    data: data[i],
-                  );
-                },
-              ),
-            )
-          ],
+                  ),
+                )
+              ],
+            );
+          },
         ),
       ),
       floatingActionButton: FloatDialButton(

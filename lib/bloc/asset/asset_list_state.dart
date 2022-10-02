@@ -1,8 +1,11 @@
+import 'package:flutter/foundation.dart' show immutable;
+
+@immutable
 class AssetListState {
   AssetListState({
     required this.isLoading,
-    this.assetList,
+    required this.assetList,
   });
   final bool isLoading;
-  final List<String>? assetList;
+  final List<Object?> assetList;
 }

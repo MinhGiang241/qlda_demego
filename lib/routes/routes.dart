@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qlda_demego/bloc/asset/asset_list_bloc.dart';
 import 'package:qlda_demego/screens/application/absent_letter.dart';
 import 'package:qlda_demego/screens/application/break_time_letter.dart';
 import 'package:qlda_demego/screens/application/change_shift_letter.dart';
@@ -95,7 +97,15 @@ class AppRoutes {
       case AssetScreen.routeName:
         return MaterialPageRoute(
           settings: routeSetting,
-          builder: ((context) => AssetScreen()),
+          builder: (context) => BlocProvider(
+            create: (_) => AssetListBloc(),
+            child: AssetScreen(),
+
+            // (context) => BlocProvider.value(
+            //   value: BlocProvider.of<AssetListBloc>(context),
+            //   child: AssetScreen(),
+            // ),
+          ),
         );
       case AssetDetailScreen.routeName:
         return MaterialPageRoute(

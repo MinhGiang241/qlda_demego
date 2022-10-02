@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_collection_literals
+
 class Asset {
   String? id;
   String? displayName;
@@ -19,5 +21,19 @@ class Asset {
     manage = json['manage'];
     describe = json['describe'];
     inventory = json['inventory'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['id'] = id;
+    data['name'] = name;
+    data['display_name'] = displayName;
+    data['createdTime'] = createdTime;
+    data['updatedTime'] = updatedTime;
+    data['supplierId'] = supplierId;
+    data['manage'] = manage;
+    data['describe'] = describe;
+    data['inventory'] = inventory;
+    return data;
   }
 }

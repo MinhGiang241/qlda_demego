@@ -35,11 +35,10 @@ class ApiAsset {
 
     data['query_Assets_dto']['data'].forEach(
       (e) {
-        print(e);
         assetList.add(Asset.fromJson(e));
       },
     );
 
-    return assetList;
+    return data['query_Assets_dto']['data'];
   }
 }
