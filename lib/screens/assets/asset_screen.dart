@@ -127,7 +127,7 @@ class _AssetScreenState extends State<AssetScreen> {
                           Navigator.of(context)
                               .pushNamed(AssetDetailScreen.routeName);
                         },
-                        data: state.assetList?[i],
+                        data: state.assetList[i],
                       );
                     },
                   ),
