@@ -166,5 +166,8 @@
   "add_supplier": "Thêm nhà cung cấp",
   "save_temp": "Lưu nháp",
   "enter_title": "Nhập tiêu đề",
-  "select": "Chọn"
+  "select": "Chọn",
+  "reload": "Tải lại",
+  "err_internet": "Kiểm tra lại kết nối internet!",
+  "no_asset": "Chưa có tài sản nào!"
 }

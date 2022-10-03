@@ -97,9 +97,11 @@ class ApiService {
       } else if (e.runtimeType.toString() == '_ClientSocketException') {
         onError?.call(ErrorHandle(code: 2));
       } else {
-        onError?.call(ErrorHandle(
-          code: 3,
-        ));
+        onError?.call(
+          ErrorHandle(
+            code: 3,
+          ),
+        );
       }
 
       return null;
@@ -298,7 +300,7 @@ class ApiService {
     }
     try {
       final response = await _dio.delete(path, data: data, options: options);
-      print(response);
+
       return jsonDecode(response.toString());
     } on DioError catch (e) {
       if (e.response != null) {
@@ -322,7 +324,7 @@ class ApiService {
     late AuthLink authLink;
     var client = await getExistClient();
     if (client == null) {
-      onError?.call(ErrorHandle(msg: ''));
+      onError?.call(ErrorHandle());
     } else {
       //print(client.credentials.expiration);
       if (client.credentials.isExpired) {
@@ -351,17 +353,18 @@ class ApiService {
   }
 
   Future<Map<String, dynamic>> graphqlQuery(QueryOptions options) async {
-    final cl = await getClientGraphQL();
     try {
+      final cl = await getClientGraphQL();
       final result = await cl.query(options);
       if (result.data == null) {
+        // throw ("network_connection_err");
         return {
           "status": "internet_error",
           "message": "network_connection_err"
         };
       }
       return result.data!;
-    } on OperationException catch (e) {
+    } catch (e) {
       return {"status": "error", "message": e.toString()};
     }
   }

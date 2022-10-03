@@ -5,16 +5,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:qlda_demego/bloc/asset/asset_list_action.dart';
 import 'package:qlda_demego/bloc/asset/asset_list_state.dart';
+import 'package:qlda_demego/utils/convert_date_time.dart';
+import 'package:qlda_demego/widgets/connect_error.dart';
 import 'package:qlda_demego/widgets/main_drawer.dart';
 import 'package:qlda_demego/widgets/primary_appbar.dart';
+import 'package:qlda_demego/widgets/primary_button.dart';
 import 'package:qlda_demego/widgets/primary_screen.dart';
 
 import '../../bloc/asset/asset_list_bloc.dart';
 import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
+import '../../models/asset_model.dart';
 import '../../services/api/api_asset.dart';
+import '../../utils/utils.dart';
 import '../../widgets/Info_table.dart';
 import '../../widgets/float_button.dart';
+import '../../widgets/primary_dialog.dart';
 import '../../widgets/search_bar.dart';
 import 'asset_detail.dart';
 import 'create_request_purchase_screen.dart';
@@ -101,39 +107,84 @@ class _AssetScreenState extends State<AssetScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: BlocBuilder<AssetListBloc, AssetListState>(
           builder: (context, state) {
-            if (state.isLoading) {
-              context.read<AssetListBloc>().add(LoadAssetListAction());
-              return const Expanded(
-                child: Center(child: CircularProgressIndicator()),
-              );
-            }
-            return Column(
-              children: [
-                SearchBar(
-                  onPress: () async {
-                    // await ApiAsset.getAssetList();
-                    context.read<AssetListBloc>().add(LoadAssetListAction());
+            var dataListInfo = (state.assetList)
+                .map(
+                  (Asset e) => {
+                    "Tên tài sản": e.displayName,
+                    "Code": e.code,
+                    "Ngày tạo": (e.createdTime!).formatDateTimeHmDMY(),
+                    "Ngày cập nhật": (e.updatedTime!).formatDateTimeHmDMY(),
+                    "Loại Tài sản": e.assetType!.displayName,
+                    "Số lượng": e.amount.toString(),
                   },
-                ),
-                Flexible(
-                  child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemCount: data.length,
-                    itemBuilder: (context, i) {
-                      return InfoTable(
-                        onTap: () {
-                          Navigator.of(context)
-                              .pushNamed(AssetDetailScreen.routeName);
-                        },
-                        data: state.assetList[i],
-                      );
+                )
+                .toList();
+            if (state.init! && state.isLoading) {
+              context.read<AssetListBloc>().add(const LoadAssetListAction());
+
+              return Column(
+                // ignore: prefer_const_literals_to_create_immutables
+                children: [
+                  const Expanded(
+                    child: Center(child: CircularProgressIndicator()),
+                  ),
+                ],
+              );
+            } else if (state.isLoading) {
+              return Column(
+                // ignore: prefer_const_literals_to_create_immutables
+                children: [
+                  const Expanded(
+                    child: Center(child: CircularProgressIndicator()),
+                  ),
+                ],
+              );
+            } else if (state.errorHandle != null) {
+              return ConnectError(
+                title: state.errorHandle!.msg,
+                onTap: () {
+                  context
+                      .read<AssetListBloc>()
+                      .add(const LoadAssetListAction());
+                },
+              );
+            } else if (state.assetList.isEmpty) {
+              return Center(
+                child: Text(S.of(context).no_asset, style: txtBodyMediumBold()),
+              );
+            } else {
+              return Column(
+                children: [
+                  SearchBar(
+                    onPress: () async {
+                      // await ApiAsset.getAssetList();
+                      context
+                          .read<AssetListBloc>()
+                          .add(const LoadAssetListAction());
                     },
                   ),
-                )
-              ],
-            );
+                  Flexible(
+                    child: ListView.builder(
+                      padding: EdgeInsets.zero,
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      itemCount: dataListInfo.length,
+                      itemBuilder: (context, i) {
+                        return InfoTable(
+                          onTap: () {
+                            Navigator.of(context).pushNamed(
+                              AssetDetailScreen.routeName,
+                              arguments: {"data": state.assetList[i]},
+                            );
+                          },
+                          data: dataListInfo[i],
+                        );
+                      },
+                    ),
+                  )
+                ],
+              );
+            }
           },
         ),
       ),

@@ -5,9 +5,10 @@ import 'package:qlda_demego/constant/constants.dart';
 import 'package:qlda_demego/widgets/Info_table.dart';
 
 class DetailTab extends StatelessWidget {
-  DetailTab({super.key});
+  DetailTab({super.key, required this.data});
+  final Map data;
 
-  var data = {
+  var data1 = {
     "Tên tài sản": "Thẻ cư dân 2",
     "Loại": "Thẻ",
     "Bộ phận": "Bộ phận kỹ thuật",

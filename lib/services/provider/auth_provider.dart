@@ -40,7 +40,6 @@ class AuthProvider with ChangeNotifier {
     String password,
     bool remember,
   ) async {
-    print(remember);
     var credentials = await ApiAuth.signIn(
         username: username,
         password: password,
@@ -52,12 +51,14 @@ class AuthProvider with ChangeNotifier {
                 dailog: PrimaryDialog.error(msg: S.of(context).wrong_sign_in));
           } else if (e.code == 2) {
             Utils.showDialog(
-                context: context,
-                dailog: PrimaryDialog.error(msg: S.of(context).err_conn));
+              context: context,
+              dailog: PrimaryDialog.error(msg: S.of(context).err_conn),
+            );
           } else {
             Utils.showDialog(
-                context: context,
-                dailog: PrimaryDialog.error(msg: S.of(context).err_unknown));
+              context: context,
+              dailog: PrimaryDialog.error(msg: S.of(context).err_unknown),
+            );
           }
         });
     if (credentials != null) {

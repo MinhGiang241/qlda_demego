@@ -29,7 +29,6 @@ class SearchBar extends StatelessWidget {
                   hint: S.of(context).search,
                   prefixIcon: InkWell(
                     onTap: () {
-                      print('tabb');
                       FocusScope.of(context).unfocus();
                     },
                     child: const Padding(

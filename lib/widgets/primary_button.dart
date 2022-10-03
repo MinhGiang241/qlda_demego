@@ -40,58 +40,64 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: width,
-        margin: margin,
-        decoration: BoxDecoration(
-            color: _backgroundColor(buttonType ?? ButtonType.primary),
-            gradient: _gradientColor(buttonType ?? ButtonType.primary),
-            borderRadius: isRectangle ? null : BorderRadius.circular(28)),
-        child: Material(
-            color: Colors.transparent,
-            child: InkWell(
-              borderRadius: isRectangle ? null : BorderRadius.circular(28),
-              onTap: onTap,
-              child: Padding(
-                  padding: _paddingContent(buttonSize ?? ButtonSize.large),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      if (icon != null) icon!,
-                      if (icon != null || text != null) hpad(8),
-                      if (text != null)
-                        Flexible(
-                            child: isFit
-                                ? FittedBox(
-                                    fit: BoxFit.contain,
-                                    child: isLoading
-                                        ? SizedBox(
-                                            height: 24,
-                                            width: 24,
-                                            child: CircularProgressIndicator(
-                                              color: textColor ?? Colors.white,
-                                              strokeWidth: 3,
-                                            ))
-                                        : Text(text ?? "",
-                                            style: _txtStyle(
-                                                buttonSize ?? ButtonSize.large),
-                                            textAlign: TextAlign.center),
-                                  )
-                                : isLoading
-                                    ? SizedBox(
-                                        height: 20,
-                                        width: 20,
-                                        child: CircularProgressIndicator(
-                                          color: textColor ?? Colors.white,
-                                          strokeWidth: 3,
-                                        ))
-                                    : Text(text ?? "",
-                                        style: _txtStyle(
-                                            buttonSize ?? ButtonSize.large),
-                                        textAlign: TextAlign.center))
-                    ],
-                  )),
-            )));
+      width: width,
+      margin: margin,
+      decoration: BoxDecoration(
+          color: _backgroundColor(buttonType ?? ButtonType.primary),
+          gradient: _gradientColor(buttonType ?? ButtonType.primary),
+          borderRadius: isRectangle ? null : BorderRadius.circular(28)),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: isRectangle ? null : BorderRadius.circular(28),
+          onTap: onTap,
+          child: Padding(
+            padding: _paddingContent(buttonSize ?? ButtonSize.large),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (icon != null) icon!,
+                if (icon != null || text != null) hpad(8),
+                if (text != null)
+                  Flexible(
+                    child: isFit
+                        ? FittedBox(
+                            fit: BoxFit.contain,
+                            child: isLoading
+                                ? SizedBox(
+                                    height: 24,
+                                    width: 24,
+                                    child: CircularProgressIndicator(
+                                      color: textColor ?? Colors.white,
+                                      strokeWidth: 3,
+                                    ))
+                                : Text(text ?? "",
+                                    style: _txtStyle(
+                                        buttonSize ?? ButtonSize.large),
+                                    textAlign: TextAlign.center),
+                          )
+                        : isLoading
+                            ? SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: CircularProgressIndicator(
+                                  color: textColor ?? Colors.white,
+                                  strokeWidth: 3,
+                                ))
+                            : Text(
+                                text ?? "",
+                                style:
+                                    _txtStyle(buttonSize ?? ButtonSize.large),
+                                textAlign: TextAlign.center,
+                              ),
+                  )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   TextStyle _txtStyle(ButtonSize size) {

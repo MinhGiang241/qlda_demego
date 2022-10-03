@@ -12,6 +12,39 @@ class ApiAsset {
 		message
 		data {
 			_id
+			code
+			ref_supplierId_SupplierDto{
+				_id
+				name
+			}
+			ref_unitId_UnitDto {
+				_id
+				name
+				display_name
+			}
+			ref_FloorAssets_assetIdDto{
+				_id
+				display_name
+				floorId
+			}
+			ref_assetTypeId_AssetTypeDto{
+				_id
+				name
+				display_name
+				
+			}
+			ref_BuildingAssets_assetIdDto{
+				_id
+				display_name
+			}
+			ref_BuildingAssets_assetIdDto{
+				_id
+				display_name
+			}
+			ref_ApartmentAssets_assetIdDto{
+				_id
+				display_name
+			}
 			display_name
 			name
 			amount
@@ -26,19 +59,18 @@ class ApiAsset {
 	}
   } 
   ''';
-    var assetList = [];
+
     final QueryOptions options = QueryOptions(
       document: gql(queryAsetList),
       // variables: const {"filter": '', "custominput": ""},
     );
-    final data = await ApiService.shared.graphqlQuery(options);
+    try {
+      final data =
+          await ApiService.shared.graphqlQuery(options).catchError((e) {});
 
-    data['query_Assets_dto']['data'].forEach(
-      (e) {
-        assetList.add(Asset.fromJson(e));
-      },
-    );
-
-    return data['query_Assets_dto']['data'];
+      return data;
+    } catch (e) {
+      throw (e);
+    }
   }
 }

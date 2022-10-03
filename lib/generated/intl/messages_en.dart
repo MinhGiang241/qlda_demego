@@ -107,6 +107,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_username":
             MessageLookupByLibrary.simpleMessage("Enter username"),
         "err_conn": MessageLookupByLibrary.simpleMessage("Error Connection"),
+        "err_internet": MessageLookupByLibrary.simpleMessage(
+            "Check your internet connection!"),
         "err_unknown": MessageLookupByLibrary.simpleMessage("Unknown Error"),
         "export": MessageLookupByLibrary.simpleMessage("Export"),
         "extr_tast": MessageLookupByLibrary.simpleMessage("Extra task"),
@@ -140,6 +142,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "no_acc":
             MessageLookupByLibrary.simpleMessage("You don\'t have any account"),
+        "no_asset":
+            MessageLookupByLibrary.simpleMessage("Do not have any asset!"),
         "no_comment": MessageLookupByLibrary.simpleMessage("No comment"),
         "not_active": MessageLookupByLibrary.simpleMessage(
             "Account has not been activated"),
@@ -180,6 +184,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "reg_success": MessageLookupByLibrary.simpleMessage(
             "Registration successful, please login"),
         "related_asset": MessageLookupByLibrary.simpleMessage("Related asset"),
+        "reload": MessageLookupByLibrary.simpleMessage("Reload"),
         "remember_acc": MessageLookupByLibrary.simpleMessage("Remember me"),
         "reply": MessageLookupByLibrary.simpleMessage("Reply"),
         "reply_absent_letter":

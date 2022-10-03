@@ -104,6 +104,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_username":
             MessageLookupByLibrary.simpleMessage("Nhập tên tài khoản"),
         "err_conn": MessageLookupByLibrary.simpleMessage("Lỗi kết nối"),
+        "err_internet": MessageLookupByLibrary.simpleMessage(
+            "Kiểm tra lại kết nối internet!"),
         "err_unknown":
             MessageLookupByLibrary.simpleMessage("Lỗi Không xác định"),
         "export": MessageLookupByLibrary.simpleMessage("Xuất"),
@@ -140,6 +142,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("Tiếp tục"),
         "no_acc":
             MessageLookupByLibrary.simpleMessage("Bạn chưa có tài khoản ?"),
+        "no_asset":
+            MessageLookupByLibrary.simpleMessage("Chưa có tài sản nào!"),
         "no_comment":
             MessageLookupByLibrary.simpleMessage("Chưa có bình luận nào"),
         "not_active": MessageLookupByLibrary.simpleMessage(
@@ -182,6 +186,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Đăng ký thành công, vui lòng đăng nhập"),
         "related_asset":
             MessageLookupByLibrary.simpleMessage("Tài sản liên quan"),
+        "reload": MessageLookupByLibrary.simpleMessage("Tải lại"),
         "remember_acc":
             MessageLookupByLibrary.simpleMessage("Ghi nhớ tài khoản"),
         "reply": MessageLookupByLibrary.simpleMessage("Phản hồi"),

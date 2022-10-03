@@ -15,7 +15,7 @@ class InfoTable extends StatelessWidget {
     var infoData = {};
 
     for (var entry in data.entries) {
-      if (entry.value.runtimeType == String) {
+      if (entry.value.runtimeType == String && entry.key != 'id') {
         infoData.putIfAbsent(entry.key, () => entry.value);
       }
     }
@@ -25,16 +25,18 @@ class InfoTable extends StatelessWidget {
       child: Container(
           margin: const EdgeInsets.only(bottom: 15),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: Colors.white,
-              border: Border.all(color: shadowColor.withOpacity(0.1), width: 1),
-              boxShadow: [
-                BoxShadow(
-                    spreadRadius: 4,
-                    blurRadius: 8,
-                    color: shadowColor.withOpacity(0.1),
-                    offset: const Offset(0, 2))
-              ]),
+            borderRadius: BorderRadius.circular(12),
+            color: Colors.white,
+            border: Border.all(color: shadowColor.withOpacity(0.1), width: 1),
+            boxShadow: [
+              BoxShadow(
+                spreadRadius: 4,
+                blurRadius: 8,
+                color: shadowColor.withOpacity(0.1),
+                offset: const Offset(0, 2),
+              )
+            ],
+          ),
           width: double.infinity,
           child: Column(children: [
             if (title != null) vpad(12),
@@ -58,13 +60,19 @@ class InfoTable extends StatelessWidget {
                 child: Row(children: [
                   hpad(24),
                   Expanded(
-                      flex: 1,
-                      child: Text('${infoData.keys.elementAt(j).toString()} :',
-                          style: txtBodySmallRegular(color: grayScaleColor2))),
+                    flex: 1,
+                    child: Text(
+                      '${infoData.keys.elementAt(j).toString()} :',
+                      style: txtBodySmallRegular(color: grayScaleColor2),
+                    ),
+                  ),
                   Expanded(
-                      flex: 1,
-                      child: Text(infoData.values.elementAt(j).toString(),
-                          style: txtBodySmallBold(color: grayScaleColorBase))),
+                    flex: 1,
+                    child: Text(
+                      infoData.values.elementAt(j).toString(),
+                      style: txtBodySmallBold(color: grayScaleColorBase),
+                    ),
+                  ),
                   hpad(24),
                 ]),
               ),

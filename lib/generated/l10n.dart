@@ -1719,6 +1719,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Reload`
+  String get reload {
+    return Intl.message(
+      'Reload',
+      name: 'reload',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check your internet connection!`
+  String get err_internet {
+    return Intl.message(
+      'Check your internet connection!',
+      name: 'err_internet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do not have any asset!`
+  String get no_asset {
+    return Intl.message(
+      'Do not have any asset!',
+      name: 'no_asset',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

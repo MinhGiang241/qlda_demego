@@ -165,5 +165,8 @@
   "add_supplier": "Add supplier",
   "save_temp": "Temporary save",
   "enter_title": "Enter title",
-  "select": "Chọn"
+  "select": "Chọn",
+  "reload": "Reload",
+  "err_internet": "Check your internet connection!",
+  "no_asset": "Do not have any asset!"
 }
