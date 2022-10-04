@@ -134,6 +134,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "language": MessageLookupByLibrary.simpleMessage("language"),
         "letter_detail": MessageLookupByLibrary.simpleMessage("Letter Detail"),
         "list_apl": MessageLookupByLibrary.simpleMessage("Application List"),
+        "manage": MessageLookupByLibrary.simpleMessage("Management"),
         "min_max_pass": MessageLookupByLibrary.simpleMessage(
             "Password must contain at least 4 letter and at most 20 letter"),
         "missing":
@@ -235,6 +236,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "stock": MessageLookupByLibrary.simpleMessage("Stock"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),
         "sum": MessageLookupByLibrary.simpleMessage("Summary"),
+        "supply": MessageLookupByLibrary.simpleMessage("Supplier"),
         "systeme_error": MessageLookupByLibrary.simpleMessage("System error"),
         "terms_services":
             MessageLookupByLibrary.simpleMessage("Terms services"),

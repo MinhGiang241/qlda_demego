@@ -169,5 +169,7 @@
   "select": "Chọn",
   "reload": "Tải lại",
   "err_internet": "Kiểm tra lại kết nối internet!",
-  "no_asset": "Chưa có tài sản nào!"
+  "no_asset": "Chưa có tài sản nào!",
+  "manage": "Quản lý theo",
+  "supply": "Nhà cung cấp"
 }

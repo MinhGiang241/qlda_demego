@@ -134,6 +134,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "letter_detail":
             MessageLookupByLibrary.simpleMessage("Chi tiết đơn từ"),
         "list_apl": MessageLookupByLibrary.simpleMessage("Danh sách đơn từ"),
+        "manage": MessageLookupByLibrary.simpleMessage("Quản lý theo"),
         "min_max_pass": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu gồm ít nhất 4 kí tự và nhiều nhất 20 ký tự"),
         "missing": MessageLookupByLibrary.simpleMessage(
@@ -233,6 +234,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "stock": MessageLookupByLibrary.simpleMessage("Tồn kho"),
         "success": MessageLookupByLibrary.simpleMessage("Thành công"),
         "sum": MessageLookupByLibrary.simpleMessage("Tổng số"),
+        "supply": MessageLookupByLibrary.simpleMessage("Nhà cung cấp"),
         "systeme_error": MessageLookupByLibrary.simpleMessage("Lỗi hệ thống"),
         "terms_services":
             MessageLookupByLibrary.simpleMessage("Điều khoản dịch vụ"),

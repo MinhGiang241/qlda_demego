@@ -11,6 +11,9 @@ class Asset {
   String? manage;
   String? describe;
   String? inventory;
+  String? assetTypeId;
+  String? unitId;
+  String? tenantId;
   int? amount;
   Supplier? supplier;
   Unit? unit;
@@ -28,6 +31,9 @@ class Asset {
     updatedTime = json['updatedTime'];
     name = json['name'];
     supplierId = json['supplierId'];
+    assetTypeId = json['assetTypeId'];
+    unitId = json['unitId'];
+    tenantId = json['tenantId'];
     manage = json['manage'];
     describe = json['describe'];
     inventory = json['inventory'];

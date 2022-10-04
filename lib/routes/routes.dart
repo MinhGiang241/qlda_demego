@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qlda_demego/bloc/asset/asset_list_bloc.dart';
+import 'package:qlda_demego/bloc/asset/asset_update/asset_update_bloc.dart';
+
 import 'package:qlda_demego/screens/application/absent_letter.dart';
 import 'package:qlda_demego/screens/application/break_time_letter.dart';
 import 'package:qlda_demego/screens/application/change_shift_letter.dart';
@@ -11,6 +12,7 @@ import 'package:qlda_demego/screens/splash/splash_screen.dart';
 import 'package:qlda_demego/services/provider/auth_provider.dart';
 import 'package:qlda_demego/services/provider/sign_in_provider.dart';
 import 'package:provider/provider.dart';
+import '../bloc/asset/asset_list/asset_list_bloc.dart';
 import '../screens/application/application_screen.dart';
 import '../screens/application/confirm_letter_screen.dart';
 import '../screens/application/letter_detail_screen.dart';
@@ -100,11 +102,6 @@ class AppRoutes {
           builder: (context) => BlocProvider(
             create: (_) => AssetListBloc(),
             child: AssetScreen(),
-
-            // (context) => BlocProvider.value(
-            //   value: BlocProvider.of<AssetListBloc>(context),
-            //   child: AssetScreen(),
-            // ),
           ),
         );
       case AssetDetailScreen.routeName:
@@ -112,10 +109,13 @@ class AppRoutes {
           settings: routeSetting,
           builder: ((context) => AssetDetailScreen()),
         );
-      case UpadteAssetScreen.routeName:
+      case UpdateAssetScreen.routeName:
         return MaterialPageRoute(
           settings: routeSetting,
-          builder: ((context) => UpadteAssetScreen()),
+          builder: (context) => BlocProvider(
+            create: (context) => AssetUpdateBloc(),
+            child: UpdateAssetScreen(),
+          ),
         );
       case CreateRequestPurchaseScreen.routeName:
         return MaterialPageRoute(

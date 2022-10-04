@@ -1749,6 +1749,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Management`
+  String get manage {
+    return Intl.message(
+      'Management',
+      name: 'manage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Supplier`
+  String get supply {
+    return Intl.message(
+      'Supplier',
+      name: 'supply',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

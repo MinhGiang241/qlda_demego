@@ -92,7 +92,7 @@ class _BreakTimeLetterState extends State<BreakTimeLetter> {
                         controller: endTimeController,
                         enable: false,
                         prefixIcon: const Icon(Icons.access_time_rounded),
-                        label: S.of(context).start_time,
+                        label: S.of(context).end_time,
                         isRequired: true,
                         onTap: () async {
                           var value = await showTimePicker(

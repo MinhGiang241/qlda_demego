@@ -356,6 +356,25 @@ class ApiService {
     try {
       final cl = await getClientGraphQL();
       final result = await cl.query(options);
+
+      if (result.data == null) {
+        // throw ("network_connection_err");
+        return {
+          "status": "internet_error",
+          "message": "network_connection_err"
+        };
+      }
+      return result.data!;
+    } catch (e) {
+      return {"status": "error", "message": e.toString()};
+    }
+  }
+
+  Future<Map<String, dynamic>> mutationhqlQuery(MutationOptions options) async {
+    try {
+      final cl = await getClientGraphQL();
+      final result = await cl.mutate(options);
+
       if (result.data == null) {
         // throw ("network_connection_err");
         return {

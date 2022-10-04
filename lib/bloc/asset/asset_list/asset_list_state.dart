@@ -1,6 +1,6 @@
 import 'package:qlda_demego/utils/error_handler.dart';
 
-import '../../models/asset_model.dart';
+import '../../../models/asset_model.dart';
 
 abstract class AssetState {
   bool? isLoading;

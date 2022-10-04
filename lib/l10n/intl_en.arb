@@ -168,5 +168,7 @@
   "select": "Chọn",
   "reload": "Reload",
   "err_internet": "Check your internet connection!",
-  "no_asset": "Do not have any asset!"
+  "no_asset": "Do not have any asset!",
+  "manage": "Management",
+  "supply": "Supplier"
 }

@@ -26,11 +26,17 @@ var items = data.asMap().entries.map((v) {
 }).toList();
 
 class PrimaryDropDown extends StatefulWidget {
-  const PrimaryDropDown(
-      {super.key, this.label, this.isRequired = false, this.controller});
+  const PrimaryDropDown({
+    super.key,
+    this.label,
+    this.isRequired = false,
+    this.controller,
+    this.selectList,
+  });
   final String? label;
   final bool isRequired;
   final TextEditingController? controller;
+  final List<DropdownMenuItem>? selectList;
 
   @override
   State<PrimaryDropDown> createState() => _PrimaryDropDownState();
@@ -41,48 +47,57 @@ class _PrimaryDropDownState extends State<PrimaryDropDown> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Row(
-        children: [
-          Text(widget.label!,
-              style: txtBodySmallRegular(color: grayScaleColorBase)),
-          if (widget.isRequired) hpad(4),
-          if (widget.isRequired)
-            Text("*", style: txtBodySmallRegular(color: redColorBase))
-        ],
-      ),
-      if (widget.label != null) vpad(8),
-      DropdownButtonFormField(
-        // value: items[indexSelected],
-        // dropdownColor: Colors.black,
-        hint: Text("---Chọn---"),
-        style: txtBodySmallBold(color: grayScaleColorBase),
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.white,
-          hintStyle: txtBodySmallBold(color: grayScaleColor3),
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: primaryColor2, width: 2)),
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide.none),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Text(
+              widget.label!,
+              style: txtBodySmallRegular(color: grayScaleColorBase),
+            ),
+            if (widget.isRequired) hpad(4),
+            if (widget.isRequired)
+              Text("*", style: txtBodySmallRegular(color: redColorBase))
+          ],
         ),
-        onChanged: (v) {
-          indexSelected = v!;
-        },
-        items: items,
-      )
-      // PrimaryTextField(
-      //   suffixIcon: DropdownButton(onChanged: (v) {}, items: []),
-      // )
-      // PrimaryCard(
-      //     child: DropdownButton(
-      //   onChanged: (v) {},
-      //   items: [],
-      // ))
-    ]);
+        if (widget.label != null) vpad(8),
+        DropdownButtonFormField(
+          isExpanded: true,
+          // value: items[indexSelected],
+          // dropdownColor: Colors.black,
+          hint: Text("---${S.of(context).select}---"),
+          style: txtBodySmallBold(color: grayScaleColorBase),
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: Colors.white,
+            hintStyle: txtBodySmallBold(color: grayScaleColor3),
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: const BorderSide(color: primaryColor2, width: 2),
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide.none,
+            ),
+          ),
+          onChanged: (v) {
+            widget.controller!.text = v;
+            // indexSelected = v!;
+          },
+          items: widget.selectList ?? items,
+        )
+        // PrimaryTextField(
+        //   suffixIcon: DropdownButton(onChanged: (v) {}, items: []),
+        // )
+        // PrimaryCard(
+        //     child: DropdownButton(
+        //   onChanged: (v) {},
+        //   items: [],
+        // ))
+      ],
+    );
   }
 }

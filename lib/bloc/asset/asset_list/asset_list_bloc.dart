@@ -1,11 +1,11 @@
 import 'package:bloc/bloc.dart';
-import 'package:qlda_demego/bloc/asset/asset_list_action.dart';
+import 'package:qlda_demego/bloc/asset/asset_list/asset_list_action.dart';
 
-import '../../models/asset_model.dart';
-import '../../services/api/api_asset.dart';
-import '../../utils/error_handler.dart';
+import '../../../models/asset_model.dart';
+import '../../../services/api/api_asset.dart';
+import '../../../utils/error_handler.dart';
 import 'asset_list_state.dart';
-import '../../utils/convert_date_time.dart';
+import '../../../utils/convert_date_time.dart';
 
 class AssetListBloc extends Bloc<LoadAssetListAction, AssetListState> {
   AssetListBloc() : super(AssetListState.empty()) {
@@ -40,7 +40,6 @@ class AssetListBloc extends Bloc<LoadAssetListAction, AssetListState> {
           data['query_Assets_dto']["data"].forEach((e) {
             listAssets.add(Asset.fromJson(e));
           });
-          print(listAssets.runtimeType);
 
           emit(
             AssetListState(
