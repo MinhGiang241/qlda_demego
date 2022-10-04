@@ -41,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "asset_group": MessageLookupByLibrary.simpleMessage("Nhóm tài sản"),
         "asset_list": MessageLookupByLibrary.simpleMessage("Danh sách tài sản"),
         "asset_manage": MessageLookupByLibrary.simpleMessage("Quản lý tài sản"),
+        "asset_name": MessageLookupByLibrary.simpleMessage("Tên tài sản"),
         "asset_type": MessageLookupByLibrary.simpleMessage("Loại tài sản"),
         "assign": MessageLookupByLibrary.simpleMessage("Bàn giao"),
         "assign_person":

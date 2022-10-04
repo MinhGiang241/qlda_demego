@@ -16,18 +16,36 @@ import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
 import '../../models/asset_model.dart';
 
-class UpdateAssetScreen extends StatelessWidget {
+class UpdateAssetScreen extends StatefulWidget {
   static const routeName = '/asset/update';
   const UpdateAssetScreen({super.key});
 
   @override
+  State<UpdateAssetScreen> createState() => _UpdateAssetScreenState();
+}
+
+class _UpdateAssetScreenState extends State<UpdateAssetScreen> {
+  var loading = false;
+  @override
   Widget build(BuildContext context) {
+    final arg = ModalRoute.of(context)!.settings.arguments as Map;
     return PrimaryScreen(
       appBar: PrimaryAppbar(title: S.of(context).update_asset),
       body: BlocBuilder<AssetUpdateBloc, AssetUpdateState>(
         builder: (context, state) {
           if (state.isInit == true) {
-            context.read<AssetUpdateBloc>().add(AssetLoadingDataAction());
+            context.read<AssetUpdateBloc>().add(
+                  AssetLoadingDataAction(
+                    id: arg['data'].id,
+                    code: arg['data'].code,
+                    name: arg['data'].name,
+                    amount: arg['data'].amount,
+                    assetTypeId: arg['data'].assetTypeId,
+                    supplierId: arg['data'].supplierId,
+                    manage: arg['data'].manage,
+                    unitId: arg['data'].unitId,
+                  ),
+                );
             return const Center(
               child: CircularProgressIndicator(),
             );
@@ -66,8 +84,14 @@ class UpdateAssetScreen extends StatelessWidget {
                       padding: EdgeInsets.zero,
                       children: [
                         vpad(12),
+                        PrimaryTextField(
+                          controller: state.nameController,
+                          label: S.of(context).asset_name,
+                          isRequired: true,
+                        ),
+                        vpad(12),
                         PrimaryDropDown(
-                          controller: state.typeController,
+                          value: state.typeController,
                           label: S.of(context).asset_type,
                           isRequired: true,
                           selectList: listAssetTypeChoices,
@@ -82,7 +106,7 @@ class UpdateAssetScreen extends StatelessWidget {
                           children: [
                             Expanded(
                               child: PrimaryDropDown(
-                                controller: state.unitController,
+                                value: state.unitController,
                                 isRequired: true,
                                 label: S.of(context).unit,
                                 selectList: listUnitChoices,
@@ -94,7 +118,7 @@ class UpdateAssetScreen extends StatelessWidget {
                                 isRequired: true,
                                 label: S.of(context).supply,
                                 selectList: listSupplierChoices,
-                                controller: state.unitController,
+                                value: state.supplierController,
                               ),
                             )
                           ],
@@ -134,7 +158,7 @@ class UpdateAssetScreen extends StatelessWidget {
                               child: PrimaryDropDown(
                                 isRequired: true,
                                 label: S.of(context).manage,
-                                controller: state.manageController,
+                                value: state.manageController,
                                 // ignore: prefer_const_literals_to_create_immutables
                                 selectList: [
                                   const DropdownMenuItem(
@@ -172,7 +196,8 @@ class UpdateAssetScreen extends StatelessWidget {
                             Text(
                               S.of(context).add_photo,
                               style: txtBodySmallRegular(
-                                  color: grayScaleColorBase),
+                                color: grayScaleColorBase,
+                              ),
                             )
                           ],
                         ),
@@ -210,27 +235,29 @@ class UpdateAssetScreen extends StatelessWidget {
                 ),
                 Positioned(
                   bottom: 12,
-                  child: Container(
+                  child: SizedBox(
                     width: dvWidth(context),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         PrimaryButton(
+                          isLoading: loading,
                           text: S.of(context).send,
                           width: 140,
                           onTap: () {
-                            // print(state.amountController.value);
-                            print(state.manageController.value);
-                            print(state.typeController.value);
-                            // print(state.branchController.value);
-                            print(state.unitController.value);
-                            print(state.supplierController.value);
+                            setState(() {
+                              loading = !loading;
+                            });
+                            context
+                                .read<AssetUpdateBloc>()
+                                .add(AssetSubmitDataAction());
                           },
                           buttonSize: ButtonSize.large,
                           buttonType: ButtonType.primary,
                         ),
                         PrimaryButton(
+                          isLoading: loading,
                           text: S.of(context).cancel,
                           width: 140,
                           onTap: () {

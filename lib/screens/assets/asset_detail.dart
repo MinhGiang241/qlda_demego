@@ -81,7 +81,10 @@ class _AssetDetailScreenState extends State<AssetDetailScreen>
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColorBase,
         onPressed: () {
-          Navigator.of(context).pushNamed(UpdateAssetScreen.routeName);
+          Navigator.of(context).pushNamed(
+            UpdateAssetScreen.routeName,
+            arguments: arg,
+          );
         },
         child: const Icon(
           Icons.edit_note,

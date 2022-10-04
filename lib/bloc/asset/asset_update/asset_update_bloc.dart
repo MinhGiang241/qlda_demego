@@ -28,12 +28,36 @@ class AssetUpdateBloc extends Bloc<AssetUpdateAction, AssetUpdateState> {
 
       emit(
         AssetUpdateState.loaded(
-          loadedAmount: 10,
+          assetCode: event.code,
+          assetId: event.id,
+          initName: event.name,
+          initAmount: event.amount,
+          initBranch: event.branch,
+          initManage: event.manage,
+          initSuply: event.supplierId,
+          initType: event.assetTypeId,
+          initUnit: event.unitId,
           loadedAssetTypeList: asetTypeList,
           loadedUnitList: unitList,
           loadedUnitListSuplierList: supplierList,
         ),
       );
+    });
+
+    on<AssetSubmitDataAction>((event, emit) async {
+      Asset asset = Asset(
+        id: state.id,
+        code: state.code,
+        name: state.nameController.text,
+        amount: int.parse(state.amountController.text),
+        assetTypeId: state.typeController,
+        supplierId: state.supplierController,
+        unitId: state.unitController,
+        manage: state.manageController,
+      );
+      var data = await ApiAsset.updateAsset(asset);
+      print(data);
+      emit(AssetUpdateState.submit());
     });
   }
 }

@@ -26,16 +26,16 @@ var items = data.asMap().entries.map((v) {
 }).toList();
 
 class PrimaryDropDown extends StatefulWidget {
-  const PrimaryDropDown({
+  PrimaryDropDown({
     super.key,
     this.label,
     this.isRequired = false,
-    this.controller,
+    this.value,
     this.selectList,
   });
   final String? label;
   final bool isRequired;
-  final TextEditingController? controller;
+  String? value;
   final List<DropdownMenuItem>? selectList;
 
   @override
@@ -63,6 +63,7 @@ class _PrimaryDropDownState extends State<PrimaryDropDown> {
         ),
         if (widget.label != null) vpad(8),
         DropdownButtonFormField(
+          value: widget.value,
           isExpanded: true,
           // value: items[indexSelected],
           // dropdownColor: Colors.black,
@@ -84,19 +85,12 @@ class _PrimaryDropDownState extends State<PrimaryDropDown> {
             ),
           ),
           onChanged: (v) {
-            widget.controller!.text = v;
-            // indexSelected = v!;
+            if (widget.value != null) {
+              widget.value = v.toString();
+            }
           },
           items: widget.selectList ?? items,
         )
-        // PrimaryTextField(
-        //   suffixIcon: DropdownButton(onChanged: (v) {}, items: []),
-        // )
-        // PrimaryCard(
-        //     child: DropdownButton(
-        //   onChanged: (v) {},
-        //   items: [],
-        // ))
       ],
     );
   }

@@ -1769,6 +1769,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Asset Name`
+  String get asset_name {
+    return Intl.message(
+      'Asset Name',
+      name: 'asset_name',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

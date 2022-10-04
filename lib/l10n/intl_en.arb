@@ -170,5 +170,6 @@
   "err_internet": "Check your internet connection!",
   "no_asset": "Do not have any asset!",
   "manage": "Management",
-  "supply": "Supplier"
+  "supply": "Supplier",
+  "asset_name":"Asset Name"
 }

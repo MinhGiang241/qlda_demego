@@ -40,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "asset_list": MessageLookupByLibrary.simpleMessage("Asset List"),
         "asset_manage":
             MessageLookupByLibrary.simpleMessage("Asset management"),
+        "asset_name": MessageLookupByLibrary.simpleMessage("Asset Name"),
         "asset_type": MessageLookupByLibrary.simpleMessage("Asset type"),
         "assign": MessageLookupByLibrary.simpleMessage("Assign"),
         "assign_person": MessageLookupByLibrary.simpleMessage("Assign person"),

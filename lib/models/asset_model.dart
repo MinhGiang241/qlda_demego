@@ -1,6 +1,18 @@
 // ignore_for_file: prefer_collection_literals, unnecessary_null_in_if_null_operators, curly_braces_in_flow_control_structures
 
 class Asset {
+  Asset({
+    this.id,
+    this.apartments,
+    this.assetTypeId,
+    this.code,
+    this.buildings,
+    this.name,
+    this.supplierId,
+    this.unitId,
+    this.manage,
+    this.amount,
+  });
   String? id;
   String? code;
   String? displayName;
@@ -60,12 +72,15 @@ class Asset {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
-    data['id'] = id;
+    data['_id'] = id;
     data['name'] = name;
+    data['code'] = code;
     data['display_name'] = displayName;
     data['createdTime'] = createdTime;
     data['updatedTime'] = updatedTime;
     data['supplierId'] = supplierId;
+    data['assetTypeId'] = assetTypeId;
+    data['unitId'] = unitId;
     data['manage'] = manage;
     data['describe'] = describe;
     data['inventory'] = inventory;
