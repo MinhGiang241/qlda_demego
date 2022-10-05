@@ -15,6 +15,7 @@ class AssetLoadingDataAction extends AssetUpdateAction {
     this.manage,
     this.amount = 0,
     this.branch,
+    this.createdTime,
   });
   final String name;
   final String code;
@@ -23,8 +24,9 @@ class AssetLoadingDataAction extends AssetUpdateAction {
   final String unitId;
   final String? supplierId;
   final String? manage;
-  final int? amount;
+  final int amount;
   final String? branch;
+  final String? createdTime;
 }
 
 class AssetSubmitDataAction extends AssetUpdateAction {}

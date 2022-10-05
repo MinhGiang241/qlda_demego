@@ -172,5 +172,7 @@
   "no_asset": "Chưa có tài sản nào!",
   "manage": "Quản lý theo",
   "supply": "Nhà cung cấp",
-  "asset_name":"Tên tài sản"
+  "asset_name": "Tên tài sản",
+  "asset_update_success": "Cập nhật tài sản thành công",
+  "back": "Trở về"
 }

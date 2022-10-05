@@ -43,10 +43,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "asset_manage": MessageLookupByLibrary.simpleMessage("Quản lý tài sản"),
         "asset_name": MessageLookupByLibrary.simpleMessage("Tên tài sản"),
         "asset_type": MessageLookupByLibrary.simpleMessage("Loại tài sản"),
+        "asset_update_success":
+            MessageLookupByLibrary.simpleMessage("Cập nhật tài sản thành công"),
         "assign": MessageLookupByLibrary.simpleMessage("Bàn giao"),
         "assign_person":
             MessageLookupByLibrary.simpleMessage("Nhân sự được đổi"),
         "attached_photo": MessageLookupByLibrary.simpleMessage("Ảnh đính kèm"),
+        "back": MessageLookupByLibrary.simpleMessage("Trở về"),
         "borrow": MessageLookupByLibrary.simpleMessage("Mượn"),
         "borrow_cus": MessageLookupByLibrary.simpleMessage("Khách hàng mượn"),
         "branch": MessageLookupByLibrary.simpleMessage("Hãng"),

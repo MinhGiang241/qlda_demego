@@ -110,7 +110,7 @@ class _AssetScreenState extends State<AssetScreen> {
             var dataListInfo = (state.assetList)
                 .map(
                   (Asset e) => {
-                    "Tên tài sản": e.displayName,
+                    "Tên tài sản": e.name,
                     "Code": e.code,
                     "Ngày tạo": (e.createdTime!).formatDateTimeHmDMY(),
                     "Ngày cập nhật": (e.updatedTime!).formatDateTimeHmDMY(),

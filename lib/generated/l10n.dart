@@ -1779,6 +1779,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Asset Updated successful`
+  String get asset_update_success {
+    return Intl.message(
+      'Asset Updated successful',
+      name: 'asset_update_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back`
+  String get back {
+    return Intl.message(
+      'Back',
+      name: 'back',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

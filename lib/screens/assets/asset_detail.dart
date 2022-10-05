@@ -37,7 +37,7 @@ class _AssetDetailScreenState extends State<AssetDetailScreen>
     final arg = ModalRoute.of(context)!.settings.arguments as Map;
 
     var dataListInfo = {
-      "Tên tài sản": arg['data'].displayName,
+      "Tên tài sản": arg['data'].name,
       "Code": arg['data'].code,
       "Ngày tạo": (arg['data'].createdTime! as String).formatDateTimeHmDMY(),
       "Ngày cập nhật":

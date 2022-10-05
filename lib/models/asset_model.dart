@@ -12,6 +12,9 @@ class Asset {
     this.unitId,
     this.manage,
     this.amount,
+    this.createdTime,
+    this.updatedTime,
+    this.assetType,
   });
   String? id;
   String? code;

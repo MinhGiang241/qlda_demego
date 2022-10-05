@@ -171,5 +171,7 @@
   "no_asset": "Do not have any asset!",
   "manage": "Management",
   "supply": "Supplier",
-  "asset_name":"Asset Name"
+  "asset_name": "Asset Name",
+  "asset_update_success": "Asset Updated successful",
+  "back": "Back"
 }

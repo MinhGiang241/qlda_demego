@@ -132,5 +132,9 @@ class PrimaryDialog extends CustomDialog {
       : super(type: DialogType.error, code: code, key: key);
   const PrimaryDialog.custom({Key? key, required String title, Widget? content})
       : super(
-            type: DialogType.custom, key: key, title: title, content: content);
+          type: DialogType.custom,
+          key: key,
+          title: title,
+          content: content,
+        );
 }

@@ -31,11 +31,13 @@ class PrimaryDropDown extends StatefulWidget {
     this.label,
     this.isRequired = false,
     this.value,
+    this.onChange,
     this.selectList,
   });
   final String? label;
   final bool isRequired;
   String? value;
+  Function(dynamic)? onChange;
   final List<DropdownMenuItem>? selectList;
 
   @override
@@ -62,7 +64,7 @@ class _PrimaryDropDownState extends State<PrimaryDropDown> {
           ],
         ),
         if (widget.label != null) vpad(8),
-        DropdownButtonFormField(
+        DropdownButtonFormField<dynamic>(
           value: widget.value,
           isExpanded: true,
           // value: items[indexSelected],
@@ -84,11 +86,12 @@ class _PrimaryDropDownState extends State<PrimaryDropDown> {
               borderSide: BorderSide.none,
             ),
           ),
-          onChanged: (v) {
-            if (widget.value != null) {
-              widget.value = v.toString();
-            }
-          },
+          onChanged: widget.onChange ??
+              (v) {
+                if (widget.value != null) {
+                  widget.value = v.toString();
+                }
+              },
           items: widget.selectList ?? items,
         )
       ],

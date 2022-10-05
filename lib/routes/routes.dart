@@ -113,7 +113,7 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: routeSetting,
           builder: (context) => BlocProvider(
-            create: (context) => AssetUpdateBloc(),
+            create: (context) => AssetUpdateBloc(context),
             child: UpdateAssetScreen(),
           ),
         );

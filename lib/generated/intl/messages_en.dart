@@ -42,10 +42,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Asset management"),
         "asset_name": MessageLookupByLibrary.simpleMessage("Asset Name"),
         "asset_type": MessageLookupByLibrary.simpleMessage("Asset type"),
+        "asset_update_success":
+            MessageLookupByLibrary.simpleMessage("Asset Updated successful"),
         "assign": MessageLookupByLibrary.simpleMessage("Assign"),
         "assign_person": MessageLookupByLibrary.simpleMessage("Assign person"),
         "attached_photo":
             MessageLookupByLibrary.simpleMessage("Attached photos"),
+        "back": MessageLookupByLibrary.simpleMessage("Back"),
         "borrow": MessageLookupByLibrary.simpleMessage("Borrowing"),
         "borrow_cus":
             MessageLookupByLibrary.simpleMessage("Customer borrowing"),
