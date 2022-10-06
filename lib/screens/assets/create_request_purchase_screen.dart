@@ -16,6 +16,7 @@ import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
 import '../../widgets/float_button.dart';
 import 'components/data_asset_list_table.dart';
+import 'components/data_asset_quotation_table.dart';
 
 const dataAssets = [
   {
@@ -41,7 +42,101 @@ const dataAssets = [
   },
 ];
 
-var dataQuotation = [];
+var dataQuotation = [
+  {
+    "STT": 1,
+    "Tên nhà cung cấp": "NCC1",
+    "Số lượng": 12,
+    "Mã tài sản": '',
+    "Đơn Giá": '',
+    "Thành tiền": 65000,
+    "Danh sách": [
+      {
+        "Tài sản": "Bóng đèn",
+        "Mã tài sản": "0001",
+        "Số lượng": 5,
+        "Đơn giá": 60000,
+        "Thành Tiền": 300000
+      },
+      {
+        "Tài sản": "Khăn",
+        "Mã tài sản": "0002",
+        "Số lượng": 4,
+        "Đơn giá": 20000,
+        "Thành Tiền": 80000
+      },
+      {
+        "Tài sản": "Bóng đèn",
+        "Mã tài sản": "0003",
+        "Số lượng": 3,
+        "Đơn giá": 90000,
+        "Thành Tiền": 2700000
+      },
+    ]
+  },
+  {
+    "STT": 2,
+    "Tên nhà cung cấp": "NCC2",
+    "Số lượng": 12,
+    "Mã tài sản": '',
+    "Đơn Giá": '',
+    "Thành tiền": 65000,
+    "Danh sách": [
+      {
+        "Tài sản": "Bóng đèn",
+        "Mã tài sản": "0001",
+        "Số lượng": 5,
+        "Đơn giá": 60000,
+        "Thành Tiền": 300000
+      },
+      {
+        "Tài sản": "Khăn",
+        "Mã tài sản": "0002",
+        "Số lượng": 4,
+        "Đơn giá": 20000,
+        "Thành Tiền": 80000
+      },
+      {
+        "Tài sản": "Bóng đèn",
+        "Mã tài sản": "0003",
+        "Số lượng": 3,
+        "Đơn giá": 90000,
+        "Thành Tiền": 2700000
+      },
+    ]
+  },
+  {
+    "STT": 3,
+    "Tên nhà cung cấp": "NCC3",
+    "Số lượng": 12,
+    "Mã tài sản": '',
+    "Đơn Giá": '',
+    "Thành tiền": 65000,
+    "Danh sách": [
+      {
+        "Tài sản": "Bóng đèn",
+        "Mã tài sản": "0001",
+        "Số lượng": 5,
+        "Đơn giá": 60000,
+        "Thành Tiền": 300000
+      },
+      {
+        "Tài sản": "Khăn",
+        "Mã tài sản": "0002",
+        "Số lượng": 4,
+        "Đơn giá": 20000,
+        "Thành Tiền": 80000
+      },
+      {
+        "Tài sản": "Bóng đèn",
+        "Mã tài sản": "0003",
+        "Số lượng": 3,
+        "Đơn giá": 90000,
+        "Thành Tiền": 2700000
+      },
+    ]
+  },
+];
 
 class CreateRequestPurchaseScreen extends StatefulWidget {
   const CreateRequestPurchaseScreen({super.key});
@@ -133,10 +228,11 @@ class _CreateRequestPurchaseScreenState
                       suffixIcon: const Icon(Icons.calendar_month),
                       onTap: () async {
                         var value = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(DateTime.now().year - 10, 1, 1),
-                            lastDate: DateTime(DateTime.now().year + 10, 1, 1));
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(DateTime.now().year - 10, 1, 1),
+                          lastDate: DateTime(DateTime.now().year + 10, 1, 1),
+                        );
 
                         if (value != null) {
                           deathlineController.text =
@@ -174,6 +270,10 @@ class _CreateRequestPurchaseScreenState
                         style: txtBodySmallBold(color: blueColor),
                         textAlign: TextAlign.center,
                       ),
+                    ),
+                    vpad(12),
+                    DataAssetQuotationTable(
+                      data: dataQuotation,
                     ),
                     vpad(50)
                   ],

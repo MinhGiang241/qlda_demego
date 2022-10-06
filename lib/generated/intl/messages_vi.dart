@@ -81,7 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cr_change_shift":
             MessageLookupByLibrary.simpleMessage("Tạo đơn đổi ca"),
         "cr_purchase_req_letter": MessageLookupByLibrary.simpleMessage(
-            "Create  purchasing request letter"),
+            "Tạo phiếu đề xuất mua sắm tài sản"),
         "create_acc": MessageLookupByLibrary.simpleMessage("Tạo tài khoản"),
         "current_pass":
             MessageLookupByLibrary.simpleMessage("Mật khẩu hiện tại"),

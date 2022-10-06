@@ -28,6 +28,7 @@ class ListBadges extends StatelessWidget {
       borderRadius: BorderRadius.circular(12),
       margin: const EdgeInsets.symmetric(horizontal: 12),
       child: SingleChildScrollView(
+        // physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         child: Row(
           // scrollDirection: Axis.horizontal,

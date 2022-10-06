@@ -2,21 +2,23 @@ import 'package:flutter/material.dart';
 import '../constant/constants.dart';
 
 class PrimaryCard extends StatelessWidget {
-  const PrimaryCard(
-      {Key? key,
-      required this.child,
-      this.onTap,
-      this.borderRadius,
-      this.height,
-      this.width,
-      this.margin,
-      this.padding})
-      : super(key: key);
+  const PrimaryCard({
+    Key? key,
+    required this.child,
+    this.onTap,
+    this.borderRadius,
+    this.height,
+    this.width,
+    this.margin,
+    this.padding,
+    this.decoration,
+  }) : super(key: key);
   final Widget child;
   final Function()? onTap;
   final BorderRadius? borderRadius;
   final double? height;
   final double? width;
+  final Decoration? decoration;
   final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? padding;
 
@@ -30,16 +32,17 @@ class PrimaryCard extends StatelessWidget {
           margin: margin,
           height: height,
           width: width,
-          decoration: BoxDecoration(
-              borderRadius: borderRadius ?? BorderRadius.circular(12),
-              color: Colors.white,
-              border: Border.all(color: Colors.white54, width: 0.5),
-              boxShadow: [
-                BoxShadow(
-                    blurRadius: 32,
-                    color: shadowColor.withOpacity(0.12),
-                    offset: const Offset(0, 8))
-              ]),
+          decoration: decoration ??
+              BoxDecoration(
+                  borderRadius: borderRadius ?? BorderRadius.circular(12),
+                  color: Colors.white,
+                  border: Border.all(color: Colors.white54, width: 0.5),
+                  boxShadow: [
+                    BoxShadow(
+                        blurRadius: 32,
+                        color: shadowColor.withOpacity(0.12),
+                        offset: const Offset(0, 8))
+                  ]),
           child: Material(
               borderRadius: borderRadius ?? BorderRadius.circular(12),
               color: Colors.transparent,
