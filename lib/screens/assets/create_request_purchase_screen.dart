@@ -184,6 +184,7 @@ class _CreateRequestPurchaseScreenState
               vpad(12),
               Flexible(
                 child: ListView(
+                  physics: const BouncingScrollPhysics(),
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,

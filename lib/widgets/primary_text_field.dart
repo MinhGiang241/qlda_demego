@@ -9,7 +9,7 @@ import 'package:qlda_demego/widgets/primary_card.dart';
 import '../constant/constants.dart';
 import '../generated/l10n.dart';
 
-class PrimaryTextField extends StatelessWidget {
+class PrimaryTextField extends StatefulWidget {
   PrimaryTextField(
       {super.key,
       this.label,
@@ -53,24 +53,42 @@ class PrimaryTextField extends StatelessWidget {
   final bool blockSpace;
   final String? validateString;
   EdgeInsetsGeometry? margin;
+
+  @override
+  State<PrimaryTextField> createState() => _PrimaryTextFieldState();
+}
+
+class _PrimaryTextFieldState extends State<PrimaryTextField> {
   late StreamController<bool>? showPassController = StreamController<bool>();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    showPassController!.close();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (label != null)
+        if (widget.label != null)
           Row(
             children: [
-              Text(label!,
+              Text(widget.label!,
                   style: txtBodySmallRegular(color: grayScaleColorBase)),
-              if (isRequired) hpad(4),
-              if (isRequired)
+              if (widget.isRequired) hpad(4),
+              if (widget.isRequired)
                 Text("*", style: txtBodySmallRegular(color: redColorBase))
             ],
           ),
-        if (label != null) vpad(8),
+        if (widget.label != null) vpad(8),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -80,36 +98,36 @@ class PrimaryTextField extends StatelessWidget {
               builder: (context, snapshot) {
                 final showPass = snapshot.data!;
                 return PrimaryCard(
-                  margin: margin,
-                  onTap: onTap,
+                  margin: widget.margin,
+                  onTap: widget.onTap,
                   child: TextFormField(
-                    inputFormatters: blockSpace
+                    inputFormatters: widget.blockSpace
                         ? <TextInputFormatter>[
                             FilteringTextInputFormatter.deny(RegExp(r'[ ]'))
                           ]
                         : null,
-                    enabled: enable,
-                    autofocus: autoFocus,
-                    controller: controller,
-                    initialValue: initialValue,
-                    obscureText: !showPass && obscureText,
-                    readOnly: isReadOnly,
+                    enabled: widget.enable,
+                    autofocus: widget.autoFocus,
+                    controller: widget.controller,
+                    initialValue: widget.initialValue,
+                    obscureText: !showPass && widget.obscureText,
+                    readOnly: widget.isReadOnly,
                     // onTap: onTap,
                     cursorHeight: 15,
-                    keyboardType: keyboardType,
-                    textCapitalization: textCapitalization,
-                    textInputAction: textInputAction,
+                    keyboardType: widget.keyboardType,
+                    textCapitalization: widget.textCapitalization,
+                    textInputAction: widget.textInputAction,
                     style: txtBodySmallBold(),
                     cursorColor: primaryColor2,
-                    maxLines: maxLines,
+                    maxLines: widget.maxLines,
                     decoration: InputDecoration(
-                        hintText: hint,
+                        hintText: widget.hint,
                         hintStyle: txtBodySmallBold(color: grayScaleColor3),
                         errorStyle: const TextStyle(fontSize: 0, height: 0),
                         contentPadding: const EdgeInsets.symmetric(
                             vertical: 16, horizontal: 16),
-                        prefixIcon: prefixIcon,
-                        suffixIcon: obscureText
+                        prefixIcon: widget.prefixIcon,
+                        suffixIcon: widget.obscureText
                             ? showPass
                                 ? IconButton(
                                     onPressed: () {
@@ -121,7 +139,7 @@ class PrimaryTextField extends StatelessWidget {
                                       showPassController?.add(true);
                                     },
                                     icon: const Icon(Icons.visibility))
-                            : suffixIcon,
+                            : widget.suffixIcon,
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: const BorderSide(
@@ -133,8 +151,8 @@ class PrimaryTextField extends StatelessWidget {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: BorderSide.none)),
-                    validator: isRequired
-                        ? validator
+                    validator: widget.isRequired
+                        ? widget.validator
                         : (val) {
                             return null;
                           },
@@ -142,11 +160,11 @@ class PrimaryTextField extends StatelessWidget {
                 );
               },
             ),
-            if (validateString != null)
+            if (widget.validateString != null)
               Padding(
                 padding: const EdgeInsets.only(top: 4.0, left: 4),
                 child: Text(
-                  validateString!,
+                  widget.validateString!,
                   style: txtRegular(13, redColorBase),
                 ),
               )
