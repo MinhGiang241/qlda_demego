@@ -68,8 +68,8 @@ class _LetterDetailScreenState extends State<LetterDetailScreen>
             bottom: 12,
             child: Container(
               color: Colors.transparent.withOpacity(0),
-              padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   PrimaryButton(
                     onTap: () {

@@ -17,6 +17,7 @@ import '../../generated/l10n.dart';
 import '../../widgets/float_button.dart';
 import 'components/data_asset_list_table.dart';
 import 'components/data_asset_quotation_table.dart';
+import 'dailog/show_dailog_request_letter.dart';
 
 const dataAssets = [
   {
@@ -176,112 +177,125 @@ class _CreateRequestPurchaseScreenState
       appBar: PrimaryAppbar(
         title: S.of(context).cr_purchase_req_letter,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: SafeArea(
-          child: Column(
-            children: [
-              vpad(12),
-              Flexible(
-                child: ListView(
-                  physics: const BouncingScrollPhysics(),
-                  padding: EdgeInsets.zero,
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  children: [
-                    Container(
-                      child: Text(
-                        S.of(context).request_letter,
-                        textAlign: TextAlign.center,
-                        style: txtBodySmallBold(color: blueColor),
-                      ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            vpad(12),
+            Flexible(
+              child: ListView(
+                physics: const BouncingScrollPhysics(),
+                padding: EdgeInsets.zero,
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                children: [
+                  Container(
+                    child: Text(
+                      S.of(context).request_letter,
+                      textAlign: TextAlign.center,
+                      style: txtBodySmallBold(color: blueColor),
                     ),
-                    vpad(12),
-                    PrimaryTextField(
-                      label: S.of(context).title,
-                      hint: S.of(context).enter_title,
-                      isRequired: true,
-                    ),
-                    vpad(12),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: PrimaryDropDown(
-                            label: S.of(context).piority,
-                            isRequired: true,
-                          ),
+                  ),
+                  vpad(12),
+                  PrimaryTextField(
+                    label: S.of(context).title,
+                    hint: S.of(context).enter_title,
+                    isRequired: true,
+                  ),
+                  vpad(12),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: PrimaryDropDown(
+                          label: S.of(context).piority,
+                          isRequired: true,
                         ),
-                        hpad(12),
-                        Expanded(
-                          child: PrimaryDropDown(
-                            label: S.of(context).reason,
-                            isRequired: true,
-                          ),
-                        )
-                      ],
-                    ),
-                    vpad(12),
-                    PrimaryTextField(
-                      controller: deathlineController,
-                      label: S.of(context).deathline_ex,
-                      hint: S.of(context).select,
-                      enable: false,
-                      suffixIcon: const Icon(Icons.calendar_month),
-                      onTap: () async {
-                        var value = await showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime(DateTime.now().year - 10, 1, 1),
-                          lastDate: DateTime(DateTime.now().year + 10, 1, 1),
-                        );
+                      ),
+                      hpad(12),
+                      Expanded(
+                        child: PrimaryDropDown(
+                          label: S.of(context).reason,
+                          isRequired: true,
+                        ),
+                      )
+                    ],
+                  ),
+                  vpad(12),
+                  PrimaryTextField(
+                    controller: deathlineController,
+                    label: S.of(context).deathline_ex,
+                    hint: S.of(context).select,
+                    enable: false,
+                    suffixIcon: const Icon(Icons.calendar_month),
+                    onTap: () async {
+                      var value = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(DateTime.now().year - 10, 1, 1),
+                        lastDate: DateTime(DateTime.now().year + 10, 1, 1),
+                      );
 
-                        if (value != null) {
-                          deathlineController.text =
-                              value.toIso8601String().formatDateTimeDMY();
-                        }
+                      if (value != null) {
+                        deathlineController.text =
+                            value.toIso8601String().formatDateTimeDMY();
+                      }
+                    },
+                  ),
+                  vpad(12),
+                  PrimaryTextField(
+                    label: S.of(context).description,
+                    hint: S.of(context).enter,
+                  ),
+                  vpad(12),
+                  Center(
+                    child: Text(
+                      S.of(context).asset_list,
+                      style: txtBodySmallBold(color: blueColor),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  vpad(12),
+                  DataAssetListTable(data: dataAssets),
+                  vpad(12),
+                  Center(
+                    child: PrimaryButton(
+                      onTap: () {
+                        addRequestAsset(context);
                       },
+                      width: dvWidth(context) * 0.56,
+                      text: S.of(context).add_request_asset,
+                      buttonType: ButtonType.secondary,
+                      secondaryBackgroundColor: secondaryColorBase,
                     ),
-                    vpad(12),
-                    PrimaryTextField(
-                      label: S.of(context).description,
-                      hint: S.of(context).enter,
+                  ),
+                  vpad(12),
+                  Center(
+                    child: Text(
+                      S.of(context).quotation,
+                      style: txtBodySmallBold(color: blueColor),
+                      textAlign: TextAlign.center,
                     ),
-                    vpad(12),
-                    Center(
-                      child: Text(
-                        S.of(context).asset_list,
-                        style: txtBodySmallBold(color: blueColor),
-                        textAlign: TextAlign.center,
-                      ),
+                  ),
+                  vpad(12),
+                  DataAssetQuotationTable(
+                    data: dataQuotation,
+                  ),
+                  vpad(12),
+                  Center(
+                    child: PrimaryButton(
+                      onTap: () {
+                        addSupplier(context);
+                      },
+                      width: dvWidth(context) * 0.56,
+                      text: S.of(context).add_supplier,
+                      buttonType: ButtonType.secondary,
+                      secondaryBackgroundColor: secondaryColorBase,
                     ),
-                    vpad(12),
-                    DataAssetListTable(data: dataAssets),
-                    vpad(12),
-                    Center(
-                      child: PrimaryButton(
-                        text: S.of(context).add_request_asset,
-                        buttonType: ButtonType.secondary,
-                        secondaryBackgroundColor: secondaryColorBase,
-                      ),
-                    ),
-                    vpad(12),
-                    Center(
-                      child: Text(
-                        S.of(context).quotation,
-                        style: txtBodySmallBold(color: blueColor),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    vpad(12),
-                    DataAssetQuotationTable(
-                      data: dataQuotation,
-                    ),
-                    vpad(50)
-                  ],
-                ),
-              )
-            ],
-          ),
+                  ),
+                  vpad(50)
+                ],
+              ),
+            )
+          ],
         ),
       ),
       floatingActionButton: FloatDialButton(

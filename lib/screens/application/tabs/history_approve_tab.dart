@@ -27,11 +27,8 @@ class HistoryApproveTab extends StatelessWidget {
                 child: ListView.builder(
                     padding: EdgeInsets.zero,
                     itemCount: data['Lịch sử phê duyệt'].length,
-                    itemBuilder: ((context, index) => Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
-                          child: InfoTable(
-                            data: data['Lịch sử phê duyệt'][index],
-                          ),
+                    itemBuilder: ((context, index) => InfoTable(
+                          data: data['Lịch sử phê duyệt'][index],
                         ))),
               )
             : Expanded(

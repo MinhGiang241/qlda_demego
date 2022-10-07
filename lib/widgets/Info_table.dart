@@ -15,8 +15,11 @@ class InfoTable extends StatelessWidget {
     var infoData = {};
 
     for (var entry in data.entries) {
-      if (entry.value.runtimeType == String && entry.key != 'id') {
-        infoData.putIfAbsent(entry.key, () => entry.value);
+      if ((entry.value.runtimeType == String ||
+              entry.value.runtimeType == int ||
+              entry.value.runtimeType == double) &&
+          entry.key != 'id') {
+        infoData.putIfAbsent(entry.key, () => entry.value.toString());
       }
     }
 

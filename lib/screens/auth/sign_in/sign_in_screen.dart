@@ -44,7 +44,7 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
               vpad(46),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
+                padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: Column(
                   children: [
                     PrimaryTextField(

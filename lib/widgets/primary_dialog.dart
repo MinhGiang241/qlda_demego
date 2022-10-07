@@ -16,6 +16,7 @@ class CustomDialog extends StatelessWidget {
       this.msg,
       this.code,
       this.content,
+      this.useBackground = false,
       this.type = DialogType.custom});
 
   final String? title;
@@ -23,6 +24,7 @@ class CustomDialog extends StatelessWidget {
   final int? code;
   final Widget? content;
   final DialogType type;
+  final bool useBackground;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,8 @@ class CustomDialog extends StatelessWidget {
         insetPadding: const EdgeInsets.all(40),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.9),
+            color:
+                useBackground ? backgroundColor : Colors.white.withOpacity(0.9),
             border: Border.all(color: Colors.white54, width: 0.5),
             borderRadius: BorderRadius.circular(24),
           ),
@@ -60,16 +63,20 @@ class CustomDialog extends StatelessWidget {
                       padding: const EdgeInsets.all(12),
                     ),
                   if (type != DialogType.custom) vpad(16),
-                  Text(_title(), style: txtDisplayMedium()),
-                  vpad(16),
+                  if (title != null) Text(_title(), style: txtDisplayMedium()),
+                  if (title != null) vpad(16),
                   if (type != DialogType.custom)
                     code == null
-                        ? Text(msg ?? "",
+                        ? Text(
+                            msg ?? "",
                             style: txtBodySmallRegular(),
-                            textAlign: TextAlign.center)
-                        : Text(errorCodeToString(context, code),
+                            textAlign: TextAlign.center,
+                          )
+                        : Text(
+                            errorCodeToString(context, code),
                             style: txtBodySmallRegular(),
-                            textAlign: TextAlign.center),
+                            textAlign: TextAlign.center,
+                          ),
                   if (type != DialogType.custom) vpad(20),
                   if (type != DialogType.custom)
                     PrimaryButton(
@@ -95,7 +102,7 @@ class CustomDialog extends StatelessWidget {
       case DialogType.error:
         return S.current.failure;
       default:
-        return title;
+        return title ?? '';
     }
   }
 
@@ -130,11 +137,16 @@ class PrimaryDialog extends CustomDialog {
       : super(type: DialogType.error, msg: msg, key: key);
   const PrimaryDialog.errorCode({Key? key, int? code})
       : super(type: DialogType.error, code: code, key: key);
-  const PrimaryDialog.custom({Key? key, required String title, Widget? content})
-      : super(
+  const PrimaryDialog.custom({
+    Key? key,
+    String? title,
+    Widget? content,
+    bool useBackground = false,
+  }) : super(
           type: DialogType.custom,
           key: key,
           title: title,
+          useBackground: useBackground,
           content: content,
         );
 }

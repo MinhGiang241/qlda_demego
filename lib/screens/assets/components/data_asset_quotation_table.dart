@@ -42,29 +42,6 @@ class _DataAssetQuotationTableState extends State<DataAssetQuotationTable> {
                   titles: titles,
                 ),
               )
-
-          //   Column(
-          //     children: [
-          //       PrimaryCard(
-          //           child: Column(
-          //         children: [
-          //           Row(
-          //             children: [
-          //               ...titles.asMap().entries.map(
-          //                     (t) => DataTableExpand(
-          //                       title: t,
-          //                       data: e,
-          //                     ),
-          //                   )
-          //             ],
-          //           ),
-          //           Row(),
-          //         ],
-          //       )),
-          //       vpad(6),
-          //     ],
-          //   ),
-          // )
         ],
       ),
     );

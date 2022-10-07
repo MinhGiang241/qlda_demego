@@ -47,6 +47,7 @@ class _AssetDetailScreenState extends State<AssetDetailScreen>
     };
 
     return PrimaryScreen(
+      isPadding: false,
       appBar: PrimaryAppbar(
         title: S.of(context).asset_detail,
         leading: BackButton(

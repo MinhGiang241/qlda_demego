@@ -20,6 +20,8 @@ import '../screens/application/reply_letter_screen.dart';
 import '../screens/assets/asset_detail.dart';
 import '../screens/assets/asset_screen.dart';
 import '../screens/assets/create_request_purchase_screen.dart';
+import '../screens/assets/export_request_screen.dart';
+import '../screens/assets/import_request_screen.dart';
 import '../screens/assets/update_asset_screen.dart';
 import '../screens/auth/sign_in/sign_in_screen.dart';
 import '../screens/home/home_screen.dart';
@@ -121,6 +123,16 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: routeSetting,
           builder: ((context) => CreateRequestPurchaseScreen()),
+        );
+      case ExportRequestScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => ExportRequestScreen()),
+        );
+      case ImportRequestScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => ImportRequestScreen()),
         );
       default:
         return MaterialPageRoute(

@@ -70,7 +70,6 @@ class _UpdateAssetScreenState extends State<UpdateAssetScreen> {
                     );
               },
             );
-            ;
           } else {
             var listUnitChoices = state.unitList!.map(
               (Unit e) {
@@ -99,172 +98,164 @@ class _UpdateAssetScreenState extends State<UpdateAssetScreen> {
 
             return Stack(
               children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: SafeArea(
-                    child: ListView(
-                      padding: EdgeInsets.zero,
-                      children: [
-                        vpad(12),
-                        PrimaryTextField(
-                          controller: state.nameController,
-                          label: S.of(context).asset_name,
-                          isRequired: true,
-                        ),
-                        vpad(12),
-                        PrimaryDropDown(
-                          value: state.typeController,
-                          label: S.of(context).asset_type,
-                          isRequired: true,
-                          selectList: listAssetTypeChoices,
-                          onChange: (v) {
-                            state.typeController = v.toString();
-                          },
-                        ),
-                        // vpad(12),
-                        // PrimaryDropDown(
-                        //   label: S.of(context).asset_group,
-                        //   isRequired: true,
-                        // ),
-                        vpad(12),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: PrimaryDropDown(
-                                value: state.unitController,
-                                isRequired: true,
-                                label: S.of(context).unit,
-                                selectList: listUnitChoices,
-                                onChange: (v) {
-                                  state.unitController = v.toString();
-                                },
-                              ),
+                SafeArea(
+                  child: ListView(
+                    padding: EdgeInsets.zero,
+                    children: [
+                      vpad(12),
+                      PrimaryTextField(
+                        controller: state.nameController,
+                        label: S.of(context).asset_name,
+                        isRequired: true,
+                      ),
+                      vpad(12),
+                      PrimaryDropDown(
+                        value: state.typeController,
+                        label: S.of(context).asset_type,
+                        isRequired: true,
+                        selectList: listAssetTypeChoices,
+                        onChange: (v) {
+                          state.typeController = v.toString();
+                        },
+                      ),
+                      vpad(12),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: PrimaryDropDown(
+                              value: state.unitController,
+                              isRequired: true,
+                              label: S.of(context).unit,
+                              selectList: listUnitChoices,
+                              onChange: (v) {
+                                state.unitController = v.toString();
+                              },
                             ),
-                            hpad(20),
-                            Expanded(
-                              child: PrimaryDropDown(
-                                isRequired: true,
-                                label: S.of(context).supply,
-                                selectList: listSupplierChoices,
-                                value: state.supplierController,
-                                onChange: (v) {
-                                  state.supplierController = v.toString();
-                                },
-                              ),
-                            )
-                          ],
-                        ),
-                        vpad(12),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: PrimaryTextField(
-                                isRequired: true,
-                                label: S.of(context).branch,
-                                controller: state.branchController,
-                              ),
+                          ),
+                          hpad(20),
+                          Expanded(
+                            child: PrimaryDropDown(
+                              isRequired: true,
+                              label: S.of(context).supply,
+                              selectList: listSupplierChoices,
+                              value: state.supplierController,
+                              onChange: (v) {
+                                state.supplierController = v.toString();
+                              },
                             ),
-                            hpad(20),
-                            Expanded(
-                              child: PrimaryDropDown(
-                                isRequired: true,
-                                label: S.of(context).warranty,
-                              ),
-                            )
-                          ],
-                        ),
-                        vpad(12),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: PrimaryTextField(
-                                isRequired: true,
-                                label: S.of(context).amount,
-                                keyboardType: TextInputType.number,
-                                controller: state.amountController,
-                              ),
+                          )
+                        ],
+                      ),
+                      vpad(12),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: PrimaryTextField(
+                              isRequired: true,
+                              label: S.of(context).branch,
+                              controller: state.branchController,
                             ),
-                            hpad(20),
-                            Expanded(
-                              child: PrimaryDropDown(
-                                isRequired: true,
-                                label: S.of(context).manage,
-                                value: state.manageController,
-                                onChange: (v) {
-                                  state.manageController = v.toString();
-                                },
-                                // ignore: prefer_const_literals_to_create_immutables
-                                selectList: [
-                                  const DropdownMenuItem(
-                                    value: "AMOUNT",
-                                    child: Text('Theo số lượng'),
-                                  ),
-                                  const DropdownMenuItem(
-                                    value: "SERI",
-                                    child: Text('Theo số Serial'),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                        vpad(12),
-                        Text(
-                          S.of(context).attached_photo,
-                          style: txtBodyMediumBold(),
-                        ),
-                        vpad(6),
-                        Text(
-                          "1.jpg",
-                          style: txtBodySmallRegular(color: grayScaleColorBase),
-                        ),
-                        vpad(6),
-                        Row(
-                          children: [
-                            IconButton(
-                              color: blueColor,
-                              onPressed: () {},
-                              icon: const Icon(Icons.add_a_photo),
+                          ),
+                          hpad(20),
+                          Expanded(
+                            child: PrimaryDropDown(
+                              isRequired: true,
+                              label: S.of(context).warranty,
                             ),
-                            hpad(5),
-                            Text(
-                              S.of(context).add_photo,
-                              style: txtBodySmallRegular(
-                                color: grayScaleColorBase,
-                              ),
-                            )
-                          ],
-                        ),
-                        vpad(12),
-                        Text(
-                          S.of(context).attached_photo,
-                          style: txtBodyMediumBold(),
-                        ),
-                        vpad(12),
-                        Text(
-                          "file1",
-                          style: txtBodySmallRegular(color: grayScaleColorBase),
-                        ),
-                        vpad(6),
-                        Row(
-                          children: [
-                            IconButton(
-                              color: blueColor,
-                              onPressed: () {},
-                              icon: const Icon(Icons.add_box),
+                          )
+                        ],
+                      ),
+                      vpad(12),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: PrimaryTextField(
+                              isRequired: true,
+                              label: S.of(context).amount,
+                              keyboardType: TextInputType.number,
+                              controller: state.amountController,
                             ),
-                            hpad(5),
-                            Text(
-                              S.of(context).add_file,
-                              style: txtBodySmallRegular(
-                                color: grayScaleColorBase,
-                              ),
+                          ),
+                          hpad(20),
+                          Expanded(
+                            child: PrimaryDropDown(
+                              isRequired: true,
+                              label: S.of(context).manage,
+                              value: state.manageController,
+                              onChange: (v) {
+                                state.manageController = v.toString();
+                              },
+                              // ignore: prefer_const_literals_to_create_immutables
+                              selectList: [
+                                const DropdownMenuItem(
+                                  value: "AMOUNT",
+                                  child: Text('Theo số lượng'),
+                                ),
+                                const DropdownMenuItem(
+                                  value: "SERI",
+                                  child: Text('Theo số Serial'),
+                                )
+                              ],
                             ),
-                          ],
-                        ),
-                        vpad(100)
-                      ],
-                    ),
+                          )
+                        ],
+                      ),
+                      vpad(12),
+                      Text(
+                        S.of(context).attached_photo,
+                        style: txtBodyMediumBold(),
+                      ),
+                      vpad(6),
+                      Text(
+                        "1.jpg",
+                        style: txtBodySmallRegular(color: grayScaleColorBase),
+                      ),
+                      vpad(6),
+                      Row(
+                        children: [
+                          IconButton(
+                            color: blueColor,
+                            onPressed: () {},
+                            icon: const Icon(Icons.add_a_photo),
+                          ),
+                          hpad(5),
+                          Text(
+                            S.of(context).add_photo,
+                            style: txtBodySmallRegular(
+                              color: grayScaleColorBase,
+                            ),
+                          )
+                        ],
+                      ),
+                      vpad(12),
+                      Text(
+                        S.of(context).attached_photo,
+                        style: txtBodyMediumBold(),
+                      ),
+                      vpad(12),
+                      Text(
+                        "file1",
+                        style: txtBodySmallRegular(color: grayScaleColorBase),
+                      ),
+                      vpad(6),
+                      Row(
+                        children: [
+                          IconButton(
+                            color: blueColor,
+                            onPressed: () {},
+                            icon: const Icon(Icons.add_box),
+                          ),
+                          hpad(5),
+                          Text(
+                            S.of(context).add_file,
+                            style: txtBodySmallRegular(
+                              color: grayScaleColorBase,
+                            ),
+                          ),
+                        ],
+                      ),
+                      vpad(100)
+                    ],
                   ),
                 ),
                 Positioned(

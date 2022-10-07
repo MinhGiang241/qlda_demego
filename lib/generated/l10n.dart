@@ -1590,10 +1590,10 @@ class S {
     );
   }
 
-  /// `Create  purchasing request letter`
+  /// `Create purchasing request letter`
   String get cr_purchase_req_letter {
     return Intl.message(
-      'Create  purchasing request letter',
+      'Create purchasing request letter',
       name: 'cr_purchase_req_letter',
       desc: '',
       args: [],
@@ -1795,6 +1795,156 @@ class S {
     return Intl.message(
       'Back',
       name: 'back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Asset in stock`
+  String get asset_in_stock {
+    return Intl.message(
+      'Asset in stock',
+      name: 'asset_in_stock',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Requesting_purchase_asset`
+  String get requesting_purchase_asset {
+    return Intl.message(
+      'Requesting_purchase_asset',
+      name: 'requesting_purchase_asset',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Asset Code`
+  String get asset_code {
+    return Intl.message(
+      'Asset Code',
+      name: 'asset_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Group`
+  String get group {
+    return Intl.message(
+      'Group',
+      name: 'group',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update`
+  String get update {
+    return Intl.message(
+      'Update',
+      name: 'update',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add`
+  String get add {
+    return Intl.message(
+      'Add',
+      name: 'add',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Export asset`
+  String get export_asset {
+    return Intl.message(
+      'Export asset',
+      name: 'export_asset',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recommendation list`
+  String get recommendation_list {
+    return Intl.message(
+      'Recommendation list',
+      name: 'recommendation_list',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create importing request letter`
+  String get cr_import_request_letter {
+    return Intl.message(
+      'Create importing request letter',
+      name: 'cr_import_request_letter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deathline`
+  String get deathline {
+    return Intl.message(
+      'Deathline',
+      name: 'deathline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Possiton`
+  String get possiton {
+    return Intl.message(
+      'Possiton',
+      name: 'possiton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Member`
+  String get member {
+    return Intl.message(
+      'Member',
+      name: 'member',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add product`
+  String get add_product {
+    return Intl.message(
+      'Add product',
+      name: 'add_product',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complete`
+  String get complete {
+    return Intl.message(
+      'Complete',
+      name: 'complete',
       desc: '',
       args: [],
     );

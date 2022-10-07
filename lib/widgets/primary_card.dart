@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import '../constant/constants.dart';
 
 class PrimaryCard extends StatelessWidget {
-  const PrimaryCard({
-    Key? key,
-    required this.child,
-    this.onTap,
-    this.borderRadius,
-    this.height,
-    this.width,
-    this.margin,
-    this.padding,
-    this.decoration,
-  }) : super(key: key);
+  const PrimaryCard(
+      {Key? key,
+      required this.child,
+      this.onTap,
+      this.borderRadius,
+      this.height,
+      this.width,
+      this.margin,
+      this.padding,
+      this.decoration,
+      this.background})
+      : super(key: key);
   final Widget child;
   final Function()? onTap;
   final BorderRadius? borderRadius;
@@ -21,6 +22,7 @@ class PrimaryCard extends StatelessWidget {
   final Decoration? decoration;
   final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? padding;
+  final Color? background;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class PrimaryCard extends StatelessWidget {
           decoration: decoration ??
               BoxDecoration(
                   borderRadius: borderRadius ?? BorderRadius.circular(12),
-                  color: Colors.white,
+                  color: background ?? Colors.white,
                   border: Border.all(color: Colors.white54, width: 0.5),
                   boxShadow: [
                     BoxShadow(

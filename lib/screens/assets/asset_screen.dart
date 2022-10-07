@@ -24,6 +24,8 @@ import '../../widgets/primary_dialog.dart';
 import '../../widgets/search_bar.dart';
 import 'asset_detail.dart';
 import 'create_request_purchase_screen.dart';
+import 'export_request_screen.dart';
+import 'import_request_screen.dart';
 
 var data = [
   {
@@ -75,13 +77,17 @@ class _AssetScreenState extends State<AssetScreen> {
         label: S.of(context).req_export,
         icon: Icons.logout,
         primary: primaryColor1,
-        onPress: () {},
+        onPress: () {
+          Navigator.of(context).pushNamed(ExportRequestScreen.routeName);
+        },
       ),
       DialChildren(
         label: S.of(context).req_import,
         icon: Icons.login,
         primary: yellowColor,
-        onPress: () {},
+        onPress: () {
+          Navigator.of(context).pushNamed(ImportRequestScreen.routeName);
+        },
       ),
       DialChildren(
         label: S.of(context).inventory,
@@ -103,90 +109,85 @@ class _AssetScreenState extends State<AssetScreen> {
     return PrimaryScreen(
       appBar: PrimaryAppbar(title: S.of(context).asset_manage),
       drawer: MainDrawer(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: BlocBuilder<AssetListBloc, AssetListState>(
-          builder: (context, state) {
-            var dataListInfo = (state.assetList)
-                .map(
-                  (Asset e) => {
-                    "Tên tài sản": e.name,
-                    "Code": e.code,
-                    "Ngày tạo": (e.createdTime!).formatDateTimeHmDMY(),
-                    "Ngày cập nhật": (e.updatedTime!).formatDateTimeHmDMY(),
-                    "Loại Tài sản": e.assetType!.displayName,
-                    "Số lượng": e.amount.toString(),
-                  },
-                )
-                .toList();
-            if (state.init! && state.isLoading) {
-              context.read<AssetListBloc>().add(const LoadAssetListAction());
-
-              return Column(
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  const Expanded(
-                    child: Center(child: CircularProgressIndicator()),
-                  ),
-                ],
-              );
-            } else if (state.isLoading) {
-              return Column(
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  const Expanded(
-                    child: Center(child: CircularProgressIndicator()),
-                  ),
-                ],
-              );
-            } else if (state.errorHandle != null) {
-              return ConnectError(
-                title: state.errorHandle!.msg,
-                onTap: () {
-                  context
-                      .read<AssetListBloc>()
-                      .add(const LoadAssetListAction());
+      body: BlocBuilder<AssetListBloc, AssetListState>(
+        builder: (context, state) {
+          var dataListInfo = (state.assetList)
+              .map(
+                (Asset e) => {
+                  "Tên tài sản": e.name,
+                  "Code": e.code,
+                  "Ngày tạo": (e.createdTime!).formatDateTimeHmDMY(),
+                  "Ngày cập nhật": (e.updatedTime!).formatDateTimeHmDMY(),
+                  "Loại Tài sản": e.assetType!.displayName,
+                  "Số lượng": e.amount.toString(),
                 },
-              );
-            } else if (state.assetList.isEmpty) {
-              return Center(
-                child: Text(S.of(context).no_asset, style: txtBodyMediumBold()),
-              );
-            } else {
-              return Column(
-                children: [
-                  SearchBar(
-                    onPress: () async {
-                      // await ApiAsset.getAssetList();
-                      context
-                          .read<AssetListBloc>()
-                          .add(const LoadAssetListAction());
+              )
+              .toList();
+          if (state.init! && state.isLoading) {
+            context.read<AssetListBloc>().add(const LoadAssetListAction());
+
+            return Column(
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                const Expanded(
+                  child: Center(child: CircularProgressIndicator()),
+                ),
+              ],
+            );
+          } else if (state.isLoading) {
+            return Column(
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                const Expanded(
+                  child: Center(child: CircularProgressIndicator()),
+                ),
+              ],
+            );
+          } else if (state.errorHandle != null) {
+            return ConnectError(
+              title: state.errorHandle!.msg,
+              onTap: () {
+                context.read<AssetListBloc>().add(const LoadAssetListAction());
+              },
+            );
+          } else if (state.assetList.isEmpty) {
+            return Center(
+              child: Text(S.of(context).no_asset, style: txtBodyMediumBold()),
+            );
+          } else {
+            return Column(
+              children: [
+                SearchBar(
+                  onPress: () async {
+                    // await ApiAsset.getAssetList();
+                    context
+                        .read<AssetListBloc>()
+                        .add(const LoadAssetListAction());
+                  },
+                ),
+                Flexible(
+                  child: ListView.builder(
+                    padding: EdgeInsets.zero,
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    itemCount: dataListInfo.length,
+                    itemBuilder: (context, i) {
+                      return InfoTable(
+                        onTap: () {
+                          Navigator.of(context).pushNamed(
+                            AssetDetailScreen.routeName,
+                            arguments: {"data": state.assetList[i]},
+                          );
+                        },
+                        data: dataListInfo[i],
+                      );
                     },
                   ),
-                  Flexible(
-                    child: ListView.builder(
-                      padding: EdgeInsets.zero,
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      itemCount: dataListInfo.length,
-                      itemBuilder: (context, i) {
-                        return InfoTable(
-                          onTap: () {
-                            Navigator.of(context).pushNamed(
-                              AssetDetailScreen.routeName,
-                              arguments: {"data": state.assetList[i]},
-                            );
-                          },
-                          data: dataListInfo[i],
-                        );
-                      },
-                    ),
-                  )
-                ],
-              );
-            }
-          },
-        ),
+                )
+              ],
+            );
+          }
+        },
       ),
       floatingActionButton: FloatDialButton(
         data: floatButtons,

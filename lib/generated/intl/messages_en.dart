@@ -26,17 +26,22 @@ class MessageLookup extends MessageLookupByLibrary {
             "Account already exists, please login with other account"),
         "account_not_avaiable": MessageLookupByLibrary.simpleMessage(
             "User information is not available on the system, please contact Admin."),
+        "add": MessageLookupByLibrary.simpleMessage("Add"),
         "add_file": MessageLookupByLibrary.simpleMessage("Add file"),
         "add_new": MessageLookupByLibrary.simpleMessage("Add new"),
         "add_photo": MessageLookupByLibrary.simpleMessage("Add photo"),
+        "add_product": MessageLookupByLibrary.simpleMessage("Add product"),
         "add_request_asset":
             MessageLookupByLibrary.simpleMessage("Add requesting asset"),
         "add_supplier": MessageLookupByLibrary.simpleMessage("Add supplier"),
         "amount": MessageLookupByLibrary.simpleMessage("Amount"),
         "app_version": MessageLookupByLibrary.simpleMessage("App version"),
         "application": MessageLookupByLibrary.simpleMessage("Application"),
+        "asset_code": MessageLookupByLibrary.simpleMessage("Asset Code"),
         "asset_detail": MessageLookupByLibrary.simpleMessage("Asset detail"),
         "asset_group": MessageLookupByLibrary.simpleMessage("Asset group"),
+        "asset_in_stock":
+            MessageLookupByLibrary.simpleMessage("Asset in stock"),
         "asset_list": MessageLookupByLibrary.simpleMessage("Asset List"),
         "asset_manage":
             MessageLookupByLibrary.simpleMessage("Asset management"),
@@ -65,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "choose_off": MessageLookupByLibrary.simpleMessage("Choose type"),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
         "comming": MessageLookupByLibrary.simpleMessage("Comming"),
+        "complete": MessageLookupByLibrary.simpleMessage("Complete"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "confirm_change_letter": MessageLookupByLibrary.simpleMessage(
             "Confirm shift changing letter"),
@@ -80,8 +86,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Create Leave of Break Letter"),
         "cr_change_shift":
             MessageLookupByLibrary.simpleMessage("Create change shift Letter"),
+        "cr_import_request_letter": MessageLookupByLibrary.simpleMessage(
+            "Create importing request letter"),
         "cr_purchase_req_letter": MessageLookupByLibrary.simpleMessage(
-            "Create  purchasing request letter"),
+            "Create purchasing request letter"),
         "create_acc": MessageLookupByLibrary.simpleMessage("Create an account"),
         "current_pass":
             MessageLookupByLibrary.simpleMessage("Current password"),
@@ -91,6 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change from date"),
         "date_change_to":
             MessageLookupByLibrary.simpleMessage(" Change to date"),
+        "deathline": MessageLookupByLibrary.simpleMessage("Deathline"),
         "deathline_ex":
             MessageLookupByLibrary.simpleMessage("Execute deathline"),
         "decision": MessageLookupByLibrary.simpleMessage("Decision"),
@@ -115,11 +124,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "Check your internet connection!"),
         "err_unknown": MessageLookupByLibrary.simpleMessage("Unknown Error"),
         "export": MessageLookupByLibrary.simpleMessage("Export"),
+        "export_asset": MessageLookupByLibrary.simpleMessage("Export asset"),
         "extr_tast": MessageLookupByLibrary.simpleMessage("Extra task"),
         "failure": MessageLookupByLibrary.simpleMessage("Failure"),
         "filter": MessageLookupByLibrary.simpleMessage("Filter"),
         "forgot_pass": MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full name"),
+        "group": MessageLookupByLibrary.simpleMessage("Group"),
         "hand_over": MessageLookupByLibrary.simpleMessage("Hand over"),
         "have_acc":
             MessageLookupByLibrary.simpleMessage("already have an account "),
@@ -139,10 +150,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "letter_detail": MessageLookupByLibrary.simpleMessage("Letter Detail"),
         "list_apl": MessageLookupByLibrary.simpleMessage("Application List"),
         "manage": MessageLookupByLibrary.simpleMessage("Management"),
+        "member": MessageLookupByLibrary.simpleMessage("Member"),
         "min_max_pass": MessageLookupByLibrary.simpleMessage(
             "Password must contain at least 4 letter and at most 20 letter"),
         "missing":
             MessageLookupByLibrary.simpleMessage("Missing required fields"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
         "new_pass": MessageLookupByLibrary.simpleMessage("New Password"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "no_acc":
@@ -174,6 +187,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Personal Infomation"),
         "phone_num": MessageLookupByLibrary.simpleMessage("Phone number"),
         "piority": MessageLookupByLibrary.simpleMessage("Piority"),
+        "possiton": MessageLookupByLibrary.simpleMessage("Possiton"),
         "prev": MessageLookupByLibrary.simpleMessage("Previous"),
         "property": MessageLookupByLibrary.simpleMessage("Property"),
         "purchase_req_letter":
@@ -186,6 +200,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "reception": MessageLookupByLibrary.simpleMessage("Reception"),
         "recommend_purchase":
             MessageLookupByLibrary.simpleMessage("Recommend purchasing"),
+        "recommendation_list":
+            MessageLookupByLibrary.simpleMessage("Recommendation list"),
         "reg_success": MessageLookupByLibrary.simpleMessage(
             "Registration successful, please login"),
         "related_asset": MessageLookupByLibrary.simpleMessage("Related asset"),
@@ -208,6 +224,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Request for importing"),
         "request_letter":
             MessageLookupByLibrary.simpleMessage("Request letter"),
+        "requesting_purchase_asset":
+            MessageLookupByLibrary.simpleMessage("Requesting_purchase_asset"),
         "require_lowercase": MessageLookupByLibrary.simpleMessage(
             "Password must contain at least 1 lowercase letter"),
         "require_number": MessageLookupByLibrary.simpleMessage(
@@ -248,6 +266,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "type": MessageLookupByLibrary.simpleMessage("Type"),
         "unit": MessageLookupByLibrary.simpleMessage("Unit"),
+        "update": MessageLookupByLibrary.simpleMessage("Update"),
         "update_asset":
             MessageLookupByLibrary.simpleMessage(" Update Asset information"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),

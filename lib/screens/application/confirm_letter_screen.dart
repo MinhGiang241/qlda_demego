@@ -25,7 +25,6 @@ class ConfirmLetterScreen extends StatelessWidget {
               : S.of(context).confirm_letter,
         ),
         body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Stack(children: [
             ListView(
               children: [
@@ -48,7 +47,9 @@ class ConfirmLetterScreen extends StatelessWidget {
             Positioned(
               bottom: 12,
               child: PrimaryButton(
-                  width: dvWidth(context) - 24, text: S.of(context).save),
+                width: dvWidth(context) - 24,
+                text: S.of(context).save,
+              ),
             )
           ]),
         ));

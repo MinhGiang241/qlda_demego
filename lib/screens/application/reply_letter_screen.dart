@@ -36,7 +36,6 @@ class ReplyLetterScreen extends StatelessWidget {
           //         Navigator.pushNamed(context, DetailLetterScreen.routeName)),
         ),
         body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Stack(children: [
             ListView(
               children: [

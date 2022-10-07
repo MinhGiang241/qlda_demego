@@ -14,7 +14,6 @@ class CodeStatusLetter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PrimaryCard(
-        margin: const EdgeInsets.symmetric(horizontal: 12),
         padding: const EdgeInsets.fromLTRB(24, 16, 0, 16),
         child: Row(
           // ignore: prefer_const_literals_to_create_immutables

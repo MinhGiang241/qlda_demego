@@ -123,33 +123,30 @@ class _ApplicationScreenState extends State<ApplicationScreen> {
         appBar: PrimaryAppbar(
           title: S.of(context).list_apl,
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: Column(
-            children: [
-              // vpad(80),
-              SearchBar(onPress: () => filterApplication(context)),
-              // const ApllicationCard()
+        body: Column(
+          children: [
+            // vpad(80),
+            SearchBar(onPress: () => filterApplication(context)),
+            // const ApllicationCard()
 
-              Flexible(
-                child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemCount: data.length,
-                    itemBuilder: (context, i) {
-                      return InfoTable(
-                        onTap: () {
-                          Navigator.of(context).pushNamed(
-                              LetterDetailScreen.routeName,
-                              arguments: data[i]);
-                        },
-                        data: data[i],
-                      );
-                    }),
-              )
-            ],
-          ),
+            Flexible(
+              child: ListView.builder(
+                  padding: EdgeInsets.zero,
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemCount: data.length,
+                  itemBuilder: (context, i) {
+                    return InfoTable(
+                      onTap: () {
+                        Navigator.of(context).pushNamed(
+                            LetterDetailScreen.routeName,
+                            arguments: data[i]);
+                      },
+                      data: data[i],
+                    );
+                  }),
+            )
+          ],
         ),
         floatingActionButton: FloatDialButton(
           data: floatbuttons,

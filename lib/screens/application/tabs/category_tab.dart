@@ -22,12 +22,9 @@ class CategoryTab extends StatelessWidget {
           status: data['Trạng thái'],
         ),
         vpad(16),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: InfoTable(
-            data: data,
-          ),
-        )
+        InfoTable(
+          data: data,
+        ),
       ],
     );
   }

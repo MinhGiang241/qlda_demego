@@ -28,7 +28,6 @@ class AbsentLetter extends StatelessWidget {
                     context, ApplicationScreen.routeName)),
           ),
           body: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 18),
             child: ListView(
               children: [
                 // ignore: prefer_const_constructors

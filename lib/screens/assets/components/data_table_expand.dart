@@ -16,8 +16,8 @@ class DataTableExpand extends StatefulWidget {
 }
 
 class _DataTableExpandState extends State<DataTableExpand> {
-  var _expanded = true;
-
+  var _expanded = false;
+  double _animatedHeight = 0.0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -45,12 +45,21 @@ class _DataTableExpandState extends State<DataTableExpand> {
                                   )
                                 : null,
                           ),
-                          width: t.value == "STT" ? 40 : 120,
+                          width: t.value == "STT" ? 45 : 120,
                           child: InkWell(
                             onTap: t.value == "Tên nhà cung cấp"
                                 ? () {
                                     setState(() {
                                       _expanded = !_expanded;
+
+                                      _animatedHeight != 0.0
+                                          ? _animatedHeight = 0.0
+                                          : _animatedHeight = 51 *
+                                              double.parse(
+                                                widget.data.value['Danh sách']
+                                                    .length
+                                                    .toString(),
+                                              );
                                     });
                                   }
                                 : null,
@@ -101,7 +110,58 @@ class _DataTableExpandState extends State<DataTableExpand> {
             ],
           ),
         ),
-        vpad(6)
+        vpad(6),
+        // if (_expanded)
+        AnimatedContainer(
+          height: _animatedHeight,
+          duration: Duration(
+            milliseconds: 30 *
+                int.parse(widget.data.value['Danh sách'].length.toString()),
+          ),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
+                ...widget.data.value["Danh sách"].map((e) {
+                  return Column(
+                    children: [
+                      PrimaryCard(
+                        margin: const EdgeInsets.only(left: 40),
+                        background: const Color(0xffFFFFFF).withOpacity(0.5),
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        width: 120 * 5 + 1,
+                        child: Row(
+                          children: [
+                            ...e.keys.map(
+                              (i) => Container(
+                                decoration: BoxDecoration(
+                                  border: i != 'Tài sản'
+                                      ? const Border(
+                                          left: BorderSide(
+                                            color: grayScaleColor3,
+                                            width: 1,
+                                          ),
+                                        )
+                                      : null,
+                                ),
+                                width: 120,
+                                child: Text(
+                                  e[i].toString(),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      vpad(6)
+                    ],
+                  );
+                }),
+              ],
+            ),
+          ),
+        )
       ],
     );
   }
