@@ -14,7 +14,9 @@ var addRequestAsset = (BuildContext context) {
       useBackground: true,
       title: null, //S.of(context).add_request_asset,
       content: SingleChildScrollView(
-        child: Column(
+        scrollDirection: Axis.vertical,
+        child: ListView(
+          scrollDirection: Axis.vertical,
           children: [
             Text(
               S.of(context).add_request_asset,
