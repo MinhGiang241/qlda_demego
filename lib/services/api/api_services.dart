@@ -84,8 +84,10 @@ class ApiService {
       );
       final path = await getApplicationDocumentsDirectory();
       final credentialsFile = File('${path.path}/credential.json');
-      if (!remember) {
+      if (remember) {
         await credentialsFile.writeAsString(cli.credentials.toJson());
+      } else {
+        await deleteCre();
       }
 
       return cli;

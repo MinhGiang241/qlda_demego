@@ -11,6 +11,7 @@ import '../../generated/l10n.dart';
 import '../../widgets/float_button.dart';
 import '../../widgets/primary_tabbar.dart';
 import '../application/components/code_status_letter.dart';
+import '../assets/create_request_purchase_screen.dart';
 import 'tab/category_tab_letter.dart';
 import 'tab/history_approve_tab_letter.dart';
 import 'tab/history_update_tab_letter.dart';
@@ -43,7 +44,8 @@ class _DetailRequestLetterScreenState extends State<DetailRequestLetterScreen>
         icon: Icons.shopping_cart,
         primary: purpleColor6,
         onPress: () {
-          Navigator.of(context).pushNamed(DetailRequestLetterScreen.routeName);
+          Navigator.of(context)
+              .pushNamed(CreateRequestPurchaseScreen.routeName);
         },
       ),
       DialChildren(

@@ -28,71 +28,67 @@ class CustomDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Center(
-        child: Dialog(
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(24))),
-          elevation: 0,
-          insetAnimationCurve: Curves.bounceInOut,
-          insetPadding: const EdgeInsets.all(40),
-          child: Container(
-            decoration: BoxDecoration(
-              color: useBackground
-                  ? backgroundColor
-                  : Colors.white.withOpacity(0.9),
-              border: Border.all(color: Colors.white54, width: 0.5),
-              borderRadius: BorderRadius.circular(24),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    vpad(24),
-                    if (type != DialogType.custom)
-                      PrimaryIcon(
-                        icons: type == DialogType.success
-                            ? PrimaryIcons.check
-                            : PrimaryIcons.error,
-                        color: Colors.white,
-                        style: PrimaryIconStyle.gradient,
-                        gradients: type == DialogType.success
-                            ? PrimaryIconGradient.green
-                            : PrimaryIconGradient.red,
-                        size: 32,
-                        padding: const EdgeInsets.all(12),
-                      ),
-                    if (type != DialogType.custom) vpad(16),
-                    if (title != null)
-                      Text(_title(), style: txtDisplayMedium()),
-                    if (title != null) vpad(16),
-                    if (type != DialogType.custom)
-                      code == null
-                          ? Text(
-                              msg ?? "",
-                              style: txtBodySmallRegular(),
-                              textAlign: TextAlign.center,
-                            )
-                          : Text(
-                              errorCodeToString(context, code),
-                              style: txtBodySmallRegular(),
-                              textAlign: TextAlign.center,
-                            ),
-                    if (type != DialogType.custom) vpad(20),
-                    if (type != DialogType.custom)
-                      PrimaryButton(
-                        text: S.of(context).close,
-                        buttonSize: ButtonSize.medium,
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    if (content != null) content!,
-                    vpad(24),
-                  ]),
-            ),
+    return Center(
+      child: Dialog(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(24))),
+        elevation: 0,
+        insetAnimationCurve: Curves.bounceInOut,
+        insetPadding: const EdgeInsets.all(40),
+        child: Container(
+          decoration: BoxDecoration(
+            color:
+                useBackground ? backgroundColor : Colors.white.withOpacity(0.9),
+            border: Border.all(color: Colors.white54, width: 0.5),
+            borderRadius: BorderRadius.circular(24),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  vpad(24),
+                  if (type != DialogType.custom)
+                    PrimaryIcon(
+                      icons: type == DialogType.success
+                          ? PrimaryIcons.check
+                          : PrimaryIcons.error,
+                      color: Colors.white,
+                      style: PrimaryIconStyle.gradient,
+                      gradients: type == DialogType.success
+                          ? PrimaryIconGradient.green
+                          : PrimaryIconGradient.red,
+                      size: 32,
+                      padding: const EdgeInsets.all(12),
+                    ),
+                  if (type != DialogType.custom) vpad(16),
+                  if (title != null) Text(_title(), style: txtDisplayMedium()),
+                  if (title != null) vpad(16),
+                  if (type != DialogType.custom)
+                    code == null
+                        ? Text(
+                            msg ?? "",
+                            style: txtBodySmallRegular(),
+                            textAlign: TextAlign.center,
+                          )
+                        : Text(
+                            errorCodeToString(context, code),
+                            style: txtBodySmallRegular(),
+                            textAlign: TextAlign.center,
+                          ),
+                  if (type != DialogType.custom) vpad(20),
+                  if (type != DialogType.custom)
+                    PrimaryButton(
+                      text: S.of(context).close,
+                      buttonSize: ButtonSize.medium,
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  if (content != null) content!,
+                  vpad(24),
+                ]),
           ),
         ),
       ),

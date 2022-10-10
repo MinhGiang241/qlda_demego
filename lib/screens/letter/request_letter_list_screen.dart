@@ -18,7 +18,7 @@ const data = [
   {
     "Mã phiếu": "0001",
     "Tiêu đề": "0001",
-    "Loại đề xuất": "Đề xuất mua sắm tài sản",
+    "Loại đề xuất": "Đề xuất xuất kho",
     "Người tạo": "Nguyễn Văn A",
     "Lý do": "Xuất kho",
     "Ngày xuất kho": "01/01/2022",

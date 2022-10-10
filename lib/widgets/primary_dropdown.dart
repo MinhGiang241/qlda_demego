@@ -69,7 +69,10 @@ class _PrimaryDropDownState extends State<PrimaryDropDown> {
           isExpanded: true,
           // value: items[indexSelected],
           // dropdownColor: Colors.black,
-          hint: Text("---${S.of(context).select}---"),
+          hint: Text(
+            "--${S.of(context).select}--",
+            overflow: TextOverflow.ellipsis,
+          ),
           style: txtBodySmallBold(color: grayScaleColorBase),
           decoration: InputDecoration(
             filled: true,
