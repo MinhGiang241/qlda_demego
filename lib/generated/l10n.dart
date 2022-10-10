@@ -1949,6 +1949,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message(
+      'Delete',
+      name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request letter management`
+  String get req_letter_management {
+    return Intl.message(
+      'Request letter management',
+      name: 'req_letter_management',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Related information`
+  String get related_info {
+    return Intl.message(
+      'Related information',
+      name: 'related_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `General information`
+  String get general_info {
+    return Intl.message(
+      'General information',
+      name: 'general_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Detail letter`
+  String get detail_letter {
+    return Intl.message(
+      'Detail letter',
+      name: 'detail_letter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update`
+  String get fix {
+    return Intl.message(
+      'Update',
+      name: 'fix',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request purchase`
+  String get req_purchase {
+    return Intl.message(
+      'Request purchase',
+      name: 'req_purchase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't have any data`
+  String get no_data {
+    return Intl.message(
+      'Don\'t have any data',
+      name: 'no_data',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

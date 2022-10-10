@@ -188,5 +188,13 @@
   "possiton": "Possiton",
   "member": "Member",
   "add_product": "Add product",
-  "complete": "Complete"
+  "complete": "Complete",
+  "delete": "Delete",
+  "req_letter_management": "Request letter management",
+  "related_info": "Related information",
+  "general_info": "General information",
+  "detail_letter": "Detail letter",
+  "fix": "Update",
+  "req_purchase": "Request purchase",
+  "no_data": "Don't have any data"
 }

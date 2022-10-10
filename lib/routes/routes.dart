@@ -25,6 +25,8 @@ import '../screens/assets/import_request_screen.dart';
 import '../screens/assets/update_asset_screen.dart';
 import '../screens/auth/sign_in/sign_in_screen.dart';
 import '../screens/home/home_screen.dart';
+import '../screens/letter/detail_request_letter_screen.dart';
+import '../screens/letter/request_letter_list_screen.dart';
 
 class AppRoutes {
   Route onGenerateRoute(RouteSettings routeSetting) {
@@ -133,6 +135,16 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: routeSetting,
           builder: ((context) => ImportRequestScreen()),
+        );
+      case RequestLetterListScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => RequestLetterListScreen()),
+        );
+      case DetailRequestLetterScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => DetailRequestLetterScreen()),
         );
       default:
         return MaterialPageRoute(

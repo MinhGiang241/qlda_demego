@@ -29,10 +29,11 @@ void filterApplication(context) {
                   Text(S.of(context).filter, style: txtBold(16)),
                   const Spacer(),
                   IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: const Icon(Icons.check)),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(Icons.check, color: secondaryColorBase),
+                  ),
                 ],
               ),
               vpad(32),

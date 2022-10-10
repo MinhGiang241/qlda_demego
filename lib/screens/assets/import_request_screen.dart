@@ -186,7 +186,16 @@ class _ImportRequestScreenState extends State<ImportRequestScreen> {
             textAlign: TextAlign.center,
           ),
           vpad(12),
-          ...data.map((e) => ImportAsset(data: e))
+          ...data.map(
+            (e) => ImportAsset(
+              data: e,
+              onDelete: () {
+                data.removeWhere((element) => element['id'] == e['id']);
+                setState(() {});
+              },
+            ),
+          ),
+          vpad(60),
         ],
       ),
       floatingActionButton: FloatDialButton(

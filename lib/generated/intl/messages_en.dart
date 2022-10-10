@@ -103,8 +103,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "deathline_ex":
             MessageLookupByLibrary.simpleMessage("Execute deathline"),
         "decision": MessageLookupByLibrary.simpleMessage("Decision"),
+        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "detail": MessageLookupByLibrary.simpleMessage("Detail"),
+        "detail_letter": MessageLookupByLibrary.simpleMessage("Detail letter"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "en": MessageLookupByLibrary.simpleMessage("English"),
@@ -128,8 +130,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "extr_tast": MessageLookupByLibrary.simpleMessage("Extra task"),
         "failure": MessageLookupByLibrary.simpleMessage("Failure"),
         "filter": MessageLookupByLibrary.simpleMessage("Filter"),
+        "fix": MessageLookupByLibrary.simpleMessage("Update"),
         "forgot_pass": MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full name"),
+        "general_info":
+            MessageLookupByLibrary.simpleMessage("General information"),
         "group": MessageLookupByLibrary.simpleMessage("Group"),
         "hand_over": MessageLookupByLibrary.simpleMessage("Hand over"),
         "have_acc":
@@ -163,6 +168,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_asset":
             MessageLookupByLibrary.simpleMessage("Do not have any asset!"),
         "no_comment": MessageLookupByLibrary.simpleMessage("No comment"),
+        "no_data": MessageLookupByLibrary.simpleMessage("Don\'t have any data"),
         "not_active": MessageLookupByLibrary.simpleMessage(
             "Account has not been activated"),
         "not_distribute":
@@ -205,6 +211,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "reg_success": MessageLookupByLibrary.simpleMessage(
             "Registration successful, please login"),
         "related_asset": MessageLookupByLibrary.simpleMessage("Related asset"),
+        "related_info":
+            MessageLookupByLibrary.simpleMessage("Related information"),
         "reload": MessageLookupByLibrary.simpleMessage("Reload"),
         "remember_acc": MessageLookupByLibrary.simpleMessage("Remember me"),
         "reply": MessageLookupByLibrary.simpleMessage("Reply"),
@@ -222,6 +230,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Request for exporting"),
         "req_import":
             MessageLookupByLibrary.simpleMessage("Request for importing"),
+        "req_letter_management":
+            MessageLookupByLibrary.simpleMessage("Request letter management"),
+        "req_purchase":
+            MessageLookupByLibrary.simpleMessage("Request purchase"),
         "request_letter":
             MessageLookupByLibrary.simpleMessage("Request letter"),
         "requesting_purchase_asset":

@@ -189,5 +189,13 @@
   "possiton": "Chức danh",
   "member": "Thành viên",
   "add_product": "Thêm sản phẩm",
-  "complete": "Hoàn thành"
+  "complete": "Hoàn thành",
+  "delete": "Xóa",
+  "req_letter_management": "Quản lý phiếu đề xuất",
+  "related_info": "Thông tin liên quan",
+  "general_info": "Thông tin chung",
+  "detail_letter": "Chi tiết phiếu",
+  "fix": "Sửa",
+  "req_purchase": "Đề xuất mua sắm",
+  "no_data": "Chưa có dữ liệu"
 }

@@ -100,8 +100,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "deathline": MessageLookupByLibrary.simpleMessage("Thời hạn"),
         "deathline_ex": MessageLookupByLibrary.simpleMessage("Thời hạn xử lý"),
         "decision": MessageLookupByLibrary.simpleMessage("Quyết định"),
+        "delete": MessageLookupByLibrary.simpleMessage("Xóa"),
         "description": MessageLookupByLibrary.simpleMessage("Mô tả"),
         "detail": MessageLookupByLibrary.simpleMessage("Chi tiết"),
+        "detail_letter": MessageLookupByLibrary.simpleMessage("Chi tiết phiếu"),
         "edit": MessageLookupByLibrary.simpleMessage("Chỉnh sửa"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "en": MessageLookupByLibrary.simpleMessage("Tiếng Anh"),
@@ -128,8 +130,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Công việc phát sinh"),
         "failure": MessageLookupByLibrary.simpleMessage("Thất bại"),
         "filter": MessageLookupByLibrary.simpleMessage("Bộ lọc"),
+        "fix": MessageLookupByLibrary.simpleMessage("Sửa"),
         "forgot_pass": MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Họ và Tên"),
+        "general_info": MessageLookupByLibrary.simpleMessage("Thông tin chung"),
         "group": MessageLookupByLibrary.simpleMessage("Nhóm"),
         "hand_over": MessageLookupByLibrary.simpleMessage("Bàn giao"),
         "have_acc":
@@ -165,6 +169,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Chưa có tài sản nào!"),
         "no_comment":
             MessageLookupByLibrary.simpleMessage("Chưa có bình luận nào"),
+        "no_data": MessageLookupByLibrary.simpleMessage("Chưa có dữ liệu"),
         "not_active": MessageLookupByLibrary.simpleMessage(
             "Tài khoản chưa được kích hoạt"),
         "not_distribute": MessageLookupByLibrary.simpleMessage("Chưa phân bổ"),
@@ -208,6 +213,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Đăng ký thành công, vui lòng đăng nhập"),
         "related_asset":
             MessageLookupByLibrary.simpleMessage("Tài sản liên quan"),
+        "related_info":
+            MessageLookupByLibrary.simpleMessage("Thông tin liên quan"),
         "reload": MessageLookupByLibrary.simpleMessage("Tải lại"),
         "remember_acc":
             MessageLookupByLibrary.simpleMessage("Ghi nhớ tài khoản"),
@@ -224,6 +231,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Phản hồi từ chối cv phát sinh"),
         "req_export": MessageLookupByLibrary.simpleMessage("Yêu cầu xuất kho"),
         "req_import": MessageLookupByLibrary.simpleMessage("Yêu cầu nhập kho"),
+        "req_letter_management":
+            MessageLookupByLibrary.simpleMessage("Quản lý phiếu đề xuất"),
+        "req_purchase": MessageLookupByLibrary.simpleMessage("Đề xuất mua sắm"),
         "request_letter": MessageLookupByLibrary.simpleMessage("Phiếu đề xuất"),
         "requesting_purchase_asset":
             MessageLookupByLibrary.simpleMessage("Tài sản đề xuất mua"),

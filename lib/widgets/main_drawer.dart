@@ -7,6 +7,7 @@ import '../generated/l10n.dart';
 import '../screens/application/application_screen.dart';
 import '../screens/assets/asset_screen.dart';
 import '../screens/auth/sign_in/sign_in_screen.dart';
+import '../screens/letter/request_letter_list_screen.dart';
 import '../services/provider/auth_provider.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -83,55 +84,85 @@ class MainDrawer extends StatelessWidget {
               child: ListView(
                 children: [
                   buildListTile(
-                      S.of(context).application,
-                      Icons.document_scanner,
-                      () => Navigator.pushReplacementNamed(
-                          context, ApplicationScreen.routeName)),
+                    S.of(context).application,
+                    Icons.document_scanner,
+                    () => Navigator.pushReplacementNamed(
+                      context,
+                      ApplicationScreen.routeName,
+                    ),
+                  ),
                   buildListTile(
-                      S.of(context).extr_tast,
-                      Icons.list_alt,
-                      () => Navigator.pushReplacementNamed(
-                          context, HomeScreen.routeName)),
+                    S.of(context).extr_tast,
+                    Icons.list_alt,
+                    () => Navigator.pushReplacementNamed(
+                      context,
+                      HomeScreen.routeName,
+                    ),
+                  ),
                   buildListTile(
-                      S.of(context).period_task,
-                      Icons.list_rounded,
-                      () => Navigator.pushReplacementNamed(
-                          context, HomeScreen.routeName)),
+                    S.of(context).period_task,
+                    Icons.list_rounded,
+                    () => Navigator.pushReplacementNamed(
+                      context,
+                      HomeScreen.routeName,
+                    ),
+                  ),
                   buildListTile(
-                      S.of(context).reception,
-                      Icons.receipt,
-                      () => Navigator.pushReplacementNamed(
-                          context, HomeScreen.routeName)),
+                    S.of(context).asset_manage,
+                    Icons.money,
+                    () => Navigator.pushReplacementNamed(
+                      context,
+                      AssetScreen.routeName,
+                    ),
+                  ),
                   buildListTile(
-                      S.of(context).asset_manage,
-                      Icons.money,
-                      () => Navigator.pushReplacementNamed(
-                          context, AssetScreen.routeName)),
+                    S.of(context).req_letter_management,
+                    Icons.receipt,
+                    () => Navigator.pushReplacementNamed(
+                      context,
+                      RequestLetterListScreen.routeName,
+                    ),
+                  ),
                   buildListTile(
-                      S.of(context).parcel,
-                      Icons.gif_box,
-                      () => Navigator.pushReplacementNamed(
-                          context, HomeScreen.routeName)),
+                    S.of(context).parcel,
+                    Icons.gif_box,
+                    () => Navigator.pushReplacementNamed(
+                      context,
+                      HomeScreen.routeName,
+                    ),
+                  ),
                   buildListTile(
-                      S.of(context).penetration,
-                      Icons.transform,
-                      () => Navigator.pushReplacementNamed(
-                          context, HomeScreen.routeName)),
+                    S.of(context).penetration,
+                    Icons.transform,
+                    () => Navigator.pushReplacementNamed(
+                      context,
+                      HomeScreen.routeName,
+                    ),
+                  ),
                   buildListTile(
-                      S.of(context).resident_card,
-                      Icons.portrait,
-                      () => Navigator.pushReplacementNamed(
-                          context, HomeScreen.routeName)),
+                    S.of(context).resident_card,
+                    Icons.portrait,
+                    () => Navigator.pushReplacementNamed(
+                      context,
+                      HomeScreen.routeName,
+                    ),
+                  ),
                   buildListTile(
-                      S.of(context).verhicle_card,
-                      Icons.car_rental,
-                      () => Navigator.pushReplacementNamed(
-                          context, HomeScreen.routeName)),
+                    S.of(context).verhicle_card,
+                    Icons.car_rental,
+                    () => Navigator.pushReplacementNamed(
+                      context,
+                      HomeScreen.routeName,
+                    ),
+                  ),
                   buildListTile(
-                      S.of(context).customer,
-                      Icons.dashboard,
-                      () => Navigator.pushReplacementNamed(
-                          context, HomeScreen.routeName)),
+                    S.of(context).customer,
+                    Icons.dashboard,
+                    () => Navigator.pushReplacementNamed(
+                      context,
+                      HomeScreen.routeName,
+                    ),
+                  ),
                   // ldalskdlasdkasl
                 ],
               ),

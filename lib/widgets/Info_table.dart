@@ -18,7 +18,7 @@ class InfoTable extends StatelessWidget {
       if ((entry.value.runtimeType == String ||
               entry.value.runtimeType == int ||
               entry.value.runtimeType == double) &&
-          entry.key != 'id') {
+          (entry.key != 'id' && entry.key != 'Loại')) {
         infoData.putIfAbsent(entry.key, () => entry.value.toString());
       }
     }
@@ -26,7 +26,7 @@ class InfoTable extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-          margin: const EdgeInsets.only(bottom: 15),
+          margin: const EdgeInsets.only(bottom: 12),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             color: Colors.white,
@@ -40,7 +40,7 @@ class InfoTable extends StatelessWidget {
               )
             ],
           ),
-          width: double.infinity,
+          // width: double.infinity,
           child: Column(children: [
             if (title != null) vpad(12),
             if (title != null)
