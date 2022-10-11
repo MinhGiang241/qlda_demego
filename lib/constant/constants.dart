@@ -47,6 +47,7 @@ const Color yellowColor4 = Color(0xffFFEEB7);
 const Color yellowColor5 = Color(0xffFFF6DA);
 
 const Color yellowColor6 = Color(0xffFFC700);
+const Color yellowColor7 = Color(0xffFF9900);
 
 const Color purpleColorBase = Color(0xff6C4DDA);
 const Color purpleColor1 = Color(0xff522ED2);
@@ -55,6 +56,7 @@ const Color purpleColor3 = Color(0xff977DF3);
 const Color purpleColor4 = Color(0xffBDABFB);
 const Color purpleColor5 = Color(0xffE7E0FF);
 const Color purpleColor6 = Color(0xff8A04C9);
+const Color purpleColor7 = Color(0xff5D5FEF);
 
 const Color redColorBase = Color(0xffFF4141);
 const Color redColor1 = Color(0xffEB2323);

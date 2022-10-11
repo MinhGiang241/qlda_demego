@@ -81,6 +81,7 @@ class _DetailRequestLetterScreenState extends State<DetailRequestLetterScreen>
       body: Column(
         children: [
           PrimaryTabBar(
+            isScrollable: true,
             controller: _tabController,
             titles: [
               S.of(context).category,

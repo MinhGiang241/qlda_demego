@@ -23,10 +23,11 @@ class Dial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.fromLTRB(12, 3, 0, 3),
+        padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
         decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.8),
-            borderRadius: BorderRadius.circular(12)),
+          color: Colors.black.withOpacity(0.8),
+          borderRadius: BorderRadius.circular(12),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.center,

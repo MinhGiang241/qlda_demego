@@ -134,6 +134,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.6"
+  dotted_border:
+    dependency: "direct main"
+    description:
+      name: dotted_border
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0+2"
   fake_async:
     dependency: transitive
     description:
@@ -338,13 +345,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
-  multiselect:
+  multi_select_flutter:
     dependency: "direct main"
     description:
-      name: multiselect
+      name: multi_select_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.7"
+    version: "4.1.2"
   nested:
     dependency: transitive
     description:
@@ -532,13 +539,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.10.0"
-  states_rebuilder:
-    dependency: transitive
-    description:
-      name: states_rebuilder
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "6.1.0+1"
   stream_channel:
     dependency: transitive
     description:

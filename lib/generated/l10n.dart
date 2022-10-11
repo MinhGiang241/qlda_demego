@@ -2029,6 +2029,286 @@ class S {
       args: [],
     );
   }
+
+  /// `Extra task list`
+  String get ext_task_list {
+    return Intl.message(
+      'Extra task list',
+      name: 'ext_task_list',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waiting to assign`
+  String get wait_assign {
+    return Intl.message(
+      'Waiting to assign',
+      name: 'wait_assign',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waiting to execute`
+  String get wait_execute {
+    return Intl.message(
+      'Waiting to execute',
+      name: 'wait_execute',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In progress`
+  String get in_progress {
+    return Intl.message(
+      'In progress',
+      name: 'in_progress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waiting to confirm`
+  String get wait_confirm {
+    return Intl.message(
+      'Waiting to confirm',
+      name: 'wait_confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Over Time`
+  String get over_time {
+    return Intl.message(
+      'Over Time',
+      name: 'over_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Assign task`
+  String get assign_task {
+    return Intl.message(
+      'Assign task',
+      name: 'assign_task',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Kanban view`
+  String get kanban_view {
+    return Intl.message(
+      'Kanban view',
+      name: 'kanban_view',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create task`
+  String get cr_task {
+    return Intl.message(
+      'Create task',
+      name: 'cr_task',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create extra task`
+  String get cr_ext_task {
+    return Intl.message(
+      'Create extra task',
+      name: 'cr_ext_task',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task_name`
+  String get task_name {
+    return Intl.message(
+      'Task_name',
+      name: 'task_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Assign from`
+  String get assign_from {
+    return Intl.message(
+      'Assign from',
+      name: 'assign_from',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Department/group`
+  String get department {
+    return Intl.message(
+      'Department/group',
+      name: 'department',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get chot {
+    return Intl.message(
+      '',
+      name: 'chot',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Assign to`
+  String get assign_to {
+    return Intl.message(
+      'Assign to',
+      name: 'assign_to',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `End`
+  String get end {
+    return Intl.message(
+      'End',
+      name: 'end',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Supervisor`
+  String get supervisor {
+    return Intl.message(
+      'Supervisor',
+      name: 'supervisor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm task`
+  String get confirm_task {
+    return Intl.message(
+      'Confirm task',
+      name: 'confirm_task',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task`
+  String get task {
+    return Intl.message(
+      'Task',
+      name: 'task',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add more task`
+  String get add_task {
+    return Intl.message(
+      'Add more task',
+      name: 'add_task',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Extra task detail`
+  String get ext_task_detail {
+    return Intl.message(
+      'Extra task detail',
+      name: 'ext_task_detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Refuse`
+  String get refuse {
+    return Intl.message(
+      'Refuse',
+      name: 'refuse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add attached file`
+  String get add_attached_file {
+    return Intl.message(
+      'Add attached file',
+      name: 'add_attached_file',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change deathline`
+  String get change_deathline {
+    return Intl.message(
+      'Change deathline',
+      name: 'change_deathline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adjust`
+  String get adjust {
+    return Intl.message(
+      'Adjust',
+      name: 'adjust',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task Detail`
+  String get task_detail {
+    return Intl.message(
+      'Task Detail',
+      name: 'task_detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Attached file`
+  String get attached_file {
+    return Intl.message(
+      'Attached file',
+      name: 'attached_file',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `History`
+  String get history {
+    return Intl.message(
+      'History',
+      name: 'history',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

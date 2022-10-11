@@ -24,6 +24,9 @@ import '../screens/assets/export_request_screen.dart';
 import '../screens/assets/import_request_screen.dart';
 import '../screens/assets/update_asset_screen.dart';
 import '../screens/auth/sign_in/sign_in_screen.dart';
+import '../screens/extra_task/create_extra_task_screen.dart';
+import '../screens/extra_task/extra_task_detail_screen.dart';
+import '../screens/extra_task/extra_task_list_screen.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/letter/detail_request_letter_screen.dart';
 import '../screens/letter/request_letter_list_screen.dart';
@@ -145,6 +148,21 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: routeSetting,
           builder: ((context) => DetailRequestLetterScreen()),
+        );
+      case ExtraTaskListScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => ExtraTaskListScreen()),
+        );
+      case CreateExtraTaskScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => CreateExtraTaskScreen()),
+        );
+      case ExtraTaskDetailScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => ExtraTaskDetailScreen()),
         );
       default:
         return MaterialPageRoute(

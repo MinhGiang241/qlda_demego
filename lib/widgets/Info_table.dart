@@ -6,8 +6,9 @@ import '../constant/constants.dart';
 import 'primary_card.dart';
 
 class InfoTable extends StatelessWidget {
-  InfoTable({super.key, this.data, this.onTap, this.title});
+  InfoTable({super.key, this.data, this.onTap, this.title, this.num});
   final data;
+  int? num;
   void Function()? onTap;
   String? title;
   @override
@@ -57,7 +58,7 @@ class InfoTable extends StatelessWidget {
               padding: EdgeInsets.zero,
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: infoData.keys.length,
+              itemCount: num ?? infoData.keys.length,
               itemBuilder: (ctx, j) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
                 child: Row(children: [

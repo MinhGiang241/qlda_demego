@@ -7,9 +7,15 @@ import '../constant/constants.dart';
 import '../generated/l10n.dart';
 
 class PrimaryTabBar extends StatelessWidget {
-  const PrimaryTabBar({super.key, required this.titles, this.controller});
+  PrimaryTabBar({
+    super.key,
+    required this.titles,
+    this.controller,
+    this.isScrollable = false,
+  });
   final List<String> titles;
   final TabController? controller;
+  bool isScrollable;
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +23,7 @@ class PrimaryTabBar extends StatelessWidget {
       child: Container(
         decoration: const BoxDecoration(color: Colors.white),
         child: TabBar(
+          isScrollable: isScrollable,
           labelStyle: txtBodySmallBold(),
           labelColor: grayScaleColorBase,
           controller: controller,

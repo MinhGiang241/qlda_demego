@@ -7,6 +7,7 @@ import '../generated/l10n.dart';
 import '../screens/application/application_screen.dart';
 import '../screens/assets/asset_screen.dart';
 import '../screens/auth/sign_in/sign_in_screen.dart';
+import '../screens/extra_task/extra_task_list_screen.dart';
 import '../screens/letter/request_letter_list_screen.dart';
 import '../services/provider/auth_provider.dart';
 
@@ -96,7 +97,7 @@ class MainDrawer extends StatelessWidget {
                     Icons.list_alt,
                     () => Navigator.pushReplacementNamed(
                       context,
-                      HomeScreen.routeName,
+                      ExtraTaskListScreen.routeName,
                     ),
                   ),
                   buildListTile(
