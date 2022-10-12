@@ -9,10 +9,13 @@ import '../../generated/l10n.dart';
 import '../../widgets/Info_table.dart';
 import '../../widgets/float_button.dart';
 import '../../widgets/primary_card.dart';
+import 'dailog/show_dailog_extra_task.dart';
+import 'edit_extra_task_screen.dart';
 
 class ExtraTaskDetailScreen extends StatelessWidget {
-  const ExtraTaskDetailScreen({super.key});
+  ExtraTaskDetailScreen({super.key});
   static const routeName = '/extra-task/detail';
+  TextEditingController deathlineChangecontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +31,9 @@ class ExtraTaskDetailScreen extends StatelessWidget {
       DialChildren(
         icon: Icons.remove_circle,
         label: S.of(context).refuse,
-        onPress: () {},
+        onPress: () {
+          refuseTask(context, () {});
+        },
         primary: redColor2,
       ),
       DialChildren(
@@ -40,31 +45,41 @@ class ExtraTaskDetailScreen extends StatelessWidget {
       DialChildren(
         icon: Icons.link,
         label: S.of(context).add_attached_file,
-        onPress: () {},
+        onPress: () {
+          addAttachedFile(context, () {});
+        },
         primary: purpleColor6,
       ),
       DialChildren(
         icon: Icons.add_box,
         label: S.of(context).add_task,
-        onPress: () {},
+        onPress: () {
+          showAddTaskDailog(context, (_) {});
+        },
         primary: greenColor6,
       ),
       DialChildren(
         icon: Icons.access_time_filled,
         label: S.of(context).change_deathline,
-        onPress: () {},
+        onPress: () {
+          changeDeathline(context, deathlineChangecontroller, () {});
+        },
         primary: yellowColorBase,
       ),
       DialChildren(
         icon: Icons.edit_note,
         label: S.of(context).adjust,
-        onPress: () {},
+        onPress: () {
+          adjustTask(context, () {});
+        },
         primary: secondaryColorBase,
       ),
       DialChildren(
         icon: Icons.edit,
         label: S.of(context).edit,
-        onPress: () {},
+        onPress: () {
+          Navigator.of(context).pushNamed(EditExtraTaskScreen.routeName);
+        },
         primary: turquoiseColor,
       ),
     ];

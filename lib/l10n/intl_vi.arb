@@ -225,5 +225,11 @@
   "adjust": "Điều chỉnh",
   "task_detail": "Chi tiết công việc",
   "attached_file": "Tệp đính kèm",
-  "history": "Lịch sử"
+  "history": "Lịch sử",
+  "edit_ext_task": "Sửa công việc phát sinh",
+  "choose_file": "Chọn tệp",
+  "adjust_task": "Điều chỉnh công việc",
+  "deathline_change": "Thời hạn muốn đổi",
+  "refuse_task": "Từ chối công việc",
+  "demand": "Yêu cầu"
 }

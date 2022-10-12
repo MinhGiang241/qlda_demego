@@ -2309,6 +2309,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Edit extra task`
+  String get edit_ext_task {
+    return Intl.message(
+      'Edit extra task',
+      name: 'edit_ext_task',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose file`
+  String get choose_file {
+    return Intl.message(
+      'Choose file',
+      name: 'choose_file',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adjust task`
+  String get adjust_task {
+    return Intl.message(
+      'Adjust task',
+      name: 'adjust_task',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deathline change`
+  String get deathline_change {
+    return Intl.message(
+      'Deathline change',
+      name: 'deathline_change',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Refuse task`
+  String get refuse_task {
+    return Intl.message(
+      'Refuse task',
+      name: 'refuse_task',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Demand`
+  String get demand {
+    return Intl.message(
+      'Demand',
+      name: 'demand',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

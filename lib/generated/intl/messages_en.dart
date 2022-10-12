@@ -38,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_supplier": MessageLookupByLibrary.simpleMessage("Add supplier"),
         "add_task": MessageLookupByLibrary.simpleMessage("Add more task"),
         "adjust": MessageLookupByLibrary.simpleMessage("Adjust"),
+        "adjust_task": MessageLookupByLibrary.simpleMessage("Adjust task"),
         "amount": MessageLookupByLibrary.simpleMessage("Amount"),
         "app_version": MessageLookupByLibrary.simpleMessage("App version"),
         "application": MessageLookupByLibrary.simpleMessage("Application"),
@@ -77,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change deathline"),
         "change_pass": MessageLookupByLibrary.simpleMessage("Change password"),
         "choices": MessageLookupByLibrary.simpleMessage("Choice"),
+        "choose_file": MessageLookupByLibrary.simpleMessage("Choose file"),
         "choose_off": MessageLookupByLibrary.simpleMessage("Choose type"),
         "chot": MessageLookupByLibrary.simpleMessage(""),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
@@ -115,15 +117,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "date_change_to":
             MessageLookupByLibrary.simpleMessage(" Change to date"),
         "deathline": MessageLookupByLibrary.simpleMessage("Deathline"),
+        "deathline_change":
+            MessageLookupByLibrary.simpleMessage("Deathline change"),
         "deathline_ex":
             MessageLookupByLibrary.simpleMessage("Execute deathline"),
         "decision": MessageLookupByLibrary.simpleMessage("Decision"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "demand": MessageLookupByLibrary.simpleMessage("Demand"),
         "department": MessageLookupByLibrary.simpleMessage("Department/group"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "detail": MessageLookupByLibrary.simpleMessage("Detail"),
         "detail_letter": MessageLookupByLibrary.simpleMessage("Detail letter"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "edit_ext_task":
+            MessageLookupByLibrary.simpleMessage("Edit extra task"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "en": MessageLookupByLibrary.simpleMessage("English"),
         "end": MessageLookupByLibrary.simpleMessage("End"),
@@ -234,6 +241,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "recommendation_list":
             MessageLookupByLibrary.simpleMessage("Recommendation list"),
         "refuse": MessageLookupByLibrary.simpleMessage("Refuse"),
+        "refuse_task": MessageLookupByLibrary.simpleMessage("Refuse task"),
         "reg_success": MessageLookupByLibrary.simpleMessage(
             "Registration successful, please login"),
         "related_asset": MessageLookupByLibrary.simpleMessage("Related asset"),

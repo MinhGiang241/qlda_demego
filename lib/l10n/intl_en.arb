@@ -224,5 +224,11 @@
   "adjust": "Adjust",
   "task_detail": "Task Detail",
   "attached_file": "Attached file",
-  "history": "History"
+  "history": "History",
+  "edit_ext_task": "Edit extra task",
+  "choose_file": "Choose file",
+  "adjust_task": "Adjust task",
+  "deathline_change": "Deathline change",
+  "refuse_task": "Refuse task",
+  "demand": "Demand"
 }

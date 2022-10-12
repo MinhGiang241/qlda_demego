@@ -25,8 +25,10 @@ import '../screens/assets/import_request_screen.dart';
 import '../screens/assets/update_asset_screen.dart';
 import '../screens/auth/sign_in/sign_in_screen.dart';
 import '../screens/extra_task/create_extra_task_screen.dart';
+import '../screens/extra_task/edit_extra_task_screen.dart';
 import '../screens/extra_task/extra_task_detail_screen.dart';
 import '../screens/extra_task/extra_task_list_screen.dart';
+import '../screens/extra_task/kanban_task_screen.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/letter/detail_request_letter_screen.dart';
 import '../screens/letter/request_letter_list_screen.dart';
@@ -163,6 +165,16 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: routeSetting,
           builder: ((context) => ExtraTaskDetailScreen()),
+        );
+      case EditExtraTaskScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => EditExtraTaskScreen()),
+        );
+      case KanbanTaskScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => KanbanTaskScreen()),
         );
       default:
         return MaterialPageRoute(

@@ -10,11 +10,13 @@ class PrimaryScreen extends StatelessWidget {
     this.drawer,
     this.floatingActionButton,
     this.isPadding = true,
+    this.bottomNavigationBar,
   });
   final PreferredSizeWidget? appBar;
   final Widget? body;
   final Widget? drawer;
   final Widget? floatingActionButton;
+  final Widget? bottomNavigationBar;
   final bool isPadding;
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class PrimaryScreen extends StatelessWidget {
                 )
               : body,
           floatingActionButton: floatingActionButton,
+          bottomNavigationBar: bottomNavigationBar,
         ));
   }
 }

@@ -42,43 +42,45 @@ class MainDrawer extends StatelessWidget {
               child: DrawerHeader(
                 // alignment: Alignment.center,
                 padding: const EdgeInsets.only(top: 4),
-                child: Column(children: [
-                  Text(
-                    'Quản lý tòa nhà',
-                    style: txtBold(18, secondaryColor5),
-                  ),
-                  vpad(20),
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        backgroundColor: Colors.grey.shade400,
-                        radius: 25,
-                        child: const Icon(
-                          Icons.person,
-                          size: 40,
+                child: Column(
+                  children: [
+                    Text(
+                      'Quản lý tòa nhà',
+                      style: txtBold(18, secondaryColor5),
+                    ),
+                    vpad(20),
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Colors.grey.shade400,
+                          radius: 25,
+                          child: const Icon(
+                            Icons.person,
+                            size: 40,
+                          ),
                         ),
-                      ),
-                      hpad(15),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Trương Minh Giang",
-                              textAlign: TextAlign.left,
-                              style:
-                                  txtBodyMediumRegular(color: secondaryColor5)),
-                          Text("Vinhome Ocean Park",
-                              textAlign: TextAlign.left,
-                              style:
-                                  txtBodySmallRegular(color: secondaryColor5)),
-                          Text("Quản lý tòa nhà",
-                              textAlign: TextAlign.left,
-                              style:
-                                  txtBodySmallRegular(color: secondaryColor5)),
-                        ],
-                      )
-                    ],
-                  )
-                ]),
+                        hpad(15),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Trương Minh Giang",
+                                textAlign: TextAlign.left,
+                                style: txtBodyMediumRegular(
+                                    color: secondaryColor5)),
+                            Text("Vinhome Ocean Park",
+                                textAlign: TextAlign.left,
+                                style: txtBodySmallRegular(
+                                    color: secondaryColor5)),
+                            Text("Quản lý tòa nhà",
+                                textAlign: TextAlign.left,
+                                style: txtBodySmallRegular(
+                                    color: secondaryColor5)),
+                          ],
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
             Flexible(

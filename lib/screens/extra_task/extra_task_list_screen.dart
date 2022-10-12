@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:qlda_demego/screens/extra_task/kanban_task_screen.dart';
 import 'package:qlda_demego/widgets/main_drawer.dart';
 import 'package:qlda_demego/widgets/primary_appbar.dart';
 import 'package:qlda_demego/widgets/primary_screen.dart';
@@ -219,7 +220,9 @@ class _ExtraTaskListScreenState extends State<ExtraTaskListScreen>
         label: S.of(context).kanban_view,
         icon: Icons.hourglass_top,
         primary: yellowColor7,
-        onPress: () {},
+        onPress: () {
+          Navigator.of(context).pushNamed(KanbanTaskScreen.routeName);
+        },
       ),
       DialChildren(
         label: S.of(context).assign_task,

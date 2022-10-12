@@ -145,10 +145,11 @@ final gradientWhite = LinearGradient(colors: [
 ], begin: Alignment.topLeft, end: Alignment.bottomRight);
 
 TextStyle txtDisplayLarge({Color? color}) => TextStyle(
-    fontFamily: family,
-    fontSize: 32,
-    fontWeight: FontWeight.w700,
-    color: color);
+      fontFamily: family,
+      fontSize: 32,
+      fontWeight: FontWeight.w700,
+      color: color,
+    );
 TextStyle txtDisplayMedium({Color? color}) => TextStyle(
     fontFamily: family,
     fontSize: 24,
