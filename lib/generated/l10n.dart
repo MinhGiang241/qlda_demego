@@ -2369,6 +2369,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Task list`
+  String get task_list {
+    return Intl.message(
+      'Task list',
+      name: 'task_list',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Technical Employee`
+  String get tech_employee {
+    return Intl.message(
+      'Technical Employee',
+      name: 'tech_employee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Employee`
+  String get add_employee {
+    return Intl.message(
+      'Add Employee',
+      name: 'add_employee',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

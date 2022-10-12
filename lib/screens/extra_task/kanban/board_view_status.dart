@@ -10,18 +10,44 @@ import '../../../generated/l10n.dart';
 
 class BoardItemObject {
   String? title;
+  String? note;
+  List<String>? users;
   Widget? child;
-  BoardItemObject({this.title}) {
+  BoardItemObject({this.title, this.users, this.note}) {
     title ??= "";
+
     child = PrimaryCard(
       gradient: gradientPrimary,
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           vpad(12),
           Text(
             title!,
-            style: txtBodySmallRegular(color: Colors.white),
+            style: txtBodySmallBold(color: Colors.white),
           ),
+          vpad(6),
+          if (users != null)
+            Column(
+              children: [
+                ...users!.map(
+                  (e) => Padding(
+                    padding: const EdgeInsets.only(bottom: 6),
+                    child: Text(
+                      e,
+                      style: txtBodyXSmallRegular(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          if (note != null)
+            Text(
+              note!,
+              style: txtBodyXSmallRegular(color: Colors.white),
+            ),
           vpad(12),
         ],
       ),
@@ -39,25 +65,32 @@ class BoardListObject {
   }
 }
 
-class BoardViewExample extends StatelessWidget {
+final a = BoardItemObject(
+  title: "Kiểm tra tài sản tầng 1",
+  users: ['User1', 'User2'],
+  note: '0/10 checklist item ',
+);
+
+class BoardViewStatus extends StatelessWidget {
   final List<BoardListObject> _listData = [
     BoardListObject(
       title: S.current.wait_assign,
-      items: [BoardItemObject(title: "hello")],
+      items: [a, a, a],
     ),
-    BoardListObject(
-      title: S.current.wait_execute,
-    ),
-    BoardListObject(title: S.current.in_progress),
-    BoardListObject(title: S.current.wait_confirm),
-    BoardListObject(title: S.current.complete),
+    BoardListObject(title: S.current.wait_execute, items: [a]),
+    BoardListObject(title: S.current.in_progress, items: [a]),
+    BoardListObject(title: S.current.wait_confirm, items: [a]),
+    BoardListObject(title: S.current.complete, items: [a]),
   ];
 
   //Can be used to animate to different sections of the BoardView
   BoardViewController boardViewController = BoardViewController();
 
+  BoardViewStatus({super.key});
+
   @override
   Widget build(BuildContext context) {
+    // ignore: no_leading_underscores_for_local_identifiers
     List<BoardList> _lists = [];
     for (int i = 0; i < _listData.length; i++) {
       _lists.add(_createBoardList(_listData[i]) as BoardList);
@@ -87,13 +120,6 @@ class BoardViewExample extends StatelessWidget {
       onTapItem:
           (int? listIndex, int? itemIndex, BoardItemState? state) async {},
       item: itemObject.child,
-
-      //  Card(
-      //   child: Padding(
-      //     padding: const EdgeInsets.all(8.0),
-      //     child: Text(itemObject.title!),
-      //   ),
-      // ),
     );
   }
 
@@ -113,17 +139,19 @@ class BoardViewExample extends StatelessWidget {
         _listData.removeAt(oldListIndex);
         _listData.insert(listIndex!, list);
       },
-      headerBackgroundColor: Colors.red, //Colors.white.withOpacity(0.5),
-      backgroundColor: Colors.red, //Colors.white.withOpacity(0.5),
+      headerBackgroundColor: null,
+      backgroundColor: grayScaleColorBase.withOpacity(0.1),
       header: [
         Expanded(
-            child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: Text(
-                  list.title!,
-                  textAlign: TextAlign.center,
-                  style: txtBodySmallBold(),
-                ))),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Text(
+              list.title!,
+              textAlign: TextAlign.center,
+              style: txtBodySmallBold(),
+            ),
+          ),
+        ),
       ],
       items: items,
     );

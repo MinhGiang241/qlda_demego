@@ -102,39 +102,42 @@ class _PrimaryDropDownState extends State<PrimaryDropDown> {
                   borderRadius: BorderRadius.circular(12),
                 ),
               )
-            : DropdownButtonFormField<dynamic>(
-                value: widget.value,
-                isExpanded: true,
-                // value: items[indexSelected],
-                // dropdownColor: Colors.black,
-                hint: Text(
-                  "--${S.of(context).select}--",
-                  overflow: TextOverflow.ellipsis,
-                ),
-                style: txtBodySmallBold(color: grayScaleColorBase),
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  hintStyle: txtBodySmallBold(color: grayScaleColor3),
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide:
-                        const BorderSide(color: primaryColor2, width: 2),
+            : PrimaryCard(
+                child: DropdownButtonFormField<dynamic>(
+                  dropdownColor: Colors.white,
+                  value: widget.value,
+                  isExpanded: true,
+                  // value: items[indexSelected],
+                  // dropdownColor: Colors.black,
+                  hint: Text(
+                    "--${S.of(context).select}--",
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
+                  style: txtBodySmallBold(color: grayScaleColorBase),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    hintStyle: txtBodySmallBold(color: grayScaleColor3),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 12, horizontal: 12),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide:
+                          const BorderSide(color: primaryColor2, width: 2),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none,
+                    ),
                   ),
+                  onChanged: widget.onChange ??
+                      (v) {
+                        if (widget.value != null) {
+                          widget.value = v.toString();
+                        }
+                      },
+                  items: widget.selectList ?? items,
                 ),
-                onChanged: widget.onChange ??
-                    (v) {
-                      if (widget.value != null) {
-                        widget.value = v.toString();
-                      }
-                    },
-                items: widget.selectList ?? items,
               )
       ],
     );

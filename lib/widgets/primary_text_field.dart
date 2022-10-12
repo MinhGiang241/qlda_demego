@@ -125,7 +125,9 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
                         hintStyle: txtBodySmallBold(color: grayScaleColor3),
                         errorStyle: const TextStyle(fontSize: 0, height: 0),
                         contentPadding: const EdgeInsets.symmetric(
-                            vertical: 16, horizontal: 16),
+                          vertical: 16,
+                          horizontal: 16,
+                        ),
                         prefixIcon: widget.prefixIcon,
                         suffixIcon: widget.obscureText
                             ? showPass

@@ -11,6 +11,7 @@ import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
 import '../../widgets/float_button.dart';
 import 'create_extra_task_screen.dart';
+import 'kanban_assign_screen.dart';
 import 'tabs/extra_task_list_tab.dart';
 
 const data = [
@@ -228,7 +229,9 @@ class _ExtraTaskListScreenState extends State<ExtraTaskListScreen>
         label: S.of(context).assign_task,
         icon: Icons.send,
         primary: redColor2,
-        onPress: () {},
+        onPress: () {
+          Navigator.of(context).pushNamed(KanbanAssignTask.routeName);
+        },
       ),
     ];
     return PrimaryScreen(

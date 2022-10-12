@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add": MessageLookupByLibrary.simpleMessage("Add"),
         "add_attached_file":
             MessageLookupByLibrary.simpleMessage("Add attached file"),
+        "add_employee": MessageLookupByLibrary.simpleMessage("Add Employee"),
         "add_file": MessageLookupByLibrary.simpleMessage("Add file"),
         "add_new": MessageLookupByLibrary.simpleMessage("Add new"),
         "add_photo": MessageLookupByLibrary.simpleMessage("Add photo"),
@@ -309,7 +310,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "systeme_error": MessageLookupByLibrary.simpleMessage("System error"),
         "task": MessageLookupByLibrary.simpleMessage("Task"),
         "task_detail": MessageLookupByLibrary.simpleMessage("Task Detail"),
+        "task_list": MessageLookupByLibrary.simpleMessage("Task list"),
         "task_name": MessageLookupByLibrary.simpleMessage("Task_name"),
+        "tech_employee":
+            MessageLookupByLibrary.simpleMessage("Technical Employee"),
         "terms_services":
             MessageLookupByLibrary.simpleMessage("Terms services"),
         "time_off": MessageLookupByLibrary.simpleMessage("Date/Time"),

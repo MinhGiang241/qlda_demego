@@ -271,3 +271,44 @@ var addAttachedFile = (BuildContext context, Function()? addFile) {
     ),
   );
 };
+
+var showAddEmployeeDailog =
+    (BuildContext context, Function(String)? addEmployee) {
+  Utils.showDialog(
+    context: context,
+    dailog: PrimaryDialog.custom(
+      title: S.of(context).add_employee,
+      useBackground: true,
+      content: Column(
+        children: [
+          PrimaryDropDown(
+            label: S.of(context).tech_employee,
+            isRequired: true,
+          ),
+          vpad(12),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              PrimaryButton(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                text: S.of(context).add,
+                buttonSize: ButtonSize.medium,
+              ),
+              PrimaryButton(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                text: S.of(context).cancel,
+                buttonType: ButtonType.secondary,
+                secondaryBackgroundColor: redColor2,
+                buttonSize: ButtonSize.medium,
+              )
+            ],
+          )
+        ],
+      ),
+    ),
+  );
+};

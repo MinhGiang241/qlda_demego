@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add": MessageLookupByLibrary.simpleMessage("Thêm"),
         "add_attached_file":
             MessageLookupByLibrary.simpleMessage("Thêm tệp đính kèm"),
+        "add_employee": MessageLookupByLibrary.simpleMessage("Thêm nhân viên"),
         "add_file": MessageLookupByLibrary.simpleMessage("Thêm file"),
         "add_new": MessageLookupByLibrary.simpleMessage("Thêm mới"),
         "add_photo": MessageLookupByLibrary.simpleMessage("Thêm ảnh"),
@@ -311,7 +312,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "task": MessageLookupByLibrary.simpleMessage("Đầu việc"),
         "task_detail":
             MessageLookupByLibrary.simpleMessage("Chi tiết công việc"),
+        "task_list":
+            MessageLookupByLibrary.simpleMessage("Danh sách công việc"),
         "task_name": MessageLookupByLibrary.simpleMessage("Tên công việc"),
+        "tech_employee":
+            MessageLookupByLibrary.simpleMessage("Nhân viên kỹ thuật"),
         "terms_services":
             MessageLookupByLibrary.simpleMessage("Điều khoản dịch vụ"),
         "time_off": MessageLookupByLibrary.simpleMessage("Thời gian nghỉ"),

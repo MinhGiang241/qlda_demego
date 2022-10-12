@@ -12,11 +12,10 @@ import 'package:qlda_demego/widgets/primary_screen.dart';
 import 'package:qlda_demego/widgets/search_bar.dart';
 import 'package:appflowy_board/appflowy_board.dart';
 
+import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
-import 'kanban/board_view.dart';
-import 'kanban/multi_board_list_example.dart';
-import 'kanban/single_board_list_example.dart';
-import 'kanban/task_status.dart';
+import 'kanban/board_view_status.dart';
+import 'kanban_assign_screen.dart';
 
 final AppFlowyBoardController controller = AppFlowyBoardController(
   onMoveGroup: (fromGroupId, fromIndex, toGroupId, toIndex) {
@@ -42,12 +41,6 @@ class _KanbanTaskScreenState extends State<KanbanTaskScreen> {
   int _currentIndex = 0;
   final _bottomNavigationColor = Colors.blue;
 
-  final List<Widget> _examples = [
-    const SingleBoardListExample(),
-    const MultiBoardListExample(),
-    const StatusTask(),
-  ];
-
   @override
   void initState() {
     super.initState();
@@ -55,6 +48,28 @@ class _KanbanTaskScreenState extends State<KanbanTaskScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var floatButtons = [
+      DialChildren(
+        label: S.of(context).cr_task,
+        icon: Icons.add_box,
+        primary: greenColor6,
+        onPress: () {},
+      ),
+      DialChildren(
+        label: S.of(context).task_list,
+        icon: Icons.article,
+        primary: yellowColor7,
+        onPress: () {},
+      ),
+      DialChildren(
+        label: S.of(context).assign_task,
+        icon: Icons.send,
+        primary: redColor2,
+        onPress: () {
+          Navigator.of(context).pushNamed(KanbanAssignTask.routeName);
+        },
+      ),
+    ];
     return PrimaryScreen(
       appBar: PrimaryAppbar(title: S.of(context).kanban_view),
       body: SafeArea(
@@ -63,40 +78,12 @@ class _KanbanTaskScreenState extends State<KanbanTaskScreen> {
           children: [
             SearchBar(),
             Flexible(
-              child: BoardViewExample(),
-              // Container(
-              //   color: Colors.white,
-              //   child: _examples[_currentIndex],
-              // ),
+              child: BoardViewStatus(),
             ),
           ],
         ),
       ),
-      //   bottomNavigationBar: BottomNavigationBar(
-      //     fixedColor: _bottomNavigationColor,
-      //     showSelectedLabels: true,
-      //     showUnselectedLabels: false,
-      //     currentIndex: _currentIndex,
-      //     items: [
-      //       BottomNavigationBarItem(
-      //         icon: Icon(Icons.grid_on, color: _bottomNavigationColor),
-      //         label: "SingleColumn",
-      //       ),
-      //       BottomNavigationBarItem(
-      //         icon: Icon(Icons.grid_on, color: _bottomNavigationColor),
-      //         label: "MultiColumn",
-      //       ),
-      //       BottomNavigationBarItem(
-      //         icon: Icon(Icons.grid_on, color: _bottomNavigationColor),
-      //         label: "StatusTask",
-      //       ),
-      //     ],
-      //     onTap: (int index) {
-      //       setState(() {
-      //         _currentIndex = index;
-      //       });
-      //     },
-      //   ),
+      floatingActionButton: FloatDialButton(data: floatButtons),
     );
   }
 }

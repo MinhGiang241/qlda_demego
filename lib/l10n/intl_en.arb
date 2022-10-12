@@ -230,5 +230,8 @@
   "adjust_task": "Adjust task",
   "deathline_change": "Deathline change",
   "refuse_task": "Refuse task",
-  "demand": "Demand"
+  "demand": "Demand",
+  "task_list": "Task list",
+  "tech_employee": "Technical Employee",
+  "add_employee": "Add Employee"
 }

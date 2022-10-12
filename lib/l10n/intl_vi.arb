@@ -231,5 +231,8 @@
   "adjust_task": "Điều chỉnh công việc",
   "deathline_change": "Thời hạn muốn đổi",
   "refuse_task": "Từ chối công việc",
-  "demand": "Yêu cầu"
+  "demand": "Yêu cầu",
+  "task_list": "Danh sách công việc",
+  "tech_employee": "Nhân viên kỹ thuật",
+  "add_employee": "Thêm nhân viên"
 }
