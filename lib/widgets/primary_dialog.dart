@@ -63,7 +63,12 @@ class CustomDialog extends StatelessWidget {
                       padding: const EdgeInsets.all(12),
                     ),
                   if (type != DialogType.custom) vpad(16),
-                  if (title != null) Text(_title(), style: txtDisplayMedium()),
+                  if (title != null)
+                    Text(
+                      _title(),
+                      style: txtDisplayMedium(),
+                      textAlign: TextAlign.center,
+                    ),
                   if (title != null) vpad(16),
                   if (type != DialogType.custom)
                     code == null

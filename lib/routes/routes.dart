@@ -33,6 +33,10 @@ import '../screens/extra_task/kanban_task_screen.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/letter/detail_request_letter_screen.dart';
 import '../screens/letter/request_letter_list_screen.dart';
+import '../screens/missing/missing_object_detail_screen.dart';
+import '../screens/missing/missing_object_list_screen.dart';
+import '../screens/period_task/edit_task_config_screen.dart';
+import '../screens/period_task/period_task_list_screen.dart';
 
 class AppRoutes {
   Route onGenerateRoute(RouteSettings routeSetting) {
@@ -181,6 +185,26 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: routeSetting,
           builder: ((context) => KanbanAssignTask()),
+        );
+      case PeriodTaskListScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => PeriodTaskListScreen()),
+        );
+      case EditTaskConfigScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => EditTaskConfigScreen()),
+        );
+      case MissingObjectListScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => MissingObjectListScreen()),
+        );
+      case MissingObjectDetailScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => MissingObjectDetailScreen()),
         );
       default:
         return MaterialPageRoute(

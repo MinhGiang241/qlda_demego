@@ -2399,6 +2399,236 @@ class S {
       args: [],
     );
   }
+
+  /// `Periodical task list`
+  String get period_task_list {
+    return Intl.message(
+      'Periodical task list',
+      name: 'period_task_list',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get sua {
+    return Intl.message(
+      'Edit',
+      name: 'sua',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to delete this configuration`
+  String get confirm_detele_config {
+    return Intl.message(
+      'Do you want to delete this configuration',
+      name: 'confirm_detele_config',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Department`
+  String get res_department {
+    return Intl.message(
+      'Department',
+      name: 'res_department',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Zone type`
+  String get zone_type {
+    return Intl.message(
+      'Zone type',
+      name: 'zone_type',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Zone`
+  String get zone {
+    return Intl.message(
+      'Zone',
+      name: 'zone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Frequency`
+  String get fre {
+    return Intl.message(
+      'Frequency',
+      name: 'fre',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Frequency type`
+  String get fre_type {
+    return Intl.message(
+      'Frequency type',
+      name: 'fre_type',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Frequency time`
+  String get fre_time {
+    return Intl.message(
+      'Frequency time',
+      name: 'fre_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create task before(minute)`
+  String get pre_cre_task {
+    return Intl.message(
+      'Create task before(minute)',
+      name: 'pre_cre_task',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time done after`
+  String get time_done_after {
+    return Intl.message(
+      'Time done after',
+      name: 'time_done_after',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Content test`
+  String get content_test {
+    return Intl.message(
+      'Content test',
+      name: 'content_test',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save value from`
+  String get safe_value_from {
+    return Intl.message(
+      'Save value from',
+      name: 'safe_value_from',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `To`
+  String get to {
+    return Intl.message(
+      'To',
+      name: 'to',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit periodical task configuration`
+  String get edit_period_task {
+    return Intl.message(
+      'Edit periodical task configuration',
+      name: 'edit_period_task',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add periodical task configuration`
+  String get add_period_task {
+    return Intl.message(
+      'Add periodical task configuration',
+      name: 'add_period_task',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add category`
+  String get add_category {
+    return Intl.message(
+      'Add category',
+      name: 'add_category',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Frequency configuration`
+  String get fre_config {
+    return Intl.message(
+      'Frequency configuration',
+      name: 'fre_config',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description content`
+  String get des_content {
+    return Intl.message(
+      'Description content',
+      name: 'des_content',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Counting unit`
+  String get count_unit {
+    return Intl.message(
+      'Counting unit',
+      name: 'count_unit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Missing object list`
+  String get missing_obj_list {
+    return Intl.message(
+      'Missing object list',
+      name: 'missing_obj_list',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Missing object details`
+  String get missing_obj_detail {
+    return Intl.message(
+      'Missing object details',
+      name: 'missing_obj_detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Missing object name`
+  String get missing_obj_name {
+    return Intl.message(
+      'Missing object name',
+      name: 'missing_obj_name',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

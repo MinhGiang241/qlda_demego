@@ -6,11 +6,19 @@ import '../constant/constants.dart';
 import 'primary_card.dart';
 
 class InfoTable extends StatelessWidget {
-  InfoTable({super.key, this.data, this.onTap, this.title, this.num});
+  InfoTable({
+    super.key,
+    this.data,
+    this.onTap,
+    this.title,
+    this.num,
+    this.child,
+  });
   final data;
   int? num;
   void Function()? onTap;
   String? title;
+  Widget? child;
   @override
   Widget build(BuildContext context) {
     var infoData = {};
@@ -27,22 +35,23 @@ class InfoTable extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-          margin: const EdgeInsets.only(bottom: 12),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: Colors.white,
-            border: Border.all(color: shadowColor.withOpacity(0.1), width: 1),
-            boxShadow: [
-              BoxShadow(
-                spreadRadius: 4,
-                blurRadius: 8,
-                color: shadowColor.withOpacity(0.1),
-                offset: const Offset(0, 2),
-              )
-            ],
-          ),
-          // width: double.infinity,
-          child: Column(children: [
+        margin: const EdgeInsets.only(bottom: 12),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.white,
+          border: Border.all(color: shadowColor.withOpacity(0.1), width: 1),
+          boxShadow: [
+            BoxShadow(
+              spreadRadius: 4,
+              blurRadius: 8,
+              color: shadowColor.withOpacity(0.1),
+              offset: const Offset(0, 2),
+            )
+          ],
+        ),
+        // width: double.infinity,
+        child: Column(
+          children: [
             if (title != null) vpad(12),
             if (title != null)
               Container(
@@ -61,27 +70,34 @@ class InfoTable extends StatelessWidget {
               itemCount: num ?? infoData.keys.length,
               itemBuilder: (ctx, j) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Row(children: [
-                  hpad(24),
-                  Expanded(
-                    flex: 1,
-                    child: Text(
-                      '${infoData.keys.elementAt(j).toString()} :',
-                      style: txtBodySmallRegular(color: grayScaleColor2),
+                child: Row(
+                  children: [
+                    hpad(24),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        '${infoData.keys.elementAt(j).toString()} :',
+                        style: txtBodySmallRegular(color: grayScaleColor2),
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Text(
-                      infoData.values.elementAt(j).toString(),
-                      style: txtBodySmallBold(color: grayScaleColorBase),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        infoData.values.elementAt(j).toString(),
+                        style: txtBodySmallBold(color: grayScaleColorBase),
+                      ),
                     ),
-                  ),
-                  hpad(24),
-                ]),
+                    hpad(24),
+                  ],
+                ),
               ),
             ),
-          ])),
+            vpad(12),
+            if (child != null) child!,
+            if (child != null) vpad(20)
+          ],
+        ),
+      ),
     );
   }
 }

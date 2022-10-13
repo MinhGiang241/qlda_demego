@@ -29,9 +29,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "add": MessageLookupByLibrary.simpleMessage("Add"),
         "add_attached_file":
             MessageLookupByLibrary.simpleMessage("Add attached file"),
+        "add_category": MessageLookupByLibrary.simpleMessage("Add category"),
         "add_employee": MessageLookupByLibrary.simpleMessage("Add Employee"),
         "add_file": MessageLookupByLibrary.simpleMessage("Add file"),
         "add_new": MessageLookupByLibrary.simpleMessage("Add new"),
+        "add_period_task": MessageLookupByLibrary.simpleMessage(
+            "Add periodical task configuration"),
         "add_photo": MessageLookupByLibrary.simpleMessage("Add photo"),
         "add_product": MessageLookupByLibrary.simpleMessage("Add product"),
         "add_request_asset":
@@ -88,6 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "confirm_change_letter": MessageLookupByLibrary.simpleMessage(
             "Confirm shift changing letter"),
+        "confirm_detele_config": MessageLookupByLibrary.simpleMessage(
+            "Do you want to delete this configuration"),
         "confirm_letter":
             MessageLookupByLibrary.simpleMessage("Confirm letter"),
         "confirm_pass":
@@ -95,6 +100,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_task": MessageLookupByLibrary.simpleMessage("Confirm task"),
         "contact_receptionist": MessageLookupByLibrary.simpleMessage(
             "Please contact with management committee or receptionist in order to be provided account and password."),
+        "content_test": MessageLookupByLibrary.simpleMessage("Content test"),
+        "count_unit": MessageLookupByLibrary.simpleMessage("Counting unit"),
         "cr_absent": MessageLookupByLibrary.simpleMessage(
             "Create Leave of Absence Letter"),
         "cr_break": MessageLookupByLibrary.simpleMessage(
@@ -126,12 +133,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "demand": MessageLookupByLibrary.simpleMessage("Demand"),
         "department": MessageLookupByLibrary.simpleMessage("Department/group"),
+        "des_content":
+            MessageLookupByLibrary.simpleMessage("Description content"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "detail": MessageLookupByLibrary.simpleMessage("Detail"),
         "detail_letter": MessageLookupByLibrary.simpleMessage("Detail letter"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "edit_ext_task":
             MessageLookupByLibrary.simpleMessage("Edit extra task"),
+        "edit_period_task": MessageLookupByLibrary.simpleMessage(
+            "Edit periodical task configuration"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "en": MessageLookupByLibrary.simpleMessage("English"),
         "end": MessageLookupByLibrary.simpleMessage("End"),
@@ -161,6 +172,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "filter": MessageLookupByLibrary.simpleMessage("Filter"),
         "fix": MessageLookupByLibrary.simpleMessage("Update"),
         "forgot_pass": MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "fre": MessageLookupByLibrary.simpleMessage("Frequency"),
+        "fre_config":
+            MessageLookupByLibrary.simpleMessage("Frequency configuration"),
+        "fre_time": MessageLookupByLibrary.simpleMessage("Frequency time"),
+        "fre_type": MessageLookupByLibrary.simpleMessage("Frequency type"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full name"),
         "general_info":
             MessageLookupByLibrary.simpleMessage("General information"),
@@ -192,6 +208,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Password must contain at least 4 letter and at most 20 letter"),
         "missing":
             MessageLookupByLibrary.simpleMessage("Missing required fields"),
+        "missing_obj_detail":
+            MessageLookupByLibrary.simpleMessage("Missing object details"),
+        "missing_obj_list":
+            MessageLookupByLibrary.simpleMessage("Missing object list"),
+        "missing_obj_name":
+            MessageLookupByLibrary.simpleMessage("Missing object name"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "new_pass": MessageLookupByLibrary.simpleMessage("New Password"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
@@ -222,11 +244,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "penetration": MessageLookupByLibrary.simpleMessage("Penetration"),
         "period_task":
             MessageLookupByLibrary.simpleMessage("Periodically task"),
+        "period_task_list":
+            MessageLookupByLibrary.simpleMessage("Periodical task list"),
         "personal_info":
             MessageLookupByLibrary.simpleMessage("Personal Infomation"),
         "phone_num": MessageLookupByLibrary.simpleMessage("Phone number"),
         "piority": MessageLookupByLibrary.simpleMessage("Piority"),
         "possiton": MessageLookupByLibrary.simpleMessage("Possiton"),
+        "pre_cre_task":
+            MessageLookupByLibrary.simpleMessage("Create task before(minute)"),
         "prev": MessageLookupByLibrary.simpleMessage("Previous"),
         "property": MessageLookupByLibrary.simpleMessage("Property"),
         "purchase_req_letter":
@@ -281,12 +307,15 @@ class MessageLookup extends MessageLookupByLibrary {
             "Password must contain at least 1 special symbol"),
         "require_uppercase": MessageLookupByLibrary.simpleMessage(
             "Password must contain at least 1 uppercase letter"),
+        "res_department": MessageLookupByLibrary.simpleMessage("Department"),
         "res_person":
             MessageLookupByLibrary.simpleMessage("Responsible person"),
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
         "reset_pass": MessageLookupByLibrary.simpleMessage("Reset password"),
         "resident_card":
             MessageLookupByLibrary.simpleMessage("Resident identity card"),
+        "safe_value_from":
+            MessageLookupByLibrary.simpleMessage("Save value from"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "save_temp": MessageLookupByLibrary.simpleMessage("Temporary save"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
@@ -303,6 +332,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "start_time": MessageLookupByLibrary.simpleMessage("Start time"),
         "status": MessageLookupByLibrary.simpleMessage("Status"),
         "stock": MessageLookupByLibrary.simpleMessage("Stock"),
+        "sua": MessageLookupByLibrary.simpleMessage("Edit"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),
         "sum": MessageLookupByLibrary.simpleMessage("Summary"),
         "supervisor": MessageLookupByLibrary.simpleMessage("Supervisor"),
@@ -316,8 +346,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Technical Employee"),
         "terms_services":
             MessageLookupByLibrary.simpleMessage("Terms services"),
+        "time_done_after":
+            MessageLookupByLibrary.simpleMessage("Time done after"),
         "time_off": MessageLookupByLibrary.simpleMessage("Date/Time"),
         "title": MessageLookupByLibrary.simpleMessage("Title"),
+        "to": MessageLookupByLibrary.simpleMessage("To"),
         "type": MessageLookupByLibrary.simpleMessage("Type"),
         "unit": MessageLookupByLibrary.simpleMessage("Unit"),
         "update": MessageLookupByLibrary.simpleMessage("Update"),
@@ -339,6 +372,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "warranty": MessageLookupByLibrary.simpleMessage("Warranty department"),
         "wellcome_back": MessageLookupByLibrary.simpleMessage("Welcome back!"),
         "wrong_sign_in": MessageLookupByLibrary.simpleMessage(
-            "Username or password is incorrect")
+            "Username or password is incorrect"),
+        "zone": MessageLookupByLibrary.simpleMessage("Zone"),
+        "zone_type": MessageLookupByLibrary.simpleMessage("Zone type")
       };
 }

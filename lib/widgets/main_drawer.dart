@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qlda_demego/constant/constants.dart';
 import 'package:qlda_demego/screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:qlda_demego/screens/period_task/period_task_list_screen.dart';
 
 import '../generated/l10n.dart';
 import '../screens/application/application_screen.dart';
@@ -9,6 +10,7 @@ import '../screens/assets/asset_screen.dart';
 import '../screens/auth/sign_in/sign_in_screen.dart';
 import '../screens/extra_task/extra_task_list_screen.dart';
 import '../screens/letter/request_letter_list_screen.dart';
+import '../screens/missing/missing_object_list_screen.dart';
 import '../services/provider/auth_provider.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -107,7 +109,7 @@ class MainDrawer extends StatelessWidget {
                     Icons.list_rounded,
                     () => Navigator.pushReplacementNamed(
                       context,
-                      HomeScreen.routeName,
+                      PeriodTaskListScreen.routeName,
                     ),
                   ),
                   buildListTile(
@@ -124,6 +126,14 @@ class MainDrawer extends StatelessWidget {
                     () => Navigator.pushReplacementNamed(
                       context,
                       RequestLetterListScreen.routeName,
+                    ),
+                  ),
+                  buildListTile(
+                    S.of(context).missing_obj_list,
+                    Icons.dangerous,
+                    () => Navigator.pushReplacementNamed(
+                      context,
+                      MissingObjectListScreen.routeName,
                     ),
                   ),
                   buildListTile(
@@ -170,17 +180,20 @@ class MainDrawer extends StatelessWidget {
                 ],
               ),
             ),
-            Stack(children: [
-              Positioned(
+            Stack(
+              children: [
+                Positioned(
                   child: Column(
-                children: [
-                  const Divider(thickness: 2),
-                  buildListTile(S.of(context).sign_out, Icons.logout, () {
-                    context.read<AuthProvider>().onSignOut(context);
-                  }),
-                ],
-              )),
-            ])
+                    children: [
+                      const Divider(thickness: 2),
+                      buildListTile(S.of(context).sign_out, Icons.logout, () {
+                        context.read<AuthProvider>().onSignOut(context);
+                      }),
+                    ],
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
