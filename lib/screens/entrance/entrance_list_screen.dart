@@ -32,7 +32,9 @@ class _EntranceListScreenState extends State<EntranceListScreen> {
       "CCCD/Hộ chiếu": "1978392130218",
       "Lý do": "Thăm người nhà",
       "Thời gian": "01/01/2022 - 8:00",
-      "Trạng thái": "Đang mở"
+      "Trạng thái": "Đang mở",
+      "Tòa nhà": "A2-2002",
+      "Số thẻ tham quan": "12356839"
     },
     {
       "ID": "0002",
@@ -41,7 +43,9 @@ class _EntranceListScreenState extends State<EntranceListScreen> {
       "CCCD/Hộ chiếu": "1978392130218",
       "Lý do": "Thăm người nhà",
       "Thời gian": "01/01/2022 - 8:00",
-      "Trạng thái": "Đã đóng"
+      "Trạng thái": "Đã đóng",
+      "Tòa nhà": "A2-2002",
+      "Số thẻ tham quan": "12356839"
     },
     {
       "ID": "0003",
@@ -50,7 +54,9 @@ class _EntranceListScreenState extends State<EntranceListScreen> {
       "CCCD/Hộ chiếu": "1978392130218",
       "Lý do": "Thăm người nhà",
       "Thời gian": "01/01/2022 - 8:00",
-      "Trạng thái": "Đang mở"
+      "Trạng thái": "Đang mở",
+      "Tòa nhà": "A2-2002",
+      "Số thẻ tham quan": "12356839"
     },
   ];
   @override
@@ -79,8 +85,9 @@ class _EntranceListScreenState extends State<EntranceListScreen> {
                   ...data.asMap().entries.map(
                         (e) => InfoTable(
                           onTap: () {
-                            Navigator.of(context)
-                                .pushNamed(EntranceDetailsScreen.routeName);
+                            Navigator.of(context).pushNamed(
+                                EntranceDetailsScreen.routeName,
+                                arguments: e.value);
                           },
                           data: e.value,
                           child: (data[e.key]['Trạng thái'] == 'Đang mở')
