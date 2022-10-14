@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_employee": MessageLookupByLibrary.simpleMessage("Add Employee"),
         "add_file": MessageLookupByLibrary.simpleMessage("Add file"),
         "add_new": MessageLookupByLibrary.simpleMessage("Add new"),
+        "add_parcel": MessageLookupByLibrary.simpleMessage("Add parcel"),
         "add_period_task": MessageLookupByLibrary.simpleMessage(
             "Add periodical task configuration"),
         "add_photo": MessageLookupByLibrary.simpleMessage("Add photo"),
@@ -41,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Add requesting asset"),
         "add_supplier": MessageLookupByLibrary.simpleMessage("Add supplier"),
         "add_task": MessageLookupByLibrary.simpleMessage("Add more task"),
+        "address": MessageLookupByLibrary.simpleMessage("Address"),
         "adjust": MessageLookupByLibrary.simpleMessage("Adjust"),
         "adjust_task": MessageLookupByLibrary.simpleMessage("Adjust task"),
         "amount": MessageLookupByLibrary.simpleMessage("Amount"),
@@ -71,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "borrow_cus":
             MessageLookupByLibrary.simpleMessage("Customer borrowing"),
         "branch": MessageLookupByLibrary.simpleMessage("Branch"),
+        "building": MessageLookupByLibrary.simpleMessage("Building"),
         "building_management":
             MessageLookupByLibrary.simpleMessage("Building management"),
         "c_new_pass":
@@ -78,6 +81,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "can_not_empty": MessageLookupByLibrary.simpleMessage("Can not empty"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "category": MessageLookupByLibrary.simpleMessage("Category"),
+        "cccd_passport":
+            MessageLookupByLibrary.simpleMessage("Indentity card/ passport"),
         "change_deathline":
             MessageLookupByLibrary.simpleMessage("Change deathline"),
         "change_pass": MessageLookupByLibrary.simpleMessage("Change password"),
@@ -97,6 +102,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm letter"),
         "confirm_pass":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "confirm_person":
+            MessageLookupByLibrary.simpleMessage("Confirm person"),
         "confirm_task": MessageLookupByLibrary.simpleMessage("Confirm task"),
         "contact_receptionist": MessageLookupByLibrary.simpleMessage(
             "Please contact with management committee or receptionist in order to be provided account and password."),
@@ -108,6 +115,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Create Leave of Break Letter"),
         "cr_change_shift":
             MessageLookupByLibrary.simpleMessage("Create change shift Letter"),
+        "cr_entrance":
+            MessageLookupByLibrary.simpleMessage("Create an entrance"),
         "cr_ext_task":
             MessageLookupByLibrary.simpleMessage("Create extra task"),
         "cr_import_request_letter": MessageLookupByLibrary.simpleMessage(
@@ -116,6 +125,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Create purchasing request letter"),
         "cr_task": MessageLookupByLibrary.simpleMessage("Create task"),
         "create_acc": MessageLookupByLibrary.simpleMessage("Create an account"),
+        "create_parcel":
+            MessageLookupByLibrary.simpleMessage("Create new parcel"),
         "current_pass":
             MessageLookupByLibrary.simpleMessage("Current password"),
         "customer": MessageLookupByLibrary.simpleMessage("Customer"),
@@ -132,15 +143,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "decision": MessageLookupByLibrary.simpleMessage("Decision"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "demand": MessageLookupByLibrary.simpleMessage("Demand"),
-        "department": MessageLookupByLibrary.simpleMessage("Department/group"),
+        "department": MessageLookupByLibrary.simpleMessage("Department"),
+        "department_group":
+            MessageLookupByLibrary.simpleMessage("Department/group"),
         "des_content":
             MessageLookupByLibrary.simpleMessage("Description content"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "detail": MessageLookupByLibrary.simpleMessage("Detail"),
         "detail_letter": MessageLookupByLibrary.simpleMessage("Detail letter"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "edit_entrance":
+            MessageLookupByLibrary.simpleMessage("Edit an entrance"),
         "edit_ext_task":
             MessageLookupByLibrary.simpleMessage("Edit extra task"),
+        "edit_parcel": MessageLookupByLibrary.simpleMessage("Edit parcel"),
         "edit_period_task": MessageLookupByLibrary.simpleMessage(
             "Edit periodical task configuration"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -157,6 +173,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_title": MessageLookupByLibrary.simpleMessage("Enter title"),
         "enter_username":
             MessageLookupByLibrary.simpleMessage("Enter username"),
+        "entrance_detail":
+            MessageLookupByLibrary.simpleMessage("Entrance Details"),
         "err_conn": MessageLookupByLibrary.simpleMessage("Error Connection"),
         "err_internet": MessageLookupByLibrary.simpleMessage(
             "Check your internet connection!"),
@@ -171,6 +189,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "failure": MessageLookupByLibrary.simpleMessage("Failure"),
         "filter": MessageLookupByLibrary.simpleMessage("Filter"),
         "fix": MessageLookupByLibrary.simpleMessage("Update"),
+        "floor": MessageLookupByLibrary.simpleMessage("Floor"),
         "forgot_pass": MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "fre": MessageLookupByLibrary.simpleMessage("Frequency"),
         "fre_config":
@@ -192,12 +211,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "history_update":
             MessageLookupByLibrary.simpleMessage("History update"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "images": MessageLookupByLibrary.simpleMessage("Images"),
         "import": MessageLookupByLibrary.simpleMessage("Import"),
         "in_progress": MessageLookupByLibrary.simpleMessage("In progress"),
         "info": MessageLookupByLibrary.simpleMessage("Infomation"),
         "invalid_code":
             MessageLookupByLibrary.simpleMessage("Invalid authentication code"),
         "inventory": MessageLookupByLibrary.simpleMessage("Inventory"),
+        "job_title": MessageLookupByLibrary.simpleMessage("Job title"),
         "kanban_view": MessageLookupByLibrary.simpleMessage("Kanban view"),
         "language": MessageLookupByLibrary.simpleMessage("language"),
         "letter_detail": MessageLookupByLibrary.simpleMessage("Letter Detail"),
@@ -240,6 +261,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "otp_verify": MessageLookupByLibrary.simpleMessage("OTP verify"),
         "over_time": MessageLookupByLibrary.simpleMessage("Over Time"),
         "parcel": MessageLookupByLibrary.simpleMessage("Parcel"),
+        "parcel_detail": MessageLookupByLibrary.simpleMessage("Parcel details"),
+        "parcel_list": MessageLookupByLibrary.simpleMessage("Parcel list"),
+        "parcel_name": MessageLookupByLibrary.simpleMessage("Parcel name"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "penetration": MessageLookupByLibrary.simpleMessage("Penetration"),
         "period_task":
@@ -251,6 +275,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone_num": MessageLookupByLibrary.simpleMessage("Phone number"),
         "piority": MessageLookupByLibrary.simpleMessage("Piority"),
         "possiton": MessageLookupByLibrary.simpleMessage("Possiton"),
+        "post": MessageLookupByLibrary.simpleMessage("Post"),
         "pre_cre_task":
             MessageLookupByLibrary.simpleMessage("Create task before(minute)"),
         "prev": MessageLookupByLibrary.simpleMessage("Previous"),
@@ -262,6 +287,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "reason_change_shift":
             MessageLookupByLibrary.simpleMessage("Reason change shift"),
         "reason_off": MessageLookupByLibrary.simpleMessage("Reason"),
+        "receiver": MessageLookupByLibrary.simpleMessage("Receiver"),
         "reception": MessageLookupByLibrary.simpleMessage("Reception"),
         "recommend_purchase":
             MessageLookupByLibrary.simpleMessage("Recommend purchasing"),
@@ -322,6 +348,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "select": MessageLookupByLibrary.simpleMessage("Chọn"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "send_verify": MessageLookupByLibrary.simpleMessage("Send verify"),
+        "sender": MessageLookupByLibrary.simpleMessage("Sender"),
         "setting": MessageLookupByLibrary.simpleMessage("Setting"),
         "shift": MessageLookupByLibrary.simpleMessage("Shift"),
         "sign_in": MessageLookupByLibrary.simpleMessage("sign_in"),
@@ -337,6 +364,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sum": MessageLookupByLibrary.simpleMessage("Summary"),
         "supervisor": MessageLookupByLibrary.simpleMessage("Supervisor"),
         "supply": MessageLookupByLibrary.simpleMessage("Supplier"),
+        "surface": MessageLookupByLibrary.simpleMessage("Surface"),
         "systeme_error": MessageLookupByLibrary.simpleMessage("System error"),
         "task": MessageLookupByLibrary.simpleMessage("Task"),
         "task_detail": MessageLookupByLibrary.simpleMessage("Task Detail"),
@@ -349,8 +377,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "time_done_after":
             MessageLookupByLibrary.simpleMessage("Time done after"),
         "time_off": MessageLookupByLibrary.simpleMessage("Date/Time"),
+        "time_send": MessageLookupByLibrary.simpleMessage("Time send"),
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "to": MessageLookupByLibrary.simpleMessage("To"),
+        "transfer": MessageLookupByLibrary.simpleMessage("Transfer"),
+        "transfer_parcel":
+            MessageLookupByLibrary.simpleMessage("Transfer parcel"),
         "type": MessageLookupByLibrary.simpleMessage("Type"),
         "unit": MessageLookupByLibrary.simpleMessage("Unit"),
         "update": MessageLookupByLibrary.simpleMessage("Update"),
@@ -363,6 +395,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vehicle registration card"),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),
         "vi": MessageLookupByLibrary.simpleMessage("Vietnamese"),
+        "visit_card_num":
+            MessageLookupByLibrary.simpleMessage("Visit card number"),
         "wait_assign":
             MessageLookupByLibrary.simpleMessage("Waiting to assign"),
         "wait_confirm":

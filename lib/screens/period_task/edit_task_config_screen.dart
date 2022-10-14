@@ -100,7 +100,7 @@ class EditTaskConfigScreen extends StatelessWidget {
                     isRequired: true,
                   ),
                 ),
-                hpad(12),
+                hpad(35),
                 Expanded(
                   child: PrimaryDropDown(
                     label: S.of(context).zone,
@@ -117,7 +117,7 @@ class EditTaskConfigScreen extends StatelessWidget {
                     isRequired: true,
                   ),
                 ),
-                hpad(12),
+                hpad(35),
                 Expanded(
                   child: PrimaryDropDown(
                     label: S.of(context).fre,
@@ -135,7 +135,7 @@ class EditTaskConfigScreen extends StatelessWidget {
                     isRequired: true,
                   ),
                 ),
-                hpad(12),
+                hpad(35),
                 Expanded(
                   child: PrimaryTextField(
                     controller: freTimeController,
@@ -166,7 +166,7 @@ class EditTaskConfigScreen extends StatelessWidget {
                     isRequired: true,
                   ),
                 ),
-                hpad(12),
+                hpad(35),
                 Expanded(
                   child: PrimaryDropDown(
                     label: S.of(context).time_done_after,
@@ -184,7 +184,7 @@ class EditTaskConfigScreen extends StatelessWidget {
                     isRequired: true,
                   ),
                 ),
-                hpad(12),
+                hpad(35),
                 Expanded(
                   child: PrimaryDropDown(
                     label: S.of(context).piority,
@@ -208,7 +208,7 @@ class EditTaskConfigScreen extends StatelessWidget {
                     label: S.of(context).type,
                   ),
                 ),
-                hpad(12),
+                hpad(35),
                 Expanded(
                   flex: 2,
                   child: PrimaryTextField(
@@ -250,7 +250,7 @@ class EditTaskConfigScreen extends StatelessWidget {
                     label: S.of(context).type,
                   ),
                 ),
-                hpad(12),
+                hpad(35),
                 Expanded(
                   flex: 2,
                   child: PrimaryTextField(
@@ -270,7 +270,7 @@ class EditTaskConfigScreen extends StatelessWidget {
                     isRequired: true,
                   ),
                 ),
-                hpad(12),
+                hpad(35),
                 Expanded(
                   child: PrimaryTextField(
                     label: S.of(context).to,

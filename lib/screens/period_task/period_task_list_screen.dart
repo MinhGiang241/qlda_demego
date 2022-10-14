@@ -11,6 +11,7 @@ import 'package:qlda_demego/widgets/primary_screen.dart';
 
 import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
+import '../../utils/dailog.dart';
 import '../../utils/utils.dart';
 import '../../widgets/search_bar.dart';
 import 'dailog/period_task_dailog.dart';
@@ -101,7 +102,8 @@ class _PeriodTaskListScreenState extends State<PeriodTaskListScreen> {
                       hpad(35),
                       PrimaryButton(
                         onTap: () {
-                          onConfirmDeleteTask(context, () {
+                          onConfirmDelete(
+                              context, S.of(context).confirm_detele_config, () {
                             data.removeWhere(
                               (element) => element['id'] == data[index]['id'],
                             );

@@ -210,7 +210,7 @@ class _CreateRequestPurchaseScreenState
                           isRequired: true,
                         ),
                       ),
-                      hpad(12),
+                      hpad(35),
                       Expanded(
                         child: PrimaryDropDown(
                           label: S.of(context).reason,

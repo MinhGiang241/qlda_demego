@@ -67,11 +67,11 @@ class _EditExtraTaskScreenState extends State<EditExtraTaskScreen> {
               children: [
                 Expanded(
                   child: PrimaryDropDown(
-                    label: S.of(context).department,
+                    label: S.of(context).department_group,
                     isRequired: true,
                   ),
                 ),
-                hpad(12),
+                hpad(35),
                 Expanded(
                   child: PrimaryDropDown(
                     label: S.of(context).chot,
@@ -105,7 +105,7 @@ class _EditExtraTaskScreenState extends State<EditExtraTaskScreen> {
 
                       if (valueDate != null && valueTime != null) {
                         startTimeController.text =
-                            "${valueDate.toIso8601String().formatDateTimeDMY()} ${valueTime.hour.toString().padLeft(2, '0')} : ${valueTime.minute.toString().padLeft(2, '0')}";
+                            "${valueDate.toIso8601String().formatDateTimeDMY()} - ${valueTime.hour.toString().padLeft(2, '0')} : ${valueTime.minute.toString().padLeft(2, '0')}";
                       }
                     },
                     isRequired: true,
@@ -113,7 +113,7 @@ class _EditExtraTaskScreenState extends State<EditExtraTaskScreen> {
                     // suffixIcon: const Icon(Icons.calendar_month_rounded),
                   ),
                 ),
-                hpad(12),
+                hpad(35),
                 Expanded(
                   child: PrimaryTextField(
                     label: S.of(context).end,
@@ -133,7 +133,7 @@ class _EditExtraTaskScreenState extends State<EditExtraTaskScreen> {
 
                       if (valueDate != null && valueTime != null) {
                         endTimeController.text =
-                            "${valueDate.toIso8601String().formatDateTimeDMY()} ${valueTime.hour.toString().padLeft(2, '0')} : ${valueTime.minute.toString().padLeft(2, '0')}";
+                            "${valueDate.toIso8601String().formatDateTimeDMY()} - ${valueTime.hour.toString().padLeft(2, '0')} : ${valueTime.minute.toString().padLeft(2, '0')}";
                       }
                     },
                     isRequired: true,

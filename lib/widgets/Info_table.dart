@@ -10,15 +10,17 @@ class InfoTable extends StatelessWidget {
     super.key,
     this.data,
     this.onTap,
-    this.title,
+    // this.title,
     this.num,
     this.child,
+    this.titleWidget,
   });
   final data;
   int? num;
   void Function()? onTap;
-  String? title;
+  // String? title;
   Widget? child;
+  Widget? titleWidget;
   @override
   Widget build(BuildContext context) {
     var infoData = {};
@@ -52,17 +54,18 @@ class InfoTable extends StatelessWidget {
         // width: double.infinity,
         child: Column(
           children: [
-            if (title != null) vpad(12),
-            if (title != null)
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                width: double.infinity,
-                child: Text(
-                  title!,
-                  textAlign: TextAlign.start,
-                  style: txtBodyMediumBold(),
-                ),
-              ),
+            if (titleWidget != null) titleWidget!,
+            // if (title != null) vpad(12),
+            // if (title != null)
+            //   Container(
+            //     padding: const EdgeInsets.symmetric(horizontal: 24),
+            //     width: double.infinity,
+            //     child: Text(
+            //       title!,
+            //       textAlign: TextAlign.start,
+            //       style: txtBodyMediumBold(),
+            //     ),
+            //   ),
             ListView.builder(
               padding: EdgeInsets.zero,
               physics: const NeverScrollableScrollPhysics(),

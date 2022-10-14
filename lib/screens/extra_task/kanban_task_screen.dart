@@ -10,24 +10,11 @@ import 'package:boardview/boardview.dart';
 import 'package:qlda_demego/widgets/primary_appbar.dart';
 import 'package:qlda_demego/widgets/primary_screen.dart';
 import 'package:qlda_demego/widgets/search_bar.dart';
-import 'package:appflowy_board/appflowy_board.dart';
 
 import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
 import 'kanban/board_view_status.dart';
 import 'kanban_assign_screen.dart';
-
-final AppFlowyBoardController controller = AppFlowyBoardController(
-  onMoveGroup: (fromGroupId, fromIndex, toGroupId, toIndex) {
-    debugPrint('Move item from $fromIndex to $toIndex');
-  },
-  onMoveGroupItem: (groupId, fromIndex, toIndex) {
-    debugPrint('Move $groupId:$fromIndex to $groupId:$toIndex');
-  },
-  onMoveGroupItemToGroup: (fromGroupId, fromIndex, toGroupId, toIndex) {
-    debugPrint('Move $fromGroupId:$fromIndex to $toGroupId:$toIndex');
-  },
-);
 
 class KanbanTaskScreen extends StatefulWidget {
   KanbanTaskScreen({super.key});

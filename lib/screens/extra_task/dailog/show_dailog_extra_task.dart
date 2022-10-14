@@ -125,7 +125,7 @@ var changeDeathline = (
 
               if (valueDate != null && valueTime != null) {
                 deathlineChangecontroller.text =
-                    "${valueDate.toIso8601String().formatDateTimeDMY()} ${valueTime.hour.toString().padLeft(2, '0')} : ${valueTime.minute.toString().padLeft(2, '0')}";
+                    "${valueDate.toIso8601String().formatDateTimeDMY()} - ${valueTime.hour.toString().padLeft(2, '0')} : ${valueTime.minute.toString().padLeft(2, '0')}";
               }
             },
             enable: false,

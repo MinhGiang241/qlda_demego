@@ -32,7 +32,16 @@ class HistoryUpdateTabLetter extends StatelessWidget {
         vpad(12),
         ...data["Lịch sử cập nhật"].map(
           (e) => InfoTable(
-            title: e["Loại"],
+            titleWidget: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              width: double.infinity,
+              child: Text(
+                e["Loại"],
+                textAlign: TextAlign.start,
+                style: txtBodyMediumBold(),
+              ),
+            ),
+            // title: e["Loại"],
             data: e,
           ),
         )

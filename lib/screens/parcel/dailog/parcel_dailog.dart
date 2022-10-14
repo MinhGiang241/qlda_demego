@@ -6,60 +6,46 @@ import '../../../generated/l10n.dart';
 import '../../../utils/utils.dart';
 import '../../../widgets/primary_button.dart';
 import '../../../widgets/primary_dialog.dart';
-import '../../../widgets/primary_dropdown.dart';
 
-var addTestContent = (BuildContext context, Function() addContext) {
+var onEditParcel = (BuildContext context, Function() onSave) {
   Utils.showDialog(
     context: context,
     dailog: PrimaryDialog.custom(
-      title: '${S.current.add} ${S.current.period_task_list.toLowerCase()}',
       content: Column(
         children: [
-          PrimaryDropDown(
-            label: S.current.type,
-            isRequired: true,
+          Text(
+            S.of(context).transfer_parcel,
+            style: txtBodySmallRegular(color: primaryColorBase),
           ),
           vpad(12),
           PrimaryTextField(
-            maxLines: 2,
-            label: S.current.content_test,
             isRequired: true,
+            label: S.of(context).address,
           ),
           vpad(12),
-          Row(
-            children: [
-              Expanded(
-                child: PrimaryTextField(
-                  label: S.of(context).safe_value_from,
-                  keyboardType: TextInputType.number,
-                  isRequired: true,
-                ),
-              ),
-              hpad(35),
-              Expanded(
-                child: PrimaryTextField(
-                  label: S.of(context).to,
-                  keyboardType: TextInputType.number,
-                  isRequired: true,
-                ),
-              )
-            ],
+          PrimaryTextField(
+            isRequired: true,
+            label: S.of(context).receiver,
+          ),
+          vpad(12),
+          PrimaryTextField(
+            isRequired: true,
+            label: S.of(context).phone_num,
           ),
           vpad(12),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               PrimaryButton(
-                text: S.of(context).edit,
+                text: S.of(context).save,
                 buttonSize: ButtonSize.medium,
                 onTap: () {
-                  addContext();
-                  Navigator.pop(context);
+                  onSave();
                 },
               ),
               hpad(35),
               PrimaryButton(
-                text: S.of(context).delete,
+                text: S.of(context).cancel,
                 buttonSize: ButtonSize.medium,
                 buttonType: ButtonType.secondary,
                 secondaryBackgroundColor: redColor4,

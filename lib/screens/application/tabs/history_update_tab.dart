@@ -24,11 +24,29 @@ class HistoryUpdateTab extends StatelessWidget {
         ),
         vpad(16),
         InfoTable(
-          title: "Cập nhật",
+          titleWidget: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
+            width: double.infinity,
+            child: Text(
+              "Cập nhật",
+              textAlign: TextAlign.start,
+              style: txtBodyMediumBold(),
+            ),
+          ),
+          // title: "Cập nhật",
           data: data['Lịch sử cập nhật'][0],
         ),
         InfoTable(
-          title: "Tạo mới",
+          titleWidget: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
+            width: double.infinity,
+            child: Text(
+              "Tạo mới",
+              textAlign: TextAlign.start,
+              style: txtBodyMediumBold(),
+            ),
+          ),
+          // title: "Tạo mới",
           data: {
             "Người thực hiện": data["Người tạo"],
             "Thời gian tạo": data["Thời gian tạo"]

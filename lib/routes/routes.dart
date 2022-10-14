@@ -24,6 +24,9 @@ import '../screens/assets/export_request_screen.dart';
 import '../screens/assets/import_request_screen.dart';
 import '../screens/assets/update_asset_screen.dart';
 import '../screens/auth/sign_in/sign_in_screen.dart';
+import '../screens/entrance/add_entrance_screen.dart';
+import '../screens/entrance/entrance_detail_screen.dart';
+import '../screens/entrance/entrance_list_screen.dart';
 import '../screens/extra_task/create_extra_task_screen.dart';
 import '../screens/extra_task/edit_extra_task_screen.dart';
 import '../screens/extra_task/extra_task_detail_screen.dart';
@@ -35,6 +38,9 @@ import '../screens/letter/detail_request_letter_screen.dart';
 import '../screens/letter/request_letter_list_screen.dart';
 import '../screens/missing/missing_object_detail_screen.dart';
 import '../screens/missing/missing_object_list_screen.dart';
+import '../screens/parcel/add_parcel_screen.dart';
+import '../screens/parcel/parcel_detail_screen.dart';
+import '../screens/parcel/parcel_list_screen.dart';
 import '../screens/period_task/edit_task_config_screen.dart';
 import '../screens/period_task/period_task_list_screen.dart';
 
@@ -205,6 +211,36 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: routeSetting,
           builder: ((context) => MissingObjectDetailScreen()),
+        );
+      case ParcelListScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => ParcelListScreen()),
+        );
+      case ParcelDetailScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => ParcelDetailScreen()),
+        );
+      case AddParcelScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => AddParcelScreen()),
+        );
+      case EntranceListScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => EntranceListScreen()),
+        );
+      case AddEntranceScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => AddEntranceScreen()),
+        );
+      case EntranceDetailsScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => EntranceDetailsScreen()),
         );
       default:
         return MaterialPageRoute(

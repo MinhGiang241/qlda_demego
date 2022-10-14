@@ -10,28 +10,32 @@ import '../constant/constants.dart';
 import '../generated/l10n.dart';
 
 class PrimaryTextField extends StatefulWidget {
-  PrimaryTextField(
-      {super.key,
-      this.label,
-      this.initialValue,
-      this.hint,
-      this.controller,
-      this.obscureText = false,
-      this.isReadOnly = false,
-      this.onTap,
-      this.keyboardType,
-      this.textCapitalization = TextCapitalization.none,
-      this.textInputAction,
-      this.validator,
-      this.prefixIcon,
-      this.suffixIcon,
-      this.enable = true,
-      this.isRequired = false,
-      this.maxLines = 1,
-      this.autoFocus = false,
-      this.validateString,
-      this.margin,
-      this.blockSpace = false});
+  PrimaryTextField({
+    super.key,
+    this.label,
+    this.initialValue,
+    this.hint,
+    this.controller,
+    this.obscureText = false,
+    this.isReadOnly = false,
+    this.onTap,
+    this.keyboardType,
+    this.textCapitalization = TextCapitalization.none,
+    this.textInputAction,
+    this.validator,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.enable = true,
+    this.isRequired = false,
+    this.maxLines = 1,
+    this.autoFocus = false,
+    this.validateString,
+    this.margin,
+    this.background,
+    this.textColor,
+    this.textAlign,
+    this.blockSpace = false,
+  });
 
   final String? label;
   final String? initialValue;
@@ -52,6 +56,9 @@ class PrimaryTextField extends StatefulWidget {
   final bool enable;
   final bool blockSpace;
   final String? validateString;
+  final Color? background;
+  final Color? textColor;
+  final TextAlign? textAlign;
   EdgeInsetsGeometry? margin;
 
   @override
@@ -98,9 +105,11 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
               builder: (context, snapshot) {
                 final showPass = snapshot.data!;
                 return PrimaryCard(
+                  background: widget.background,
                   margin: widget.margin,
                   onTap: widget.onTap,
                   child: TextFormField(
+                    textAlign: widget.textAlign ?? TextAlign.start,
                     inputFormatters: widget.blockSpace
                         ? <TextInputFormatter>[
                             FilteringTextInputFormatter.deny(RegExp(r'[ ]'))
@@ -117,7 +126,7 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
                     keyboardType: widget.keyboardType,
                     textCapitalization: widget.textCapitalization,
                     textInputAction: widget.textInputAction,
-                    style: txtBodySmallBold(),
+                    style: txtBodySmallBold(color: widget.textColor),
                     cursorColor: primaryColor2,
                     maxLines: widget.maxLines,
                     decoration: InputDecoration(

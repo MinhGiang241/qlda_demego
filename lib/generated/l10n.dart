@@ -2151,10 +2151,10 @@ class S {
   }
 
   /// `Department/group`
-  String get department {
+  String get department_group {
     return Intl.message(
       'Department/group',
-      name: 'department',
+      name: 'department_group',
       desc: '',
       args: [],
     );
@@ -2625,6 +2625,256 @@ class S {
     return Intl.message(
       'Missing object name',
       name: 'missing_obj_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Parcel list`
+  String get parcel_list {
+    return Intl.message(
+      'Parcel list',
+      name: 'parcel_list',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transfer`
+  String get transfer {
+    return Intl.message(
+      'Transfer',
+      name: 'transfer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Parcel details`
+  String get parcel_detail {
+    return Intl.message(
+      'Parcel details',
+      name: 'parcel_detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create new parcel`
+  String get create_parcel {
+    return Intl.message(
+      'Create new parcel',
+      name: 'create_parcel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get address {
+    return Intl.message(
+      'Address',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Receiver`
+  String get receiver {
+    return Intl.message(
+      'Receiver',
+      name: 'receiver',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Parcel name`
+  String get parcel_name {
+    return Intl.message(
+      'Parcel name',
+      name: 'parcel_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transfer parcel`
+  String get transfer_parcel {
+    return Intl.message(
+      'Transfer parcel',
+      name: 'transfer_parcel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add parcel`
+  String get add_parcel {
+    return Intl.message(
+      'Add parcel',
+      name: 'add_parcel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Post`
+  String get post {
+    return Intl.message(
+      'Post',
+      name: 'post',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Building`
+  String get building {
+    return Intl.message(
+      'Building',
+      name: 'building',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Floor`
+  String get floor {
+    return Intl.message(
+      'Floor',
+      name: 'floor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Surface`
+  String get surface {
+    return Intl.message(
+      'Surface',
+      name: 'surface',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time send`
+  String get time_send {
+    return Intl.message(
+      'Time send',
+      name: 'time_send',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Images`
+  String get images {
+    return Intl.message(
+      'Images',
+      name: 'images',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sender`
+  String get sender {
+    return Intl.message(
+      'Sender',
+      name: 'sender',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit parcel`
+  String get edit_parcel {
+    return Intl.message(
+      'Edit parcel',
+      name: 'edit_parcel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create an entrance`
+  String get cr_entrance {
+    return Intl.message(
+      'Create an entrance',
+      name: 'cr_entrance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Visit card number`
+  String get visit_card_num {
+    return Intl.message(
+      'Visit card number',
+      name: 'visit_card_num',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm person`
+  String get confirm_person {
+    return Intl.message(
+      'Confirm person',
+      name: 'confirm_person',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Department`
+  String get department {
+    return Intl.message(
+      'Department',
+      name: 'department',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Job title`
+  String get job_title {
+    return Intl.message(
+      'Job title',
+      name: 'job_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Indentity card/ passport`
+  String get cccd_passport {
+    return Intl.message(
+      'Indentity card/ passport',
+      name: 'cccd_passport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit an entrance`
+  String get edit_entrance {
+    return Intl.message(
+      'Edit an entrance',
+      name: 'edit_entrance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Entrance Details`
+  String get entrance_detail {
+    return Intl.message(
+      'Entrance Details',
+      name: 'entrance_detail',
       desc: '',
       args: [],
     );

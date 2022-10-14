@@ -1,56 +1,69 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:qlda_demego/widgets/Info_table.dart';
+import 'package:provider/single_child_widget.dart';
 import 'package:qlda_demego/widgets/primary_appbar.dart';
-import 'package:qlda_demego/widgets/primary_screen.dart';
 
 import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
+import '../../widgets/Info_table.dart';
 import '../../widgets/float_button.dart';
 import '../../widgets/primary_card.dart';
+import '../../widgets/primary_screen.dart';
+import 'add_parcel_screen.dart';
+import 'dailog/parcel_dailog.dart';
 
-class MissingObjectDetailScreen extends StatelessWidget {
-  const MissingObjectDetailScreen({super.key});
-  static const routeName = '/missing-object/detail';
+var data = {
+  "Thông tin gửi": {
+    "Người gửi": "Nguyễn Văn A",
+    "Địa chỉ": "A2 - 2002",
+    "Số Điện Thoại": "0987654321",
+    "Thời gian gửi": "01/01/2022 - 14:00",
+    "Ghi chú": "Nội dung",
+  },
+  "Thông tin giao": {
+    "Người nhận": "Nguyễn Văn A",
+    "Địa chỉ": "A2 - 2002",
+    "Số Điện Thoại": "0123456789",
+  },
+  "Hình ảnh": [
+    "https://unsplash.it/100/100",
+    "https://unsplash.it/100/100",
+    "https://unsplash.it/100/100",
+    "https://unsplash.it/100/100",
+    "https://unsplash.it/100/100",
+  ]
+};
+
+class ParcelDetailScreen extends StatelessWidget {
+  const ParcelDetailScreen({super.key});
+  static const routeName = '/parcel/details';
 
   @override
   Widget build(BuildContext context) {
     var floatButtons = [
       DialChildren(
-        label: S.of(context).complete,
+        label: S.of(context).transfer,
         icon: Icons.send,
         primary: secondaryColorBase,
-        onPress: () {},
+        onPress: () {
+          onEditParcel(context, () {});
+        },
       ),
       DialChildren(
         label: S.of(context).edit,
         icon: Icons.edit_note,
-        primary: yellowColorBase,
-        onPress: () {},
+        primary: yellowColor,
+        onPress: () {
+          Navigator.of(context).pushNamed(
+            AddParcelScreen.routeName,
+            arguments: {'isEdit': true},
+          );
+        },
       ),
     ];
-
-    var data = {
-      "Người báo cáo": {
-        "Người báo cáo": "Nguyễn Văn A",
-        "Địa điểm": "Sảnh nhà A",
-        "Thời gian": "01/01/2022 - 12:00",
-        "Ghi chú": "Nội dung",
-      },
-      "Người nhận": {
-        "Người nhận": "Nguyễn Văn B",
-        "Số CCCD/CMTND/Hộ chiếu": "A2 - 2002",
-        "Địa chỉ": "01/01/2022 - 12:00",
-        "Số điện thoại": "0123456789",
-        "Thời gian": "01/01/2022 - 12:00",
-        "Ghi chú": "Nội dung",
-      },
-      "Hình ảnh": ["https://unsplash.it/640/425"]
-    };
-
     return PrimaryScreen(
-      appBar: PrimaryAppbar(title: S.of(context).missing_obj_detail),
+      appBar: PrimaryAppbar(title: S.of(context).parcel_detail),
       body: ListView(
         children: [
           vpad(12),
@@ -66,14 +79,14 @@ class MissingObjectDetailScreen extends StatelessWidget {
                       Expanded(
                         flex: 2,
                         child: Text(
-                          '${S.of(context).missing_obj_name} :',
+                          '${S.of(context).parcel_name} :',
                           style: txtBodySmallRegular(color: grayScaleColorBase),
                         ),
                       ),
                       Expanded(
                         flex: 3,
                         child: Text(
-                          'Thẻ xe',
+                          'Giấy',
                           style: txtBodySmallBold(),
                         ),
                       ),
@@ -110,11 +123,11 @@ class MissingObjectDetailScreen extends StatelessWidget {
             titleWidget: Padding(
               padding: const EdgeInsets.symmetric(vertical: 12),
               child: Text(
-                'Người báo cáo',
+                'Thông tin gửi',
                 style: txtBodySmallRegular(color: primaryColorBase),
               ),
             ),
-            data: data['Người báo cáo'],
+            data: data['Thông tin gửi'],
             child: Row(
               children: [
                 hpad(24),
@@ -159,11 +172,11 @@ class MissingObjectDetailScreen extends StatelessWidget {
             titleWidget: Padding(
               padding: const EdgeInsets.symmetric(vertical: 12),
               child: Text(
-                'Hoàn trả',
+                'Thông tin giao',
                 style: txtBodySmallRegular(color: primaryColorBase),
               ),
             ),
-            data: data['Người nhận'],
+            data: data['Thông tin giao'],
             child: Row(
               children: [
                 hpad(24),
