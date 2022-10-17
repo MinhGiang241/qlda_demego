@@ -11,7 +11,7 @@ import '../../widgets/float_button.dart';
 import '../../widgets/primary_card.dart';
 import '../../widgets/primary_screen.dart';
 import 'add_parcel_screen.dart';
-import 'dailog/parcel_dailog.dart';
+import 'dialog/parcel_dialog.dart';
 
 var data = {
   "Thông tin gửi": {

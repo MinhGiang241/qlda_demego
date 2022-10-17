@@ -102,7 +102,7 @@ class AssetUpdateBloc extends Bloc<AssetUpdateAction, AssetUpdateState> {
       emit(AssetUpdateState.submit());
       Utils.showDialog(
         context: context,
-        dailog: PrimaryDialog.custom(
+        dialog: PrimaryDialog.custom(
           title: S.of(context).success,
           content: Column(
             children: [

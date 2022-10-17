@@ -10,7 +10,7 @@ import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
 import '../../widgets/float_button.dart';
 import '../../widgets/primary_button.dart';
-import 'dailog/period_task_dailog.dart';
+import 'dialog/period_task_dialog.dart';
 
 class EditTaskConfigScreen extends StatelessWidget {
   EditTaskConfigScreen({super.key, this.isEdit = false});

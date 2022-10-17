@@ -13,6 +13,9 @@ import '../screens/extra_task/extra_task_list_screen.dart';
 import '../screens/letter/request_letter_list_screen.dart';
 import '../screens/missing/missing_object_list_screen.dart';
 import '../screens/parcel/parcel_list_screen.dart';
+import '../screens/resident_card/resident_card_list_screen.dart';
+import '../screens/transportation/add_transportation_card_screen.dart';
+import '../screens/transportation/transportation_card_list_screen.dart';
 import '../services/provider/auth_provider.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -159,15 +162,15 @@ class MainDrawer extends StatelessWidget {
                     Icons.portrait,
                     () => Navigator.pushReplacementNamed(
                       context,
-                      HomeScreen.routeName,
+                      ResidentCardListScreen.routeName,
                     ),
                   ),
                   buildListTile(
-                    S.of(context).verhicle_card,
+                    S.of(context).trans_card,
                     Icons.car_rental,
                     () => Navigator.pushReplacementNamed(
                       context,
-                      HomeScreen.routeName,
+                      TransportationCardList.routeName,
                     ),
                   ),
                   buildListTile(

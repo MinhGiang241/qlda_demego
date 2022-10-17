@@ -10,7 +10,7 @@ import '../../../widgets/primary_dropdown.dart';
 var addRequestAsset = (BuildContext context) {
   Utils.showDialog(
     context: context,
-    dailog: PrimaryDialog.custom(
+    dialog: PrimaryDialog.custom(
       useBackground: true,
       title: null, //S.of(context).add_request_asset,
       content: Flexible(
@@ -130,7 +130,7 @@ var addRequestAsset = (BuildContext context) {
 var addSupplier = (BuildContext context) {
   Utils.showDialog(
     context: context,
-    dailog: PrimaryDialog.custom(
+    dialog: PrimaryDialog.custom(
       title: null,
       useBackground: true,
       content: Column(

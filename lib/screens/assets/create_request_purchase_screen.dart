@@ -17,7 +17,7 @@ import '../../generated/l10n.dart';
 import '../../widgets/float_button.dart';
 import 'components/data_asset_list_table.dart';
 import 'components/data_asset_quotation_table.dart';
-import 'dailog/show_dailog_request_letter.dart';
+import 'dialog/show_dialog_request_letter.dart';
 
 const dataAssets = [
   {

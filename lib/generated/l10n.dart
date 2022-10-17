@@ -930,11 +930,11 @@ class S {
     );
   }
 
-  /// `Vehicle registration card`
-  String get verhicle_card {
+  /// `Transportation registration card`
+  String get trans_card {
     return Intl.message(
-      'Vehicle registration card',
-      name: 'verhicle_card',
+      'Transportation registration card',
+      name: 'trans_card',
       desc: '',
       args: [],
     );
@@ -2875,6 +2875,346 @@ class S {
     return Intl.message(
       'Entrance Details',
       name: 'entrance_detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Residence card list`
+  String get res_card_list {
+    return Intl.message(
+      'Residence card list',
+      name: 'res_card_list',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Activate`
+  String get activate {
+    return Intl.message(
+      'Activate',
+      name: 'activate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Card owner`
+  String get card_owner {
+    return Intl.message(
+      'Card owner',
+      name: 'card_owner',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Card number`
+  String get card_num {
+    return Intl.message(
+      'Card number',
+      name: 'card_num',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waiting`
+  String get wait {
+    return Intl.message(
+      'Waiting',
+      name: 'wait',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Owner`
+  String get owner {
+    return Intl.message(
+      'Owner',
+      name: 'owner',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resister`
+  String get resister {
+    return Intl.message(
+      'Resister',
+      name: 'resister',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Service`
+  String get service {
+    return Intl.message(
+      'Service',
+      name: 'service',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Extend`
+  String get extend {
+    return Intl.message(
+      'Extend',
+      name: 'extend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add service`
+  String get add_service {
+    return Intl.message(
+      'Add service',
+      name: 'add_service',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Activate date`
+  String get activate_date {
+    return Intl.message(
+      'Activate date',
+      name: 'activate_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Over date`
+  String get over_date {
+    return Intl.message(
+      'Over date',
+      name: 'over_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Service date`
+  String get service_detail {
+    return Intl.message(
+      'Service date',
+      name: 'service_detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `History extend`
+  String get history_ext {
+    return Intl.message(
+      'History extend',
+      name: 'history_ext',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Extend service`
+  String get extend_service {
+    return Intl.message(
+      'Extend service',
+      name: 'extend_service',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get price {
+    return Intl.message(
+      'Price',
+      name: 'price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Card number is existed`
+  String get card_exist {
+    return Intl.message(
+      'Card number is existed',
+      name: 'card_exist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OK`
+  String get ok {
+    return Intl.message(
+      'OK',
+      name: 'ok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add new res idence card`
+  String get add_res_card {
+    return Intl.message(
+      'Add new res idence card',
+      name: 'add_res_card',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Card information`
+  String get card_info {
+    return Intl.message(
+      'Card information',
+      name: 'card_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resident card details`
+  String get res_car_detail {
+    return Intl.message(
+      'Resident card details',
+      name: 'res_car_detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quantity`
+  String get quantity {
+    return Intl.message(
+      'Quantity',
+      name: 'quantity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add service for resident`
+  String get add_service_for_res {
+    return Intl.message(
+      'Add service for resident',
+      name: 'add_service_for_res',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add transpotation card`
+  String get add_trans_card {
+    return Intl.message(
+      'Add transpotation card',
+      name: 'add_trans_card',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Owner information`
+  String get trans_owner_info {
+    return Intl.message(
+      'Owner information',
+      name: 'trans_owner_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transportation infomation`
+  String get trans_info {
+    return Intl.message(
+      'Transportation infomation',
+      name: 'trans_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Variety`
+  String get variety {
+    return Intl.message(
+      'Variety',
+      name: 'variety',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register number`
+  String get register_num {
+    return Intl.message(
+      'Register number',
+      name: 'register_num',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `License number`
+  String get license {
+    return Intl.message(
+      'License number',
+      name: 'license',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Color`
+  String get color {
+    return Intl.message(
+      'Color',
+      name: 'color',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transportation card list`
+  String get trans_card_list {
+    return Intl.message(
+      'Transportation card list',
+      name: 'trans_card_list',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transportation card detail`
+  String get trans_card_detail {
+    return Intl.message(
+      'Transportation card detail',
+      name: 'trans_card_detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment history`
+  String get pay_history {
+    return Intl.message(
+      'Payment history',
+      name: 'pay_history',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Card owner information`
+  String get card_owner_info {
+    return Intl.message(
+      'Card owner information',
+      name: 'card_owner_info',
       desc: '',
       args: [],
     );

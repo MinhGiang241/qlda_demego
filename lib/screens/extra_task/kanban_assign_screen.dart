@@ -7,7 +7,7 @@ import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
 import '../../widgets/primary_screen.dart';
 import '../../widgets/search_bar.dart';
-import 'dailog/show_dailog_extra_task.dart';
+import 'dialog/show_dialog_extra_task.dart';
 import 'kanban/board_view_assign.dart';
 
 class KanbanAssignTask extends StatelessWidget {
@@ -32,7 +32,7 @@ class KanbanAssignTask extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColorBase,
         onPressed: () {
-          showAddEmployeeDailog(context, (_) {});
+          showAddEmployeedialog(context, (_) {});
         },
         child: const Icon(
           Icons.person_add,

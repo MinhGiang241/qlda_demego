@@ -129,6 +129,8 @@ class CustomDialog extends StatelessWidget {
         return S.of(context).invalid_code;
       case 9:
         return S.of(context).systeme_error;
+      case 10:
+        return S.of(context).card_exist;
       default:
         return "[Code : $code]";
     }

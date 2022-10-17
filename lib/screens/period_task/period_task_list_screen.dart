@@ -11,10 +11,10 @@ import 'package:qlda_demego/widgets/primary_screen.dart';
 
 import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
-import '../../utils/dailog.dart';
+import '../../utils/dialog.dart';
 import '../../utils/utils.dart';
 import '../../widgets/search_bar.dart';
-import 'dailog/period_task_dailog.dart';
+import 'dialog/period_task_dialog.dart';
 import 'edit_task_config_screen.dart';
 
 class PeriodTaskListScreen extends StatefulWidget {

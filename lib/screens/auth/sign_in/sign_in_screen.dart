@@ -105,7 +105,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           onTap: () async {
                             await Utils.showDialog(
                               context: context,
-                              dailog: PrimaryDialog.custom(
+                              dialog: PrimaryDialog.custom(
                                 title: S.of(context).forgot_pass,
                                 content: Column(
                                   children: [

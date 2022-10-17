@@ -9,10 +9,10 @@ import 'package:qlda_demego/widgets/search_bar.dart';
 
 import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
-import '../../utils/dailog.dart';
+import '../../utils/dialog.dart';
 import '../../widgets/primary_button.dart';
 import 'add_parcel_screen.dart';
-import 'dailog/parcel_dailog.dart';
+import 'dialog/parcel_dialog.dart';
 import 'parcel_detail_screen.dart';
 
 class ParcelListScreen extends StatefulWidget {

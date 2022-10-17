@@ -43,6 +43,15 @@ import '../screens/parcel/parcel_detail_screen.dart';
 import '../screens/parcel/parcel_list_screen.dart';
 import '../screens/period_task/edit_task_config_screen.dart';
 import '../screens/period_task/period_task_list_screen.dart';
+import '../screens/resident_card/add_resident_card_screen.dart';
+import '../screens/resident_card/add_service_for_resident_screen.dart';
+import '../screens/resident_card/extend_service_screen.dart';
+import '../screens/resident_card/resident_card_details_screen.dart';
+import '../screens/resident_card/resident_card_list_screen.dart';
+import '../screens/resident_card/service_detail_screen.dart';
+import '../screens/transportation/add_transportation_card_screen.dart';
+import '../screens/transportation/transportation_card_details_screen.dart';
+import '../screens/transportation/transportation_card_list_screen.dart';
 
 class AppRoutes {
   Route onGenerateRoute(RouteSettings routeSetting) {
@@ -241,6 +250,51 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: routeSetting,
           builder: ((context) => EntranceDetailsScreen()),
+        );
+      case ResidentCardListScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => ResidentCardListScreen()),
+        );
+      case AddResidentCardScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => AddResidentCardScreen()),
+        );
+      case ResidentCarDetailsScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => ResidentCarDetailsScreen()),
+        );
+      case ServiceDetailScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => ServiceDetailScreen()),
+        );
+      case ExtendServiceScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => ExtendServiceScreen()),
+        );
+      case AddServiceForResidentScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => AddServiceForResidentScreen()),
+        );
+      case TransportationCardList.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => TransportationCardList()),
+        );
+      case AddTransportationCardScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => AddTransportationCardScreen()),
+        );
+      case TransportationCardDetailScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => TransportationCardDetailScreen()),
         );
       default:
         return MaterialPageRoute(

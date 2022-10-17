@@ -11,11 +11,11 @@ import '../../../widgets/primary_card.dart';
 import '../../../widgets/primary_dialog.dart';
 import '../../../widgets/primary_dropdown.dart';
 
-var showAddTaskDailog = (BuildContext context, Function(String)? addTask) {
+var showAddTaskdialog = (BuildContext context, Function(String)? addTask) {
   TextEditingController newTaskController = TextEditingController();
   Utils.showDialog(
     context: context,
-    dailog: PrimaryDialog.custom(
+    dialog: PrimaryDialog.custom(
       title: S.of(context).add_task,
       useBackground: true,
       content: Column(
@@ -59,7 +59,7 @@ var showAddTaskDailog = (BuildContext context, Function(String)? addTask) {
 var adjustTask = (BuildContext context, Function()? addTask) {
   Utils.showDialog(
     context: context,
-    dailog: PrimaryDialog.custom(
+    dialog: PrimaryDialog.custom(
       title: S.of(context).adjust_task,
       content: Column(
         children: [
@@ -103,7 +103,7 @@ var changeDeathline = (
 ) {
   Utils.showDialog(
     context: context,
-    dailog: PrimaryDialog.custom(
+    dialog: PrimaryDialog.custom(
       title: S.of(context).change_deathline,
       content: Column(
         children: [
@@ -168,7 +168,7 @@ var changeDeathline = (
 var refuseTask = (BuildContext context, Function()? refuseTask) {
   Utils.showDialog(
     context: context,
-    dailog: PrimaryDialog.custom(
+    dialog: PrimaryDialog.custom(
       title: S.of(context).refuse_task,
       content: Column(
         children: [
@@ -208,7 +208,7 @@ var refuseTask = (BuildContext context, Function()? refuseTask) {
 var addAttachedFile = (BuildContext context, Function()? addFile) {
   Utils.showDialog(
     context: context,
-    dailog: PrimaryDialog.custom(
+    dialog: PrimaryDialog.custom(
       title: S.of(context).add_attached_file,
       content: Column(
         children: [
@@ -272,11 +272,11 @@ var addAttachedFile = (BuildContext context, Function()? addFile) {
   );
 };
 
-var showAddEmployeeDailog =
+var showAddEmployeedialog =
     (BuildContext context, Function(String)? addEmployee) {
   Utils.showDialog(
     context: context,
-    dailog: PrimaryDialog.custom(
+    dialog: PrimaryDialog.custom(
       title: S.of(context).add_employee,
       useBackground: true,
       content: Column(

@@ -48,22 +48,22 @@ class AuthProvider with ChangeNotifier {
           if (e.code == 1) {
             Utils.showDialog(
                 context: context,
-                dailog: PrimaryDialog.error(msg: S.of(context).wrong_sign_in));
+                dialog: PrimaryDialog.error(msg: S.of(context).wrong_sign_in));
           } else if (e.code == 2) {
             Utils.showDialog(
               context: context,
-              dailog: PrimaryDialog.error(msg: S.of(context).err_conn),
+              dialog: PrimaryDialog.error(msg: S.of(context).err_conn),
             );
           } else {
             Utils.showDialog(
               context: context,
-              dailog: PrimaryDialog.error(msg: S.of(context).err_unknown),
+              dialog: PrimaryDialog.error(msg: S.of(context).err_unknown),
             );
           }
         });
     if (credentials != null) {
       authStatus = AuthStatus.auth;
-      // Utils.showDialog(context: context, dailog: const PrimaryDialog.success());
+      // Utils.showDialog(context: context, dialog: const PrimaryDialog.success());
       Navigator.pushNamedAndRemoveUntil(
           context, HomeScreen.routeName, (Route route) => false);
     }
@@ -76,7 +76,7 @@ class AuthProvider with ChangeNotifier {
   Future<void> onSignOut(BuildContext context) async {
     Utils.showDialog(
         context: context,
-        dailog: PrimaryDialog.custom(
+        dialog: PrimaryDialog.custom(
           title: S.of(context).sign_out,
           content: Column(
             children: [

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Utils {
   static Future<T?> showDialog<T extends Object?>({
     required BuildContext context,
-    required Widget dailog,
+    required Widget dialog,
   }) {
     return showGeneralDialog(
       context: context,
@@ -29,7 +29,7 @@ class Utils {
         Animation<double> animation,
         Animation<double> secondaryAnimation,
       ) =>
-          dailog,
+          dialog,
     );
   }
 }

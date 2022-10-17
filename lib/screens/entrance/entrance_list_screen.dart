@@ -8,7 +8,7 @@ import 'package:qlda_demego/widgets/search_bar.dart';
 
 import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
-import '../../utils/dailog.dart';
+import '../../utils/dialog.dart';
 import '../../widgets/float_button.dart';
 import '../../widgets/primary_button.dart';
 import '../../widgets/primary_screen.dart';
@@ -95,7 +95,7 @@ class _EntranceListScreenState extends State<EntranceListScreen> {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     PrimaryButton(
-                                      text: S.of(context).transfer,
+                                      text: S.of(context).complete,
                                       buttonSize: ButtonSize.medium,
                                       onTap: () {},
                                     ),

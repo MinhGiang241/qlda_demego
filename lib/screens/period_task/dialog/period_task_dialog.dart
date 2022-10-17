@@ -11,7 +11,7 @@ import '../../../widgets/primary_dropdown.dart';
 var addTestContent = (BuildContext context, Function() addContext) {
   Utils.showDialog(
     context: context,
-    dailog: PrimaryDialog.custom(
+    dialog: PrimaryDialog.custom(
       title: '${S.current.add} ${S.current.period_task_list.toLowerCase()}',
       content: Column(
         children: [

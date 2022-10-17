@@ -18,7 +18,7 @@ class EntranceDetailsScreen extends StatelessWidget {
     final arg = ModalRoute.of(context)!.settings.arguments as Map;
     var floatButtons = [
       DialChildren(
-        label: S.of(context).transfer,
+        label: S.of(context).complete,
         icon: Icons.send,
         primary: secondaryColorBase,
         onPress: () {},

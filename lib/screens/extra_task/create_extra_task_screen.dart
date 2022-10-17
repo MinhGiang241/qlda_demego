@@ -13,7 +13,7 @@ import 'package:dotted_border/dotted_border.dart';
 
 import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
-import 'dailog/show_dailog_extra_task.dart';
+import 'dialog/show_dialog_extra_task.dart';
 
 class CreateExtraTaskScreen extends StatefulWidget {
   const CreateExtraTaskScreen({super.key});
@@ -186,7 +186,7 @@ class _CreateExtraTaskScreenState extends State<CreateExtraTaskScreen> {
             vpad(12),
             InkWell(
               onTap: () {
-                showAddTaskDailog(context, (String v) {
+                showAddTaskdialog(context, (String v) {
                   data.add(v);
                   setState(() {});
                 });

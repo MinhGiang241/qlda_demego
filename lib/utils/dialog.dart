@@ -10,7 +10,7 @@ var onConfirmDelete =
     (BuildContext context, String title, Function() onDelete) {
   Utils.showDialog(
     context: context,
-    dailog: PrimaryDialog.custom(
+    dialog: PrimaryDialog.custom(
       title: title,
       content: Row(
         mainAxisAlignment: MainAxisAlignment.center,

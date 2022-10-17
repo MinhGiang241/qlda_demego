@@ -32,7 +32,7 @@ class AddEntranceScreen extends StatelessWidget {
       ),
       DialChildren(
         label: S.of(context).cancel,
-        icon: Icons.edit_note,
+        icon: Icons.close,
         primary: redColor2,
         onPress: () {},
       ),

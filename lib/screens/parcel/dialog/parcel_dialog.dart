@@ -10,7 +10,7 @@ import '../../../widgets/primary_dialog.dart';
 var onEditParcel = (BuildContext context, Function() onSave) {
   Utils.showDialog(
     context: context,
-    dailog: PrimaryDialog.custom(
+    dialog: PrimaryDialog.custom(
       content: Column(
         children: [
           Text(

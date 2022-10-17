@@ -9,7 +9,7 @@ import '../../generated/l10n.dart';
 import '../../widgets/Info_table.dart';
 import '../../widgets/float_button.dart';
 import '../../widgets/primary_card.dart';
-import 'dailog/show_dailog_extra_task.dart';
+import 'dialog/show_dialog_extra_task.dart';
 import 'edit_extra_task_screen.dart';
 
 class ExtraTaskDetailScreen extends StatelessWidget {
@@ -54,7 +54,7 @@ class ExtraTaskDetailScreen extends StatelessWidget {
         icon: Icons.add_box,
         label: S.of(context).add_task,
         onPress: () {
-          showAddTaskDailog(context, (_) {});
+          showAddTaskdialog(context, (_) {});
         },
         primary: greenColor6,
       ),

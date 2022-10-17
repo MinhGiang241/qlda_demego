@@ -13,7 +13,7 @@ import '../../widgets/primary_button.dart';
 import '../../widgets/primary_card.dart';
 import '../../widgets/primary_dropdown.dart';
 import '../../widgets/primary_text_field.dart';
-import 'dailog/show_dailog_extra_task.dart';
+import 'dialog/show_dialog_extra_task.dart';
 
 class EditExtraTaskScreen extends StatefulWidget {
   const EditExtraTaskScreen({super.key});
@@ -195,7 +195,7 @@ class _EditExtraTaskScreenState extends State<EditExtraTaskScreen> {
             vpad(12),
             InkWell(
               onTap: () {
-                showAddTaskDailog(context, (String v) {
+                showAddTaskdialog(context, (String v) {
                   dataTask.add(v);
                   setState(() {});
                 });
