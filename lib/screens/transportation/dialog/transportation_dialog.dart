@@ -46,7 +46,7 @@ var showExtendTransportationDialog = (BuildContext context, Function() onSave) {
               Expanded(
                 child: PrimaryTextField(label: S.of(context).quantity_month),
               ),
-              vpad(35),
+              hpad(14),
               Expanded(
                 child: PrimaryTextField(label: S.of(context).price),
               )
@@ -79,7 +79,7 @@ var showExtendTransportationDialog = (BuildContext context, Function() onSave) {
                   },
                 ),
               ),
-              hpad(35),
+              hpad(14),
               Expanded(
                 child: PrimaryTextField(
                   // initialValue: arg['Ngày hết hạn'],
