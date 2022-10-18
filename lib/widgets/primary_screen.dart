@@ -25,7 +25,7 @@ class PrimaryScreen extends StatelessWidget {
           FocusScope.of(context).unfocus();
         },
         child: Scaffold(
-          resizeToAvoidBottomInset: false,
+          resizeToAvoidBottomInset: true,
           backgroundColor: backgroundColor,
           extendBodyBehindAppBar: true,
           drawer: drawer,

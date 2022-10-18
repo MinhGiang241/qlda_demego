@@ -147,6 +147,10 @@ final gradientBlack = LinearGradient(colors: [
   const Color(0xff4E4B66).withOpacity(0.9),
   const Color(0xffA0A3BD).withOpacity(0.9)
 ], begin: Alignment.topLeft, end: Alignment.bottomRight);
+final gradientYeallow = LinearGradient(colors: [
+  const Color(0xffFFA900).withOpacity(0.9),
+  const Color(0xffFFBE34).withOpacity(0.9),
+], begin: Alignment.topLeft, end: Alignment.bottomRight);
 
 TextStyle txtDisplayLarge({Color? color}) => TextStyle(
       fontFamily: family,

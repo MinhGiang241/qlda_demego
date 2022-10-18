@@ -22,19 +22,24 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "CCCD": MessageLookupByLibrary.simpleMessage("CCCD"),
         "account_existed": MessageLookupByLibrary.simpleMessage(
             "Tài khoản đã tồn tại, vui lòng đăng nhập"),
         "account_not_avaiable": MessageLookupByLibrary.simpleMessage(
             "Thông tin người dùng không có sẵn trên hệ thống, vui lòng liên hệ với Admin."),
         "activate": MessageLookupByLibrary.simpleMessage("Kích hoạt"),
         "activate_date": MessageLookupByLibrary.simpleMessage("Ngày kích hoạt"),
+        "activity": MessageLookupByLibrary.simpleMessage("Hoạt động"),
         "add": MessageLookupByLibrary.simpleMessage("Thêm"),
         "add_attached_file":
             MessageLookupByLibrary.simpleMessage("Thêm tệp đính kèm"),
         "add_category": MessageLookupByLibrary.simpleMessage("Thêm danh mục"),
+        "add_customer":
+            MessageLookupByLibrary.simpleMessage("Tạo mới khách hàng"),
         "add_employee": MessageLookupByLibrary.simpleMessage("Thêm nhân viên"),
         "add_file": MessageLookupByLibrary.simpleMessage("Thêm file"),
         "add_new": MessageLookupByLibrary.simpleMessage("Thêm mới"),
+        "add_note": MessageLookupByLibrary.simpleMessage("Thêm ghi chú"),
         "add_parcel": MessageLookupByLibrary.simpleMessage("Tạo mới bưu phẩm"),
         "add_period_task": MessageLookupByLibrary.simpleMessage(
             "Thêm mới cấu hình công việc định kỳ"),
@@ -52,10 +57,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_task": MessageLookupByLibrary.simpleMessage("Thêm đầu việc"),
         "add_trans_card":
             MessageLookupByLibrary.simpleMessage("Tạo mới thẻ gửi xe"),
+        "add_work": MessageLookupByLibrary.simpleMessage("Tạo công việc"),
         "address": MessageLookupByLibrary.simpleMessage("Địa chỉ"),
         "adjust": MessageLookupByLibrary.simpleMessage("Điều chỉnh"),
         "adjust_task":
             MessageLookupByLibrary.simpleMessage("Điều chỉnh công việc"),
+        "all": MessageLookupByLibrary.simpleMessage("Tất cả"),
         "amount": MessageLookupByLibrary.simpleMessage("Số lượng"),
         "app_version": MessageLookupByLibrary.simpleMessage("App version"),
         "application": MessageLookupByLibrary.simpleMessage("Đơn từ"),
@@ -103,6 +110,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "change_deathline":
             MessageLookupByLibrary.simpleMessage("Đổi thời hạn"),
         "change_pass": MessageLookupByLibrary.simpleMessage("Đổi mật khẩu"),
+        "changed_person":
+            MessageLookupByLibrary.simpleMessage("Nhân sự được đổi"),
         "choices": MessageLookupByLibrary.simpleMessage("Lựa chọn"),
         "choose_file": MessageLookupByLibrary.simpleMessage("Chọn tệp"),
         "choose_off": MessageLookupByLibrary.simpleMessage("Chọn loại nghỉ"),
@@ -140,6 +149,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tạo công việc phát sinh"),
         "cr_import_request_letter":
             MessageLookupByLibrary.simpleMessage("Tạo mới đề xuất nhập kho"),
+        "cr_info_recept":
+            MessageLookupByLibrary.simpleMessage("Tạo mới tiếp nhận thông tin"),
         "cr_purchase_req_letter": MessageLookupByLibrary.simpleMessage(
             "Tạo phiếu đề xuất mua sắm tài sản"),
         "cr_task": MessageLookupByLibrary.simpleMessage("Tạo công việc"),
@@ -148,7 +159,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tạo mới bưu phẩm"),
         "current_pass":
             MessageLookupByLibrary.simpleMessage("Mật khẩu hiện tại"),
+        "current_residence":
+            MessageLookupByLibrary.simpleMessage("Chỗ ở hiện nay"),
         "customer": MessageLookupByLibrary.simpleMessage("Khách hàng"),
+        "customer_list":
+            MessageLookupByLibrary.simpleMessage("Danh sách khách hàng"),
+        "customer_name": MessageLookupByLibrary.simpleMessage("Tên khách hàng"),
         "date": MessageLookupByLibrary.simpleMessage("Ngày"),
         "date_change_fr": MessageLookupByLibrary.simpleMessage("Ngày đổi"),
         "date_change_to": MessageLookupByLibrary.simpleMessage("Đổi sang ngày"),
@@ -166,6 +182,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "description": MessageLookupByLibrary.simpleMessage("Mô tả"),
         "detail": MessageLookupByLibrary.simpleMessage("Chi tiết"),
         "detail_letter": MessageLookupByLibrary.simpleMessage("Chi tiết phiếu"),
+        "dob": MessageLookupByLibrary.simpleMessage("Ngày sinh"),
         "edit": MessageLookupByLibrary.simpleMessage("Chỉnh sửa"),
         "edit_entrance":
             MessageLookupByLibrary.simpleMessage("Chỉnh sửa ra vào tòa nhà"),
@@ -174,6 +191,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "edit_parcel": MessageLookupByLibrary.simpleMessage("Sửa bưu phẩm"),
         "edit_period_task": MessageLookupByLibrary.simpleMessage(
             "Sửa cấu hình công việc định kỳ"),
+        "education_level":
+            MessageLookupByLibrary.simpleMessage("Trình độ học vấn"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "en": MessageLookupByLibrary.simpleMessage("Tiếng Anh"),
         "end": MessageLookupByLibrary.simpleMessage("Kết thúc"),
@@ -195,6 +214,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Kiểm tra lại kết nối internet!"),
         "err_unknown":
             MessageLookupByLibrary.simpleMessage("Lỗi Không xác định"),
+        "ethnic": MessageLookupByLibrary.simpleMessage("Dân tộc"),
+        "exc_done": MessageLookupByLibrary.simpleMessage("Đã xử lý"),
+        "exc_in_progress": MessageLookupByLibrary.simpleMessage("Đang xử lý"),
         "export": MessageLookupByLibrary.simpleMessage("Xuất"),
         "export_asset":
             MessageLookupByLibrary.simpleMessage("Xuất kho tài sản"),
@@ -217,6 +239,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fre_time": MessageLookupByLibrary.simpleMessage("Thời gian lặp"),
         "fre_type": MessageLookupByLibrary.simpleMessage("Loại lặp"),
         "full_name": MessageLookupByLibrary.simpleMessage("Họ và Tên"),
+        "gender": MessageLookupByLibrary.simpleMessage("Giới tính"),
         "general_info": MessageLookupByLibrary.simpleMessage("Thông tin chung"),
         "group": MessageLookupByLibrary.simpleMessage("Nhóm"),
         "hand_over": MessageLookupByLibrary.simpleMessage("Bàn giao"),
@@ -235,9 +258,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "import": MessageLookupByLibrary.simpleMessage("Nhập"),
         "in_progress": MessageLookupByLibrary.simpleMessage("Đang tiến hành"),
         "info": MessageLookupByLibrary.simpleMessage("Thông tin"),
+        "info_content":
+            MessageLookupByLibrary.simpleMessage("Nội dung thông tin"),
+        "info_recept_details": MessageLookupByLibrary.simpleMessage(
+            "Chi tiết tiếp nhận thông tin"),
+        "info_reception":
+            MessageLookupByLibrary.simpleMessage("Tiếp nhận thông tin"),
+        "info_reception_list": MessageLookupByLibrary.simpleMessage(
+            "Danh sách tiếp nhận thông tin"),
+        "info_type": MessageLookupByLibrary.simpleMessage("Loại thông tin"),
         "invalid_code":
             MessageLookupByLibrary.simpleMessage("Mã xác thực không hợp lệ"),
         "inventory": MessageLookupByLibrary.simpleMessage("Kiểm kê"),
+        "issue_date": MessageLookupByLibrary.simpleMessage("Ngày cấp"),
         "job_title": MessageLookupByLibrary.simpleMessage("Chức vụ"),
         "kanban_view": MessageLookupByLibrary.simpleMessage("Kanban view"),
         "language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
@@ -246,7 +279,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "license": MessageLookupByLibrary.simpleMessage("Biển kiểm soát"),
         "list_apl": MessageLookupByLibrary.simpleMessage("Danh sách đơn từ"),
         "manage": MessageLookupByLibrary.simpleMessage("Quản lý theo"),
+        "martial_status":
+            MessageLookupByLibrary.simpleMessage("Tình trạng hôn nhân"),
         "member": MessageLookupByLibrary.simpleMessage("Thành viên"),
+        "mess": MessageLookupByLibrary.simpleMessage("Nhắn tin"),
         "min_max_pass": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu gồm ít nhất 4 kí tự và nhiều nhất 20 ký tự"),
         "missing": MessageLookupByLibrary.simpleMessage(
@@ -258,6 +294,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "missing_obj_name":
             MessageLookupByLibrary.simpleMessage("Tên đồ thất lạc"),
         "name": MessageLookupByLibrary.simpleMessage("Tên"),
+        "nationality": MessageLookupByLibrary.simpleMessage("Quốc tịch"),
         "new_pass": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
         "next": MessageLookupByLibrary.simpleMessage("Tiếp tục"),
         "no_acc":
@@ -277,6 +314,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "not_vietnamese": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu không được chứa ký tự tiếng Việt có dấu"),
         "note": MessageLookupByLibrary.simpleMessage("Ghi chú"),
+        "note_content":
+            MessageLookupByLibrary.simpleMessage("Nội dung ghi chú"),
+        "note_list": MessageLookupByLibrary.simpleMessage("Danh sách ghi chú"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
         "operation": MessageLookupByLibrary.simpleMessage("Vận hành"),
         "origin": MessageLookupByLibrary.simpleMessage("Xuất xứ"),
@@ -300,20 +340,28 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Công việc định kỳ"),
         "period_task_list": MessageLookupByLibrary.simpleMessage(
             "Danh sách cấu hình công việc định kỳ"),
+        "permanent_address": MessageLookupByLibrary.simpleMessage("Thường chú"),
         "personal_info":
             MessageLookupByLibrary.simpleMessage("Thông tin cá nhân"),
         "phone_num": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
         "piority": MessageLookupByLibrary.simpleMessage("Độ ưu tiên"),
+        "pob": MessageLookupByLibrary.simpleMessage("Nơi sinh"),
+        "poo": MessageLookupByLibrary.simpleMessage("Quê quán"),
         "possiton": MessageLookupByLibrary.simpleMessage("Chức danh"),
         "post": MessageLookupByLibrary.simpleMessage("Chốt trực"),
         "pre_cre_task":
             MessageLookupByLibrary.simpleMessage("Công việc tạo trước(phút)"),
         "prev": MessageLookupByLibrary.simpleMessage("Trở lại"),
         "price": MessageLookupByLibrary.simpleMessage("Thành tiền"),
+        "profession": MessageLookupByLibrary.simpleMessage("Nghề nghiệp"),
         "property": MessageLookupByLibrary.simpleMessage("Tài sản"),
         "purchase_req_letter": MessageLookupByLibrary.simpleMessage(
             "Tạo phiếu đề xuất mua sắm tài sản"),
+        "qualification":
+            MessageLookupByLibrary.simpleMessage("Trình độ chuyên môn"),
         "quantity": MessageLookupByLibrary.simpleMessage("Số lượng"),
+        "quantity_month":
+            MessageLookupByLibrary.simpleMessage("Số lượng/tháng"),
         "quotation": MessageLookupByLibrary.simpleMessage("Báo giá"),
         "reason": MessageLookupByLibrary.simpleMessage("Lý do"),
         "reason_change_shift":
@@ -333,6 +381,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "register_num": MessageLookupByLibrary.simpleMessage("Số đăng ký"),
         "related_asset":
             MessageLookupByLibrary.simpleMessage("Tài sản liên quan"),
+        "related_department":
+            MessageLookupByLibrary.simpleMessage("Phòng ban liên quan"),
         "related_info":
             MessageLookupByLibrary.simpleMessage("Thông tin liên quan"),
         "reload": MessageLookupByLibrary.simpleMessage("Tải lại"),
@@ -349,6 +399,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Phản hồi đơn xin đổi ca"),
         "reply_refuse_ext": MessageLookupByLibrary.simpleMessage(
             "Phản hồi từ chối cv phát sinh"),
+        "reporter": MessageLookupByLibrary.simpleMessage("Người báo cáo"),
         "req_export": MessageLookupByLibrary.simpleMessage("Yêu cầu xuất kho"),
         "req_import": MessageLookupByLibrary.simpleMessage("Yêu cầu nhập kho"),
         "req_letter_management":
@@ -371,7 +422,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Danh sách thẻ cư dân"),
         "res_department":
             MessageLookupByLibrary.simpleMessage("Phòng ban phụ trách"),
-        "res_person": MessageLookupByLibrary.simpleMessage("Nhân sự được đổi"),
+        "res_person": MessageLookupByLibrary.simpleMessage("Người phụ trách"),
         "resend": MessageLookupByLibrary.simpleMessage("Gửi lại"),
         "reset_pass": MessageLookupByLibrary.simpleMessage("Đặt lại mật khẩu"),
         "resident_card": MessageLookupByLibrary.simpleMessage("Thẻ cư dân"),
@@ -385,6 +436,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "send": MessageLookupByLibrary.simpleMessage("Gửi"),
         "send_verify": MessageLookupByLibrary.simpleMessage("Gửi xác thực"),
         "sender": MessageLookupByLibrary.simpleMessage("Người gửi"),
+        "sender_name": MessageLookupByLibrary.simpleMessage("Tên người gửi"),
         "service": MessageLookupByLibrary.simpleMessage("Dịch vụ"),
         "service_detail":
             MessageLookupByLibrary.simpleMessage("Chi tiết dịch vụ"),
@@ -418,6 +470,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "time_done_after":
             MessageLookupByLibrary.simpleMessage("Thời gian thực hiện sau"),
         "time_off": MessageLookupByLibrary.simpleMessage("Thời gian nghỉ"),
+        "time_recept":
+            MessageLookupByLibrary.simpleMessage("Thời gian tiếp nhận"),
         "time_send": MessageLookupByLibrary.simpleMessage("Thời gian gửi"),
         "title": MessageLookupByLibrary.simpleMessage("Tiêu đề"),
         "to": MessageLookupByLibrary.simpleMessage("Đến"),
@@ -448,10 +502,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "wait": MessageLookupByLibrary.simpleMessage("Chờ"),
         "wait_assign": MessageLookupByLibrary.simpleMessage("Chờ giao việc"),
         "wait_confirm": MessageLookupByLibrary.simpleMessage("Chờ xác nhận"),
+        "wait_exc": MessageLookupByLibrary.simpleMessage("Chờ xử lý"),
         "wait_execute": MessageLookupByLibrary.simpleMessage("Chờ thực hiện"),
         "warranty": MessageLookupByLibrary.simpleMessage("Đơn vị bảo hành"),
         "wellcome_back":
             MessageLookupByLibrary.simpleMessage("Chào mừng trở lại!"),
+        "work_place": MessageLookupByLibrary.simpleMessage("Nơi làm việc"),
         "wrong_sign_in":
             MessageLookupByLibrary.simpleMessage("Sai tài khoản hoặc mật khẩu"),
         "zone": MessageLookupByLibrary.simpleMessage("Khu vực"),

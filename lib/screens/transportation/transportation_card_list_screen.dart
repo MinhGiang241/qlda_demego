@@ -116,61 +116,62 @@ class TransportationCardList extends StatelessWidget {
       appBar: PrimaryAppbar(title: S.of(context).trans_card_list),
       drawer: MainDrawer(),
       body: SafeArea(
-          child: Column(
-        children: [
-          SearchBar(),
-          Flexible(
-            child: ListView(
-              children: [
-                ...data.asMap().entries.map(
-                      (e) => InfoTable(
-                        onTap: () {
-                          Navigator.of(context).pushNamed(
-                            TransportationCardDetailScreen.routeName,
-                            arguments: data[e.key],
-                          );
-                        },
-                        data: e.value,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            PrimaryButton(
-                              text: S.of(context).activate,
-                              buttonType: ButtonType.black,
-                              buttonSize: ButtonSize.small,
-                              onTap: () {},
-                            ),
-                            hpad(12),
-                            PrimaryButton(
-                              text: S.of(context).edit,
-                              buttonSize: ButtonSize.small,
-                              onTap: () {
-                                Navigator.of(context).pushNamed(
-                                  TransportationCardDetailScreen.routeName,
-                                  arguments: data[e.key],
-                                );
-                              },
-                            ),
-                            hpad(12),
-                            PrimaryButton(
-                              text: S.of(context).cancel,
-                              buttonSize: ButtonSize.small,
-                              buttonType: ButtonType.secondary,
-                              secondaryBackgroundColor: redColor4,
-                              textColor: redColor,
-                              onTap: () {},
-                            ),
-                            hpad(12)
-                          ],
+        child: Column(
+          children: [
+            SearchBar(),
+            Flexible(
+              child: ListView(
+                children: [
+                  ...data.asMap().entries.map(
+                        (e) => InfoTable(
+                          onTap: () {
+                            Navigator.of(context).pushNamed(
+                              TransportationCardDetailScreen.routeName,
+                              arguments: data[e.key],
+                            );
+                          },
+                          data: e.value,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              PrimaryButton(
+                                text: S.of(context).activate,
+                                buttonType: ButtonType.black,
+                                buttonSize: ButtonSize.small,
+                                onTap: () {},
+                              ),
+                              hpad(12),
+                              PrimaryButton(
+                                text: S.of(context).edit,
+                                buttonSize: ButtonSize.small,
+                                onTap: () {
+                                  Navigator.of(context).pushNamed(
+                                    TransportationCardDetailScreen.routeName,
+                                    arguments: data[e.key],
+                                  );
+                                },
+                              ),
+                              hpad(12),
+                              PrimaryButton(
+                                text: S.of(context).cancel,
+                                buttonSize: ButtonSize.small,
+                                buttonType: ButtonType.secondary,
+                                secondaryBackgroundColor: redColor4,
+                                textColor: redColor,
+                                onTap: () {},
+                              ),
+                              hpad(12)
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                vpad(70)
-              ],
-            ),
-          )
-        ],
-      )),
+                  vpad(70)
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColorBase,
         onPressed: () {

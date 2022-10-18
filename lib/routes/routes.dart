@@ -24,6 +24,8 @@ import '../screens/assets/export_request_screen.dart';
 import '../screens/assets/import_request_screen.dart';
 import '../screens/assets/update_asset_screen.dart';
 import '../screens/auth/sign_in/sign_in_screen.dart';
+import '../screens/customer/add_customer_screen.dart';
+import '../screens/customer/customer_list_screen.dart';
 import '../screens/entrance/add_entrance_screen.dart';
 import '../screens/entrance/entrance_detail_screen.dart';
 import '../screens/entrance/entrance_list_screen.dart';
@@ -43,6 +45,9 @@ import '../screens/parcel/parcel_detail_screen.dart';
 import '../screens/parcel/parcel_list_screen.dart';
 import '../screens/period_task/edit_task_config_screen.dart';
 import '../screens/period_task/period_task_list_screen.dart';
+import '../screens/reception/add_information_reception_screen.dart';
+import '../screens/reception/infomation_reception_details_screen.dart';
+import '../screens/reception/information_reception_list_screen.dart';
 import '../screens/resident_card/add_resident_card_screen.dart';
 import '../screens/resident_card/add_service_for_resident_screen.dart';
 import '../screens/resident_card/extend_service_screen.dart';
@@ -295,6 +300,31 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: routeSetting,
           builder: ((context) => TransportationCardDetailScreen()),
+        );
+      case CustomerListScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => CustomerListScreen()),
+        );
+      case AddCustomerScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => AddCustomerScreen()),
+        );
+      case InformationReceptionListScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => InformationReceptionListScreen()),
+        );
+      case AddInformationReceptionScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => AddInformationReceptionScreen()),
+        );
+      case InformationReceptionDetailScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => InformationReceptionDetailScreen()),
         );
       default:
         return MaterialPageRoute(

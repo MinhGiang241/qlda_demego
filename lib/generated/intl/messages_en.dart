@@ -22,19 +22,24 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "CCCD": MessageLookupByLibrary.simpleMessage("identity card"),
         "account_existed": MessageLookupByLibrary.simpleMessage(
             "Account already exists, please login with other account"),
         "account_not_avaiable": MessageLookupByLibrary.simpleMessage(
             "User information is not available on the system, please contact Admin."),
         "activate": MessageLookupByLibrary.simpleMessage("Activate"),
         "activate_date": MessageLookupByLibrary.simpleMessage("Activate date"),
+        "activity": MessageLookupByLibrary.simpleMessage("Activities"),
         "add": MessageLookupByLibrary.simpleMessage("Add"),
         "add_attached_file":
             MessageLookupByLibrary.simpleMessage("Add attached file"),
         "add_category": MessageLookupByLibrary.simpleMessage("Add category"),
+        "add_customer":
+            MessageLookupByLibrary.simpleMessage("Add new customer"),
         "add_employee": MessageLookupByLibrary.simpleMessage("Add Employee"),
         "add_file": MessageLookupByLibrary.simpleMessage("Add file"),
         "add_new": MessageLookupByLibrary.simpleMessage("Add new"),
+        "add_note": MessageLookupByLibrary.simpleMessage("Add note"),
         "add_parcel": MessageLookupByLibrary.simpleMessage("Add parcel"),
         "add_period_task": MessageLookupByLibrary.simpleMessage(
             "Add periodical task configuration"),
@@ -51,9 +56,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_task": MessageLookupByLibrary.simpleMessage("Add more task"),
         "add_trans_card":
             MessageLookupByLibrary.simpleMessage("Add transpotation card"),
+        "add_work": MessageLookupByLibrary.simpleMessage("Add task"),
         "address": MessageLookupByLibrary.simpleMessage("Address"),
         "adjust": MessageLookupByLibrary.simpleMessage("Adjust"),
         "adjust_task": MessageLookupByLibrary.simpleMessage("Adjust task"),
+        "all": MessageLookupByLibrary.simpleMessage("All"),
         "amount": MessageLookupByLibrary.simpleMessage("Amount"),
         "app_version": MessageLookupByLibrary.simpleMessage("App version"),
         "application": MessageLookupByLibrary.simpleMessage("Application"),
@@ -102,6 +109,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "change_deathline":
             MessageLookupByLibrary.simpleMessage("Change deathline"),
         "change_pass": MessageLookupByLibrary.simpleMessage("Change password"),
+        "changed_person":
+            MessageLookupByLibrary.simpleMessage("Responsible person"),
         "choices": MessageLookupByLibrary.simpleMessage("Choice"),
         "choose_file": MessageLookupByLibrary.simpleMessage("Choose file"),
         "choose_off": MessageLookupByLibrary.simpleMessage("Choose type"),
@@ -138,6 +147,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Create extra task"),
         "cr_import_request_letter": MessageLookupByLibrary.simpleMessage(
             "Create importing request letter"),
+        "cr_info_recept": MessageLookupByLibrary.simpleMessage(
+            "Create information reception"),
         "cr_purchase_req_letter": MessageLookupByLibrary.simpleMessage(
             "Create purchasing request letter"),
         "cr_task": MessageLookupByLibrary.simpleMessage("Create task"),
@@ -146,7 +157,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Create new parcel"),
         "current_pass":
             MessageLookupByLibrary.simpleMessage("Current password"),
+        "current_residence":
+            MessageLookupByLibrary.simpleMessage("Current residence"),
         "customer": MessageLookupByLibrary.simpleMessage("Customer"),
+        "customer_list": MessageLookupByLibrary.simpleMessage("Customer list"),
+        "customer_name": MessageLookupByLibrary.simpleMessage("Customer name"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "date_change_fr":
             MessageLookupByLibrary.simpleMessage("Change from date"),
@@ -168,6 +183,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "detail": MessageLookupByLibrary.simpleMessage("Detail"),
         "detail_letter": MessageLookupByLibrary.simpleMessage("Detail letter"),
+        "dob": MessageLookupByLibrary.simpleMessage("Date of birth"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "edit_entrance":
             MessageLookupByLibrary.simpleMessage("Edit an entrance"),
@@ -176,6 +192,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "edit_parcel": MessageLookupByLibrary.simpleMessage("Edit parcel"),
         "edit_period_task": MessageLookupByLibrary.simpleMessage(
             "Edit periodical task configuration"),
+        "education_level":
+            MessageLookupByLibrary.simpleMessage("Education level"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "en": MessageLookupByLibrary.simpleMessage("English"),
         "end": MessageLookupByLibrary.simpleMessage("End"),
@@ -196,6 +214,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "err_internet": MessageLookupByLibrary.simpleMessage(
             "Check your internet connection!"),
         "err_unknown": MessageLookupByLibrary.simpleMessage("Unknown Error"),
+        "ethnic": MessageLookupByLibrary.simpleMessage("Ethnic"),
+        "exc_done": MessageLookupByLibrary.simpleMessage("Done"),
+        "exc_in_progress": MessageLookupByLibrary.simpleMessage("In progress"),
         "export": MessageLookupByLibrary.simpleMessage("Export"),
         "export_asset": MessageLookupByLibrary.simpleMessage("Export asset"),
         "ext_task_detail":
@@ -217,6 +238,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fre_time": MessageLookupByLibrary.simpleMessage("Frequency time"),
         "fre_type": MessageLookupByLibrary.simpleMessage("Frequency type"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full name"),
+        "gender": MessageLookupByLibrary.simpleMessage("Gender"),
         "general_info":
             MessageLookupByLibrary.simpleMessage("General information"),
         "group": MessageLookupByLibrary.simpleMessage("Group"),
@@ -236,9 +258,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "import": MessageLookupByLibrary.simpleMessage("Import"),
         "in_progress": MessageLookupByLibrary.simpleMessage("In progress"),
         "info": MessageLookupByLibrary.simpleMessage("Infomation"),
+        "info_content":
+            MessageLookupByLibrary.simpleMessage("Information content"),
+        "info_recept_details": MessageLookupByLibrary.simpleMessage(
+            "Information reception details"),
+        "info_reception":
+            MessageLookupByLibrary.simpleMessage("Infomation reception"),
+        "info_reception_list":
+            MessageLookupByLibrary.simpleMessage("Information reception list"),
+        "info_type": MessageLookupByLibrary.simpleMessage("Information type"),
         "invalid_code":
             MessageLookupByLibrary.simpleMessage("Invalid authentication code"),
         "inventory": MessageLookupByLibrary.simpleMessage("Inventory"),
+        "issue_date": MessageLookupByLibrary.simpleMessage("Issue date"),
         "job_title": MessageLookupByLibrary.simpleMessage("Job title"),
         "kanban_view": MessageLookupByLibrary.simpleMessage("Kanban view"),
         "language": MessageLookupByLibrary.simpleMessage("language"),
@@ -246,7 +278,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "license": MessageLookupByLibrary.simpleMessage("License number"),
         "list_apl": MessageLookupByLibrary.simpleMessage("Application List"),
         "manage": MessageLookupByLibrary.simpleMessage("Management"),
+        "martial_status": MessageLookupByLibrary.simpleMessage("Matial status"),
         "member": MessageLookupByLibrary.simpleMessage("Member"),
+        "mess": MessageLookupByLibrary.simpleMessage("Message"),
         "min_max_pass": MessageLookupByLibrary.simpleMessage(
             "Password must contain at least 4 letter and at most 20 letter"),
         "missing":
@@ -258,6 +292,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "missing_obj_name":
             MessageLookupByLibrary.simpleMessage("Missing object name"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "nationality": MessageLookupByLibrary.simpleMessage("Nationality"),
         "new_pass": MessageLookupByLibrary.simpleMessage("New Password"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "no_acc":
@@ -276,6 +311,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "not_vietnamese": MessageLookupByLibrary.simpleMessage(
             "Password must not contain Vietnamese character"),
         "note": MessageLookupByLibrary.simpleMessage("Note"),
+        "note_content": MessageLookupByLibrary.simpleMessage("Note content"),
+        "note_list": MessageLookupByLibrary.simpleMessage("Note list"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
         "operation": MessageLookupByLibrary.simpleMessage("Operation"),
         "origin": MessageLookupByLibrary.simpleMessage("Origin"),
@@ -296,20 +333,28 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Periodically task"),
         "period_task_list":
             MessageLookupByLibrary.simpleMessage("Periodical task list"),
+        "permanent_address":
+            MessageLookupByLibrary.simpleMessage("Permanent address"),
         "personal_info":
             MessageLookupByLibrary.simpleMessage("Personal Infomation"),
         "phone_num": MessageLookupByLibrary.simpleMessage("Phone number"),
         "piority": MessageLookupByLibrary.simpleMessage("Piority"),
+        "pob": MessageLookupByLibrary.simpleMessage("Place of birth"),
+        "poo": MessageLookupByLibrary.simpleMessage("Place of origin"),
         "possiton": MessageLookupByLibrary.simpleMessage("Possiton"),
         "post": MessageLookupByLibrary.simpleMessage("Post"),
         "pre_cre_task":
             MessageLookupByLibrary.simpleMessage("Create task before(minute)"),
         "prev": MessageLookupByLibrary.simpleMessage("Previous"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
+        "profession": MessageLookupByLibrary.simpleMessage("Profession"),
         "property": MessageLookupByLibrary.simpleMessage("Property"),
         "purchase_req_letter":
             MessageLookupByLibrary.simpleMessage("Purchasing request letter"),
+        "qualification": MessageLookupByLibrary.simpleMessage("Qualification"),
         "quantity": MessageLookupByLibrary.simpleMessage("Quantity"),
+        "quantity_month":
+            MessageLookupByLibrary.simpleMessage("Quantity/month"),
         "quotation": MessageLookupByLibrary.simpleMessage("Quotation"),
         "reason": MessageLookupByLibrary.simpleMessage("Reason"),
         "reason_change_shift":
@@ -327,6 +372,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Registration successful, please login"),
         "register_num": MessageLookupByLibrary.simpleMessage("Register number"),
         "related_asset": MessageLookupByLibrary.simpleMessage("Related asset"),
+        "related_department":
+            MessageLookupByLibrary.simpleMessage("Related department"),
         "related_info":
             MessageLookupByLibrary.simpleMessage("Related information"),
         "reload": MessageLookupByLibrary.simpleMessage("Reload"),
@@ -342,6 +389,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Reply break time letter"),
         "reply_refuse_ext":
             MessageLookupByLibrary.simpleMessage("Reply refusing extra-work"),
+        "reporter": MessageLookupByLibrary.simpleMessage("Reporter"),
         "req_export":
             MessageLookupByLibrary.simpleMessage("Request for exporting"),
         "req_import":
@@ -383,6 +431,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "send_verify": MessageLookupByLibrary.simpleMessage("Send verify"),
         "sender": MessageLookupByLibrary.simpleMessage("Sender"),
+        "sender_name": MessageLookupByLibrary.simpleMessage("Sender name"),
         "service": MessageLookupByLibrary.simpleMessage("Service"),
         "service_detail": MessageLookupByLibrary.simpleMessage("Service date"),
         "setting": MessageLookupByLibrary.simpleMessage("Setting"),
@@ -413,6 +462,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "time_done_after":
             MessageLookupByLibrary.simpleMessage("Time done after"),
         "time_off": MessageLookupByLibrary.simpleMessage("Date/Time"),
+        "time_recept": MessageLookupByLibrary.simpleMessage("Reception time "),
         "time_send": MessageLookupByLibrary.simpleMessage("Time send"),
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "to": MessageLookupByLibrary.simpleMessage("To"),
@@ -447,10 +497,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Waiting to assign"),
         "wait_confirm":
             MessageLookupByLibrary.simpleMessage("Waiting to confirm"),
+        "wait_exc": MessageLookupByLibrary.simpleMessage("Waiting execute"),
         "wait_execute":
             MessageLookupByLibrary.simpleMessage("Waiting to execute"),
         "warranty": MessageLookupByLibrary.simpleMessage("Warranty department"),
         "wellcome_back": MessageLookupByLibrary.simpleMessage("Welcome back!"),
+        "work_place": MessageLookupByLibrary.simpleMessage("Work place"),
         "wrong_sign_in": MessageLookupByLibrary.simpleMessage(
             "Username or password is incorrect"),
         "zone": MessageLookupByLibrary.simpleMessage("Zone"),

@@ -74,6 +74,7 @@ class _DetailRequestLetterScreenState extends State<DetailRequestLetterScreen>
       ),
     ];
     return PrimaryScreen(
+      isPadding: false,
       appBar: PrimaryAppbar(
         title:
             '${S.of(context).detail_letter} ${arg['Loại đề xuất'].toLowerCase()} ',
@@ -81,7 +82,7 @@ class _DetailRequestLetterScreenState extends State<DetailRequestLetterScreen>
       body: Column(
         children: [
           PrimaryTabBar(
-            isScrollable: true,
+            // isScrollable: true,
             controller: _tabController,
             titles: [
               S.of(context).category,

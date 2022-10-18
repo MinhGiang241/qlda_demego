@@ -1261,10 +1261,10 @@ class S {
   }
 
   /// `Responsible person`
-  String get res_person {
+  String get changed_person {
     return Intl.message(
       'Responsible person',
-      name: 'res_person',
+      name: 'changed_person',
       desc: '',
       args: [],
     );
@@ -3215,6 +3215,406 @@ class S {
     return Intl.message(
       'Card owner information',
       name: 'card_owner_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quantity/month`
+  String get quantity_month {
+    return Intl.message(
+      'Quantity/month',
+      name: 'quantity_month',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customer list`
+  String get customer_list {
+    return Intl.message(
+      'Customer list',
+      name: 'customer_list',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Information reception list`
+  String get info_reception_list {
+    return Intl.message(
+      'Information reception list',
+      name: 'info_reception_list',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All`
+  String get all {
+    return Intl.message(
+      'All',
+      name: 'all',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waiting execute`
+  String get wait_exc {
+    return Intl.message(
+      'Waiting execute',
+      name: 'wait_exc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In progress`
+  String get exc_in_progress {
+    return Intl.message(
+      'In progress',
+      name: 'exc_in_progress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Done`
+  String get exc_done {
+    return Intl.message(
+      'Done',
+      name: 'exc_done',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create information reception`
+  String get cr_info_recept {
+    return Intl.message(
+      'Create information reception',
+      name: 'cr_info_recept',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sender name`
+  String get sender_name {
+    return Intl.message(
+      'Sender name',
+      name: 'sender_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Information type`
+  String get info_type {
+    return Intl.message(
+      'Information type',
+      name: 'info_type',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reception time `
+  String get time_recept {
+    return Intl.message(
+      'Reception time ',
+      name: 'time_recept',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Responsible person`
+  String get res_person {
+    return Intl.message(
+      'Responsible person',
+      name: 'res_person',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Related department`
+  String get related_department {
+    return Intl.message(
+      'Related department',
+      name: 'related_department',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Information content`
+  String get info_content {
+    return Intl.message(
+      'Information content',
+      name: 'info_content',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Message`
+  String get mess {
+    return Intl.message(
+      'Message',
+      name: 'mess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Activities`
+  String get activity {
+    return Intl.message(
+      'Activities',
+      name: 'activity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note list`
+  String get note_list {
+    return Intl.message(
+      'Note list',
+      name: 'note_list',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add note`
+  String get add_note {
+    return Intl.message(
+      'Add note',
+      name: 'add_note',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note content`
+  String get note_content {
+    return Intl.message(
+      'Note content',
+      name: 'note_content',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add new customer`
+  String get add_customer {
+    return Intl.message(
+      'Add new customer',
+      name: 'add_customer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gender`
+  String get gender {
+    return Intl.message(
+      'Gender',
+      name: 'gender',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date of birth`
+  String get dob {
+    return Intl.message(
+      'Date of birth',
+      name: 'dob',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `identity card`
+  String get CCCD {
+    return Intl.message(
+      'identity card',
+      name: 'CCCD',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nationality`
+  String get nationality {
+    return Intl.message(
+      'Nationality',
+      name: 'nationality',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Education level`
+  String get education_level {
+    return Intl.message(
+      'Education level',
+      name: 'education_level',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Qualification`
+  String get qualification {
+    return Intl.message(
+      'Qualification',
+      name: 'qualification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ethnic`
+  String get ethnic {
+    return Intl.message(
+      'Ethnic',
+      name: 'ethnic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Place of birth`
+  String get pob {
+    return Intl.message(
+      'Place of birth',
+      name: 'pob',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Place of origin`
+  String get poo {
+    return Intl.message(
+      'Place of origin',
+      name: 'poo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Permanent address`
+  String get permanent_address {
+    return Intl.message(
+      'Permanent address',
+      name: 'permanent_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current residence`
+  String get current_residence {
+    return Intl.message(
+      'Current residence',
+      name: 'current_residence',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Matial status`
+  String get martial_status {
+    return Intl.message(
+      'Matial status',
+      name: 'martial_status',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profession`
+  String get profession {
+    return Intl.message(
+      'Profession',
+      name: 'profession',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Work place`
+  String get work_place {
+    return Intl.message(
+      'Work place',
+      name: 'work_place',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customer name`
+  String get customer_name {
+    return Intl.message(
+      'Customer name',
+      name: 'customer_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Issue date`
+  String get issue_date {
+    return Intl.message(
+      'Issue date',
+      name: 'issue_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Infomation reception`
+  String get info_reception {
+    return Intl.message(
+      'Infomation reception',
+      name: 'info_reception',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reporter`
+  String get reporter {
+    return Intl.message(
+      'Reporter',
+      name: 'reporter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Information reception details`
+  String get info_recept_details {
+    return Intl.message(
+      'Information reception details',
+      name: 'info_recept_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add task`
+  String get add_work {
+    return Intl.message(
+      'Add task',
+      name: 'add_work',
       desc: '',
       args: [],
     );

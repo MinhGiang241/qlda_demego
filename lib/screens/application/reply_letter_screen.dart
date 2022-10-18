@@ -53,7 +53,7 @@ class ReplyLetterScreen extends StatelessWidget {
                 vpad(16),
                 if (arg['Loại đơn'] == "Đơn xin nghỉ phép")
                   PrimaryDropDown(
-                    label: S.of(context).res_person,
+                    label: S.of(context).changed_person,
                     isRequired: true,
                   ),
                 if (arg['Loại đơn'] == "Đơn xin nghỉ giữa giờ")

@@ -8,11 +8,13 @@ import '../generated/l10n.dart';
 import '../screens/application/application_screen.dart';
 import '../screens/assets/asset_screen.dart';
 import '../screens/auth/sign_in/sign_in_screen.dart';
+import '../screens/customer/customer_list_screen.dart';
 import '../screens/entrance/entrance_list_screen.dart';
 import '../screens/extra_task/extra_task_list_screen.dart';
 import '../screens/letter/request_letter_list_screen.dart';
 import '../screens/missing/missing_object_list_screen.dart';
 import '../screens/parcel/parcel_list_screen.dart';
+import '../screens/reception/information_reception_list_screen.dart';
 import '../screens/resident_card/resident_card_list_screen.dart';
 import '../screens/transportation/add_transportation_card_screen.dart';
 import '../screens/transportation/transportation_card_list_screen.dart';
@@ -178,10 +180,17 @@ class MainDrawer extends StatelessWidget {
                     Icons.dashboard,
                     () => Navigator.pushReplacementNamed(
                       context,
-                      HomeScreen.routeName,
+                      CustomerListScreen.routeName,
                     ),
                   ),
-                  // ldalskdlasdkasl
+                  buildListTile(
+                    S.of(context).info_reception,
+                    Icons.message,
+                    () => Navigator.pushReplacementNamed(
+                      context,
+                      InformationReceptionListScreen.routeName,
+                    ),
+                  ),
                 ],
               ),
             ),

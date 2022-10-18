@@ -54,6 +54,7 @@ class InfoTable extends StatelessWidget {
         // width: double.infinity,
         child: Column(
           children: [
+            vpad(12),
             if (titleWidget != null) titleWidget!,
             // if (title != null) vpad(12),
             // if (title != null)

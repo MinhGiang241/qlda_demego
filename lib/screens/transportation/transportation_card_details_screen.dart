@@ -10,6 +10,7 @@ import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
 import '../../widgets/Info_table.dart';
 import '../../widgets/float_button.dart';
+import 'dialog/transportation_dialog.dart';
 
 class TransportationCardDetailScreen extends StatelessWidget {
   const TransportationCardDetailScreen({super.key});
@@ -148,6 +149,9 @@ class TransportationCardDetailScreen extends StatelessWidget {
               children: [
                 PrimaryButton(
                   text: S.of(context).extend,
+                  onTap: () {
+                    showExtendTransportationDialog(context, () {});
+                  },
                 )
               ],
             ),

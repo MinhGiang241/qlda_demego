@@ -35,7 +35,7 @@ var addTestContent = (BuildContext context, Function() addContext) {
                   isRequired: true,
                 ),
               ),
-              hpad(35),
+              hpad(14),
               Expanded(
                 child: PrimaryTextField(
                   label: S.of(context).to,
@@ -57,7 +57,7 @@ var addTestContent = (BuildContext context, Function() addContext) {
                   Navigator.pop(context);
                 },
               ),
-              hpad(35),
+              hpad(14),
               PrimaryButton(
                 text: S.of(context).delete,
                 buttonSize: ButtonSize.medium,

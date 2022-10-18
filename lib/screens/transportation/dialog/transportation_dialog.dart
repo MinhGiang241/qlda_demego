@@ -2,15 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:qlda_demego/constant/constants.dart';
 import 'package:qlda_demego/utils/convert_date_time.dart';
-import 'package:qlda_demego/utils/dialog.dart';
-import 'package:qlda_demego/utils/utils.dart';
-import 'package:qlda_demego/widgets/primary_dialog.dart';
-import 'package:qlda_demego/widgets/primary_text_field.dart';
 
 import '../../../generated/l10n.dart';
+import '../../../utils/dialog.dart';
+import '../../../utils/utils.dart';
 import '../../../widgets/primary_button.dart';
+import '../../../widgets/primary_dialog.dart';
+import '../../../widgets/primary_text_field.dart';
 
-var showAddServiceDialog = (BuildContext context, Function() onAddService) {
+var showExtendTransportationDialog = (BuildContext context, Function() onSave) {
   TextEditingController activateDateController = TextEditingController();
   TextEditingController overDateController = TextEditingController();
   Utils.showDialog(
@@ -19,15 +19,41 @@ var showAddServiceDialog = (BuildContext context, Function() onAddService) {
       content: Column(
         children: [
           Text(
-            S.of(context).add_service,
+            S.of(context).extend,
             style: txtBodySmallRegular(color: primaryColorBase),
-            textAlign: TextAlign.center,
           ),
           vpad(12),
-          PrimaryTextField(
-            label: S.of(context).service,
-            isRequired: true,
+          Row(
+            children: [
+              Expanded(
+                child: PrimaryTextField(
+                  label: S.of(context).type,
+                  isRequired: true,
+                ),
+              ),
+              hpad(14),
+              Expanded(
+                child: PrimaryTextField(
+                  label: S.of(context).license,
+                  isRequired: true,
+                ),
+              )
+            ],
           ),
+          vpad(12),
+          Row(
+            children: [
+              Expanded(
+                child: PrimaryTextField(label: S.of(context).quantity_month),
+              ),
+              vpad(35),
+              Expanded(
+                child: PrimaryTextField(label: S.of(context).price),
+              )
+            ],
+          ),
+          vpad(12),
+          PrimaryTextField(label: S.of(context).price),
           vpad(12),
           Row(
             children: [
@@ -53,7 +79,7 @@ var showAddServiceDialog = (BuildContext context, Function() onAddService) {
                   },
                 ),
               ),
-              hpad(14),
+              hpad(35),
               Expanded(
                 child: PrimaryTextField(
                   // initialValue: arg['Ngày hết hạn'],
@@ -79,26 +105,14 @@ var showAddServiceDialog = (BuildContext context, Function() onAddService) {
             ],
           ),
           vpad(12),
-          PrimaryTextField(
-            label: S.of(context).quantity,
-          ),
-          vpad(12),
-          PrimaryTextField(
-            label: S.of(context).quotation,
-          ),
-          vpad(12),
-          PrimaryTextField(
-            label: S.of(context).price,
-          ),
-          vpad(12),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               PrimaryButton(
-                text: S.of(context).edit,
+                text: S.of(context).save,
                 buttonSize: ButtonSize.medium,
                 onTap: () {
-                  onAddService();
+                  onSave();
                   Navigator.pop(context);
                 },
               ),
