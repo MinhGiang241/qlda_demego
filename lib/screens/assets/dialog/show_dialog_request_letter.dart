@@ -13,9 +13,9 @@ var addRequestAsset = (BuildContext context) {
     dialog: PrimaryDialog.custom(
       useBackground: true,
       title: null, //S.of(context).add_request_asset,
-      content: Flexible(
-        child: ListView(
-          scrollDirection: Axis.vertical,
+      content: SingleChildScrollView(
+        child: Column(
+          // scrollDirection: Axis.vertical,
           children: [
             Text(
               S.of(context).add_request_asset,

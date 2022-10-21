@@ -140,8 +140,10 @@ class ResidentCarDetailsScreen extends StatelessWidget {
                           text: S.of(context).extend,
                           buttonSize: ButtonSize.small,
                           onTap: () {
-                            Navigator.of(context)
-                                .pushNamed(ExtendServiceScreen.routeName);
+                            Navigator.of(context).pushNamed(
+                              ExtendServiceScreen.routeName,
+                              arguments: arg,
+                            );
                           },
                         ),
                       )
