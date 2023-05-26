@@ -4,9 +4,11 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 import 'package:qlda_demego/routes/routes.dart';
 import 'constant/theme.dart';
 import 'generated/l10n.dart';
+import 'screens/auth/sign_in/auth_prv.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,19 +27,26 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'DEMEGO',
-      theme: AppTheme.lightTheme(),
-      onGenerateRoute: _appRouter.onGenerateRoute,
-      locale: const Locale.fromSubtags(languageCode: 'vi'),
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => AuthPrv(),
+        ),
       ],
-      supportedLocales: S.delegate.supportedLocales,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'DEMEGO',
+        theme: AppTheme.lightTheme(),
+        onGenerateRoute: _appRouter.onGenerateRoute,
+        locale: const Locale.fromSubtags(languageCode: 'vi'),
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+      ),
     );
   }
 }

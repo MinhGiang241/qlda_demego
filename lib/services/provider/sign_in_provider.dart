@@ -31,34 +31,34 @@ class SignInProvider with ChangeNotifier {
 
   validationPass() {
 // remove later
-    if (usernameController.text.trim() == 'admin' &&
-        passController.text.trim() == 'admin') {
-      return null;
-    }
 
     if (passController.text.trim().isEmpty) {
       passValidate = S.current.can_not_empty;
       return '';
-    } else if (!RegexText.minMaxString(
-        value: passController.text.trim(), min: 4, max: 20)) {
-      passValidate = S.current.min_max_pass;
-      return '';
-    } else if (!RegexText.requiredLowerCase(passController.text.trim())) {
-      passValidate = S.current.require_lowercase;
-      return '';
-    } else if (!RegexText.requiredUpperCase(passController.text.trim())) {
-      passValidate = S.current.require_uppercase;
-      return '';
-    } else if (!RegexText.requiredNumber(passController.text.trim())) {
-      passValidate = S.current.require_number;
-      return '';
-    } else if (RegexText.vietNameseChar(passController.text.trim())) {
-      passValidate = S.current.not_vietnamese;
-      return '';
-    } else if (!RegexText.requiredSpecialChar(passController.text.trim())) {
-      passValidate = S.current.require_special_char;
-      return '';
     }
+
+    // else if (!RegexText.minMaxString(
+    //     value: passController.text.trim(), min: 4, max: 20)) {
+    //   passValidate = S.current.min_max_pass;
+    //   return '';
+    // }
+    // else if (!RegexText.requiredLowerCase(passController.text.trim())) {
+    //   passValidate = S.current.require_lowercase;
+    //   return '';
+    // }
+    // else if (!RegexText.requiredUpperCase(passController.text.trim())) {
+    //   passValidate = S.current.require_uppercase;
+    //   return '';
+    // } else if (!RegexText.requiredNumber(passController.text.trim())) {
+    //   passValidate = S.current.require_number;
+    //   return '';
+    // } else if (RegexText.vietNameseChar(passController.text.trim())) {
+    //   passValidate = S.current.not_vietnamese;
+    //   return '';
+    // } else if (!RegexText.requiredSpecialChar(passController.text.trim())) {
+    //   passValidate = S.current.require_special_char;
+    //   return '';
+    // }
     passValidate = null;
 
     notifyListeners();

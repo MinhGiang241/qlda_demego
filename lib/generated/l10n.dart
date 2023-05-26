@@ -3619,6 +3619,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Sign in`
+  String get sign_in_account {
+    return Intl.message(
+      'Sign in',
+      name: 'sign_in_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home Community Smart Living`
+  String get sologan {
+    return Intl.message(
+      'Home Community Smart Living',
+      name: 'sologan',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

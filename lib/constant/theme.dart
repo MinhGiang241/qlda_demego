@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:qlda_demego/constant/constants.dart';
+
+import 'constants.dart';
 
 class AppTheme {
   static ThemeData lightTheme() => ThemeData.light().copyWith(

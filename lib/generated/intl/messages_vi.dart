@@ -443,9 +443,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "setting": MessageLookupByLibrary.simpleMessage("Cài đặt"),
         "shift": MessageLookupByLibrary.simpleMessage("Ca làm"),
         "sign_in": MessageLookupByLibrary.simpleMessage("Đăng Nhập"),
+        "sign_in_account":
+            MessageLookupByLibrary.simpleMessage("Đăng nhập tài khoản"),
         "sign_out": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
         "sign_out_msg": MessageLookupByLibrary.simpleMessage(
             "Bạn có muốn đăng xuất không ?"),
+        "sologan":
+            MessageLookupByLibrary.simpleMessage("Home Community Smart Living"),
         "start": MessageLookupByLibrary.simpleMessage("Bắt đầu"),
         "start_time": MessageLookupByLibrary.simpleMessage("Giờ bắt đầu"),
         "status": MessageLookupByLibrary.simpleMessage("Trạng thái"),

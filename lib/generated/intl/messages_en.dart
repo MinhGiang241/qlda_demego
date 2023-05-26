@@ -437,9 +437,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "setting": MessageLookupByLibrary.simpleMessage("Setting"),
         "shift": MessageLookupByLibrary.simpleMessage("Shift"),
         "sign_in": MessageLookupByLibrary.simpleMessage("sign_in"),
+        "sign_in_account": MessageLookupByLibrary.simpleMessage("Sign in"),
         "sign_out": MessageLookupByLibrary.simpleMessage("Sign out"),
         "sign_out_msg":
             MessageLookupByLibrary.simpleMessage("Do you want to sign out?"),
+        "sologan":
+            MessageLookupByLibrary.simpleMessage("Home Community Smart Living"),
         "start": MessageLookupByLibrary.simpleMessage("Start"),
         "start_time": MessageLookupByLibrary.simpleMessage("Start time"),
         "status": MessageLookupByLibrary.simpleMessage("Status"),

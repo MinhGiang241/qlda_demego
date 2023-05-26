@@ -145,11 +145,11 @@ class PrimaryButton extends StatelessWidget {
       case ButtonType.secondary:
         return null;
       case ButtonType.white:
-        return gradientWhite;
+        return gradientPrimaryWhite;
       case ButtonType.black:
         return gradientBlack;
       case ButtonType.yeallow:
-        return gradientYeallow;
+        return gradientPrimaryYellow;
       default:
         return gradientPrimary;
     }
