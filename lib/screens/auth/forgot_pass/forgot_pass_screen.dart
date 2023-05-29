@@ -40,16 +40,18 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
             },
           ),
         ),
-        body: PageView(
-          physics: context.watch<ForgotPassPrv>().isBlockScroll
-              ? NeverScrollableScrollPhysics()
-              : null,
-          onPageChanged: context.read<ForgotPassPrv>().onPageChanged,
-          controller: context.read<ForgotPassPrv>().controller,
-          children: <Widget>[
-            EnterUserScreen(),
-            SelectOtpScreen(),
-          ],
+        body: SafeArea(
+          child: PageView(
+            physics: context.watch<ForgotPassPrv>().isBlockScroll
+                ? const NeverScrollableScrollPhysics()
+                : null,
+            onPageChanged: context.read<ForgotPassPrv>().onPageChanged,
+            controller: context.read<ForgotPassPrv>().controller,
+            children: <Widget>[
+              EnterUserScreen(),
+              SelectOtpScreen(),
+            ],
+          ),
         ),
       ),
     );

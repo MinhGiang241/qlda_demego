@@ -369,5 +369,8 @@
   "permission_denied_msg": "You don't have permission",
   "file_downloading": "File is downloading",
   "enter_employee_code": "Enter employee code here",
-  "enter_here": "Enter here"
+  "enter_here": "Enter here",
+  "way_send_otp": "How would you like to receive a code to reset your password?",
+  "send_to_phone": "Send OTP to phone number",
+  "send_to_email": "Send OTP to email"
 }

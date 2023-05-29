@@ -7,10 +7,13 @@ import '../../../../utils/utils.dart';
 class ForgotPassPrv extends ChangeNotifier {
   final PageController controller = PageController();
   int activeStep = 0;
+  int selectedOption = 1;
   bool autoValidStep1 = false;
   bool autoValidStep2 = false;
   bool isLoading = false;
   bool isBlockScroll = true;
+  String? phone;
+  String? email;
 
   final formKey1 = GlobalKey<FormState>();
   final formKey2 = GlobalKey<FormState>();
@@ -84,7 +87,7 @@ class ForgotPassPrv extends ChangeNotifier {
     if (v) {
       clearValidStringStep1();
 
-      await ApiAuth.checkExistAccount(userController.text).then((v) {
+      await ApiAuth.checkExistAccount(userController.text.trim()).then((v) {
         isLoading = false;
         notifyListeners();
         next();
@@ -97,5 +100,19 @@ class ForgotPassPrv extends ChangeNotifier {
       isLoading = false;
       genValidStep1();
     }
+  }
+
+  Future getPhoneAndEmailByAccount(BuildContext context) async {
+    return ApiAuth.getPhoneAndEmail(userController.text.trim()).then((v) {
+      phone = v['phone'];
+      email = v['email'];
+    }).catchError((e) {
+      Utils.showErrorMessage(context, e);
+    });
+  }
+
+  onChnageSelectionOtp(int v) {
+    selectedOption = v;
+    notifyListeners();
   }
 }

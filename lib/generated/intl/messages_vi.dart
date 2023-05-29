@@ -455,6 +455,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "search": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
         "select": MessageLookupByLibrary.simpleMessage("Chọn"),
         "send": MessageLookupByLibrary.simpleMessage("Gửi"),
+        "send_to_email":
+            MessageLookupByLibrary.simpleMessage("Gửi mã về email"),
+        "send_to_phone": MessageLookupByLibrary.simpleMessage("Gửi mã về SĐT"),
         "send_verify": MessageLookupByLibrary.simpleMessage("Gửi xác thực"),
         "sender": MessageLookupByLibrary.simpleMessage("Người gửi"),
         "sender_name": MessageLookupByLibrary.simpleMessage("Tên người gửi"),
@@ -530,6 +533,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "wait_exc": MessageLookupByLibrary.simpleMessage("Chờ xử lý"),
         "wait_execute": MessageLookupByLibrary.simpleMessage("Chờ thực hiện"),
         "warranty": MessageLookupByLibrary.simpleMessage("Đơn vị bảo hành"),
+        "way_send_otp": MessageLookupByLibrary.simpleMessage(
+            "Bạn muốn nhận mã để đặt lại mật khẩu bằng cách nào?"),
         "wellcome_back":
             MessageLookupByLibrary.simpleMessage("Chào mừng trở lại!"),
         "work_place": MessageLookupByLibrary.simpleMessage("Nơi làm việc"),

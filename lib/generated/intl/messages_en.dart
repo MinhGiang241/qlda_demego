@@ -451,6 +451,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "select": MessageLookupByLibrary.simpleMessage("Chọn"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
+        "send_to_email":
+            MessageLookupByLibrary.simpleMessage("Send OTP to email"),
+        "send_to_phone":
+            MessageLookupByLibrary.simpleMessage("Send OTP to phone number"),
         "send_verify": MessageLookupByLibrary.simpleMessage("Send verify"),
         "sender": MessageLookupByLibrary.simpleMessage("Sender"),
         "sender_name": MessageLookupByLibrary.simpleMessage("Sender name"),
@@ -526,6 +530,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "wait_execute":
             MessageLookupByLibrary.simpleMessage("Waiting to execute"),
         "warranty": MessageLookupByLibrary.simpleMessage("Warranty department"),
+        "way_send_otp": MessageLookupByLibrary.simpleMessage(
+            "How would you like to receive a code to reset your password?"),
         "wellcome_back": MessageLookupByLibrary.simpleMessage("Welcome back!"),
         "work_place": MessageLookupByLibrary.simpleMessage("Work place"),
         "wrong_sign_in": MessageLookupByLibrary.simpleMessage(

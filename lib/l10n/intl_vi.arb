@@ -370,5 +370,8 @@
   "permission_denied_msg": "Bạn chưa cấp quyền ứng dụng",
   "file_downloading": "Đang tải file xuống",
   "enter_employee_code": "Nhập mã nhân sự tại đây",
-  "enter_here": "Nhập tại đây"
+  "enter_here": "Nhập tại đây",
+  "way_send_otp": "Bạn muốn nhận mã để đặt lại mật khẩu bằng cách nào?",
+  "send_to_phone": "Gửi mã về SĐT",
+  "send_to_email": "Gửi mã về email"
 }

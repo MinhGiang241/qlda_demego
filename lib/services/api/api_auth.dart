@@ -15,6 +15,17 @@ mutation (\$username:String){
         
 ''';
 
+var GETPHONEANDEMAIL = '''
+mutation (\$account:String){
+    response: account_mobile_n_get_phone_email_by_account (account: \$account ) {
+        code
+        message
+        data
+    }
+}
+        
+''';
+
 class ApiAuth {
   static ApiService shared = ApiService();
   static Future<oauth2.Client?> signIn(
@@ -37,5 +48,9 @@ class ApiAuth {
 
   static Future checkExistAccount(String username) async {
     return await shared.callApi(CHECKEXISTEDACCOUNT, {"username": username});
+  }
+
+  static Future getPhoneAndEmail(String account) async {
+    return await shared.callApi(GETPHONEANDEMAIL, {"account": account});
   }
 }
