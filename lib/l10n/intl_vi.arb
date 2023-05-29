@@ -358,5 +358,15 @@
   "info_recept_details": "Chi tiết tiếp nhận thông tin",
   "add_work": "Tạo công việc",
   "sign_in_account": "Đăng nhập tài khoản",
-  "sologan": "Home Community Smart Living"
+  "sologan": "Home Community Smart Living",
+  "pick_file_error": "Bạn chỉ có thể upload file jpeg, jpg, png, pdf, doc, docx, xls, xlsx",
+  "pick_image_error": "Bạn chỉ có thể upload file jpeg, jpg, png",
+  "camera": "Máy ảnh",
+  "gallery": "Thư viện",
+  "file_selection": "Chọn file",
+  "err_x": "Lỗi: {message}",
+  "expired_login": "Phiên đăng nhập hết hạn, hãy đăng nhập lại",
+  "permission_denied": "Từ chối truy cập",
+  "permission_denied_msg": "Bạn chưa cấp quyền ứng dụng",
+  "file_downloading": "Đang tải file xuống"
 }

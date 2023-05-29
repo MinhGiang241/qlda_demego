@@ -20,6 +20,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(message) => "Error: ${message}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "CCCD": MessageLookupByLibrary.simpleMessage("identity card"),
@@ -94,6 +96,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Building management"),
         "c_new_pass":
             MessageLookupByLibrary.simpleMessage("Re-enter new password"),
+        "camera": MessageLookupByLibrary.simpleMessage("Camera"),
         "can_not_empty": MessageLookupByLibrary.simpleMessage("Can not empty"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "card_exist":
@@ -214,9 +217,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "err_internet": MessageLookupByLibrary.simpleMessage(
             "Check your internet connection!"),
         "err_unknown": MessageLookupByLibrary.simpleMessage("Unknown Error"),
+        "err_x": m0,
         "ethnic": MessageLookupByLibrary.simpleMessage("Ethnic"),
         "exc_done": MessageLookupByLibrary.simpleMessage("Done"),
         "exc_in_progress": MessageLookupByLibrary.simpleMessage("In progress"),
+        "expired_login": MessageLookupByLibrary.simpleMessage(
+            "Login session is invalid, please sign in again"),
         "export": MessageLookupByLibrary.simpleMessage("Export"),
         "export_asset": MessageLookupByLibrary.simpleMessage("Export asset"),
         "ext_task_detail":
@@ -228,6 +234,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Extend service"),
         "extr_tast": MessageLookupByLibrary.simpleMessage("Extra task"),
         "failure": MessageLookupByLibrary.simpleMessage("Failure"),
+        "file_downloading":
+            MessageLookupByLibrary.simpleMessage("File is downloading"),
+        "file_selection":
+            MessageLookupByLibrary.simpleMessage("File selection"),
         "filter": MessageLookupByLibrary.simpleMessage("Filter"),
         "fix": MessageLookupByLibrary.simpleMessage("Update"),
         "floor": MessageLookupByLibrary.simpleMessage("Floor"),
@@ -238,6 +248,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fre_time": MessageLookupByLibrary.simpleMessage("Frequency time"),
         "fre_type": MessageLookupByLibrary.simpleMessage("Frequency type"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full name"),
+        "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
         "gender": MessageLookupByLibrary.simpleMessage("Gender"),
         "general_info":
             MessageLookupByLibrary.simpleMessage("General information"),
@@ -335,9 +346,17 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Periodical task list"),
         "permanent_address":
             MessageLookupByLibrary.simpleMessage("Permanent address"),
+        "permission_denied":
+            MessageLookupByLibrary.simpleMessage("Permission denied"),
+        "permission_denied_msg":
+            MessageLookupByLibrary.simpleMessage("You don\'t have permission"),
         "personal_info":
             MessageLookupByLibrary.simpleMessage("Personal Infomation"),
         "phone_num": MessageLookupByLibrary.simpleMessage("Phone number"),
+        "pick_file_error": MessageLookupByLibrary.simpleMessage(
+            "You can only upload file jpeg, jpg, png, pdf, doc, docx, xls, xlsx"),
+        "pick_image_error": MessageLookupByLibrary.simpleMessage(
+            "You can only upload file jpeg, jpg, png"),
         "piority": MessageLookupByLibrary.simpleMessage("Piority"),
         "pob": MessageLookupByLibrary.simpleMessage("Place of birth"),
         "poo": MessageLookupByLibrary.simpleMessage("Place of origin"),

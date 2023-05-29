@@ -1,28 +1,40 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import '../constant/constants.dart';
 
-enum ButtonType { primary, secondary, white, black, yeallow }
+enum ButtonType {
+  primary,
+  secondary,
+  white,
+  black,
+  yellow,
+  red,
+  green,
+  cyan,
+  orange
+}
 
 enum ButtonSize { large, medium, small, xsmall }
 
 class PrimaryButton extends StatelessWidget {
-  const PrimaryButton(
-      {super.key,
-      this.text,
-      this.onTap,
-      this.margin,
-      this.secondaryBackgroundColor,
-      this.textColor,
-      this.buttonType,
-      this.buttonSize,
-      this.width,
-      this.icon,
-      this.isRectangle = false,
-      this.isFit = false,
-      this.isLoading = false});
+  const PrimaryButton({
+    super.key,
+    this.text,
+    this.onTap,
+    this.margin,
+    this.secondaryBackgroundColor,
+    this.textColor,
+    this.buttonType,
+    this.buttonSize,
+    this.width,
+    this.icon,
+    this.isRectangle = false,
+    this.isFit = false,
+    this.isLoading = false,
+  });
 
   final String? text;
   final Function()? onTap;
@@ -43,14 +55,15 @@ class PrimaryButton extends StatelessWidget {
       width: width,
       margin: margin,
       decoration: BoxDecoration(
-          color: _backgroundColor(buttonType ?? ButtonType.primary),
-          gradient: _gradientColor(buttonType ?? ButtonType.primary),
-          borderRadius: isRectangle ? null : BorderRadius.circular(28)),
+        color: _backgroundColor(buttonType ?? ButtonType.primary),
+        gradient: _gradientColor(buttonType ?? ButtonType.primary),
+        borderRadius: isRectangle ? null : BorderRadius.circular(28),
+      ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           borderRadius: isRectangle ? null : BorderRadius.circular(28),
-          onTap: onTap,
+          onTap: isLoading ? () {} : onTap,
           child: Padding(
             padding: _paddingContent(buttonSize ?? ButtonSize.large),
             child: Row(
@@ -58,7 +71,7 @@ class PrimaryButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 if (icon != null) icon!,
-                if (icon != null || text != null) hpad(8),
+                if (icon != null && text != null) hpad(8),
                 if (text != null)
                   Flexible(
                     child: isFit
@@ -71,11 +84,25 @@ class PrimaryButton extends StatelessWidget {
                                     child: CircularProgressIndicator(
                                       color: textColor ?? Colors.white,
                                       strokeWidth: 3,
-                                    ))
-                                : Text(text ?? "",
+                                    ),
+                                  )
+                                : AutoSizeText(
+                                    text ?? "",
                                     style: _txtStyle(
-                                        buttonSize ?? ButtonSize.large),
-                                    textAlign: TextAlign.center),
+                                      buttonSize ?? ButtonSize.large,
+                                    ),
+                                    maxLines: 1,
+                                    textAlign: TextAlign.center,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                            //  Text(
+                            //     text ?? "",
+                            //     softWrap: true,
+                            //     style: _txtStyle(
+                            //       buttonSize ?? ButtonSize.large,
+                            //     ),
+                            //     textAlign: TextAlign.center,
+                            //   ),
                           )
                         : isLoading
                             ? SizedBox(
@@ -84,12 +111,16 @@ class PrimaryButton extends StatelessWidget {
                                 child: CircularProgressIndicator(
                                   color: textColor ?? Colors.white,
                                   strokeWidth: 3,
-                                ))
-                            : Text(
+                                ),
+                              )
+                            : AutoSizeText(
                                 text ?? "",
-                                style:
-                                    _txtStyle(buttonSize ?? ButtonSize.large),
+                                style: _txtStyle(
+                                  buttonSize ?? ButtonSize.large,
+                                ),
+                                maxLines: 1,
                                 textAlign: TextAlign.center,
+                                overflow: TextOverflow.ellipsis,
                               ),
                   )
               ],
@@ -147,9 +178,17 @@ class PrimaryButton extends StatelessWidget {
       case ButtonType.white:
         return gradientPrimaryWhite;
       case ButtonType.black:
-        return gradientBlack;
-      case ButtonType.yeallow:
+        return gradientPrimaryBlack;
+      case ButtonType.yellow:
         return gradientPrimaryYellow;
+      case ButtonType.red:
+        return gradientPrimaryRed;
+      case ButtonType.green:
+        return gradientPrimaryGreen;
+      case ButtonType.cyan:
+        return gradientPrimaryCyan;
+      case ButtonType.orange:
+        return gradientPrimaryOrange;
       default:
         return gradientPrimary;
     }

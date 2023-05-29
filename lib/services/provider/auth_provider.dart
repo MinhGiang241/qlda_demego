@@ -12,6 +12,7 @@ import '../../utils/utils.dart';
 import '../../widgets/primary_button.dart';
 import '../../widgets/primary_dialog.dart';
 import '../api/api_services.dart';
+import '../api/prf_data.dart';
 
 enum AuthStatus { unknown, auth, unauthen }
 
@@ -61,6 +62,11 @@ class AuthProvider with ChangeNotifier {
             );
           }
         });
+    if (remember) {
+      await PrfData.shared.setSignInStore(username, password);
+    } else {
+      await PrfData.shared.deteleSignInStore();
+    }
     if (credentials != null) {
       authStatus = AuthStatus.auth;
       // Utils.showDialog(context: context, dialog: const PrimaryDialog.success());
@@ -85,6 +91,7 @@ class AuthProvider with ChangeNotifier {
               Row(
                 children: [
                   Expanded(
+                    flex: 10,
                     child: PrimaryButton(
                       text: S.of(context).sign_out,
                       buttonSize: ButtonSize.medium,
@@ -102,8 +109,9 @@ class AuthProvider with ChangeNotifier {
                       },
                     ),
                   ),
-                  hpad(24),
+                  Expanded(flex: 1, child: hpad(0)),
                   Expanded(
+                    flex: 10,
                     child: PrimaryButton(
                       text: S.of(context).cancel,
                       buttonSize: ButtonSize.medium,

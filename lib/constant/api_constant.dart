@@ -4,6 +4,8 @@ class ApiConstants {
   static const String clientId = "bhs.account.client";
   static const String clientSecret = "g2RAXgZenebyybWmmfyDWprGhxe5CLAJ";
   static const String scope = "api openid profile";
+  static const String uploadURL =
+      'https://api.dev.buildingtenant.demego.vn/headless/stream/upload';
   static const String baseUrl =
       "https://api.dev.buildingtenant.demego.vn/graphql";
 }

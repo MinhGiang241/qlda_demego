@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../../generated/l10n.dart';
 import '../../constant/regex_text.dart';
+import '../api/prf_data.dart';
 import 'auth_provider.dart';
 
 enum TypeValid { account, password }
@@ -15,9 +16,30 @@ class SignInProvider with ChangeNotifier {
   String? passValidate;
 
   final AuthProvider authPrv;
-  SignInProvider({required this.authPrv});
+  SignInProvider({required this.authPrv}) {
+    initAccountSave();
+  }
 
   bool isLoading = false;
+
+  bool remember = true;
+
+  toggleRemember() {
+    remember = !remember;
+    notifyListeners();
+  }
+
+  initAccountSave() async {
+    var acc = await PrfData.shared.getSignInStore();
+    if (acc != null && acc['acc'] != null && acc['pass'] != null) {
+      final a = acc['acc'];
+      final p = acc['pass'];
+      usernameController.text = a;
+      passController.text = p;
+      notifyListeners();
+    }
+    return 0;
+  }
 
   validationAccount() {
     if (usernameController.text.trim().isEmpty) {

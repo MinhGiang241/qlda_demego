@@ -87,16 +87,16 @@ class _SignInScreenState extends State<SignInScreen> {
                             child: Checkbox(
                               fillColor:
                                   MaterialStateProperty.all(primaryColorBase),
-                              value: context.watch<AuthPrv>().remember,
+                              value: context.watch<SignInProvider>().remember,
                               onChanged: (_) {
-                                context.read<AuthPrv>().toggleRemember();
+                                context.read<SignInProvider>().toggleRemember();
                               },
                             ),
                           ),
                           hpad(5),
                           InkWell(
                             onTap: () {
-                              context.read<AuthPrv>().toggleRemember();
+                              context.read<SignInProvider>().toggleRemember();
                             },
                             child: Text(
                               S.of(context).remember_acc,
@@ -203,9 +203,8 @@ class _SignInScreenState extends State<SignInScreen> {
                   onTap: () async {
                     FocusScope.of(context).unfocus();
 
-                    await context
-                        .read<SignInProvider>()
-                        .signIn(context, rememberAccount);
+                    await context.read<SignInProvider>().signIn(
+                        context, context.read<SignInProvider>().remember);
                     setState(() {});
                   },
                   text: S.of(context).sign_in,

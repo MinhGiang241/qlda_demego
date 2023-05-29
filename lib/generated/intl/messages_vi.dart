@@ -20,6 +20,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'vi';
 
+  static String m0(message) => "Lỗi: ${message}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "CCCD": MessageLookupByLibrary.simpleMessage("CCCD"),
@@ -95,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Quản lý chung cư"),
         "c_new_pass":
             MessageLookupByLibrary.simpleMessage("Nhập lại mật khẩu mới"),
+        "camera": MessageLookupByLibrary.simpleMessage("Máy ảnh"),
         "can_not_empty":
             MessageLookupByLibrary.simpleMessage("Không được để trống"),
         "cancel": MessageLookupByLibrary.simpleMessage("Huỷ"),
@@ -214,9 +217,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Kiểm tra lại kết nối internet!"),
         "err_unknown":
             MessageLookupByLibrary.simpleMessage("Lỗi Không xác định"),
+        "err_x": m0,
         "ethnic": MessageLookupByLibrary.simpleMessage("Dân tộc"),
         "exc_done": MessageLookupByLibrary.simpleMessage("Đã xử lý"),
         "exc_in_progress": MessageLookupByLibrary.simpleMessage("Đang xử lý"),
+        "expired_login": MessageLookupByLibrary.simpleMessage(
+            "Phiên đăng nhập hết hạn, hãy đăng nhập lại"),
         "export": MessageLookupByLibrary.simpleMessage("Xuất"),
         "export_asset":
             MessageLookupByLibrary.simpleMessage("Xuất kho tài sản"),
@@ -230,6 +236,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "extr_tast":
             MessageLookupByLibrary.simpleMessage("Công việc phát sinh"),
         "failure": MessageLookupByLibrary.simpleMessage("Thất bại"),
+        "file_downloading":
+            MessageLookupByLibrary.simpleMessage("Đang tải file xuống"),
+        "file_selection": MessageLookupByLibrary.simpleMessage("Chọn file"),
         "filter": MessageLookupByLibrary.simpleMessage("Bộ lọc"),
         "fix": MessageLookupByLibrary.simpleMessage("Sửa"),
         "floor": MessageLookupByLibrary.simpleMessage("Tầng"),
@@ -239,6 +248,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fre_time": MessageLookupByLibrary.simpleMessage("Thời gian lặp"),
         "fre_type": MessageLookupByLibrary.simpleMessage("Loại lặp"),
         "full_name": MessageLookupByLibrary.simpleMessage("Họ và Tên"),
+        "gallery": MessageLookupByLibrary.simpleMessage("Thư viện"),
         "gender": MessageLookupByLibrary.simpleMessage("Giới tính"),
         "general_info": MessageLookupByLibrary.simpleMessage("Thông tin chung"),
         "group": MessageLookupByLibrary.simpleMessage("Nhóm"),
@@ -341,9 +351,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "period_task_list": MessageLookupByLibrary.simpleMessage(
             "Danh sách cấu hình công việc định kỳ"),
         "permanent_address": MessageLookupByLibrary.simpleMessage("Thường chú"),
+        "permission_denied":
+            MessageLookupByLibrary.simpleMessage("Từ chối truy cập"),
+        "permission_denied_msg":
+            MessageLookupByLibrary.simpleMessage("Bạn chưa cấp quyền ứng dụng"),
         "personal_info":
             MessageLookupByLibrary.simpleMessage("Thông tin cá nhân"),
         "phone_num": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
+        "pick_file_error": MessageLookupByLibrary.simpleMessage(
+            "Bạn chỉ có thể upload file jpeg, jpg, png, pdf, doc, docx, xls, xlsx"),
+        "pick_image_error": MessageLookupByLibrary.simpleMessage(
+            "Bạn chỉ có thể upload file jpeg, jpg, png"),
         "piority": MessageLookupByLibrary.simpleMessage("Độ ưu tiên"),
         "pob": MessageLookupByLibrary.simpleMessage("Nơi sinh"),
         "poo": MessageLookupByLibrary.simpleMessage("Quê quán"),

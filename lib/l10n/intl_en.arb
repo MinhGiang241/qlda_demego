@@ -357,5 +357,15 @@
   "info_recept_details": "Information reception details",
   "add_work": "Add task",
   "sign_in_account": "Sign in",
-  "sologan": "Home Community Smart Living"
+  "sologan": "Home Community Smart Living",
+  "pick_file_error": "You can only upload file jpeg, jpg, png, pdf, doc, docx, xls, xlsx",
+  "pick_image_error": "You can only upload file jpeg, jpg, png",
+  "camera": "Camera",
+  "gallery": "Gallery",
+  "file_selection": "File selection",
+  "err_x": "Error: {message}",
+  "expired_login": "Login session is invalid, please sign in again",
+  "permission_denied": "Permission denied",
+  "permission_denied_msg": "You don't have permission",
+  "file_downloading": "File is downloading"
 }

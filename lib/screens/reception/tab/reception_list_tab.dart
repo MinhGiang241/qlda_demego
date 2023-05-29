@@ -38,7 +38,7 @@ class ReceptionListTab extends StatelessWidget {
                               : PrimaryButton(
                                   text: S.of(context).reply,
                                   buttonSize: ButtonSize.small,
-                                  buttonType: ButtonType.yeallow,
+                                  buttonType: ButtonType.yellow,
                                   onTap: () {},
                                 ),
                           hpad(35),

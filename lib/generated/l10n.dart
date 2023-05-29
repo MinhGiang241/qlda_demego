@@ -3639,6 +3639,106 @@ class S {
       args: [],
     );
   }
+
+  /// `You can only upload file jpeg, jpg, png, pdf, doc, docx, xls, xlsx`
+  String get pick_file_error {
+    return Intl.message(
+      'You can only upload file jpeg, jpg, png, pdf, doc, docx, xls, xlsx',
+      name: 'pick_file_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can only upload file jpeg, jpg, png`
+  String get pick_image_error {
+    return Intl.message(
+      'You can only upload file jpeg, jpg, png',
+      name: 'pick_image_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Camera`
+  String get camera {
+    return Intl.message(
+      'Camera',
+      name: 'camera',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gallery`
+  String get gallery {
+    return Intl.message(
+      'Gallery',
+      name: 'gallery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `File selection`
+  String get file_selection {
+    return Intl.message(
+      'File selection',
+      name: 'file_selection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error: {message}`
+  String err_x(Object message) {
+    return Intl.message(
+      'Error: $message',
+      name: 'err_x',
+      desc: '',
+      args: [message],
+    );
+  }
+
+  /// `Login session is invalid, please sign in again`
+  String get expired_login {
+    return Intl.message(
+      'Login session is invalid, please sign in again',
+      name: 'expired_login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Permission denied`
+  String get permission_denied {
+    return Intl.message(
+      'Permission denied',
+      name: 'permission_denied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You don't have permission`
+  String get permission_denied_msg {
+    return Intl.message(
+      'You don\'t have permission',
+      name: 'permission_denied_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `File is downloading`
+  String get file_downloading {
+    return Intl.message(
+      'File is downloading',
+      name: 'file_downloading',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
