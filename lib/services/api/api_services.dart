@@ -15,6 +15,7 @@ import 'package:oauth2/oauth2.dart' as oauth2;
 import 'package:path_provider/path_provider.dart';
 
 import '../../generated/l10n.dart';
+import '../../models/response.dart';
 import '../../utils/error_handler.dart';
 
 typedef OnSendProgress = Function(int, int);
@@ -322,16 +323,22 @@ class ApiService {
     }
   }
 
-  Future<GraphQLClient> getClientGraphQL({OnError? onError}) async {
+  Future<GraphQLClient> getClientGraphQL({
+    ErrorHandleFunc? onError,
+    bool remember = false,
+  }) async {
     late AuthLink authLink;
     var client = await getExistClient();
     if (client == null) {
-      onError?.call(ErrorHandle());
+      authLink = AuthLink(getToken: () => 'Bearer ');
+      onError?.call('');
     } else {
       //print(client.credentials.expiration);
       if (client.credentials.isExpired) {
         // print("EXPired");
-        client = await refresh(client);
+        client = await refresh(
+          client,
+        );
         log(client.credentials.accessToken);
         authLink = AuthLink(
           getToken: () async => 'Bearer ${client?.credentials.accessToken}',
@@ -353,6 +360,38 @@ class ApiService {
 
     return graphQLClient;
   }
+
+  // Future<GraphQLClient> getClientGraphQL({OnError? onError}) async {
+  //   late AuthLink authLink;
+  //   var client = await getExistClient();
+  //   if (client == null) {
+  //     onError?.call(ErrorHandle());
+  //   } else {
+  //     //print(client.credentials.expiration);
+  //     if (client.credentials.isExpired) {
+  //       // print("EXPired");
+  //       client = await refresh(client);
+  //       log(client.credentials.accessToken);
+  //       authLink = AuthLink(
+  //         getToken: () async => 'Bearer ${client?.credentials.accessToken}',
+  //       );
+  //     } else {
+  //       //await client.refreshCredentials();
+  //       log(client.credentials.accessToken);
+  //       authLink = AuthLink(
+  //         getToken: () async => 'Bearer ${client?.credentials.accessToken}',
+  //       );
+  //     }
+  //   }
+  //   Link link = authLink.concat(_graphqlLink);
+
+  //   final GraphQLClient graphQLClient = GraphQLClient(
+  //     cache: GraphQLCache(),
+  //     link: link,
+  //   );
+
+  //   return graphQLClient;
+  // }
 
   Future<Map<String, dynamic>> graphqlQuery(QueryOptions options) async {
     try {
@@ -387,6 +426,23 @@ class ApiService {
       return result.data!;
     } catch (e) {
       return {"status": "error", "message": e.toString()};
+    }
+  }
+
+  Future callApi(String query, Map<String, dynamic> variables) async {
+    final MutationOptions options = MutationOptions(
+      document: gql(query),
+      variables: variables,
+    );
+
+    final results = await ApiService.shared.mutationhqlQuery(options);
+
+    var res = ResponseModule.fromJson(results);
+
+    if (res.response.code != 0) {
+      throw (res.response.message ?? '');
+    } else {
+      return res.response.data;
     }
   }
 }

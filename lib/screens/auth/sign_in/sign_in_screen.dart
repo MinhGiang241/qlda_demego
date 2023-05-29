@@ -10,6 +10,7 @@ import '../../../utils/utils.dart';
 import '../../../widgets/primary_button.dart';
 import '../../../widgets/primary_dialog.dart';
 import '../../../widgets/primary_text_field.dart';
+import '../forgot_pass/forgot_pass_screen.dart';
 import 'auth_prv.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -54,7 +55,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       context.read<SignInProvider>().usernameValidate,
                   controller: context.read<SignInProvider>().usernameController,
                   label: S.of(context).username,
-                  hint: S.of(context).enter_username,
+                  hint: S.of(context).enter_here,
                   isRequired: true,
                   validator: (v) {
                     return context.read<SignInProvider>().validationAccount();
@@ -68,7 +69,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   controller: context.read<SignInProvider>().passController,
                   obscureText: true,
                   label: S.of(context).password,
-                  hint: S.of(context).enter_pas,
+                  hint: "********",
                   isRequired: true,
                   validator: (v) {
                     return context.read<SignInProvider>().validationPass();
@@ -110,31 +111,35 @@ class _SignInScreenState extends State<SignInScreen> {
                     InkWell(
                       onTap: () {
                         FocusScope.of(context).unfocus();
-                        Utils.showDialog(
-                          context: context,
-                          dialog: PrimaryDialog.custom(
-                            title: S.of(context).forgot_pass,
-                            content: Column(
-                              children: [
-                                Text(
-                                  S.of(context).contact_receptionist,
-                                  textAlign: TextAlign.center,
-                                  style: txtRegular(14, grayScaleColorBase),
-                                ),
-                                vpad(27),
-                                PrimaryButton(
-                                  text: S.of(context).close,
-                                  onTap: () {
-                                    Navigator.pop(context);
-                                  },
-                                )
-                              ],
-                            ),
-                          ),
+                        Navigator.pushNamed(
+                          context,
+                          ForgotPassScreen.routeName,
                         );
+                        // Utils.showDialog(
+                        //   context: context,
+                        //   dialog: PrimaryDialog.custom(
+                        //     title: S.of(context).forgot_pass,
+                        //     content: Column(
+                        //       children: [
+                        //         Text(
+                        //           S.of(context).contact_receptionist,
+                        //           textAlign: TextAlign.center,
+                        //           style: txtRegular(14, grayScaleColorBase),
+                        //         ),
+                        //         vpad(27),
+                        //         PrimaryButton(
+                        //           text: S.of(context).close,
+                        //           onTap: () {
+                        //             Navigator.pop(context);
+                        //           },
+                        //         )
+                        //       ],
+                        //     ),
+                        //   ),
+                        // );
                       },
                       child: Text(
-                        S.of(context).forgot_pass,
+                        "${S.of(context).forgot_pass}?",
                         style: txtLinkXSmall(color: primaryColorBase),
                         overflow: TextOverflow.ellipsis,
                       ),

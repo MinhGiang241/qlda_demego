@@ -23,6 +23,7 @@ import '../screens/assets/create_request_purchase_screen.dart';
 import '../screens/assets/export_request_screen.dart';
 import '../screens/assets/import_request_screen.dart';
 import '../screens/assets/update_asset_screen.dart';
+import '../screens/auth/forgot_pass/forgot_pass_screen.dart';
 import '../screens/auth/sign_in/sign_in_screen.dart';
 import '../screens/customer/add_customer_screen.dart';
 import '../screens/customer/customer_list_screen.dart';
@@ -325,6 +326,12 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: routeSetting,
           builder: ((context) => InformationReceptionDetailScreen()),
+        );
+      //start again
+      case ForgotPassScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => ForgotPassScreen()),
         );
       default:
         return MaterialPageRoute(

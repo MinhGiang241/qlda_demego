@@ -1,13 +1,13 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:qlda_demego/widgets/primary_card.dart';
-
 import '../constant/constants.dart';
 import '../generated/l10n.dart';
+import 'primary_card.dart';
 
 class PrimaryTextField extends StatefulWidget {
   PrimaryTextField({
@@ -34,9 +34,18 @@ class PrimaryTextField extends StatefulWidget {
     this.background,
     this.textColor,
     this.textAlign,
+    this.maxLength,
+    this.onChanged,
+    this.onlyTextNotVietChar = false,
+    this.filter = const [],
     this.blockSpace = false,
+    this.blockSpecial = false,
+    this.onlyText = false,
+    this.isShow = true,
+    this.onlyNum = false,
+    this.textStyle,
   });
-
+  final TextStyle? textStyle;
   final String? label;
   final String? initialValue;
   final String? hint;
@@ -54,11 +63,19 @@ class PrimaryTextField extends StatefulWidget {
   final int? maxLines;
   final bool autoFocus;
   final bool enable;
+  final bool isShow;
   final bool blockSpace;
+  final bool blockSpecial;
+  final bool onlyText;
+  final bool onlyNum;
+  final bool onlyTextNotVietChar;
   final String? validateString;
   final Color? background;
   final Color? textColor;
   final TextAlign? textAlign;
+  final int? maxLength;
+  final List<TextInputFormatter>? filter;
+  Function(String)? onChanged;
   EdgeInsetsGeometry? margin;
 
   @override
@@ -88,10 +105,12 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
         if (widget.label != null)
           Row(
             children: [
-              Text(widget.label!,
-                  style: txtBodySmallRegular(color: grayScaleColorBase)),
+              Text(
+                widget.label!,
+                style: txtBodySmallRegular(color: grayScaleColorBase),
+              ),
               if (widget.isRequired) hpad(4),
-              if (widget.isRequired)
+              if (widget.isRequired && widget.isShow)
                 Text("*", style: txtBodySmallRegular(color: redColorBase))
             ],
           ),
@@ -104,17 +123,49 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
               stream: showPassController?.stream,
               builder: (context, snapshot) {
                 final showPass = snapshot.data!;
+
                 return PrimaryCard(
+                  onTap: widget.enable ? widget.onTap : null,
                   background: widget.background,
                   margin: widget.margin,
-                  onTap: widget.onTap,
                   child: TextFormField(
-                    textAlign: widget.textAlign ?? TextAlign.start,
-                    inputFormatters: widget.blockSpace
-                        ? <TextInputFormatter>[
-                            FilteringTextInputFormatter.deny(RegExp(r'[ ]'))
-                          ]
+                    onChanged: widget.onChanged,
+                    onFieldSubmitted: widget.controller != null
+                        ? (text) {
+                            widget.controller!.text = text.trim();
+                          }
                         : null,
+                    maxLength: widget.maxLength,
+                    onTap: widget.enable ? widget.onTap : null,
+                    textAlign: widget.textAlign ?? TextAlign.start,
+                    inputFormatters: <TextInputFormatter>[
+                      // FilteringTextInputFormatter.deny(RegExp('[ ]')),
+                      if (widget.onlyTextNotVietChar)
+                        FilteringTextInputFormatter.allow(
+                          RegExp(r'[0-9a-zA-Z]'),
+                        ),
+                      if (widget.onlyNum)
+                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                      if (widget.onlyText)
+                        FilteringTextInputFormatter.allow(
+                          RegExp(
+                            r"[ 0-9a-zA-ZàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬđĐèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆìÌỉỈĩĨíÍịỊòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰỳỲỷỶỹỸýÝỵỴ]",
+                          ),
+                        ),
+                      if (widget.blockSpace)
+                        FilteringTextInputFormatter.deny(RegExp(r'[ ]')),
+                      if (widget.blockSpecial)
+                        FilteringTextInputFormatter.deny(
+                          RegExp(
+                            r'''(?=.*[@$!%*#?&)(\-+=\[\]\{\}\.\,<>\'\`~:;\\|/])[A-Za-z\d@$!%_*#?&\[\]\(\)<>`\'+-={}"|\\/]''',
+                          ),
+                        ),
+                      if (widget.blockSpecial)
+                        FilteringTextInputFormatter.deny(RegExp(r'''["]''')),
+                      if (widget.blockSpecial)
+                        FilteringTextInputFormatter.deny(RegExp(r'''[_]''')),
+                      ...?widget.filter
+                    ],
                     enabled: widget.enable,
                     autofocus: widget.autoFocus,
                     controller: widget.controller,
@@ -123,45 +174,75 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
                     readOnly: widget.isReadOnly,
                     // onTap: onTap,
                     cursorHeight: 15,
+                    enableSuggestions: false,
+                    autocorrect: false,
                     keyboardType: widget.keyboardType,
                     textCapitalization: widget.textCapitalization,
-                    textInputAction: widget.textInputAction,
-                    style: txtBodySmallBold(color: widget.textColor),
+                    textInputAction: widget.textInputAction ??
+                        (widget.maxLines! < 2 ? TextInputAction.done : null),
+                    style: widget.textStyle ??
+                        txtBodySmallBold(
+                          color: widget.enable
+                              ? widget.textColor
+                              : grayScaleColor3,
+                        ),
                     cursorColor: primaryColor2,
                     maxLines: widget.maxLines,
                     decoration: InputDecoration(
-                        hintText: widget.hint,
-                        hintStyle: txtBodySmallBold(color: grayScaleColor3),
-                        errorStyle: const TextStyle(fontSize: 0, height: 0),
-                        contentPadding: const EdgeInsets.symmetric(
-                          vertical: 16,
-                          horizontal: 16,
+                      // enabledBorder: widget.validateString != null
+                      //     ? OutlineInputBorder(
+                      //         borderRadius: BorderRadius.circular(12),
+                      //         borderSide: const BorderSide(
+                      //             color: redColor2, width: 2),
+                      //       )
+                      //     : OutlineInputBorder(
+                      //         borderRadius: BorderRadius.circular(12),
+                      //         borderSide: BorderSide.none,
+                      //       ),
+
+                      counterText: '',
+                      hintText: widget.hint,
+                      hintStyle: txtBodySmallBold(color: grayScaleColor3),
+                      errorStyle: const TextStyle(fontSize: 0, height: 0),
+                      contentPadding: const EdgeInsets.symmetric(
+                        vertical: 16,
+                        horizontal: 16,
+                      ),
+                      prefixIcon: widget.prefixIcon,
+                      suffixIconConstraints:
+                          const BoxConstraints(minHeight: 35, minWidth: 35),
+                      suffixIcon: widget.obscureText
+                          ? showPass
+                              ? IconButton(
+                                  onPressed: () {
+                                    showPassController?.add(false);
+                                  },
+                                  icon: const Icon(Icons.visibility_off),
+                                )
+                              : IconButton(
+                                  onPressed: () {
+                                    showPassController?.add(true);
+                                  },
+                                  icon: const Icon(Icons.visibility),
+                                )
+                          : widget.suffixIcon,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(
+                          color: primaryColor2,
+                          width: 2,
                         ),
-                        prefixIcon: widget.prefixIcon,
-                        suffixIcon: widget.obscureText
-                            ? showPass
-                                ? IconButton(
-                                    onPressed: () {
-                                      showPassController?.add(false);
-                                    },
-                                    icon: const Icon(Icons.visibility_off))
-                                : IconButton(
-                                    onPressed: () {
-                                      showPassController?.add(true);
-                                    },
-                                    icon: const Icon(Icons.visibility))
-                            : widget.suffixIcon,
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: const BorderSide(
-                                color: primaryColor2, width: 2)),
-                        errorBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide:
-                                const BorderSide(color: redColor2, width: 2)),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide.none)),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide:
+                            const BorderSide(color: redColor2, width: 2),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
                     validator: widget.isRequired
                         ? widget.validator
                         : (val) {

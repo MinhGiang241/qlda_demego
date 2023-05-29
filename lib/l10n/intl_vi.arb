@@ -5,12 +5,12 @@
   "wellcome_back": "Chào mừng trở lại!",
   "no_acc": "Bạn chưa có tài khoản ?",
   "email": "Email",
-  "username": "Tài khoản",
+  "username": "Tên đăng nhập",
   "phone_num": "Số điện thoại",
   "enter_email_phone": "Nhập Email / Số điện thoại",
   "password": "Mật khẩu",
   "enter_pas": "Nhập mật khẩu",
-  "forgot_pass": "Quên mật khẩu?",
+  "forgot_pass": "Quên mật khẩu",
   "create_acc": "Tạo tài khoản",
   "have_acc": "Bạn đã có tài khoản ?",
   "full_name": "Họ và Tên",
@@ -71,7 +71,7 @@
   "invalid_code": "Mã xác thực không hợp lệ",
   "systeme_error": "Lỗi hệ thống",
   "not_active": "Tài khoản chưa được kích hoạt",
-  "wrong_sign_in": "Sai tài khoản hoặc mật khẩu",
+  "wrong_sign_in": "Tên đăng nhập hoặc mật khẩu không chính xác. Vui lòng kiểm tra lại ",
   "require_lowercase": "Mật khẩu phải gồm ít nhất 1 chữ cái thường",
   "require_uppercase": "Mật khẩu phải gồm ít nhất 1 chữ cái hoa",
   "not_vietnamese": "Mật khẩu không được chứa ký tự tiếng Việt có dấu",
@@ -368,5 +368,7 @@
   "expired_login": "Phiên đăng nhập hết hạn, hãy đăng nhập lại",
   "permission_denied": "Từ chối truy cập",
   "permission_denied_msg": "Bạn chưa cấp quyền ứng dụng",
-  "file_downloading": "Đang tải file xuống"
+  "file_downloading": "Đang tải file xuống",
+  "enter_employee_code": "Nhập mã nhân sự tại đây",
+  "enter_here": "Nhập tại đây"
 }

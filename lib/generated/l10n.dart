@@ -160,10 +160,10 @@ class S {
     );
   }
 
-  /// `Forgot password?`
+  /// `Forgot password`
   String get forgot_pass {
     return Intl.message(
-      'Forgot password?',
+      'Forgot password',
       name: 'forgot_pass',
       desc: '',
       args: [],
@@ -3735,6 +3735,26 @@ class S {
     return Intl.message(
       'File is downloading',
       name: 'file_downloading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter employee code here`
+  String get enter_employee_code {
+    return Intl.message(
+      'Enter employee code here',
+      name: 'enter_employee_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter here`
+  String get enter_here {
+    return Intl.message(
+      'Enter here',
+      name: 'enter_here',
       desc: '',
       args: [],
     );

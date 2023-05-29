@@ -203,6 +203,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter": MessageLookupByLibrary.simpleMessage("Nhập"),
         "enter_email_phone":
             MessageLookupByLibrary.simpleMessage("Nhập Email / Số điện thoại"),
+        "enter_employee_code":
+            MessageLookupByLibrary.simpleMessage("Nhập mã nhân sự tại đây"),
+        "enter_here": MessageLookupByLibrary.simpleMessage("Nhập tại đây"),
         "enter_name": MessageLookupByLibrary.simpleMessage("Nhập tên"),
         "enter_note": MessageLookupByLibrary.simpleMessage("Nhập ghi chú"),
         "enter_num": MessageLookupByLibrary.simpleMessage("Nhập số"),
@@ -242,7 +245,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "filter": MessageLookupByLibrary.simpleMessage("Bộ lọc"),
         "fix": MessageLookupByLibrary.simpleMessage("Sửa"),
         "floor": MessageLookupByLibrary.simpleMessage("Tầng"),
-        "forgot_pass": MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
+        "forgot_pass": MessageLookupByLibrary.simpleMessage("Quên mật khẩu"),
         "fre": MessageLookupByLibrary.simpleMessage("Tần suất"),
         "fre_config": MessageLookupByLibrary.simpleMessage("Cài đặt lặp"),
         "fre_time": MessageLookupByLibrary.simpleMessage("Thời gian lặp"),
@@ -513,7 +516,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "update": MessageLookupByLibrary.simpleMessage("Cập nhật"),
         "update_asset":
             MessageLookupByLibrary.simpleMessage(" Cập nhật thông tin tài sản"),
-        "username": MessageLookupByLibrary.simpleMessage("Tài khoản"),
+        "username": MessageLookupByLibrary.simpleMessage("Tên đăng nhập"),
         "val_pass": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu phải có ít nhất 8 kí tự. Trong đó phải có ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt"),
         "variety": MessageLookupByLibrary.simpleMessage("Dòng"),
@@ -530,8 +533,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "wellcome_back":
             MessageLookupByLibrary.simpleMessage("Chào mừng trở lại!"),
         "work_place": MessageLookupByLibrary.simpleMessage("Nơi làm việc"),
-        "wrong_sign_in":
-            MessageLookupByLibrary.simpleMessage("Sai tài khoản hoặc mật khẩu"),
+        "wrong_sign_in": MessageLookupByLibrary.simpleMessage(
+            "Tên đăng nhập hoặc mật khẩu không chính xác. Vui lòng kiểm tra lại "),
         "zone": MessageLookupByLibrary.simpleMessage("Khu vực"),
         "zone_type": MessageLookupByLibrary.simpleMessage("Loại khu vực")
       };

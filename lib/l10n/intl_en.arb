@@ -10,7 +10,7 @@
   "enter_email_phone": "Enter email /phone",
   "password": "Password",
   "enter_pas": "Enter password",
-  "forgot_pass": "Forgot password?",
+  "forgot_pass": "Forgot password",
   "create_acc": "Create an account",
   "have_acc": "already have an account ",
   "full_name": "Full name",
@@ -367,5 +367,7 @@
   "expired_login": "Login session is invalid, please sign in again",
   "permission_denied": "Permission denied",
   "permission_denied_msg": "You don't have permission",
-  "file_downloading": "File is downloading"
+  "file_downloading": "File is downloading",
+  "enter_employee_code": "Enter employee code here",
+  "enter_here": "Enter here"
 }

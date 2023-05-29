@@ -204,6 +204,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter": MessageLookupByLibrary.simpleMessage("Enter"),
         "enter_email_phone":
             MessageLookupByLibrary.simpleMessage("Enter email /phone"),
+        "enter_employee_code":
+            MessageLookupByLibrary.simpleMessage("Enter employee code here"),
+        "enter_here": MessageLookupByLibrary.simpleMessage("Enter here"),
         "enter_name": MessageLookupByLibrary.simpleMessage("Enter name"),
         "enter_note": MessageLookupByLibrary.simpleMessage("Enter note"),
         "enter_num": MessageLookupByLibrary.simpleMessage("Enter Number"),
@@ -241,7 +244,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "filter": MessageLookupByLibrary.simpleMessage("Filter"),
         "fix": MessageLookupByLibrary.simpleMessage("Update"),
         "floor": MessageLookupByLibrary.simpleMessage("Floor"),
-        "forgot_pass": MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "forgot_pass": MessageLookupByLibrary.simpleMessage("Forgot password"),
         "fre": MessageLookupByLibrary.simpleMessage("Frequency"),
         "fre_config":
             MessageLookupByLibrary.simpleMessage("Frequency configuration"),
