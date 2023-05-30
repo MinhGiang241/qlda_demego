@@ -1,7 +1,7 @@
 {
   "sign_in": "Đăng Nhập",
   "sign_up": "Đăng ký",
-  "remember_acc": "Ghi nhớ tài khoản",
+  "remember_acc": "Lưu tài khoản",
   "wellcome_back": "Chào mừng trở lại!",
   "no_acc": "Bạn chưa có tài khoản ?",
   "email": "Email",
@@ -373,5 +373,14 @@
   "enter_here": "Nhập tại đây",
   "way_send_otp": "Bạn muốn nhận mã để đặt lại mật khẩu bằng cách nào?",
   "send_to_phone": "Gửi mã về SĐT",
-  "send_to_email": "Gửi mã về email"
+  "send_to_email": "Gửi mã về email",
+  "send_otp_to": "Gửi mã để đặt lại mật khẩu về",
+  "code_verify": "Nhập mã bảo mật",
+  "otp_msg_email": "Vui lòng kiểm tra email để xem tin nhắn văn bản có mã. Mã của bạn có 6 ký tự.",
+  "otp_msg_phone": "Vui lòng kiểm tra điện thoại để xem tin nhắn văn bản có mã. Mã của bạn có 6 ký tự.",
+  "we_send_to": "Chúng tôi đã gửi cho bạn mã đến: {to}",
+  "otp_invalid": "Mã OTP không hợp lệ",
+  "reset_pass_success": "Mật khẩu đã được cập nhật thành công",
+  "password_not_match": "Mật khẩu không khớp",
+  "success_change_pass": "Mật khẩu mới đã được cập nhật thành công. Vui lòng đăng nhập bằng mật khẩu mới"
 }

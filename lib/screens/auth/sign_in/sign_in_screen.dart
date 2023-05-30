@@ -69,7 +69,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   controller: context.read<SignInProvider>().passController,
                   obscureText: true,
                   label: S.of(context).password,
-                  hint: "********",
+                  hint: S.of(context).enter_here,
                   isRequired: true,
                   validator: (v) {
                     return context.read<SignInProvider>().validationPass();

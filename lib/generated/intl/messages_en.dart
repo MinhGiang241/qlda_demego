@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(message) => "Error: ${message}";
 
+  static String m1(to) => "We sent otp code to :${to}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "CCCD": MessageLookupByLibrary.simpleMessage("identity card"),
@@ -119,6 +121,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "choose_off": MessageLookupByLibrary.simpleMessage("Choose type"),
         "chot": MessageLookupByLibrary.simpleMessage(""),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
+        "code_verify":
+            MessageLookupByLibrary.simpleMessage("Verify security code"),
         "color": MessageLookupByLibrary.simpleMessage("Color"),
         "comming": MessageLookupByLibrary.simpleMessage("Comming"),
         "complete": MessageLookupByLibrary.simpleMessage("Complete"),
@@ -330,7 +334,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
         "operation": MessageLookupByLibrary.simpleMessage("Operation"),
         "origin": MessageLookupByLibrary.simpleMessage("Origin"),
+        "otp_invalid":
+            MessageLookupByLibrary.simpleMessage("OTP code is invalid"),
         "otp_msg": MessageLookupByLibrary.simpleMessage(
+            "We have sent OTP code to your registered phone number. Please enter the OTP code to perform authentication."),
+        "otp_msg_email": MessageLookupByLibrary.simpleMessage(
+            "We have sent OTP code to your registered email. Please enter the OTP code to perform authentication."),
+        "otp_msg_phone": MessageLookupByLibrary.simpleMessage(
             "We have sent OTP code to your registered phone number. Please enter the OTP code to perform authentication."),
         "otp_verify": MessageLookupByLibrary.simpleMessage("OTP verify"),
         "over_date": MessageLookupByLibrary.simpleMessage("Over date"),
@@ -341,6 +351,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "parcel_list": MessageLookupByLibrary.simpleMessage("Parcel list"),
         "parcel_name": MessageLookupByLibrary.simpleMessage("Parcel name"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "password_not_match":
+            MessageLookupByLibrary.simpleMessage("Password not match"),
         "pay_history": MessageLookupByLibrary.simpleMessage("Payment history"),
         "penetration": MessageLookupByLibrary.simpleMessage("Penetration"),
         "period_task":
@@ -441,6 +453,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Responsible person"),
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
         "reset_pass": MessageLookupByLibrary.simpleMessage("Reset password"),
+        "reset_pass_success": MessageLookupByLibrary.simpleMessage(
+            "Reset Password successfully, please Sign in again"),
         "resident_card":
             MessageLookupByLibrary.simpleMessage("Resident identity card"),
         "resister": MessageLookupByLibrary.simpleMessage("Resister"),
@@ -451,6 +465,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "select": MessageLookupByLibrary.simpleMessage("Chọn"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
+        "send_otp_to": MessageLookupByLibrary.simpleMessage(
+            "Send OTP reset password code to"),
         "send_to_email":
             MessageLookupByLibrary.simpleMessage("Send OTP to email"),
         "send_to_phone":
@@ -475,6 +491,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "stock": MessageLookupByLibrary.simpleMessage("Stock"),
         "sua": MessageLookupByLibrary.simpleMessage("Edit"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),
+        "success_change_pass": MessageLookupByLibrary.simpleMessage(
+            "Change password successfully, please re log in with new password"),
         "sum": MessageLookupByLibrary.simpleMessage("Summary"),
         "supervisor": MessageLookupByLibrary.simpleMessage("Supervisor"),
         "supply": MessageLookupByLibrary.simpleMessage("Supplier"),
@@ -532,6 +550,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "warranty": MessageLookupByLibrary.simpleMessage("Warranty department"),
         "way_send_otp": MessageLookupByLibrary.simpleMessage(
             "How would you like to receive a code to reset your password?"),
+        "we_send_to": m1,
         "wellcome_back": MessageLookupByLibrary.simpleMessage("Welcome back!"),
         "work_place": MessageLookupByLibrary.simpleMessage("Work place"),
         "wrong_sign_in": MessageLookupByLibrary.simpleMessage(

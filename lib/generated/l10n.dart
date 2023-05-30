@@ -3789,6 +3789,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Send OTP reset password code to`
+  String get send_otp_to {
+    return Intl.message(
+      'Send OTP reset password code to',
+      name: 'send_otp_to',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify security code`
+  String get code_verify {
+    return Intl.message(
+      'Verify security code',
+      name: 'code_verify',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We have sent OTP code to your registered email. Please enter the OTP code to perform authentication.`
+  String get otp_msg_email {
+    return Intl.message(
+      'We have sent OTP code to your registered email. Please enter the OTP code to perform authentication.',
+      name: 'otp_msg_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We have sent OTP code to your registered phone number. Please enter the OTP code to perform authentication.`
+  String get otp_msg_phone {
+    return Intl.message(
+      'We have sent OTP code to your registered phone number. Please enter the OTP code to perform authentication.',
+      name: 'otp_msg_phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We sent otp code to :{to}`
+  String we_send_to(Object to) {
+    return Intl.message(
+      'We sent otp code to :$to',
+      name: 'we_send_to',
+      desc: '',
+      args: [to],
+    );
+  }
+
+  /// `OTP code is invalid`
+  String get otp_invalid {
+    return Intl.message(
+      'OTP code is invalid',
+      name: 'otp_invalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset Password successfully, please Sign in again`
+  String get reset_pass_success {
+    return Intl.message(
+      'Reset Password successfully, please Sign in again',
+      name: 'reset_pass_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password not match`
+  String get password_not_match {
+    return Intl.message(
+      'Password not match',
+      name: 'password_not_match',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change password successfully, please re log in with new password`
+  String get success_change_pass {
+    return Intl.message(
+      'Change password successfully, please re log in with new password',
+      name: 'success_change_pass',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(message) => "Lỗi: ${message}";
 
+  static String m1(to) => "Chúng tôi đã gửi cho bạn mã đến: ${to}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "CCCD": MessageLookupByLibrary.simpleMessage("CCCD"),
@@ -120,6 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "choose_off": MessageLookupByLibrary.simpleMessage("Chọn loại nghỉ"),
         "chot": MessageLookupByLibrary.simpleMessage("Chốt"),
         "close": MessageLookupByLibrary.simpleMessage("Đóng"),
+        "code_verify": MessageLookupByLibrary.simpleMessage("Nhập mã bảo mật"),
         "color": MessageLookupByLibrary.simpleMessage("Màu"),
         "comming": MessageLookupByLibrary.simpleMessage("Đang về"),
         "complete": MessageLookupByLibrary.simpleMessage("Hoàn thành"),
@@ -333,8 +336,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
         "operation": MessageLookupByLibrary.simpleMessage("Vận hành"),
         "origin": MessageLookupByLibrary.simpleMessage("Xuất xứ"),
+        "otp_invalid":
+            MessageLookupByLibrary.simpleMessage("Mã OTP không hợp lệ"),
         "otp_msg": MessageLookupByLibrary.simpleMessage(
             "Chúng tôi đã gửi mã OTP đến Số điện thoại đăng ký của quý khách. Vui lòng nhập mã OTP để thực hiện xác thực."),
+        "otp_msg_email": MessageLookupByLibrary.simpleMessage(
+            "Vui lòng kiểm tra email để xem tin nhắn văn bản có mã. Mã của bạn có 6 ký tự."),
+        "otp_msg_phone": MessageLookupByLibrary.simpleMessage(
+            "Vui lòng kiểm tra điện thoại để xem tin nhắn văn bản có mã. Mã của bạn có 6 ký tự."),
         "otp_verify": MessageLookupByLibrary.simpleMessage("Xác thực OTP"),
         "over_date": MessageLookupByLibrary.simpleMessage("Ngày hết hạn"),
         "over_time": MessageLookupByLibrary.simpleMessage("Quá hạn"),
@@ -346,6 +355,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Danh sách bưu phẩm"),
         "parcel_name": MessageLookupByLibrary.simpleMessage("Tên đồ gửi"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
+        "password_not_match":
+            MessageLookupByLibrary.simpleMessage("Mật khẩu không khớp"),
         "pay_history":
             MessageLookupByLibrary.simpleMessage("Lịch sử thanh toán"),
         "penetration": MessageLookupByLibrary.simpleMessage("Ra vào tòa nhà"),
@@ -407,8 +418,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "related_info":
             MessageLookupByLibrary.simpleMessage("Thông tin liên quan"),
         "reload": MessageLookupByLibrary.simpleMessage("Tải lại"),
-        "remember_acc":
-            MessageLookupByLibrary.simpleMessage("Ghi nhớ tài khoản"),
+        "remember_acc": MessageLookupByLibrary.simpleMessage("Lưu tài khoản"),
         "reply": MessageLookupByLibrary.simpleMessage("Phản hồi"),
         "reply_absent_letter":
             MessageLookupByLibrary.simpleMessage("Phản hồi đơn xin nghỉ phép"),
@@ -446,6 +456,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "res_person": MessageLookupByLibrary.simpleMessage("Người phụ trách"),
         "resend": MessageLookupByLibrary.simpleMessage("Gửi lại"),
         "reset_pass": MessageLookupByLibrary.simpleMessage("Đặt lại mật khẩu"),
+        "reset_pass_success": MessageLookupByLibrary.simpleMessage(
+            "Mật khẩu đã được cập nhật thành công"),
         "resident_card": MessageLookupByLibrary.simpleMessage("Thẻ cư dân"),
         "resister": MessageLookupByLibrary.simpleMessage("Người đăng ký"),
         "safe_value_from":
@@ -455,6 +467,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "search": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
         "select": MessageLookupByLibrary.simpleMessage("Chọn"),
         "send": MessageLookupByLibrary.simpleMessage("Gửi"),
+        "send_otp_to": MessageLookupByLibrary.simpleMessage(
+            "Gửi mã để đặt lại mật khẩu về"),
         "send_to_email":
             MessageLookupByLibrary.simpleMessage("Gửi mã về email"),
         "send_to_phone": MessageLookupByLibrary.simpleMessage("Gửi mã về SĐT"),
@@ -480,6 +494,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "stock": MessageLookupByLibrary.simpleMessage("Tồn kho"),
         "sua": MessageLookupByLibrary.simpleMessage("Sửa"),
         "success": MessageLookupByLibrary.simpleMessage("Thành công"),
+        "success_change_pass": MessageLookupByLibrary.simpleMessage(
+            "Mật khẩu mới đã được cập nhật thành công. Vui lòng đăng nhập bằng mật khẩu mới"),
         "sum": MessageLookupByLibrary.simpleMessage("Tổng số"),
         "supervisor": MessageLookupByLibrary.simpleMessage("Người theo dõi"),
         "supply": MessageLookupByLibrary.simpleMessage("Nhà cung cấp"),
@@ -535,6 +551,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "warranty": MessageLookupByLibrary.simpleMessage("Đơn vị bảo hành"),
         "way_send_otp": MessageLookupByLibrary.simpleMessage(
             "Bạn muốn nhận mã để đặt lại mật khẩu bằng cách nào?"),
+        "we_send_to": m1,
         "wellcome_back":
             MessageLookupByLibrary.simpleMessage("Chào mừng trở lại!"),
         "work_place": MessageLookupByLibrary.simpleMessage("Nơi làm việc"),

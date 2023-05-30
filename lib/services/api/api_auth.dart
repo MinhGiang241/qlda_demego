@@ -26,6 +26,37 @@ mutation (\$account:String){
         
 ''';
 
+var SENDOTPVIAEMAIL = '''
+mutation (\$mailTo: String) {
+  response :authorization_generate_otp(mailTo: \$mailTo){
+    code
+    message
+    data
+    }
+  }
+''';
+
+var VERYFYOTP = '''
+mutation (\$otp:String,\$sendTo:String){
+        response: authorization_veryfyOTP (otp: \$otp,sendTo: \$sendTo ) {
+            code
+            message
+            data
+        }
+    }
+''';
+
+var RESETPASS = '''
+mutation (\$userName:String,\$newPassword:String){
+    response: authorization_reset (userName: \$userName,newPassword: \$newPassword ) {
+        code
+        message
+        data
+    }
+}
+        
+''';
+
 class ApiAuth {
   static ApiService shared = ApiService();
   static Future<oauth2.Client?> signIn(
@@ -52,5 +83,20 @@ class ApiAuth {
 
   static Future getPhoneAndEmail(String account) async {
     return await shared.callApi(GETPHONEANDEMAIL, {"account": account});
+  }
+
+  static Future sendOtpviaEmail(String email) async {
+    return await shared.callApi(SENDOTPVIAEMAIL, {
+      'mailTo': email,
+    });
+  }
+
+  static Future verifyOTP(String otp, String email) async {
+    return await shared.callApi(VERYFYOTP, {"otp": otp, "sendTo": email});
+  }
+
+  static Future resetPass(String acc, String newPassword) async {
+    return await shared
+        .callApi(RESETPASS, {"userName": acc, "newPassword": newPassword});
   }
 }

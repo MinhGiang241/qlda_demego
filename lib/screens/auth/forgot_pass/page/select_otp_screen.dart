@@ -75,9 +75,7 @@ class SelectOtpScreen extends StatelessWidget {
                   width: dvWidth(context) - 48,
                   text: S.of(context).next,
                   onTap: () {
-                    // await context
-                    //     .read<ForgotPassPrv>()
-                    //     .sendVerify(context);
+                    context.read<ForgotPassPrv>().onStep2Next(context);
                   },
                 ),
               ),
