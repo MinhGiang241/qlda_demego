@@ -3879,6 +3879,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Send OTP code successfully`
+  String get success_opt {
+    return Intl.message(
+      'Send OTP code successfully',
+      name: 'success_opt',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -493,6 +493,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "success": MessageLookupByLibrary.simpleMessage("Success"),
         "success_change_pass": MessageLookupByLibrary.simpleMessage(
             "Change password successfully, please re log in with new password"),
+        "success_opt":
+            MessageLookupByLibrary.simpleMessage("Send OTP code successfully"),
         "sum": MessageLookupByLibrary.simpleMessage("Summary"),
         "supervisor": MessageLookupByLibrary.simpleMessage("Supervisor"),
         "supply": MessageLookupByLibrary.simpleMessage("Supplier"),

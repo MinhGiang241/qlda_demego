@@ -496,6 +496,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "success": MessageLookupByLibrary.simpleMessage("Thành công"),
         "success_change_pass": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu mới đã được cập nhật thành công. Vui lòng đăng nhập bằng mật khẩu mới"),
+        "success_opt":
+            MessageLookupByLibrary.simpleMessage("Gửi mã OTP thành công"),
         "sum": MessageLookupByLibrary.simpleMessage("Tổng số"),
         "supervisor": MessageLookupByLibrary.simpleMessage("Người theo dõi"),
         "supply": MessageLookupByLibrary.simpleMessage("Nhà cung cấp"),

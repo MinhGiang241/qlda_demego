@@ -24,7 +24,7 @@ class ForgotPassPrv extends ChangeNotifier {
   StreamController<int> timeResendController = StreamController.broadcast();
   bool isResending = false;
   int second = 30;
-
+  late Timer timer;
   final formKey1 = GlobalKey<FormState>();
   final formKey2 = GlobalKey<FormState>();
   final pinkey = GlobalKey();
@@ -36,6 +36,7 @@ class ForgotPassPrv extends ChangeNotifier {
   String? otpValidate;
   String? validateNewPass;
   String? validateCNewPass;
+
   onPageChanged(v) {
     activeStep = v;
     notifyListeners();
@@ -135,6 +136,7 @@ class ForgotPassPrv extends ChangeNotifier {
     autoValidStep1 = true;
     notifyListeners();
     var v = formKey1.currentState!.validate();
+
     if (v) {
       clearValidStringStep1();
 
@@ -189,6 +191,16 @@ class ForgotPassPrv extends ChangeNotifier {
     }
   }
 
+  startTimer() {
+    timer = Timer.periodic(const Duration(seconds: 1), (t) {
+      second--;
+      timeResendController.add(second);
+      if (second == 0) {
+        t.cancel();
+      }
+    });
+  }
+
   onStep4Next(BuildContext context) async {
     FocusScope.of(context).unfocus();
     isLoading = true;
@@ -211,12 +223,17 @@ class ForgotPassPrv extends ChangeNotifier {
 
   resend(BuildContext context) async {
     isResending = true;
-    isLoading = true;
     notifyListeners();
+
     await ApiAuth.verifyOTP(otpController.text.trim(), email!).then((v) {
       next();
+    }).then((v) {
+      Utils.showSuccessMessage(context: context, e: S.of(context).success_opt);
+      isResending = false;
+      second = 30;
+      notifyListeners();
     }).catchError((e) {
-      isLoading = false;
+      isResending = false;
       notifyListeners();
       Utils.showErrorMessage(context, e);
     });

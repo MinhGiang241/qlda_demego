@@ -419,13 +419,14 @@ class ApiService {
       if (result.data == null) {
         // throw ("network_connection_err");
         return {
-          "status": "internet_error",
-          "message": "network_connection_err"
+          "response": {"code": 1, "message": S.current.err_conn}
         };
       }
       return result.data!;
     } catch (e) {
-      return {"status": "error", "message": e.toString()};
+      return {
+        "response": {"code": 1, "message": e.toString()}
+      };
     }
   }
 

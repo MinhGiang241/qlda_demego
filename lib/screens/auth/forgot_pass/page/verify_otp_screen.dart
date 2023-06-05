@@ -9,14 +9,27 @@ import '../../../../constant/constants.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../widgets/primary_button.dart';
 
-class VerifyOtpScreen extends StatelessWidget {
+class VerifyOtpScreen extends StatefulWidget {
   const VerifyOtpScreen({super.key, required this.ctx});
   final BuildContext ctx;
+
+  @override
+  State<VerifyOtpScreen> createState() => _VerifyOtpScreenState();
+}
+
+class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
+  @override
+  void initState() {
+    widget.ctx.read<ForgotPassPrv>().startTimer();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     var selectOption = context.watch<ForgotPassPrv>().selectedOption;
     var phone = context.watch<ForgotPassPrv>().phone;
     var email = context.watch<ForgotPassPrv>().email;
+
     return ListView(
       children: [
         vpad(24),
@@ -53,12 +66,12 @@ class VerifyOtpScreen extends StatelessWidget {
           child: PinCodeTextField(
             // key: context.read<ForgotPassPrv>().pinkey,
             autoDisposeControllers: false,
-            controller: ctx.read<ForgotPassPrv>().otpController,
-            appContext: ctx,
+            controller: widget.ctx.read<ForgotPassPrv>().otpController,
+            appContext: widget.ctx,
             length: 6,
             onTap: () {},
             onChanged: (v) {
-              ctx.read<ForgotPassPrv>().offTextError();
+              widget.ctx.read<ForgotPassPrv>().offTextError();
             },
             autoFocus: true,
             animationType: AnimationType.fade,
@@ -78,7 +91,7 @@ class VerifyOtpScreen extends StatelessWidget {
               inactiveFillColor: Colors.white,
             ),
             errorAnimationController:
-                ctx.read<ForgotPassPrv>().errorAnimationController,
+                widget.ctx.read<ForgotPassPrv>().errorAnimationController,
             enableActiveFill: true,
             animationDuration: const Duration(milliseconds: 300),
           ),

@@ -1,7 +1,9 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:graphql/client.dart' hide OnError;
 import 'package:oauth2/oauth2.dart' as oauth2;
 
+import '../../models/response.dart';
 import 'api_services.dart';
 
 var CHECKEXISTEDACCOUNT = '''
@@ -12,6 +14,7 @@ mutation (\$username:String){
         data
     }
 }
+        
         
 ''';
 
@@ -77,8 +80,26 @@ class ApiAuth {
     return await ApiService.shared.deleteCre();
   }
 
+  // static Future checkExistAccount(String username) async {
+  //   return await shared.callApi(CHECKEXISTEDACCOUNT, {"username": username});
+  // }
+
   static Future checkExistAccount(String username) async {
-    return await shared.callApi(CHECKEXISTEDACCOUNT, {"username": username});
+    var query = CHECKEXISTEDACCOUNT;
+    final MutationOptions options = MutationOptions(
+      document: gql(query),
+      variables: {"username": username},
+    );
+
+    final results = await shared.mutationhqlQuery(options);
+
+    var res = ResponseModule.fromJson(results);
+
+    if (res.response.code != 0) {
+      throw (res.response.message ?? '');
+    } else {
+      return res.response.data;
+    }
   }
 
   static Future getPhoneAndEmail(String account) async {

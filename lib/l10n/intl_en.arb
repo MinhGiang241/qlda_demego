@@ -381,5 +381,6 @@
   "otp_invalid": "OTP code is invalid",
   "reset_pass_success": "Reset Password successfully, please Sign in again",
   "password_not_match": "Password not match",
-  "success_change_pass": "Change password successfully, please re log in with new password"
+  "success_change_pass": "Change password successfully, please re log in with new password",
+  "success_opt": "Send OTP code successfully"
 }

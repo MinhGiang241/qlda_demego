@@ -8,6 +8,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:qlda_demego/routes/routes.dart';
+import 'package:qlda_demego/services/provider/auth_provider.dart';
 import 'constant/theme.dart';
 import 'generated/l10n.dart';
 import 'screens/auth/sign_in/auth_prv.dart';
@@ -35,10 +36,18 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => AuthPrv(),
+          create: (context) => AuthProvider()..start(),
         ),
       ],
       child: MaterialApp(
+        builder: (context, child) {
+          final mediaQueryData = MediaQuery.of(context);
+          final scale = mediaQueryData.textScaleFactor.clamp(1.0, 1.2);
+          return MediaQuery(
+            data: MediaQuery.of(context).copyWith(textScaleFactor: scale),
+            child: child!,
+          );
+        },
         debugShowCheckedModeBanner: false,
         title: 'DEMEGO',
         theme: AppTheme.lightTheme(),
