@@ -50,8 +50,8 @@ class OptionSendOtpScreen extends StatelessWidget {
             child: PrimaryButton(
               width: dvWidth(context) - 48,
               text: S.of(context).next,
-              isLoading: context.read<ForgotPassPrv>().isLoading,
-              onTap: context.read<ForgotPassPrv>().isLoading
+              isLoading: context.read<ForgotPassPrv>().isLoading2,
+              onTap: context.read<ForgotPassPrv>().isLoading2
                   ? null
                   : () {
                       context.read<ForgotPassPrv>().onStep3Next(context);

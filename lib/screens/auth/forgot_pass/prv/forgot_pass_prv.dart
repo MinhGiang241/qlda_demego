@@ -15,6 +15,7 @@ class ForgotPassPrv extends ChangeNotifier {
   bool autoValidStep1 = false;
   bool autoValidStep2 = false;
   bool isLoading = false;
+  bool isLoading2 = false;
   bool isBlockScroll = true;
   String? phone;
   String? email;
@@ -176,15 +177,16 @@ class ForgotPassPrv extends ChangeNotifier {
 
   onStep3Next(BuildContext context) async {
     FocusScope.of(context).unfocus();
-    isLoading = true;
+    isLoading2 = true;
     notifyListeners();
     if (selectedOption == 2) {
       await ApiAuth.sendOtpviaEmail(email!).then((v) {
-        isLoading = false;
+        isLoading2 = false;
+        otpController.text = v?['otpcode'] ?? '';
         notifyListeners();
         next();
       }).catchError((e) {
-        isLoading = false;
+        isLoading2 = false;
         notifyListeners();
         Utils.showErrorMessage(context, e);
       });
@@ -224,19 +226,30 @@ class ForgotPassPrv extends ChangeNotifier {
   resend(BuildContext context) async {
     isResending = true;
     notifyListeners();
-
-    await ApiAuth.verifyOTP(otpController.text.trim(), email!).then((v) {
-      next();
-    }).then((v) {
+    await ApiAuth.sendOtpviaEmail(email ?? "").then((value) {
       Utils.showSuccessMessage(context: context, e: S.of(context).success_opt);
       isResending = false;
       second = 30;
+      startTimer();
+      otpController.text = value?['otpcode'];
       notifyListeners();
     }).catchError((e) {
       isResending = false;
       notifyListeners();
       Utils.showErrorMessage(context, e);
     });
+    // await ApiAuth.verifyOTP(otpController.text.trim(), email!).then((v) {
+    //   next();
+    // }).then((v) {
+    //   Utils.showSuccessMessage(context: context, e: S.of(context).success_opt);
+    //   isResending = false;
+    //   second = 30;
+    //   notifyListeners();
+    // }).catchError((e) {
+    //   isResending = false;
+    //   notifyListeners();
+    //   Utils.showErrorMessage(context, e);
+    // });
     //   email,
     //   false,
     //   context.read<ResidentInfoPrv>().userInfo?.account?.id ?? "",

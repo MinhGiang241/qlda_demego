@@ -22,12 +22,12 @@ class SignInProvider with ChangeNotifier {
 
   bool isLoading = false;
 
-  bool remember = true;
+  // bool remember = true;
 
-  toggleRemember() {
-    remember = !remember;
-    notifyListeners();
-  }
+  // toggleRemember() {
+  //   remember = !remember;
+  //   notifyListeners();
+  // }
 
   initAccountSave() async {
     var acc = await PrfData.shared.getSignInStore();

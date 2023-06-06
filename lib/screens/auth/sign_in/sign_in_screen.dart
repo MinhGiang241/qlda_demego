@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../../../constant/constants.dart';
 import '../../../generated/l10n.dart';
+import '../../../services/provider/auth_provider.dart';
 import '../../../utils/utils.dart';
 import '../../../widgets/primary_button.dart';
 import '../../../widgets/primary_dialog.dart';
@@ -88,16 +89,16 @@ class _SignInScreenState extends State<SignInScreen> {
                             child: Checkbox(
                               fillColor:
                                   MaterialStateProperty.all(primaryColorBase),
-                              value: context.watch<SignInProvider>().remember,
+                              value: context.watch<AuthProvider>().remember,
                               onChanged: (_) {
-                                context.read<SignInProvider>().toggleRemember();
+                                context.read<AuthProvider>().toggleRemember();
                               },
                             ),
                           ),
                           hpad(5),
                           InkWell(
                             onTap: () {
-                              context.read<SignInProvider>().toggleRemember();
+                              context.read<AuthProvider>().toggleRemember();
                             },
                             child: Text(
                               S.of(context).remember_acc,
@@ -208,8 +209,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   onTap: () async {
                     FocusScope.of(context).unfocus();
 
-                    await context.read<SignInProvider>().signIn(
-                        context, context.read<SignInProvider>().remember);
+                    await context
+                        .read<SignInProvider>()
+                        .signIn(context, context.read<AuthProvider>().remember);
                     setState(() {});
                   },
                   text: S.of(context).sign_in,

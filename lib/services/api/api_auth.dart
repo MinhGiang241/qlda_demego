@@ -70,8 +70,6 @@ class ApiAuth {
     var client = await ApiService.shared.getClient(
       username: username,
       password: password,
-      onError: onError,
-      remmember: remmenber,
     );
     return client;
   }
@@ -85,13 +83,23 @@ class ApiAuth {
   // }
 
   static Future checkExistAccount(String username) async {
-    var query = CHECKEXISTEDACCOUNT;
+    var query = '''
+mutation (\$username:String){
+    response: authorization_mobile_n_check_existed_account (username: \$username ) {
+        code
+        message
+        data
+    }
+}
+        
+        
+''';
     final MutationOptions options = MutationOptions(
       document: gql(query),
       variables: {"username": username},
     );
 
-    final results = await shared.mutationhqlQuery(options);
+    final results = await ApiService.shared.mutationhqlQuery(options);
 
     var res = ResponseModule.fromJson(results);
 

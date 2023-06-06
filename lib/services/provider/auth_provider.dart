@@ -19,13 +19,18 @@ enum AuthStatus { unknown, auth, unauthen }
 class AuthProvider with ChangeNotifier {
   AuthStatus authStatus = AuthStatus.unknown;
   bool isLoading = false;
+  bool remember = true;
+  toggleRemember() {
+    remember = !remember;
+    notifyListeners();
+  }
 
   Future<void> start() async {
     await ApiService.shared.getExistClient().then((cre) async {
       if (cre != null) {
         if (cre.credentials.isExpired) {
           authStatus = AuthStatus.unauthen;
-          await ApiService.shared.refresh(cre);
+          await ApiService.shared.refresh(cre, remember);
         }
         authStatus = AuthStatus.auth;
       } else {

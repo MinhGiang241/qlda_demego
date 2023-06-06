@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:qlda_demego/constant/api_constant.dart';
 import 'package:qlda_demego/generated/intl/messages_vi.dart';
 
@@ -24,8 +25,7 @@ typedef OnError = Function(ErrorHandle);
 class ApiService {
   static ApiService shared = ApiService();
 
-  final Dio _dio =
-      Dio(BaseOptions(baseUrl: '${ApiConstants.baseUrl}}/content/'));
+  final Dio _dio = Dio(BaseOptions(baseUrl: ApiConstants.baseURL));
   String tokenEndpointUrl = ApiConstants.authorizationEndpoint;
   String clientId = ApiConstants.clientId; //"importer";
   String secret = ApiConstants.clientSecret;
@@ -33,45 +33,35 @@ class ApiService {
 
   String userName = '';
   String passWord = '';
-  bool remember = false;
 
-  final _graphqlLink = HttpLink(
-    ApiConstants.baseUrl,
-  );
+  final _graphqlLink = HttpLink(ApiConstants.baseURL);
 
   Future<oauth2.Client?> getClient({
     required String username,
     required String password,
-    OnError? onError,
-    bool remmember = false,
+    bool remember = false,
+    ErrorHandleFunc? onError,
   }) async {
     userName = username;
     passWord = password;
-    remmember = remmember;
-    var client;
-    if (remmember) {
-      client = await getExistClient();
-    } else {
-      await deleteCre();
-    }
-    // const client = null;
 
+    final client = await getExistClient();
     if (client != null) {
       if (client.credentials.isExpired) {
-        return await _getCre(username, password, onError, remmember);
+        return await _getCre(username, password, onError, remember);
       } else {
         return client;
       }
     } else {
-      return await _getCre(username, password, onError, remmember);
+      return await _getCre(username, password, onError, remember);
     }
   }
 
   Future<oauth2.Client?> _getCre(
     String username,
     String password,
-    OnError? onError,
-    bool remember,
+    ErrorHandleFunc? onError,
+    remember,
   ) async {
     final authorizationEndpoint = Uri.parse(tokenEndpointUrl);
     try {
@@ -85,113 +75,134 @@ class ApiService {
       );
       final path = await getApplicationDocumentsDirectory();
       final credentialsFile = File('${path.path}/credential.json');
-      if (remember) {
-        await credentialsFile.writeAsString(cli.credentials.toJson());
-      } else {
-        await deleteCre();
-      }
+      // if (remember) {
+      await credentialsFile.writeAsString(cli.credentials.toJson());
+      // }
 
       return cli;
     } catch (e) {
-      if (e.runtimeType.toString() == "AuthorizationException") {
-        var authErr = ErrorHandle(
-            msg: (e as oauth2.AuthorizationException).description!, code: 1);
-        onError?.call(authErr);
-      } else if (e.runtimeType.toString() == '_ClientSocketException') {
-        onError?.call(ErrorHandle(code: 2));
-      } else {
-        onError?.call(
-          ErrorHandle(
-            code: 3,
-          ),
-        );
-      }
-
+      onError?.call(e.toString());
       return null;
     }
   }
 
   Future<oauth2.Client?> getExistClient() async {
-    final path = await getApplicationDocumentsDirectory();
-    final credentialsFile = File('${path.path}/credential.json');
-    var exists = await credentialsFile.exists();
-    if (exists) {
-      var credentials =
-          oauth2.Credentials.fromJson(await credentialsFile.readAsString());
-      return oauth2.Client(
-        credentials,
-        identifier: clientId,
-        secret: '',
-      );
+    try {
+      final path = await getApplicationDocumentsDirectory();
+      final credentialsFile = File('${path.path}/credential.json');
+      var exists = await credentialsFile.exists();
+      if (exists) {
+        var credentials =
+            oauth2.Credentials.fromJson(await credentialsFile.readAsString());
+        return oauth2.Client(
+          credentials,
+          identifier: clientId,
+          secret: '',
+        );
+      }
+      return null;
+    } catch (e) {
+      return null;
     }
-    return null;
   }
 
   deleteCre() async {
     final path = await getApplicationDocumentsDirectory();
     final credentialsFile = File('${path.path}/credential.json');
-    if (await credentialsFile.exists()) {
-      await credentialsFile.delete();
+    print(credentialsFile);
+    if (credentialsFile.existsSync()) {
+      try {
+        await credentialsFile.delete();
+      } catch (e) {}
     }
   }
 
-  Future<oauth2.Client> refresh(oauth2.Client client) async {
-    final cli = await client.refreshCredentials();
-    final path = await getApplicationDocumentsDirectory();
-    final credentialsFile = File('${path.path}/credential.json');
-    await credentialsFile.writeAsString(client.credentials.toJson());
-    return cli;
+  Future<oauth2.Client> refresh(
+    oauth2.Client client,
+    remember,
+  ) async {
+    // throw ("RELOGIN");
+    try {
+      final cli = await client.refreshCredentials();
+      final path = await getApplicationDocumentsDirectory();
+      final credentialsFile = File('${path.path}/credential.json');
+
+      await credentialsFile.writeAsString(client.credentials.toJson());
+
+      return cli;
+    } catch (e) {
+      throw ("RELOGIN");
+      // return oauth2.Client;
+    }
   }
 
-  Future<bool> isExpired() async {
+  Future<bool> isExpired(BuildContext context) async {
     final client = await getExistClient();
     return client!.credentials.isExpired;
   }
 
-  Future<String> getToken() async {
+  Future<String> getToken(BuildContext context) async {
     final client = await getExistClient();
     return client!.credentials.accessToken;
   }
 
-  Future<Map<String, dynamic>> postApi(
-      {dynamic data,
-      required String path,
-      bool useToken = true,
-      OnError? onError,
-      OnSendProgress? onSendProgress}) async {
+  Future<Map<String, dynamic>> postApi({
+    dynamic data,
+    required String path,
+    bool useToken = true,
+    ErrorHandleFunc? onError,
+    bool remember = false,
+    OnSendProgress? onSendProgress,
+    Options? op,
+  }) async {
     Options? options;
     if (useToken) {
       var client = await getExistClient();
       if (client == null) {
-        onError?.call(ErrorHandle(msg: ''));
+        onError?.call('');
       } else {
         //print(client.credentials.expiration);
         if (client.credentials.isExpired) {
           // print("EXPired");
-          client = await refresh(client);
-          log(client.credentials.accessToken);
-          options = Options(
-            headers: {
-              'Authorization': "Bearer ${client.credentials.accessToken}",
-              "Accept": "application/json"
-            },
+          // ignore: use_build_context_synchronously
+          client = await refresh(
+            client,
+            remember,
           );
+          log(client.credentials.accessToken);
+          if (op == null) {
+            options = Options(
+              headers: {
+                'Authorization': "Bearer ${client.credentials.accessToken}",
+                "Accept": "application/json"
+              },
+            );
+          }
         } else {
           //await client.refreshCredentials();
           log(client.credentials.accessToken);
-          options = Options(
-            headers: {
-              'Authorization': "Bearer ${client.credentials.accessToken}",
-              "Accept": "application/json"
-            },
-          );
+          if (op == null) {
+            options = Options(
+              headers: {
+                'Authorization': "Bearer ${client.credentials.accessToken}",
+                "Accept": "application/json"
+              },
+            );
+          } else {
+            options = op;
+          }
         }
       }
     }
     try {
-      final response = await _dio.post(path,
-          data: data, options: options, onSendProgress: onSendProgress);
-      return jsonDecode(response.toString());
+      final response = await _dio.post(
+        path,
+        data: data,
+        options: options,
+        onSendProgress: onSendProgress,
+      );
+      // print(data);
+      return {"data": response.toString(), "name": response.data};
     } on DioError catch (e) {
       if (e.response != null) {
         try {
@@ -210,21 +221,26 @@ class ApiService {
     }
   }
 
-  Future<Map<String, dynamic>> getApi(
-      {required String path,
-      bool useToken = true,
-      Map<String, dynamic>? params,
-      OnError? onError}) async {
+  Future<Map<String, dynamic>> getApi({
+    required String path,
+    bool useToken = true,
+    bool remember = false,
+    Map<String, dynamic>? params,
+    ErrorHandleFunc? onError,
+  }) async {
     Options? options;
     if (useToken) {
       var client = await getExistClient();
       if (client == null) {
-        onError?.call(ErrorHandle(msg: ''));
+        onError?.call('');
       } else {
         //print(client.credentials.expiration);
         if (client.credentials.isExpired) {
           // print("EXPired");
-          client = await refresh(client);
+          client = await refresh(
+            client,
+            remember,
+          );
           log(client.credentials.accessToken);
           options = Options(
             headers: {
@@ -266,22 +282,28 @@ class ApiService {
     }
   }
 
-  Future<Map<String, dynamic>> deleteApi(
-      {dynamic data,
-      required String path,
-      bool useToken = true,
-      OnError? onError,
-      OnSendProgress? onSendProgress}) async {
+  Future<Map<String, dynamic>> deleteApi({
+    dynamic data,
+    required String path,
+    required BuildContext context,
+    bool useToken = true,
+    bool remember = false,
+    ErrorHandleFunc? onError,
+    OnSendProgress? onSendProgress,
+  }) async {
     Options? options;
     if (useToken) {
       var client = await getExistClient();
       if (client == null) {
-        onError?.call(ErrorHandle(msg: ''));
+        onError?.call('');
       } else {
         //print(client.credentials.expiration);
         if (client.credentials.isExpired) {
           // print("EXPired");
-          client = await refresh(client);
+          client = await refresh(
+            client,
+            remember,
+          );
           log(client.credentials.accessToken);
           options = Options(
             headers: {
@@ -336,9 +358,7 @@ class ApiService {
       //print(client.credentials.expiration);
       if (client.credentials.isExpired) {
         // print("EXPired");
-        client = await refresh(
-          client,
-        );
+        client = await refresh(client, remember);
         log(client.credentials.accessToken);
         authLink = AuthLink(
           getToken: () async => 'Bearer ${client?.credentials.accessToken}',
@@ -361,57 +381,31 @@ class ApiService {
     return graphQLClient;
   }
 
-  // Future<GraphQLClient> getClientGraphQL({OnError? onError}) async {
-  //   late AuthLink authLink;
-  //   var client = await getExistClient();
-  //   if (client == null) {
-  //     onError?.call(ErrorHandle());
-  //   } else {
-  //     //print(client.credentials.expiration);
-  //     if (client.credentials.isExpired) {
-  //       // print("EXPired");
-  //       client = await refresh(client);
-  //       log(client.credentials.accessToken);
-  //       authLink = AuthLink(
-  //         getToken: () async => 'Bearer ${client?.credentials.accessToken}',
-  //       );
-  //     } else {
-  //       //await client.refreshCredentials();
-  //       log(client.credentials.accessToken);
-  //       authLink = AuthLink(
-  //         getToken: () async => 'Bearer ${client?.credentials.accessToken}',
-  //       );
-  //     }
-  //   }
-  //   Link link = authLink.concat(_graphqlLink);
-
-  //   final GraphQLClient graphQLClient = GraphQLClient(
-  //     cache: GraphQLCache(),
-  //     link: link,
-  //   );
-
-  //   return graphQLClient;
-  // }
-
   Future<Map<String, dynamic>> graphqlQuery(QueryOptions options) async {
+    final cl = await getClientGraphQL();
     try {
-      final cl = await getClientGraphQL();
       final result = await cl.query(options);
-
       if (result.data == null) {
-        // throw ("network_connection_err");
         return {
-          "status": "internet_error",
-          "message": "network_connection_err"
+          "response": {"code": 1, "message": S.current.err_conn, "data": null}
         };
       }
       return result.data!;
-    } catch (e) {
-      return {"status": "error", "message": e.toString()};
+    } on OperationException catch (e) {
+      if (e.toString() == "RELOGIN") {
+        return {
+          "response": {"code": 10, "message": e.toString(), "data": null}
+        };
+      }
+      return {
+        "response": {"code": 1, "message": e.toString(), "data": null}
+      };
     }
   }
 
-  Future<Map<String, dynamic>> mutationhqlQuery(MutationOptions options) async {
+  Future<Map<String, dynamic>> mutationhqlQuery(
+    MutationOptions options,
+  ) async {
     try {
       final cl = await getClientGraphQL();
       final result = await cl.mutate(options);
@@ -436,7 +430,7 @@ class ApiService {
       variables: variables,
     );
 
-    final results = await ApiService.shared.mutationhqlQuery(options);
+    final results = await shared.mutationhqlQuery(options);
 
     var res = ResponseModule.fromJson(results);
 

@@ -20,6 +20,7 @@ class VerifyOtpScreen extends StatefulWidget {
 class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
   @override
   void initState() {
+    widget.ctx.read<ForgotPassPrv>().second = 30;
     widget.ctx.read<ForgotPassPrv>().startTimer();
     super.initState();
   }
@@ -109,7 +110,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
           initialData: 30,
           stream: context.read<ForgotPassPrv>().timeResendController.stream,
           builder: (context, snapshot) {
-            final second = snapshot.data ?? 30;
+            var second = snapshot.data ?? 30;
             return Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
