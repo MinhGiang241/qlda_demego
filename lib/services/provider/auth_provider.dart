@@ -20,9 +20,14 @@ class AuthProvider with ChangeNotifier {
   AuthStatus authStatus = AuthStatus.unknown;
   bool isLoading = false;
   bool remember = true;
+  String? accessToken;
   toggleRemember() {
     remember = !remember;
     notifyListeners();
+  }
+
+  setAccessToken(String token) {
+    accessToken = token;
   }
 
   Future<void> start() async {
@@ -80,6 +85,9 @@ class AuthProvider with ChangeNotifier {
     }
 
     isLoading = false;
+    accessToken = credentials?.credentials.accessToken;
+    setAccessToken(credentials?.credentials.accessToken ?? "");
+    print(accessToken);
     notifyListeners();
     return credentials;
   }

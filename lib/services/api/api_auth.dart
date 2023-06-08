@@ -71,6 +71,7 @@ class ApiAuth {
       username: username,
       password: password,
     );
+
     return client;
   }
 

@@ -1,25 +1,108 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:provider/provider.dart';
 import 'package:qlda_demego/constant/constants.dart';
+import 'package:qlda_demego/services/provider/auth_provider.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../widgets/main_drawer.dart';
 import '../../widgets/primary_appbar.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  HomeScreen({super.key});
   static const routeName = '/home';
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  InAppWebViewController? webController;
+
+  PullToRefreshController? refreshController;
+
+  late var url;
+
+  double progress = 0;
+
+  @override
   Widget build(BuildContext context) {
+    var accessToken = context.watch<AuthProvider>().accessToken;
+    print(accessToken);
+    var initialUrl =
+        'http://dev.buildingtenant.demego.vn?token=$accessToken&mobile=true';
+    var a =
+        "https://dev.buildingtenant.demego.vn/l/bao-cao-tong-hop-theo-cong-ty";
+    WebViewController controller = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setBackgroundColor(const Color(0x00000000))
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onProgress: (int progress) {
+            // Update loading bar.
+          },
+          onPageStarted: (String url) {},
+          onPageFinished: (String url) {},
+          onWebResourceError: (WebResourceError error) {},
+          onNavigationRequest: (NavigationRequest request) {
+            if (request.url.startsWith(initialUrl)) {
+              return NavigationDecision.prevent;
+            }
+            return NavigationDecision.navigate;
+          },
+        ),
+      )
+      ..loadRequest(Uri.parse(initialUrl));
+
     return Scaffold(
       appBar: PrimaryAppbar(
         title: "Welcome",
       ),
       drawer: MainDrawer(),
-      body: Center(
-        child:
-            Text("Welcome", style: txtBodyLargeBold(color: grayScaleColorBase)),
+      body: Column(
+        children: [
+          // Expanded(
+          //   child: WebViewWidget(
+          //     controller: controller,
+          //   ),
+          // ),
+          Expanded(
+            child: InAppWebView(
+              onJsAlert: (controller, jsAlertRequest) async => JsAlertResponse(
+                confirmButtonTitle: "aloo",
+                message: "adshdhasdkaskhdashkhk",
+              ),
+              onJsPrompt: (controller, jsAlertRequest) async =>
+                  JsPromptResponse(
+                confirmButtonTitle: "aloo",
+                message: "adshdhasdkaskhdashkhk",
+              ),
+              initialUrlRequest: URLRequest(url: Uri.parse(a)),
+              initialOptions: InAppWebViewGroupOptions(
+                crossPlatform: InAppWebViewOptions(
+                  allowFileAccessFromFileURLs: true,
+                  incognito: true,
+                  preferredContentMode: UserPreferredContentMode.MOBILE,
+                  useShouldOverrideUrlLoading: true,
+                  useShouldInterceptFetchRequest: true,
+                  allowUniversalAccessFromFileURLs: true,
+                  javaScriptCanOpenWindowsAutomatically: true,
+                  javaScriptEnabled: true,
+                  mediaPlaybackRequiresUserGesture: false,
+                  supportZoom: false,
+                ),
+                android: AndroidInAppWebViewOptions(
+                  domStorageEnabled: true,
+                  loadWithOverviewMode: true,
+                  mixedContentMode:
+                      AndroidMixedContentMode.MIXED_CONTENT_ALWAYS_ALLOW,
+                ),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }

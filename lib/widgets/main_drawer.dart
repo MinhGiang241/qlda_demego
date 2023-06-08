@@ -37,179 +37,176 @@ class MainDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider.value(
-      value: AuthProvider()..start(),
-      builder: (context, child) => Drawer(
-        child: Column(
-          children: <Widget>[
-            Container(
-              height: 150,
-              width: double.infinity,
-              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-              alignment: Alignment.centerLeft,
-              decoration: BoxDecoration(gradient: gradientPurple),
-              child: DrawerHeader(
-                // alignment: Alignment.center,
-                padding: const EdgeInsets.only(top: 4),
-                child: Column(
-                  children: [
-                    Text(
-                      'Quản lý tòa nhà',
-                      style: txtBold(18, secondaryColor5),
-                    ),
-                    vpad(20),
-                    Row(
-                      children: [
-                        CircleAvatar(
-                          backgroundColor: Colors.grey.shade400,
-                          radius: 25,
-                          child: const Icon(
-                            Icons.person,
-                            size: 40,
-                          ),
-                        ),
-                        hpad(15),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Trương Minh Giang",
-                                textAlign: TextAlign.left,
-                                style: txtBodyMediumRegular(
-                                    color: secondaryColor5)),
-                            Text("Vinhome Ocean Park",
-                                textAlign: TextAlign.left,
-                                style: txtBodySmallRegular(
-                                    color: secondaryColor5)),
-                            Text("Quản lý tòa nhà",
-                                textAlign: TextAlign.left,
-                                style: txtBodySmallRegular(
-                                    color: secondaryColor5)),
-                          ],
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Flexible(
-              child: ListView(
+    return Drawer(
+      child: Column(
+        children: <Widget>[
+          Container(
+            height: 150,
+            width: double.infinity,
+            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+            alignment: Alignment.centerLeft,
+            decoration: BoxDecoration(gradient: gradientPurple),
+            child: DrawerHeader(
+              // alignment: Alignment.center,
+              padding: const EdgeInsets.only(top: 4),
+              child: Column(
                 children: [
-                  buildListTile(
-                    S.of(context).application,
-                    Icons.document_scanner,
-                    () => Navigator.pushReplacementNamed(
-                      context,
-                      ApplicationScreen.routeName,
-                    ),
+                  Text(
+                    'Quản lý tòa nhà',
+                    style: txtBold(18, secondaryColor5),
                   ),
-                  buildListTile(
-                    S.of(context).extr_tast,
-                    Icons.list_alt,
-                    () => Navigator.pushReplacementNamed(
-                      context,
-                      ExtraTaskListScreen.routeName,
-                    ),
-                  ),
-                  buildListTile(
-                    S.of(context).period_task,
-                    Icons.list_rounded,
-                    () => Navigator.pushReplacementNamed(
-                      context,
-                      PeriodTaskListScreen.routeName,
-                    ),
-                  ),
-                  buildListTile(
-                    S.of(context).asset_manage,
-                    Icons.money,
-                    () => Navigator.pushReplacementNamed(
-                      context,
-                      AssetScreen.routeName,
-                    ),
-                  ),
-                  buildListTile(
-                    S.of(context).req_letter_management,
-                    Icons.receipt,
-                    () => Navigator.pushReplacementNamed(
-                      context,
-                      RequestLetterListScreen.routeName,
-                    ),
-                  ),
-                  buildListTile(
-                    S.of(context).missing_obj_list,
-                    Icons.dangerous,
-                    () => Navigator.pushReplacementNamed(
-                      context,
-                      MissingObjectListScreen.routeName,
-                    ),
-                  ),
-                  buildListTile(
-                    S.of(context).parcel,
-                    Icons.gif_box,
-                    () => Navigator.pushReplacementNamed(
-                      context,
-                      ParcelListScreen.routeName,
-                    ),
-                  ),
-                  buildListTile(
-                    S.of(context).penetration,
-                    Icons.transform,
-                    () => Navigator.pushReplacementNamed(
-                      context,
-                      EntranceListScreen.routeName,
-                    ),
-                  ),
-                  buildListTile(
-                    S.of(context).resident_card,
-                    Icons.portrait,
-                    () => Navigator.pushReplacementNamed(
-                      context,
-                      ResidentCardListScreen.routeName,
-                    ),
-                  ),
-                  buildListTile(
-                    S.of(context).trans_card,
-                    Icons.car_rental,
-                    () => Navigator.pushReplacementNamed(
-                      context,
-                      TransportationCardList.routeName,
-                    ),
-                  ),
-                  buildListTile(
-                    S.of(context).customer,
-                    Icons.dashboard,
-                    () => Navigator.pushReplacementNamed(
-                      context,
-                      CustomerListScreen.routeName,
-                    ),
-                  ),
-                  buildListTile(
-                    S.of(context).info_reception,
-                    Icons.message,
-                    () => Navigator.pushReplacementNamed(
-                      context,
-                      InformationReceptionListScreen.routeName,
-                    ),
-                  ),
+                  vpad(20),
+                  Row(
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: Colors.grey.shade400,
+                        radius: 25,
+                        child: const Icon(
+                          Icons.person,
+                          size: 40,
+                        ),
+                      ),
+                      hpad(15),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Trương Minh Giang",
+                              textAlign: TextAlign.left,
+                              style:
+                                  txtBodyMediumRegular(color: secondaryColor5)),
+                          Text("Vinhome Ocean Park",
+                              textAlign: TextAlign.left,
+                              style:
+                                  txtBodySmallRegular(color: secondaryColor5)),
+                          Text("Quản lý tòa nhà",
+                              textAlign: TextAlign.left,
+                              style:
+                                  txtBodySmallRegular(color: secondaryColor5)),
+                        ],
+                      )
+                    ],
+                  )
                 ],
               ),
             ),
-            Stack(
+          ),
+          Flexible(
+            child: ListView(
               children: [
-                Positioned(
-                  child: Column(
-                    children: [
-                      const Divider(thickness: 2),
-                      buildListTile(S.of(context).sign_out, Icons.logout, () {
-                        context.read<AuthProvider>().onSignOut(context);
-                      }),
-                    ],
+                buildListTile(
+                  S.of(context).application,
+                  Icons.document_scanner,
+                  () => Navigator.pushReplacementNamed(
+                    context,
+                    ApplicationScreen.routeName,
+                  ),
+                ),
+                buildListTile(
+                  S.of(context).extr_tast,
+                  Icons.list_alt,
+                  () => Navigator.pushReplacementNamed(
+                    context,
+                    ExtraTaskListScreen.routeName,
+                  ),
+                ),
+                buildListTile(
+                  S.of(context).period_task,
+                  Icons.list_rounded,
+                  () => Navigator.pushReplacementNamed(
+                    context,
+                    PeriodTaskListScreen.routeName,
+                  ),
+                ),
+                buildListTile(
+                  S.of(context).asset_manage,
+                  Icons.money,
+                  () => Navigator.pushReplacementNamed(
+                    context,
+                    AssetScreen.routeName,
+                  ),
+                ),
+                buildListTile(
+                  S.of(context).req_letter_management,
+                  Icons.receipt,
+                  () => Navigator.pushReplacementNamed(
+                    context,
+                    RequestLetterListScreen.routeName,
+                  ),
+                ),
+                buildListTile(
+                  S.of(context).missing_obj_list,
+                  Icons.dangerous,
+                  () => Navigator.pushReplacementNamed(
+                    context,
+                    MissingObjectListScreen.routeName,
+                  ),
+                ),
+                buildListTile(
+                  S.of(context).parcel,
+                  Icons.gif_box,
+                  () => Navigator.pushReplacementNamed(
+                    context,
+                    ParcelListScreen.routeName,
+                  ),
+                ),
+                buildListTile(
+                  S.of(context).penetration,
+                  Icons.transform,
+                  () => Navigator.pushReplacementNamed(
+                    context,
+                    EntranceListScreen.routeName,
+                  ),
+                ),
+                buildListTile(
+                  S.of(context).resident_card,
+                  Icons.portrait,
+                  () => Navigator.pushReplacementNamed(
+                    context,
+                    ResidentCardListScreen.routeName,
+                  ),
+                ),
+                buildListTile(
+                  S.of(context).trans_card,
+                  Icons.car_rental,
+                  () => Navigator.pushReplacementNamed(
+                    context,
+                    TransportationCardList.routeName,
+                  ),
+                ),
+                buildListTile(
+                  S.of(context).customer,
+                  Icons.dashboard,
+                  () => Navigator.pushReplacementNamed(
+                    context,
+                    CustomerListScreen.routeName,
+                  ),
+                ),
+                buildListTile(
+                  S.of(context).info_reception,
+                  Icons.message,
+                  () => Navigator.pushReplacementNamed(
+                    context,
+                    InformationReceptionListScreen.routeName,
                   ),
                 ),
               ],
-            )
-          ],
-        ),
+            ),
+          ),
+          Stack(
+            children: [
+              Positioned(
+                child: Column(
+                  children: [
+                    const Divider(thickness: 2),
+                    buildListTile(S.of(context).sign_out, Icons.logout, () {
+                      context.read<AuthProvider>().onSignOut(context);
+                    }),
+                  ],
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }

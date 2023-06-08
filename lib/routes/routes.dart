@@ -70,19 +70,16 @@ class AppRoutes {
       case SplashScreen.routeName:
         return MaterialPageRoute(
           settings: routeSetting,
-          builder: (_) => ChangeNotifierProvider<AuthProvider>(
-            create: (context) => AuthProvider()..start(),
-            builder: (context, child) => SplashScreen(),
-          ),
+          builder: (_) => SplashScreen(),
         );
       case SignInScreen.routeName:
         return MaterialPageRoute(
           settings: routeSetting,
           builder: (_) => MultiProvider(
             providers: [
-              ChangeNotifierProvider(
-                create: (context) => AuthProvider()..start(),
-              ),
+              // ChangeNotifierProvider(
+              //   create: (context) => AuthProvider()..start(),
+              // ),
               ChangeNotifierProvider(
                 create: (context) =>
                     SignInProvider(authPrv: context.read<AuthProvider>()),
@@ -94,7 +91,7 @@ class AppRoutes {
       case HomeScreen.routeName:
         return MaterialPageRoute(
           settings: routeSetting,
-          builder: (context) => const HomeScreen(),
+          builder: (context) => HomeScreen(),
         );
       case ApplicationScreen.routeName:
         return MaterialPageRoute(
