@@ -1,7 +1,7 @@
 import 'package:boardview/board_item.dart';
 import 'package:boardview/board_list.dart';
 import 'package:boardview/boardview_controller.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide SearchBar;
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';

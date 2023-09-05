@@ -11,6 +11,7 @@ import '../../../utils/utils.dart';
 import '../../../widgets/primary_button.dart';
 import '../../../widgets/primary_dialog.dart';
 import '../../../widgets/primary_text_field.dart';
+import '../../home/home_screen.dart';
 import '../forgot_pass/forgot_pass_screen.dart';
 import 'auth_prv.dart';
 
@@ -208,11 +209,12 @@ class _SignInScreenState extends State<SignInScreen> {
                 PrimaryButton(
                   onTap: () async {
                     FocusScope.of(context).unfocus();
-
-                    await context
-                        .read<SignInProvider>()
-                        .signIn(context, context.read<AuthProvider>().remember);
-                    setState(() {});
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, HomeScreen.routeName, (Route route) => false);
+                    // await context
+                    //     .read<SignInProvider>()
+                    //     .signIn(context, context.read<AuthProvider>().remember);
+                    // setState(() {});
                   },
                   text: S.of(context).sign_in,
                   isLoading: context.watch<SignInProvider>().isLoading,

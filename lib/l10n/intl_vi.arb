@@ -383,5 +383,6 @@
   "reset_pass_success": "Mật khẩu đã được cập nhật thành công",
   "password_not_match": "Mật khẩu không khớp",
   "success_change_pass": "Mật khẩu mới đã được cập nhật thành công. Vui lòng đăng nhập bằng mật khẩu mới",
-  "success_opt": "Gửi mã OTP thành công"
+  "success_opt": "Gửi mã OTP thành công",
+  "wait_extend_letter": "Phiếu gia hạn chờ xác nhận"
 }

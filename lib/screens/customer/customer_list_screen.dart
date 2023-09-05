@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart' hide SearchBar;
 import 'package:qlda_demego/widgets/main_drawer.dart';
 import 'package:qlda_demego/widgets/primary_appbar.dart';
 import 'package:qlda_demego/widgets/search_bar.dart';
@@ -19,7 +17,7 @@ var data = [
     "CCCD": "197604409277",
     "Tên tòa": "A1",
     "Tầng": "12",
-    "Mặt bằng": "1908"
+    "Mặt bằng": "1908",
   },
   {
     "ID": "0002",

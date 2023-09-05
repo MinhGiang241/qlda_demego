@@ -382,5 +382,6 @@
   "reset_pass_success": "Reset Password successfully, please Sign in again",
   "password_not_match": "Password not match",
   "success_change_pass": "Change password successfully, please re log in with new password",
-  "success_opt": "Send OTP code successfully"
+  "success_opt": "Send OTP code successfully",
+  "wait_extend_letter": "wait confirm extend letter"
 }

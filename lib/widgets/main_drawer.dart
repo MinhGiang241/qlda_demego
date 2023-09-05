@@ -41,7 +41,7 @@ class MainDrawer extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            height: 150,
+            height: 170,
             width: double.infinity,
             padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
             alignment: Alignment.centerLeft,

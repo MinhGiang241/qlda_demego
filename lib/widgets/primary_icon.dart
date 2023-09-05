@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Badge;
 import 'package:badges/src/badge.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/src/widgets/container.dart';

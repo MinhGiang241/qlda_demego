@@ -1,7 +1,12 @@
+// ignore_for_file: avoid_print
+
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:provider/provider.dart';
 import 'package:qlda_demego/constant/constants.dart';
 import 'package:qlda_demego/services/provider/auth_provider.dart';
@@ -33,8 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
     print(accessToken);
     var initialUrl =
         'http://dev.buildingtenant.demego.vn?token=$accessToken&mobile=true';
-    var a =
+    var ac =
         "https://dev.buildingtenant.demego.vn/l/bao-cao-tong-hop-theo-cong-ty";
+    var b = 'http://127.0.0.1/:3000';
     WebViewController controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
@@ -47,22 +53,27 @@ class _HomeScreenState extends State<HomeScreen> {
           onPageFinished: (String url) {},
           onWebResourceError: (WebResourceError error) {},
           onNavigationRequest: (NavigationRequest request) {
-            if (request.url.startsWith(initialUrl)) {
+            if (request.url.startsWith(b)) {
               return NavigationDecision.prevent;
             }
             return NavigationDecision.navigate;
           },
         ),
       )
-      ..loadRequest(Uri.parse(initialUrl));
+      ..loadRequest(Uri.parse(b));
 
     return Scaffold(
-      appBar: PrimaryAppbar(
+      appBar: const PrimaryAppbar(
         title: "Welcome",
       ),
       drawer: MainDrawer(),
       body: Column(
         children: [
+          // Expanded(
+          //   child: WebviewScaffold(
+          //     url: initialUrl,
+          //   ),
+          // ),
           // Expanded(
           //   child: WebViewWidget(
           //     controller: controller,
@@ -70,6 +81,54 @@ class _HomeScreenState extends State<HomeScreen> {
           // ),
           Expanded(
             child: InAppWebView(
+              onFindResultReceived: (
+                controller,
+                activeMatchOrdinal,
+                numberOfMatches,
+                isDoneCounting,
+              ) {},
+              onConsoleMessage: (controller, consoleMessage) {
+                print('conslole: ');
+                print(consoleMessage.message ?? '');
+              },
+              onLoadResource: (controller, resource) {
+                // print(controller);
+                //   print(resource);
+              },
+              onUpdateVisitedHistory: (controller, url, androidIsReload) {
+                // print(controller);
+                // print(url);
+                // print(androidIsReload);
+              },
+              onWebViewCreated: (controller) {
+                // print(controller);
+              },
+              onPageCommitVisible: (controller, url) {
+                // print(controller);
+                // print(url);
+              },
+              onJsConfirm: (controller, jsConfirmRequest) async {
+                // print(controller);
+                // print(jsConfirmRequest);
+              },
+              onLoadError: (controller, url, code, message) {
+                // print(controller);
+                // print(url);
+                // print(code);
+                // print(message);
+              },
+              onCreateWindow: (controller, createWindowAction) async {
+                // print(controller);
+                // print(createWindowAction);
+              },
+              // onAjaxProgress: (controller, ajaxRequest) async {
+              //   print(controller);
+              //   print(ajaxRequest);
+              // },
+              onLoadStart: (controller, url) {
+                print(controller);
+                print(url);
+              },
               onJsAlert: (controller, jsAlertRequest) async => JsAlertResponse(
                 confirmButtonTitle: "aloo",
                 message: "adshdhasdkaskhdashkhk",
@@ -79,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 confirmButtonTitle: "aloo",
                 message: "adshdhasdkaskhdashkhk",
               ),
-              initialUrlRequest: URLRequest(url: Uri.parse(a)),
+              initialUrlRequest: URLRequest(url: Uri.parse(b)),
               initialOptions: InAppWebViewGroupOptions(
                 crossPlatform: InAppWebViewOptions(
                   allowFileAccessFromFileURLs: true,
@@ -101,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

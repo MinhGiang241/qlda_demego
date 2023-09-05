@@ -3,7 +3,7 @@ import 'dart:ui';
 import '../constant/constants.dart';
 import 'package:flutter/material.dart';
 
-class PrimaryAppbar extends StatelessWidget with PreferredSizeWidget {
+class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
   const PrimaryAppbar({
     Key? key,
     this.title,
