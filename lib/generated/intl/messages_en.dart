@@ -275,6 +275,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "images": MessageLookupByLibrary.simpleMessage("Images"),
         "import": MessageLookupByLibrary.simpleMessage("Import"),
         "in_progress": MessageLookupByLibrary.simpleMessage("In progress"),
+        "incorrect_usn_pass": MessageLookupByLibrary.simpleMessage(
+            "Phone number/Email or password is not correct."),
         "info": MessageLookupByLibrary.simpleMessage("Infomation"),
         "info_content":
             MessageLookupByLibrary.simpleMessage("Information content"),
@@ -319,6 +321,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Do not have any asset!"),
         "no_comment": MessageLookupByLibrary.simpleMessage("No comment"),
         "no_data": MessageLookupByLibrary.simpleMessage("Don\'t have any data"),
+        "no_project":
+            MessageLookupByLibrary.simpleMessage("Don\'t have any project"),
         "not_active": MessageLookupByLibrary.simpleMessage(
             "Account has not been activated"),
         "not_distribute":
@@ -458,12 +462,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "resident_card":
             MessageLookupByLibrary.simpleMessage("Resident identity card"),
         "resister": MessageLookupByLibrary.simpleMessage("Resister"),
+        "retry": MessageLookupByLibrary.simpleMessage("Please try again."),
         "safe_value_from":
             MessageLookupByLibrary.simpleMessage("Save value from"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "save_temp": MessageLookupByLibrary.simpleMessage("Temporary save"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "select": MessageLookupByLibrary.simpleMessage("Chọn"),
+        "select_project":
+            MessageLookupByLibrary.simpleMessage("Select project"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "send_otp_to": MessageLookupByLibrary.simpleMessage(
             "Send OTP reset password code to"),
@@ -495,6 +502,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Change password successfully, please re log in with new password"),
         "success_opt":
             MessageLookupByLibrary.simpleMessage("Send OTP code successfully"),
+        "success_sign_in":
+            MessageLookupByLibrary.simpleMessage("Sign in successfully"),
+        "success_sign_up":
+            MessageLookupByLibrary.simpleMessage("Sign up successfully"),
         "sum": MessageLookupByLibrary.simpleMessage("Summary"),
         "supervisor": MessageLookupByLibrary.simpleMessage("Supervisor"),
         "supply": MessageLookupByLibrary.simpleMessage("Supplier"),
@@ -549,6 +560,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "wait_exc": MessageLookupByLibrary.simpleMessage("Waiting execute"),
         "wait_execute":
             MessageLookupByLibrary.simpleMessage("Waiting to execute"),
+        "wait_extend_letter":
+            MessageLookupByLibrary.simpleMessage("wait confirm extend letter"),
         "warranty": MessageLookupByLibrary.simpleMessage("Warranty department"),
         "way_send_otp": MessageLookupByLibrary.simpleMessage(
             "How would you like to receive a code to reset your password?"),

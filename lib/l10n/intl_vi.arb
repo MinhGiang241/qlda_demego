@@ -384,5 +384,11 @@
   "password_not_match": "Mật khẩu không khớp",
   "success_change_pass": "Mật khẩu mới đã được cập nhật thành công. Vui lòng đăng nhập bằng mật khẩu mới",
   "success_opt": "Gửi mã OTP thành công",
-  "wait_extend_letter": "Phiếu gia hạn chờ xác nhận"
+  "wait_extend_letter": "Phiếu gia hạn chờ xác nhận",
+  "incorrect_usn_pass": "Số điện thoại/Email hoặc mật khẩu không chính xác",
+  "success_sign_up": "Đăng ký thành công",
+  "success_sign_in": "Đăng nhập thành công",
+  "no_project": "Không có dự án nào",
+  "retry": "Vui lòng kiểm tra lại.",
+  "select_project": "Chọn dự án"
 }

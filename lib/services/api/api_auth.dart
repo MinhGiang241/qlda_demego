@@ -62,11 +62,12 @@ mutation (\$userName:String,\$newPassword:String){
 
 class ApiAuth {
   static ApiService shared = ApiService();
-  static Future<oauth2.Client?> signIn(
-      {required String username,
-      required String password,
-      bool remmenber = false,
-      OnError? onError}) async {
+  static Future<oauth2.Client?> signIn({
+    required String username,
+    required String password,
+    bool remmenber = false,
+    Function? onError,
+  }) async {
     var client = await ApiService.shared.getClient(
       username: username,
       password: password,
@@ -75,7 +76,7 @@ class ApiAuth {
     return client;
   }
 
-  static Future<void> signOut({OnError? onError}) async {
+  static Future<void> signOut({Function? onError}) async {
     return await ApiService.shared.deleteCre();
   }
 

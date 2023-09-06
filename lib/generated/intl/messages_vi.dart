@@ -273,6 +273,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "images": MessageLookupByLibrary.simpleMessage("Hình ảnh"),
         "import": MessageLookupByLibrary.simpleMessage("Nhập"),
         "in_progress": MessageLookupByLibrary.simpleMessage("Đang tiến hành"),
+        "incorrect_usn_pass": MessageLookupByLibrary.simpleMessage(
+            "Số điện thoại/Email hoặc mật khẩu không chính xác"),
         "info": MessageLookupByLibrary.simpleMessage("Thông tin"),
         "info_content":
             MessageLookupByLibrary.simpleMessage("Nội dung thông tin"),
@@ -320,6 +322,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_comment":
             MessageLookupByLibrary.simpleMessage("Chưa có bình luận nào"),
         "no_data": MessageLookupByLibrary.simpleMessage("Chưa có dữ liệu"),
+        "no_project":
+            MessageLookupByLibrary.simpleMessage("Không có dự án nào"),
         "not_active": MessageLookupByLibrary.simpleMessage(
             "Tài khoản chưa được kích hoạt"),
         "not_distribute": MessageLookupByLibrary.simpleMessage("Chưa phân bổ"),
@@ -460,12 +464,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Mật khẩu đã được cập nhật thành công"),
         "resident_card": MessageLookupByLibrary.simpleMessage("Thẻ cư dân"),
         "resister": MessageLookupByLibrary.simpleMessage("Người đăng ký"),
+        "retry": MessageLookupByLibrary.simpleMessage("Vui lòng kiểm tra lại."),
         "safe_value_from":
             MessageLookupByLibrary.simpleMessage("Giá trị an toàn từ"),
         "save": MessageLookupByLibrary.simpleMessage("Lưu"),
         "save_temp": MessageLookupByLibrary.simpleMessage("Lưu nháp"),
         "search": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
         "select": MessageLookupByLibrary.simpleMessage("Chọn"),
+        "select_project": MessageLookupByLibrary.simpleMessage("Chọn dự án"),
         "send": MessageLookupByLibrary.simpleMessage("Gửi"),
         "send_otp_to": MessageLookupByLibrary.simpleMessage(
             "Gửi mã để đặt lại mật khẩu về"),
@@ -498,6 +504,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Mật khẩu mới đã được cập nhật thành công. Vui lòng đăng nhập bằng mật khẩu mới"),
         "success_opt":
             MessageLookupByLibrary.simpleMessage("Gửi mã OTP thành công"),
+        "success_sign_in":
+            MessageLookupByLibrary.simpleMessage("Đăng nhập thành công"),
+        "success_sign_up":
+            MessageLookupByLibrary.simpleMessage("Đăng ký thành công"),
         "sum": MessageLookupByLibrary.simpleMessage("Tổng số"),
         "supervisor": MessageLookupByLibrary.simpleMessage("Người theo dõi"),
         "supply": MessageLookupByLibrary.simpleMessage("Nhà cung cấp"),
@@ -550,6 +560,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "wait_confirm": MessageLookupByLibrary.simpleMessage("Chờ xác nhận"),
         "wait_exc": MessageLookupByLibrary.simpleMessage("Chờ xử lý"),
         "wait_execute": MessageLookupByLibrary.simpleMessage("Chờ thực hiện"),
+        "wait_extend_letter":
+            MessageLookupByLibrary.simpleMessage("Phiếu gia hạn chờ xác nhận"),
         "warranty": MessageLookupByLibrary.simpleMessage("Đơn vị bảo hành"),
         "way_send_otp": MessageLookupByLibrary.simpleMessage(
             "Bạn muốn nhận mã để đặt lại mật khẩu bằng cách nào?"),

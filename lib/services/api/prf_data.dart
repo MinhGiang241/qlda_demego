@@ -35,11 +35,13 @@ class PrfData {
   final _userBox = Hive.box("USER");
   final _signIn = Hive.box('SIGNIN');
   final _settingBox = Hive.box("SETTINGS");
+  final _projectBox = Hive.box('PROJECT');
 
   static Future open() async {
     await Hive.openBox("USER");
     await Hive.openBox("SIGNIN");
     await Hive.openBox("SETTINGS");
+    await Hive.openBox("PROJECT");
   }
 
   final String _tokenKey = "token";
@@ -49,6 +51,33 @@ class PrfData {
   final String _apartment = "apartment";
   final String _resident = "resident";
   final String _listApartment = "listapartment";
+  final String _project = "project";
+  final String _authState = "authState";
+
+  Future<void> setAuthState(String v) async {
+    await _signIn.put(_authState, v);
+  }
+
+  Future<String?> getAuthState() async {
+    return await _signIn.get(_authState);
+  }
+
+  Future<void> deleteAuthState() async {
+    await _signIn.deleteAll([_authState]);
+  }
+
+  Future<void> setProjectInStore(p) async {
+    var c = p.toJson();
+    _projectBox.put('project', c);
+  }
+
+  Future<String?> getProjectInstore() async {
+    return await _projectBox.get(_project);
+  }
+
+  Future<void> deleteProject() async {
+    await _projectBox.deleteAll([_project]);
+  }
 
   Future<void> setToken(String token) async {
     return _userBox.put(_tokenKey, token);

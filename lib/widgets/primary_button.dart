@@ -1,7 +1,6 @@
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 import '../constant/constants.dart';
 
@@ -28,7 +27,7 @@ class PrimaryButton extends StatelessWidget {
     this.secondaryBackgroundColor,
     this.textColor,
     this.buttonType,
-    this.buttonSize,
+    this.buttonSize = ButtonSize.large,
     this.width,
     this.icon,
     this.isRectangle = false,
@@ -48,21 +47,36 @@ class PrimaryButton extends StatelessWidget {
   final bool isRectangle;
   final bool isFit;
   final bool isLoading;
+  double genHeight() {
+    switch (buttonSize) {
+      case ButtonSize.large:
+        return 56;
+      case ButtonSize.medium:
+        return 48;
+      case ButtonSize.small:
+        return 41;
+      case ButtonSize.xsmall:
+        return 30;
+      default:
+        return 30;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: genHeight(),
       width: width,
       margin: margin,
       decoration: BoxDecoration(
         color: _backgroundColor(buttonType ?? ButtonType.primary),
         gradient: _gradientColor(buttonType ?? ButtonType.primary),
-        borderRadius: isRectangle ? null : BorderRadius.circular(28),
+        borderRadius: isRectangle ? null : BorderRadius.circular(12),
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          borderRadius: isRectangle ? null : BorderRadius.circular(28),
+          borderRadius: isRectangle ? null : BorderRadius.circular(12),
           onTap: isLoading ? () {} : onTap,
           child: Padding(
             padding: _paddingContent(buttonSize ?? ButtonSize.large),
@@ -70,8 +84,6 @@ class PrimaryButton extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                if (icon != null) icon!,
-                if (icon != null && text != null) hpad(8),
                 if (text != null)
                   Flexible(
                     child: isFit
@@ -122,7 +134,9 @@ class PrimaryButton extends StatelessWidget {
                                 textAlign: TextAlign.center,
                                 overflow: TextOverflow.ellipsis,
                               ),
-                  )
+                  ),
+                if (icon != null && text != null) hpad(8),
+                if (icon != null) icon!,
               ],
             ),
           ),

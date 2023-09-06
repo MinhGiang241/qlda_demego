@@ -383,5 +383,11 @@
   "password_not_match": "Password not match",
   "success_change_pass": "Change password successfully, please re log in with new password",
   "success_opt": "Send OTP code successfully",
-  "wait_extend_letter": "wait confirm extend letter"
+  "wait_extend_letter": "wait confirm extend letter",
+  "incorrect_usn_pass": "Phone number/Email or password is not correct.",
+  "success_sign_up": "Sign up successfully",
+  "success_sign_in": "Sign in successfully",
+  "no_project": "Don't have any project",
+  "retry": "Please try again.",
+  "select_project": "Select project"
 }

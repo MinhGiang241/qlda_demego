@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:qlda_demego/widgets/primary_button.dart';
 
 import '../constant/constants.dart';
 import '../generated/l10n.dart';
+import 'primary_button.dart';
 import 'primary_card.dart';
 
 class ConnectError extends StatelessWidget {
@@ -38,7 +36,7 @@ class ConnectError extends StatelessWidget {
               buttonSize: ButtonSize.small,
               text: S.of(context).reload,
               onTap: onTap,
-            )
+            ),
           ],
         ),
       ),

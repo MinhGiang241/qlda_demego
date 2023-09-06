@@ -1,40 +1,58 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, non_constant_identifier_names, empty_catches
 
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-
-import 'package:flutter/material.dart';
-import 'package:qlda_demego/constant/api_constant.dart';
-import 'package:qlda_demego/generated/intl/messages_vi.dart';
-
-import '../../constant/constants.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:dio/dio.dart';
 import 'package:graphql/client.dart';
-
 import 'package:oauth2/oauth2.dart' as oauth2;
 import 'package:path_provider/path_provider.dart';
 
+import '../../constant/api_constant.dart';
 import '../../generated/l10n.dart';
 import '../../models/response.dart';
 import '../../utils/error_handler.dart';
 
 typedef OnSendProgress = Function(int, int);
-typedef OnError = Function(ErrorHandle);
 
 class ApiService {
   static ApiService shared = ApiService();
 
-  final Dio _dio = Dio(BaseOptions(baseUrl: ApiConstants.baseURL));
+  Dio _dio = Dio(BaseOptions(baseUrl: ApiConstants.baseURL));
   String tokenEndpointUrl = ApiConstants.authorizationEndpoint;
   String clientId = ApiConstants.clientId; //"importer";
   String secret = ApiConstants.clientSecret;
   String scope = ApiConstants.scope;
+  String uploadURL = '';
 
   String userName = '';
   String passWord = '';
+  String regCode = '';
 
-  final _graphqlLink = HttpLink(ApiConstants.baseURL);
+  var _graphqlLink = HttpLink(ApiConstants.baseURL);
+
+  String? access_token;
+  DateTime? expireDate;
+
+  clearToken() {
+    access_token = null;
+    expireDate = null;
+  }
+
+  setAPI(
+    String URL,
+    String? access_tokenHO,
+    DateTime? expireDateHO,
+    String? regcode,
+  ) {
+    _dio = Dio(BaseOptions(baseUrl: URL));
+    access_token = access_tokenHO;
+    expireDate = expireDateHO;
+    regCode = regcode ?? '';
+    _graphqlLink = HttpLink(URL, defaultHeaders: {"regcode": regcode ?? ''});
+    uploadURL = '$URL/headless/stream/upload';
+  }
 
   Future<oauth2.Client?> getClient({
     required String username,
@@ -154,45 +172,53 @@ class ApiService {
     bool remember = false,
     OnSendProgress? onSendProgress,
     Options? op,
+    String? name,
+    String? accessToken,
   }) async {
     Options? options;
     if (useToken) {
-      var client = await getExistClient();
-      if (client == null) {
-        onError?.call('');
-      } else {
-        //print(client.credentials.expiration);
-        if (client.credentials.isExpired) {
-          // print("EXPired");
-          // ignore: use_build_context_synchronously
-          client = await refresh(
-            client,
-            remember,
-          );
-          log(client.credentials.accessToken);
-          if (op == null) {
-            options = Options(
-              headers: {
-                'Authorization': "Bearer ${client.credentials.accessToken}",
-                "Accept": "application/json"
-              },
-            );
-          }
-        } else {
-          //await client.refreshCredentials();
-          log(client.credentials.accessToken);
-          if (op == null) {
-            options = Options(
-              headers: {
-                'Authorization': "Bearer ${client.credentials.accessToken}",
-                "Accept": "application/json"
-              },
-            );
-          } else {
-            options = op;
-          }
-        }
-      }
+      options = Options(
+        headers: {
+          'Authorization': "Bearer ${accessToken}",
+          "Accept": "application/json",
+        },
+      );
+      //   var client = await getExistClient();
+      //   if (client == null) {
+      //     onError?.call('');
+      //   } else {
+      //     //print(client.credentials.expiration);
+      //     if (client.credentials.isExpired) {
+      //       // print("EXPired");
+      //       // ignore: use_build_context_synchronously
+      //       client = await refresh(
+      //         client,
+      //         remember,
+      //       );
+      //       log(client.credentials.accessToken);
+      //       if (op == null) {
+      //         options = Options(
+      //           headers: {
+      //             'Authorization': "Bearer ${client.credentials.accessToken}",
+      //             "Accept": "application/json"
+      //           },
+      //         );
+      //       }
+      //     } else {
+      //       //await client.refreshCredentials();
+      //       log(client.credentials.accessToken);
+      //       if (op == null) {
+      //         options = Options(
+      //           headers: {
+      //             'Authorization': "Bearer ${client.credentials.accessToken}",
+      //             "Accept": "application/json"
+      //           },
+      //         );
+      //       } else {
+      //         options = op;
+      //       }
+      //     }
+      //   }
     }
     try {
       final response = await _dio.post(
@@ -202,7 +228,7 @@ class ApiService {
         onSendProgress: onSendProgress,
       );
       // print(data);
-      return {"data": response.toString(), "name": response.data};
+      return {"data": response.toString(), "name": name};
     } on DioError catch (e) {
       if (e.response != null) {
         try {
@@ -215,7 +241,7 @@ class ApiService {
       } else {
         return {
           "status": "internet_error",
-          "message": "network_connection_err"
+          "message": "network_connection_err",
         };
       }
     }
@@ -245,7 +271,7 @@ class ApiService {
           options = Options(
             headers: {
               'Authorization': "Bearer ${client.credentials.accessToken}",
-              "Accept": "application/json"
+              "Accept": "application/json",
             },
           );
         } else {
@@ -254,7 +280,7 @@ class ApiService {
           options = Options(
             headers: {
               'Authorization': "Bearer ${client.credentials.accessToken}",
-              "Accept": "application/json"
+              "Accept": "application/json",
             },
           );
         }
@@ -276,7 +302,7 @@ class ApiService {
       } else {
         return {
           "status": "internet_error",
-          "message": "network_connection_err"
+          "message": "network_connection_err",
         };
       }
     }
@@ -308,7 +334,7 @@ class ApiService {
           options = Options(
             headers: {
               'Authorization': "Bearer ${client.credentials.accessToken}",
-              "Accept": "application/json"
+              "Accept": "application/json",
             },
           );
         } else {
@@ -317,7 +343,7 @@ class ApiService {
           options = Options(
             headers: {
               'Authorization': "Bearer ${client.credentials.accessToken}",
-              "Accept": "application/json"
+              "Accept": "application/json",
             },
           );
         }
@@ -339,10 +365,33 @@ class ApiService {
       } else {
         return {
           "status": "internet_error",
-          "message": "network_connection_err"
+          "message": "network_connection_err",
         };
       }
     }
+  }
+
+  Future<GraphQLClient> getClientGraphQLfromHO() async {
+    late AuthLink authLink;
+    if (access_token == null) {
+      authLink = AuthLink(getToken: () => 'Bearer ');
+    } else if (expireDate == null ||
+        expireDate!.compareTo(DateTime.now()) < 0) {
+      authLink = AuthLink(getToken: () => 'Bearer ');
+    } else {
+      log(access_token!);
+      authLink = AuthLink(
+        getToken: () async => 'Bearer ${access_token}',
+      );
+    }
+    Link link = authLink.concat(_graphqlLink);
+
+    final GraphQLClient graphQLClient = GraphQLClient(
+      cache: GraphQLCache(),
+      link: link,
+    );
+
+    return graphQLClient;
   }
 
   Future<GraphQLClient> getClientGraphQL({
@@ -382,23 +431,26 @@ class ApiService {
   }
 
   Future<Map<String, dynamic>> graphqlQuery(QueryOptions options) async {
-    final cl = await getClientGraphQL();
+    final cl = await getClientGraphQLfromHO(); // getClientGraphQL(old)
     try {
       final result = await cl.query(options);
       if (result.data == null) {
         return {
-          "response": {"code": 1, "message": S.current.err_conn, "data": null}
+          "response": {"code": 1, "message": S.current.err_conn, "data": null},
         };
+      }
+      if (result.data?['response']?['message'] == 2) {
+        throw ("RELOGIN");
       }
       return result.data!;
     } on OperationException catch (e) {
       if (e.toString() == "RELOGIN") {
         return {
-          "response": {"code": 10, "message": e.toString(), "data": null}
+          "response": {"code": 2, "message": e.toString(), "data": null},
         };
       }
       return {
-        "response": {"code": 1, "message": e.toString(), "data": null}
+        "response": {"code": 1, "message": e.toString(), "data": null},
       };
     }
   }
@@ -407,19 +459,22 @@ class ApiService {
     MutationOptions options,
   ) async {
     try {
-      final cl = await getClientGraphQL();
+      final cl = await getClientGraphQLfromHO();
       final result = await cl.mutate(options);
 
       if (result.data == null) {
         // throw ("network_connection_err");
         return {
-          "response": {"code": 1, "message": S.current.err_conn}
+          "response": {"code": 1, "message": S.current.err_conn},
         };
+      }
+      if (result.data?['response']?['message'] == 2) {
+        throw ("RELOGIN");
       }
       return result.data!;
     } catch (e) {
       return {
-        "response": {"code": 1, "message": e.toString()}
+        "response": {"code": 1, "message": e.toString()},
       };
     }
   }
@@ -441,3 +496,4 @@ class ApiService {
     }
   }
 }
+

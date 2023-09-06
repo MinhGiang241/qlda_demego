@@ -1,17 +1,15 @@
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:qlda_demego/routes/routes.dart';
 import 'package:qlda_demego/services/provider/auth_provider.dart';
 import 'constant/theme.dart';
 import 'generated/l10n.dart';
-import 'screens/auth/sign_in/auth_prv.dart';
+import 'screens/ho/prv/ho_account_service_prv.dart';
 import 'services/api/prf_data.dart';
 
 void main() async {
@@ -36,20 +34,24 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
+          create: (context) => HOAccountServicePrv(),
+        ),
+        ChangeNotifierProvider(
           create: (context) => AuthProvider()..start(),
         ),
       ],
       child: MaterialApp(
         builder: (context, child) {
           final mediaQueryData = MediaQuery.of(context);
-          final scale = mediaQueryData.textScaleFactor.clamp(1.0, 1.2);
+          final scale = mediaQueryData.textScaler
+              .clamp(minScaleFactor: 1.0, maxScaleFactor: 1.2);
           return MediaQuery(
-            data: MediaQuery.of(context).copyWith(textScaleFactor: scale),
+            data: MediaQuery.of(context).copyWith(textScaler: scale),
             child: child!,
           );
         },
         debugShowCheckedModeBanner: false,
-        title: 'DEMEGO',
+        title: 'DEMEPRO',
         theme: AppTheme.lightTheme(),
         onGenerateRoute: _appRouter.onGenerateRoute,
         locale: const Locale.fromSubtags(languageCode: 'vi'),

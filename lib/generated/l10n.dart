@@ -3889,6 +3889,76 @@ class S {
       args: [],
     );
   }
+
+  /// `wait confirm extend letter`
+  String get wait_extend_letter {
+    return Intl.message(
+      'wait confirm extend letter',
+      name: 'wait_extend_letter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number/Email or password is not correct.`
+  String get incorrect_usn_pass {
+    return Intl.message(
+      'Phone number/Email or password is not correct.',
+      name: 'incorrect_usn_pass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign up successfully`
+  String get success_sign_up {
+    return Intl.message(
+      'Sign up successfully',
+      name: 'success_sign_up',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in successfully`
+  String get success_sign_in {
+    return Intl.message(
+      'Sign in successfully',
+      name: 'success_sign_in',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't have any project`
+  String get no_project {
+    return Intl.message(
+      'Don\'t have any project',
+      name: 'no_project',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please try again.`
+  String get retry {
+    return Intl.message(
+      'Please try again.',
+      name: 'retry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select project`
+  String get select_project {
+    return Intl.message(
+      'Select project',
+      name: 'select_project',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

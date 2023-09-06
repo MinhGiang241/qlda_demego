@@ -53,14 +53,14 @@ class _HomeScreenState extends State<HomeScreen> {
           onPageFinished: (String url) {},
           onWebResourceError: (WebResourceError error) {},
           onNavigationRequest: (NavigationRequest request) {
-            if (request.url.startsWith(b)) {
+            if (request.url.startsWith(ac)) {
               return NavigationDecision.prevent;
             }
             return NavigationDecision.navigate;
           },
         ),
       )
-      ..loadRequest(Uri.parse(b));
+      ..loadRequest(Uri.parse(ac));
 
     return Scaffold(
       appBar: const PrimaryAppbar(
@@ -138,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 confirmButtonTitle: "aloo",
                 message: "adshdhasdkaskhdashkhk",
               ),
-              initialUrlRequest: URLRequest(url: Uri.parse(b)),
+              initialUrlRequest: URLRequest(url: Uri.parse(ac)),
               initialOptions: InAppWebViewGroupOptions(
                 crossPlatform: InAppWebViewOptions(
                   allowFileAccessFromFileURLs: true,
