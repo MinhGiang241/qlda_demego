@@ -5,6 +5,7 @@ import '../../generated/l10n.dart';
 import '../../services/api/api_services.dart';
 import '../../widgets/primary_button.dart';
 import '../auth/sign_in/sign_in_screen.dart';
+import '../ho/select_project_screen.dart';
 import '../home/home_screen.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -102,23 +103,24 @@ class SplashScreen extends StatelessWidget {
                     text: S.of(context).sign_in_account,
                     width: dvWidth(context) * 0.8,
                     onTap: () async {
-                      var cre = await ApiService.shared.getExistClient();
+                      // var cre = await ApiService.shared.getExistClient();
 
-                      if (cre != null) {
-                        if (cre.credentials.expiration!
-                                .compareTo(DateTime.now()) >
-                            0) {
-                          // ignore: use_build_context_synchronously
-                          await Navigator.of(context).pushReplacementNamed(
-                            HomeScreen.routeName,
-                          );
-                          return;
-                        }
-                      }
-                      await ApiService.shared.deleteCre();
+                      // if (cre != null) {
+                      //   if (cre.credentials.expiration!
+                      //           .compareTo(DateTime.now()) >
+                      //       0) {
+                      //     // ignore: use_build_context_synchronously
+                      //     await Navigator.of(context).pushReplacementNamed(
+                      //       HomeScreen.routeName,
+                      //     );
+                      //     return;
+                      //   }
+                      // }
+                      // await ApiService.shared.deleteCre();
 
                       // ignore: use_build_context_synchronously
-                      Navigator.of(context).pushNamed(SignInScreen.routeName);
+                      Navigator.of(context)
+                          .pushNamed(SelectProjectScreen.routeName);
                     },
                   ),
                 ),

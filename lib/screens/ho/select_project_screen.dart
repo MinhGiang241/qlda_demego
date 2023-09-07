@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:qlda_demego/screens/splash/splash_screen.dart';
 
 import '../../constant/constants.dart';
 import '../../generated/l10n.dart';
@@ -24,7 +25,7 @@ class SelectProjectScreen extends StatefulWidget {
 class _SelectProjectScreenState extends State<SelectProjectScreen> {
   final RefreshController _refreshController =
       RefreshController(initialRefresh: false);
-  var loading = true;
+  var loading = false;
 
   setLogin(bool v) {
     setState(() {
@@ -51,16 +52,23 @@ class _SelectProjectScreenState extends State<SelectProjectScreen> {
           child: PrimaryScreen(
             appBar: AppBar(
               elevation: 0,
-              leading: vpad(0),
-              actions: [
-                IconButton(
-                  onPressed: () {
-                    context.read<HOAccountServicePrv>().logOutHO(context);
-                  },
-                  icon: const Icon(Icons.logout),
-                ),
-                hpad(12),
-              ],
+              leading: BackButton(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(
+                    context,
+                    SplashScreen.routeName,
+                  );
+                },
+              ),
+              // actions: [
+              //   IconButton(
+              //     onPressed: () {
+              //       context.read<HOAccountServicePrv>().logOutHO(context);
+              //     },
+              //     icon: const Icon(Icons.logout),
+              //   ),
+              //   hpad(12),
+              // ],
             ),
             body: SafeArea(
               child: Column(
@@ -76,11 +84,10 @@ class _SelectProjectScreenState extends State<SelectProjectScreen> {
                     child: FutureBuilder(
                       future: context
                           .read<HOAccountServicePrv>()
-                          .getProjectList(context),
+                          .getAllProjectList(context),
                       builder: (context, snapshot) {
-                        var list = context
-                            .watch<HOAccountServicePrv>()
-                            .registrationProjectList;
+                        var list =
+                            context.watch<HOAccountServicePrv>().tenantList;
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
                           return const Center(child: PrimaryLoading());
@@ -109,30 +116,30 @@ class _SelectProjectScreenState extends State<SelectProjectScreen> {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text.rich(
-                                    TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: 'S.of(context).if_not_resident',
-                                          style: txtMedium(14, grayScaleColor2),
-                                        ),
-                                        TextSpan(
-                                          text: "S.of(context).click_here",
-                                          style:
-                                              txtMedium(14, primaryColorBase),
-                                          recognizer: TapGestureRecognizer()
-                                            ..onTap = () {
-                                              // Navigator.pushNamed(
-                                              //   context,
-                                              //   ProjectRegistrationScreen
-                                              //       .routeName,
-                                              // );
-                                            },
-                                        ),
-                                      ],
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
+                                  // Text.rich(
+                                  //   TextSpan(
+                                  //     children: [
+                                  //       TextSpan(
+                                  //         text: 'S.of(context).if_not_resident',
+                                  //         style: txtMedium(14, grayScaleColor2),
+                                  //       ),
+                                  //       TextSpan(
+                                  //         text: "S.of(context).click_here",
+                                  //         style:
+                                  //             txtMedium(14, primaryColorBase),
+                                  //         recognizer: TapGestureRecognizer()
+                                  //           ..onTap = () {
+                                  //             // Navigator.pushNamed(
+                                  //             //   context,
+                                  //             //   ProjectRegistrationScreen
+                                  //             //       .routeName,
+                                  //             // );
+                                  //           },
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  //   textAlign: TextAlign.center,
+                                  // ),
                                   Expanded(
                                     child: PrimaryEmptyWidget(
                                       emptyText: S.of(context).no_project,
@@ -159,29 +166,29 @@ class _SelectProjectScreenState extends State<SelectProjectScreen> {
                           child: ListView(
                             shrinkWrap: true,
                             children: [
-                              Text.rich(
-                                TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: ' S.of(context).if_not_resident',
-                                      style: txtMedium(14, grayScaleColor2),
-                                    ),
-                                    TextSpan(
-                                      text: " S.of(context).click_here",
-                                      style: txtMedium(14, primaryColorBase),
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          // Navigator.pushNamed(
-                                          //   context,
-                                          //   ProjectRegistrationScreen.routeName,
-                                          // );
-                                        },
-                                    ),
-                                  ],
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                              vpad(10),
+                              // Text.rich(
+                              //   TextSpan(
+                              //     children: [
+                              //       TextSpan(
+                              //         text: ' S.of(context).if_not_resident',
+                              //         style: txtMedium(14, grayScaleColor2),
+                              //       ),
+                              //       TextSpan(
+                              //         text: " S.of(context).click_here",
+                              //         style: txtMedium(14, primaryColorBase),
+                              //         recognizer: TapGestureRecognizer()
+                              //           ..onTap = () {
+                              //             // Navigator.pushNamed(
+                              //             //   context,
+                              //             //   ProjectRegistrationScreen.routeName,
+                              //             // );
+                              //           },
+                              //       ),
+                              //     ],
+                              //   ),
+                              //   textAlign: TextAlign.center,
+                              // ),
+                              // vpad(10),
                               ...list.map(
                                 (e) => PrimaryCard(
                                   onTap: () async {
@@ -215,14 +222,14 @@ class _SelectProjectScreenState extends State<SelectProjectScreen> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              e.project?.project_name ?? "",
+                                              e.p?.project_name ?? "",
                                               style: txtBold(
                                                 13,
                                                 grayScaleColorBase,
                                               ),
                                             ),
                                             Text(
-                                              e.project?.project_location ?? "",
+                                              e.p?.project_location ?? "",
                                               style: txtRegular(
                                                 13,
                                                 grayScaleColorBase,

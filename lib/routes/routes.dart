@@ -36,6 +36,7 @@ import '../screens/extra_task/extra_task_detail_screen.dart';
 import '../screens/extra_task/extra_task_list_screen.dart';
 import '../screens/extra_task/kanban_assign_screen.dart';
 import '../screens/extra_task/kanban_task_screen.dart';
+import '../screens/ho/select_project_screen.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/letter/detail_request_letter_screen.dart';
 import '../screens/letter/request_letter_list_screen.dart';
@@ -329,6 +330,11 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: routeSetting,
           builder: ((context) => ForgotPassScreen()),
+        );
+      case SelectProjectScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => SelectProjectScreen()),
         );
       default:
         return MaterialPageRoute(

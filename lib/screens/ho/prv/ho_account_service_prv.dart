@@ -21,6 +21,7 @@ class HOAccountServicePrv extends ChangeNotifier {
   String? access_token;
   DateTime? expireDate;
   List<Project> projectList = [];
+  List<TenantRegistration> tenantList = [];
   List<RegistrationProjectList> registrationProjectList = [];
   List<ResidentResitration> registrationList = [];
   var isLoginLoading = false;
@@ -44,19 +45,19 @@ class HOAccountServicePrv extends ChangeNotifier {
 
   navigateToProject(
     BuildContext context,
-    RegistrationProjectList e,
+    TenantRegistration e,
   ) async {
     try {
       isSelectProjectLoading = true;
       notifyListeners();
-      await ApiService.shared.setAPI(
-        e.deployment?.apiEndpoint ?? "",
+      ApiService.shared.setAPI(
+        e.d?.apiEndpoint ?? "",
         ApiHOService.shared.access_token,
         ApiHOService.shared.expireDate,
-        e.project?.registration?.code,
+        e.code,
       );
 
-      await PrfData.shared.setProjectInStore(e);
+      PrfData.shared.setProjectInStore(e);
       // var a = await APITower.mobileMe();
       //
       // print(a);
@@ -86,6 +87,10 @@ class HOAccountServicePrv extends ChangeNotifier {
       // }
       isSelectProjectLoading = false;
       notifyListeners();
+      Navigator.pushNamed(
+        context,
+        SignInScreen.routeName,
+      );
     } catch (e) {
       isSelectProjectLoading = false;
       notifyListeners();
@@ -226,6 +231,17 @@ class HOAccountServicePrv extends ChangeNotifier {
         Utils.showErrorMessage(context, S.of(context).incorrect_usn_pass);
       } else {
         Utils.showErrorMessage(context, e.error.toString());
+      }
+    });
+  }
+
+  Future getAllProjectList(BuildContext context) async {
+    await APIHOAccount.getAllProjects().then((v) {
+      if (v != null) {
+        tenantList.clear();
+        for (var i in v) {
+          tenantList.add(TenantRegistration.fromMap(i));
+        }
       }
     });
   }

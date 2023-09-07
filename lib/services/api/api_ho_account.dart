@@ -96,6 +96,30 @@ class APIHOAccount {
     }
   }
 
+  static Future getAllProjects() async {
+    var query = '''
+   mutation {
+    response: employee_mobile_get_all_projects  {
+        code
+        message
+        data
+      }
+    }          
+  ''';
+    final MutationOptions options = MutationOptions(
+      document: gql(query),
+    );
+    final results = await ApiHOService.shared.mutationhqlQuery(options);
+
+    var res = ResponseModule.fromJson(results);
+
+    if (res.response.code != 0) {
+      throw (res.response.message ?? "");
+    } else {
+      return res.response.data;
+    }
+  }
+
   static Future getApartmentSuggestion(
     String registrationId,
     String key,

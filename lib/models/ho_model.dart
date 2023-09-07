@@ -777,3 +777,100 @@ class GuestAccount {
   factory GuestAccount.fromJson(String source) =>
       GuestAccount.fromMap(json.decode(source) as Map<String, dynamic>);
 }
+
+class TenantRegistration {
+  String? id;
+  String? createdTime;
+  String? updatedTime;
+  String? tenantId;
+  bool? active;
+  bool? sandbox;
+  String? description;
+  String? code;
+  int? dbPort;
+  String? dbName;
+  Deployment? d;
+  Project? p;
+  TenantRegistration({
+    this.id,
+    this.createdTime,
+    this.updatedTime,
+    this.tenantId,
+    this.active,
+    this.sandbox,
+    this.description,
+    this.code,
+    this.dbPort,
+    this.dbName,
+    this.d,
+    this.p,
+  });
+
+  TenantRegistration copyWith({
+    String? id,
+    String? createdTime,
+    String? updatedTime,
+    String? tenantId,
+    bool? active,
+    bool? sandbox,
+    String? description,
+    String? code,
+    int? dbPort,
+    String? dbName,
+  }) {
+    return TenantRegistration(
+      id: id ?? this.id,
+      createdTime: createdTime ?? this.createdTime,
+      updatedTime: updatedTime ?? this.updatedTime,
+      tenantId: tenantId ?? this.tenantId,
+      active: active ?? this.active,
+      sandbox: sandbox ?? this.sandbox,
+      description: description ?? this.description,
+      code: code ?? this.code,
+      dbPort: dbPort ?? this.dbPort,
+      dbName: dbName ?? this.dbName,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      '_id': id,
+      'createdTime': createdTime,
+      'updatedTime': updatedTime,
+      'tenantId': tenantId,
+      'active': active,
+      'sandbox': sandbox,
+      'description': description,
+      'code': code,
+      'dbPort': dbPort,
+      'dbName': dbName,
+    };
+  }
+
+  factory TenantRegistration.fromMap(Map<String, dynamic> map) {
+    return TenantRegistration(
+      id: map['_id'] != null ? map['_id'] as String : null,
+      createdTime:
+          map['createdTime'] != null ? map['createdTime'] as String : null,
+      updatedTime:
+          map['updatedTime'] != null ? map['updatedTime'] as String : null,
+      tenantId: map['tenantId'] != null ? map['tenantId'] as String : null,
+      active: map['active'] != null ? map['active'] as bool : null,
+      sandbox: map['sandbox'] != null ? map['sandbox'] as bool : null,
+      description:
+          map['description'] != null ? map['description'] as String : null,
+      code: map['code'] != null ? map['code'] as String : null,
+      dbPort: int.tryParse(map['dbPort'].toString()) != null
+          ? int.parse(map['dbPort'].toString())
+          : null,
+      dbName: map['dbName'] != null ? map['dbName'] as String : null,
+      p: map['p'] != null ? Project.fromMap(map['p']) : null,
+      d: map['d'] != null ? Deployment.fromMap(map['d']) : null,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory TenantRegistration.fromJson(String source) =>
+      TenantRegistration.fromMap(json.decode(source) as Map<String, dynamic>);
+}

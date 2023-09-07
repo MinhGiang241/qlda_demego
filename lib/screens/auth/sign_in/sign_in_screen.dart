@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qlda_demego/screens/ho/select_project_screen.dart';
 import 'package:qlda_demego/screens/splash/splash_screen.dart';
 import 'package:qlda_demego/services/provider/sign_in_provider.dart';
 import 'package:qlda_demego/widgets/primary_screen.dart';
@@ -31,10 +32,13 @@ class _SignInScreenState extends State<SignInScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         leading: BackButton(
-          onPressed: () => Navigator.pushReplacementNamed(
-            context,
-            SplashScreen.routeName,
-          ),
+          onPressed: () {
+            Navigator.pushReplacementNamed(
+              context,
+              SelectProjectScreen.routeName,
+            );
+            // Navigator.pop(context);
+          },
         ),
       ),
       body: SafeArea(
@@ -46,8 +50,10 @@ class _SignInScreenState extends State<SignInScreen> {
             child: ListView(
               children: [
                 Center(
-                  child: Text(S.of(context).wellcome_back,
-                      style: txtDisplaySmall()),
+                  child: Text(
+                    S.of(context).wellcome_back,
+                    style: txtDisplaySmall(),
+                  ),
                 ),
                 vpad(30),
                 PrimaryTextField(
