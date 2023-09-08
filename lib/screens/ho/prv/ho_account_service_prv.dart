@@ -55,6 +55,10 @@ class HOAccountServicePrv extends ChangeNotifier {
         ApiHOService.shared.access_token,
         ApiHOService.shared.expireDate,
         e.code,
+        e.d?.tokenEndpoint,
+        e.code,
+        e.d?.apiEndpoint,
+        e.d?.domain,
       );
 
       PrfData.shared.setProjectInStore(e);

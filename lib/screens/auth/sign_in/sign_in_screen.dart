@@ -215,11 +215,11 @@ class _SignInScreenState extends State<SignInScreen> {
                 PrimaryButton(
                   onTap: () async {
                     FocusScope.of(context).unfocus();
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, HomeScreen.routeName, (Route route) => false);
-                    // await context
-                    //     .read<SignInProvider>()
-                    //     .signIn(context, context.read<AuthProvider>().remember);
+                    // Navigator.pushNamedAndRemoveUntil(
+                    //     context, HomeScreen.routeName, (Route route) => false);
+                    await context
+                        .read<SignInProvider>()
+                        .signIn(context, context.read<AuthProvider>().remember);
                     // setState(() {});
                   },
                   text: S.of(context).sign_in,

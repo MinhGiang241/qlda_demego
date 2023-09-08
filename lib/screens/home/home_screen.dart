@@ -12,6 +12,7 @@ import 'package:qlda_demego/constant/constants.dart';
 import 'package:qlda_demego/services/provider/auth_provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../../services/api/api_services.dart';
 import '../../widgets/main_drawer.dart';
 import '../../widgets/primary_appbar.dart';
 
@@ -37,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
     var accessToken = context.watch<AuthProvider>().accessToken;
     print(accessToken);
     var initialUrl =
-        'http://dev.buildingtenant.demego.vn?token=$accessToken&mobile=true';
+        '${ApiService.shared.webUrl}?token=$accessToken&mobile=true';
     var ac =
         "https://dev.buildingtenant.demego.vn/l/bao-cao-tong-hop-theo-cong-ty";
     var b = 'http://127.0.0.1/:3000';
@@ -53,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
           onPageFinished: (String url) {},
           onWebResourceError: (WebResourceError error) {},
           onNavigationRequest: (NavigationRequest request) {
-            if (request.url.startsWith(ac)) {
+            if (request.url.startsWith(initialUrl)) {
               return NavigationDecision.prevent;
             }
             return NavigationDecision.navigate;
@@ -138,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 confirmButtonTitle: "aloo",
                 message: "adshdhasdkaskhdashkhk",
               ),
-              initialUrlRequest: URLRequest(url: Uri.parse(ac)),
+              initialUrlRequest: URLRequest(url: Uri.parse(initialUrl)),
               initialOptions: InAppWebViewGroupOptions(
                 crossPlatform: InAppWebViewOptions(
                   allowFileAccessFromFileURLs: true,

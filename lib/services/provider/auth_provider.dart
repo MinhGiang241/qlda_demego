@@ -56,11 +56,11 @@ class AuthProvider with ChangeNotifier {
         password: password,
         remmenber: remember,
         onError: (e) {
-          if (e.code == 1) {
+          if (e != "RELOGIN") {
             Utils.showDialog(
                 context: context,
                 dialog: PrimaryDialog.error(msg: S.of(context).wrong_sign_in));
-          } else if (e.code == 2) {
+          } else if (e == "RELOGIN") {
             Utils.showDialog(
               context: context,
               dialog: PrimaryDialog.error(msg: S.of(context).err_conn),

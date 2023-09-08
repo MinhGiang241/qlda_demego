@@ -4,6 +4,7 @@ import 'package:graphql/client.dart' hide OnError;
 import 'package:oauth2/oauth2.dart' as oauth2;
 
 import '../../models/response.dart';
+import '../../utils/error_handler.dart';
 import 'api_services.dart';
 
 var CHECKEXISTEDACCOUNT = '''
@@ -66,11 +67,12 @@ class ApiAuth {
     required String username,
     required String password,
     bool remmenber = false,
-    Function? onError,
+    ErrorHandleFunc? onError,
   }) async {
     var client = await ApiService.shared.getClient(
       username: username,
       password: password,
+      onError: onError,
     );
 
     return client;

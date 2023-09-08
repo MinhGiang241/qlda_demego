@@ -24,6 +24,8 @@ class ApiService {
   String clientId = ApiConstants.clientId; //"importer";
   String secret = ApiConstants.clientSecret;
   String scope = ApiConstants.scope;
+  String baseUrl = ApiConstants.baseURL;
+  String webUrl = '';
   String uploadURL = '';
 
   String userName = '';
@@ -45,8 +47,21 @@ class ApiService {
     String? access_tokenHO,
     DateTime? expireDateHO,
     String? regcode,
+    String? tokenEndpoint,
+    String? clientCode,
+    String? baseU,
+    String? web,
   ) {
     _dio = Dio(BaseOptions(baseUrl: URL));
+    tokenEndpointUrl = '$tokenEndpoint/identity/connect/token';
+    clientId = clientCode ?? ApiConstants.clientId;
+    if (baseU != null) {
+      baseUrl = '$baseU/graphql';
+      _graphqlLink = HttpLink(baseU);
+    }
+    if (web != null) {
+      webUrl = web;
+    }
     access_token = access_tokenHO;
     expireDate = expireDateHO;
     regCode = regcode ?? '';
@@ -81,13 +96,13 @@ class ApiService {
     ErrorHandleFunc? onError,
     remember,
   ) async {
-    final authorizationEndpoint = Uri.parse(tokenEndpointUrl);
+    var authorizationEndpoint = Uri.parse(tokenEndpointUrl);
     try {
       final cli = await oauth2.resourceOwnerPasswordGrant(
+        basicAuth: false,
         authorizationEndpoint,
-        username,
-        password,
-        identifier: clientId,
+        username, password,
+        identifier: "qltn_demego_vn_DA000206", //clientId,
         secret: secret,
         scopes: [scope],
       );
@@ -496,4 +511,3 @@ class ApiService {
     }
   }
 }
-
