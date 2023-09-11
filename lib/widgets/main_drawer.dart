@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:qlda_demego/constant/constants.dart';
-import 'package:qlda_demego/screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:qlda_demego/screens/period_task/period_task_list_screen.dart';
 
 import '../generated/l10n.dart';
 import '../screens/application/application_screen.dart';
 import '../screens/assets/asset_screen.dart';
-import '../screens/auth/sign_in/sign_in_screen.dart';
 import '../screens/customer/customer_list_screen.dart';
 import '../screens/entrance/entrance_list_screen.dart';
 import '../screens/extra_task/extra_task_list_screen.dart';
@@ -16,7 +14,7 @@ import '../screens/missing/missing_object_list_screen.dart';
 import '../screens/parcel/parcel_list_screen.dart';
 import '../screens/reception/information_reception_list_screen.dart';
 import '../screens/resident_card/resident_card_list_screen.dart';
-import '../screens/transportation/add_transportation_card_screen.dart';
+import '../screens/technique/technical_screen.dart';
 import '../screens/transportation/transportation_card_list_screen.dart';
 import '../services/provider/auth_provider.dart';
 
@@ -70,22 +68,25 @@ class MainDrawer extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Trương Minh Giang",
-                              textAlign: TextAlign.left,
-                              style:
-                                  txtBodyMediumRegular(color: secondaryColor5)),
-                          Text("Vinhome Ocean Park",
-                              textAlign: TextAlign.left,
-                              style:
-                                  txtBodySmallRegular(color: secondaryColor5)),
-                          Text("Quản lý tòa nhà",
-                              textAlign: TextAlign.left,
-                              style:
-                                  txtBodySmallRegular(color: secondaryColor5)),
+                          Text(
+                            "Trương Minh Giang",
+                            textAlign: TextAlign.left,
+                            style: txtBodyMediumRegular(color: secondaryColor5),
+                          ),
+                          Text(
+                            "Vinhome Ocean Park",
+                            textAlign: TextAlign.left,
+                            style: txtBodySmallRegular(color: secondaryColor5),
+                          ),
+                          Text(
+                            "Quản lý tòa nhà",
+                            textAlign: TextAlign.left,
+                            style: txtBodySmallRegular(color: secondaryColor5),
+                          ),
                         ],
-                      )
+                      ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
@@ -93,6 +94,14 @@ class MainDrawer extends StatelessWidget {
           Flexible(
             child: ListView(
               children: [
+                buildListTile(
+                  "Kỹ thuật",
+                  Icons.table_view,
+                  () => Navigator.pushReplacementNamed(
+                    context,
+                    TechnicalSceen.routeName,
+                  ),
+                ),
                 buildListTile(
                   S.of(context).application,
                   Icons.document_scanner,
@@ -205,7 +214,7 @@ class MainDrawer extends StatelessWidget {
                 ),
               ),
             ],
-          )
+          ),
         ],
       ),
     );

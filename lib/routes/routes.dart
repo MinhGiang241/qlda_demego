@@ -56,6 +56,9 @@ import '../screens/resident_card/extend_service_screen.dart';
 import '../screens/resident_card/resident_card_details_screen.dart';
 import '../screens/resident_card/resident_card_list_screen.dart';
 import '../screens/resident_card/service_detail_screen.dart';
+import '../screens/technique/electric_screen.dart';
+import '../screens/technique/technical_screen.dart';
+import '../screens/technique/water_screen.dart';
 import '../screens/transportation/add_transportation_card_screen.dart';
 import '../screens/transportation/transportation_card_details_screen.dart';
 import '../screens/transportation/transportation_card_list_screen.dart';
@@ -335,6 +338,21 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: routeSetting,
           builder: ((context) => SelectProjectScreen()),
+        );
+      case TechnicalSceen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => TechnicalSceen()),
+        );
+      case WaterScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => WaterScreen()),
+        );
+      case ElectricScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => ElectricScreen()),
         );
       default:
         return MaterialPageRoute(

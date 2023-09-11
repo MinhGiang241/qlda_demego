@@ -33,7 +33,7 @@ class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
             blurRadius: 32,
             color: const Color(0xff6575A7).withOpacity(0.08),
             offset: const Offset(0, 8),
-          )
+          ),
         ],
       ),
       child: ClipRRect(
@@ -65,7 +65,7 @@ class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
                     isScrollable: isTabScrollabel,
                   ),
                 if ((tabController == null && tabs == null) && child != null)
-                  Expanded(child: child!)
+                  Expanded(child: child!),
               ],
             ),
           ),
