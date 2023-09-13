@@ -122,7 +122,7 @@ class ElectricScreen extends StatelessWidget {
                             child: Text("Tiêu thụ"),
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ],

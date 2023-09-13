@@ -102,7 +102,7 @@ class ApiService {
         basicAuth: false,
         authorizationEndpoint,
         username, password,
-        identifier: "qltn_demego_vn_DA000206", //clientId,
+        identifier: clientId, //clientId,
         secret: secret,
         scopes: [scope],
       );

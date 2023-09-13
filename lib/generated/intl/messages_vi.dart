@@ -547,6 +547,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "update": MessageLookupByLibrary.simpleMessage("Cập nhật"),
         "update_asset":
             MessageLookupByLibrary.simpleMessage(" Cập nhật thông tin tài sản"),
+        "upload": MessageLookupByLibrary.simpleMessage("Tải lên"),
         "username": MessageLookupByLibrary.simpleMessage("Tên đăng nhập"),
         "val_pass": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu phải có ít nhất 8 kí tự. Trong đó phải có ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt"),

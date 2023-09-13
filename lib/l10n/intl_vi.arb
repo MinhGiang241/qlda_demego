@@ -390,5 +390,6 @@
   "success_sign_in": "Đăng nhập thành công",
   "no_project": "Không có dự án nào",
   "retry": "Vui lòng kiểm tra lại.",
-  "select_project": "Chọn dự án"
+  "select_project": "Chọn dự án",
+  "upload": "Tải lên"
 }

@@ -389,5 +389,6 @@
   "success_sign_in": "Sign in successfully",
   "no_project": "Don't have any project",
   "retry": "Please try again.",
-  "select_project": "Select project"
+  "select_project": "Select project",
+  "upload": "Upload"
 }

@@ -544,6 +544,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "update": MessageLookupByLibrary.simpleMessage("Update"),
         "update_asset":
             MessageLookupByLibrary.simpleMessage(" Update Asset information"),
+        "upload": MessageLookupByLibrary.simpleMessage("Upload"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "val_pass": MessageLookupByLibrary.simpleMessage(
             "Password must be at least 8 characters. It must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character"),
