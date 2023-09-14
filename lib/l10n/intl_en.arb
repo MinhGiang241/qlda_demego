@@ -390,5 +390,7 @@
   "no_project": "Don't have any project",
   "retry": "Please try again.",
   "select_project": "Select project",
-  "upload": "Upload"
+  "upload": "Upload",
+  "month": "Month",
+  "year": "Year"
 }

@@ -311,6 +311,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Danh sách đồ thất lạc"),
         "missing_obj_name":
             MessageLookupByLibrary.simpleMessage("Tên đồ thất lạc"),
+        "month": MessageLookupByLibrary.simpleMessage("Tháng"),
         "name": MessageLookupByLibrary.simpleMessage("Tên"),
         "nationality": MessageLookupByLibrary.simpleMessage("Quốc tịch"),
         "new_pass": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
@@ -572,6 +573,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "work_place": MessageLookupByLibrary.simpleMessage("Nơi làm việc"),
         "wrong_sign_in": MessageLookupByLibrary.simpleMessage(
             "Tên đăng nhập hoặc mật khẩu không chính xác. Vui lòng kiểm tra lại "),
+        "year": MessageLookupByLibrary.simpleMessage("Năm"),
         "zone": MessageLookupByLibrary.simpleMessage("Khu vực"),
         "zone_type": MessageLookupByLibrary.simpleMessage("Loại khu vực")
       };

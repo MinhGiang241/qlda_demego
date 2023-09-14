@@ -43,7 +43,7 @@ class WaterScreen extends StatelessWidget {
                           validator: Utils.emptyValidator,
                           isRequired: true,
                           isReadOnly: true,
-                          hint: "dd/mm/yyyy",
+                          hint: "mm/yyyy",
                           onTap: () async {
                             await context.read<WaterPrv>().pickDate(context);
                           },

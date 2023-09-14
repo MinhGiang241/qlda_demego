@@ -22,7 +22,7 @@ class ElectricScreen extends StatelessWidget {
       builder: (context, state) {
         return PrimaryScreen(
           appBar: PrimaryAppbar(
-            title: "chỉ số điện",
+            title: "Chỉ số điện",
             leading: BackButton(
               onPressed: () {
                 Navigator.pop(context);
@@ -43,7 +43,7 @@ class ElectricScreen extends StatelessWidget {
                           validator: Utils.emptyValidator,
                           isRequired: true,
                           isReadOnly: true,
-                          hint: "dd/mm/yyyy",
+                          hint: "mm/yyyy",
                           onTap: () async {
                             await context.read<ElectricPrv>().pickDate(context);
                           },

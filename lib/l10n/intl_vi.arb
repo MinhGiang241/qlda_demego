@@ -391,5 +391,7 @@
   "no_project": "Không có dự án nào",
   "retry": "Vui lòng kiểm tra lại.",
   "select_project": "Chọn dự án",
-  "upload": "Tải lên"
+  "upload": "Tải lên",
+  "month": "Tháng",
+  "year": "Năm"
 }

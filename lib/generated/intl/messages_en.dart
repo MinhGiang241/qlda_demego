@@ -311,6 +311,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Missing object list"),
         "missing_obj_name":
             MessageLookupByLibrary.simpleMessage("Missing object name"),
+        "month": MessageLookupByLibrary.simpleMessage("Month"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "nationality": MessageLookupByLibrary.simpleMessage("Nationality"),
         "new_pass": MessageLookupByLibrary.simpleMessage("New Password"),
@@ -571,6 +572,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "work_place": MessageLookupByLibrary.simpleMessage("Work place"),
         "wrong_sign_in": MessageLookupByLibrary.simpleMessage(
             "Username or password is incorrect"),
+        "year": MessageLookupByLibrary.simpleMessage("Year"),
         "zone": MessageLookupByLibrary.simpleMessage("Zone"),
         "zone_type": MessageLookupByLibrary.simpleMessage("Zone type")
       };

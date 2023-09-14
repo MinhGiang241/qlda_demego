@@ -1,36 +1,52 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:qlda_demego/models/file_upload_model.dart';
 import 'package:qlda_demego/widgets/select_media_widget.dart';
 
 import '../../../constant/constants.dart';
 import '../../../generated/l10n.dart';
 import '../../../utils/utils.dart';
+import '../../../widgets/choose_month_year.dart';
 import '../../../widgets/primary_button.dart';
 import '../../../widgets/primary_dialog.dart';
 import '../../../widgets/primary_text_field.dart';
 
 class ElectricPrv extends ChangeNotifier {
+  ElectricPrv() {
+    dateController.text = '$month/$year';
+  }
   TextEditingController dateController = TextEditingController();
   DateTime? date;
   TextEditingController startContrroller = TextEditingController();
   TextEditingController endContrroller = TextEditingController();
   List<File> listImages = [];
   List<FileUploadModel> existedImages = [];
+  int year = DateTime.now().year;
+  int month = DateTime.now().month;
 
   pickDate(BuildContext context) async {
-    await Utils.showDatePickers(
+    DatePicker.showPicker(
       context,
-      initDate: date ?? DateTime.now(),
-      startDate: DateTime(DateTime.now().year - 10, 1, 1),
-      endDate: DateTime(DateTime.now().year + 10, 1, 1),
-    ).then((v) {
-      if (v != null) {
-        dateController.text = Utils.dateFormat(v.toIso8601String(), 0);
-        date = v;
-      }
-    });
+      onChanged: (v) {},
+      onConfirm: (v) {
+        year = v.year;
+        month = v.month;
+        dateController.text = '$month/$year';
+      },
+      pickerModel: CustomMonthPicker(
+        minTime: DateTime(DateTime.now().year - 40, 1, 1),
+        maxTime: DateTime(DateTime.now().year, 12, 31),
+        currentTime: DateTime(
+          year,
+          month,
+          1,
+        ),
+        custom: [1, 1, 0],
+        locale: LocaleType.vi,
+      ),
+    );
   }
 
   tabRow(BuildContext context) {
