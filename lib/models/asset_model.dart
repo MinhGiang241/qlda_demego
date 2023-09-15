@@ -36,7 +36,7 @@ class Asset {
   AssetType? assetType;
   List<Floor>? floors;
   List<Building>? buildings;
-  List<Apartment>? apartments;
+  List<Apartments>? apartments;
 
   Asset.fromJson(Map<String, dynamic> json) {
     id = json['_id'];
@@ -69,7 +69,7 @@ class Asset {
       });
     if (json['ref_ApartmentAssets_assetIdDto'] != null)
       json['ref_ApartmentAssets_assetIdDto'].forEach((e) {
-        apartments!.add(Apartment.fromJson(e));
+        apartments!.add(Apartments.fromJson(e));
       });
   }
 
@@ -146,10 +146,10 @@ class Building {
   }
 }
 
-class Apartment {
+class Apartments {
   String? id;
   String? displayName;
-  Apartment.fromJson(Map<String, dynamic>? json) {
+  Apartments.fromJson(Map<String, dynamic>? json) {
     if (json != null) {
       id = json['_id'] ?? null;
       displayName = json['display_name'] ?? null;

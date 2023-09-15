@@ -16,7 +16,7 @@ import '../../../widgets/select_media_widget.dart';
 class WaterPrv extends ChangeNotifier {
   TextEditingController dateController = TextEditingController();
   DateTime? date;
-  TextEditingController startContrroller = TextEditingController();
+  TextEditingController startController = TextEditingController();
   TextEditingController endContrroller = TextEditingController();
   List<File> listImages = [];
   List<FileUploadModel> existedImages = [];
@@ -64,7 +64,7 @@ class WaterPrv extends ChangeNotifier {
                   children: [
                     Expanded(
                       child: PrimaryTextField(
-                        controller: startContrroller,
+                        controller: startController,
                         label: 'Chỉ số đầu',
                       ),
                     ),

@@ -42,6 +42,12 @@ class ApiService {
     expireDate = null;
   }
 
+  setToken(String? token) {
+    if (token != null) {
+      access_token = token;
+    }
+  }
+
   setAPI(
     String URL,
     String? access_tokenHO,
@@ -474,7 +480,8 @@ class ApiService {
     MutationOptions options,
   ) async {
     try {
-      final cl = await getClientGraphQLfromHO();
+      print(access_token);
+      final cl = await getClientGraphQL();
       final result = await cl.mutate(options);
 
       if (result.data == null) {

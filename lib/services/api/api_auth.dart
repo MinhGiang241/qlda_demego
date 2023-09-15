@@ -74,7 +74,7 @@ class ApiAuth {
       password: password,
       onError: onError,
     );
-
+    ApiService.shared.setToken(client?.credentials.accessToken);
     return client;
   }
 
