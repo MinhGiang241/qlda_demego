@@ -392,5 +392,9 @@
   "select_project": "Select project",
   "upload": "Upload",
   "month": "Month",
-  "year": "Year"
+  "year": "Year",
+  "not_empty": "Can not be empty",
+  "start_greater_end": "Start index can not be greater than end index",
+  "err_upload": "Something went wrong! Cannot upload file",
+  "not_upload_15mb": "Can not upload file larger 15MB"
 }

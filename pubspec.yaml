@@ -76,6 +76,7 @@ dependencies:
   flutter_background_service_android: ^6.0.1
   flutter_background_service_ios: ^5.0.0
   flutter_datetime_picker: ^1.5.1
+  connectivity: ^3.0.6
 
 
 dev_dependencies:

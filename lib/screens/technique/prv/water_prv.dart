@@ -17,7 +17,7 @@ class WaterPrv extends ChangeNotifier {
   TextEditingController dateController = TextEditingController();
   DateTime? date;
   TextEditingController startController = TextEditingController();
-  TextEditingController endContrroller = TextEditingController();
+  TextEditingController endController = TextEditingController();
   List<File> listImages = [];
   List<FileUploadModel> existedImages = [];
 
@@ -71,7 +71,7 @@ class WaterPrv extends ChangeNotifier {
                     hpad(10),
                     Expanded(
                       child: PrimaryTextField(
-                        controller: endContrroller,
+                        controller: endController,
                         label: 'Chỉ số cuối',
                       ),
                     ),

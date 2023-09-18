@@ -393,5 +393,9 @@
   "select_project": "Chọn dự án",
   "upload": "Tải lên",
   "month": "Tháng",
-  "year": "Năm"
+  "year": "Năm",
+  "not_empty": "Không được phép để trống",
+  "start_greater_end": "Chỉ số đầu không được lớn hơn chỉ số cuối",
+  "err_upload": "Có sự có xảy ra không tải được file",
+  "not_upload_15mb": "Không upload được file lớn hơn 15MB"
 }

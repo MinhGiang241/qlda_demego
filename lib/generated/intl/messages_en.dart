@@ -224,6 +224,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "err_internet": MessageLookupByLibrary.simpleMessage(
             "Check your internet connection!"),
         "err_unknown": MessageLookupByLibrary.simpleMessage("Unknown Error"),
+        "err_upload": MessageLookupByLibrary.simpleMessage(
+            "Something went wrong! Cannot upload file"),
         "err_x": m0,
         "ethnic": MessageLookupByLibrary.simpleMessage("Ethnic"),
         "exc_done": MessageLookupByLibrary.simpleMessage("Done"),
@@ -328,9 +330,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Account has not been activated"),
         "not_distribute":
             MessageLookupByLibrary.simpleMessage("Not distribution"),
+        "not_empty": MessageLookupByLibrary.simpleMessage("Can not be empty"),
         "not_get_otp":
             MessageLookupByLibrary.simpleMessage("Did not receive OTP?"),
         "not_match": MessageLookupByLibrary.simpleMessage("Password not match"),
+        "not_upload_15mb": MessageLookupByLibrary.simpleMessage(
+            "Can not upload file larger 15MB"),
         "not_vietnamese": MessageLookupByLibrary.simpleMessage(
             "Password must not contain Vietnamese character"),
         "note": MessageLookupByLibrary.simpleMessage("Note"),
@@ -494,6 +499,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "sologan":
             MessageLookupByLibrary.simpleMessage("Home Community Smart Living"),
         "start": MessageLookupByLibrary.simpleMessage("Start"),
+        "start_greater_end": MessageLookupByLibrary.simpleMessage(
+            "Start index can not be greater than end index"),
         "start_time": MessageLookupByLibrary.simpleMessage("Start time"),
         "status": MessageLookupByLibrary.simpleMessage("Status"),
         "stock": MessageLookupByLibrary.simpleMessage("Stock"),

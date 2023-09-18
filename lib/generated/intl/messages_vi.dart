@@ -223,6 +223,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Kiểm tra lại kết nối internet!"),
         "err_unknown":
             MessageLookupByLibrary.simpleMessage("Lỗi Không xác định"),
+        "err_upload": MessageLookupByLibrary.simpleMessage(
+            "Có sự có xảy ra không tải được file"),
         "err_x": m0,
         "ethnic": MessageLookupByLibrary.simpleMessage("Dân tộc"),
         "exc_done": MessageLookupByLibrary.simpleMessage("Đã xử lý"),
@@ -328,10 +330,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "not_active": MessageLookupByLibrary.simpleMessage(
             "Tài khoản chưa được kích hoạt"),
         "not_distribute": MessageLookupByLibrary.simpleMessage("Chưa phân bổ"),
+        "not_empty":
+            MessageLookupByLibrary.simpleMessage("Không được phép để trống"),
         "not_get_otp":
             MessageLookupByLibrary.simpleMessage("Không nhận được OTP?"),
         "not_match":
             MessageLookupByLibrary.simpleMessage("Mật khẩu không khớp"),
+        "not_upload_15mb": MessageLookupByLibrary.simpleMessage(
+            "Không upload được file lớn hơn 15MB"),
         "not_vietnamese": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu không được chứa ký tự tiếng Việt có dấu"),
         "note": MessageLookupByLibrary.simpleMessage("Ghi chú"),
@@ -496,6 +502,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "sologan":
             MessageLookupByLibrary.simpleMessage("Home Community Smart Living"),
         "start": MessageLookupByLibrary.simpleMessage("Bắt đầu"),
+        "start_greater_end": MessageLookupByLibrary.simpleMessage(
+            "Chỉ số đầu không được lớn hơn chỉ số cuối"),
         "start_time": MessageLookupByLibrary.simpleMessage("Giờ bắt đầu"),
         "status": MessageLookupByLibrary.simpleMessage("Trạng thái"),
         "stock": MessageLookupByLibrary.simpleMessage("Tồn kho"),

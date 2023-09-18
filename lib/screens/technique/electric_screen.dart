@@ -31,8 +31,16 @@ class _ElectricScreenState extends State<ElectricScreen> {
   @override
   Widget build(BuildContext context) {
     final formatter = NumberFormat('#,###,###');
+    final arg = ModalRoute.of(context)!.settings.arguments as Map?;
+    int year = DateTime.now().year;
+    int month = DateTime.now().month;
+
+    if (arg != null) {
+      year = arg['year'];
+      month = arg['month'];
+    }
     return ChangeNotifierProvider(
-      create: (context) => ElectricPrv(),
+      create: (context) => ElectricPrv(year: year, month: month),
       builder: (context, state) {
         return PrimaryScreen(
           appBar: PrimaryAppbar(

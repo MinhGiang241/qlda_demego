@@ -1,11 +1,18 @@
+import 'dart:convert';
 import 'dart:io';
 
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
-import 'package:qlda_demego/models/asset_model.dart';
 import 'package:qlda_demego/models/file_upload_model.dart';
+import 'package:qlda_demego/models/indicator.dart';
+import 'package:qlda_demego/models/indicator_data.dart';
+import 'package:qlda_demego/services/api/api_file.dart';
 import 'package:qlda_demego/services/api/api_indicator.dart';
+import 'package:qlda_demego/services/api/api_services.dart';
+import 'package:qlda_demego/services/api/prf_data.dart';
 import 'package:qlda_demego/widgets/select_media_widget.dart';
 
 import '../../../constant/constants.dart';
@@ -16,23 +23,28 @@ import '../../../widgets/choose_month_year.dart';
 import '../../../widgets/primary_button.dart';
 import '../../../widgets/primary_dialog.dart';
 import '../../../widgets/primary_text_field.dart';
+import '../electric_screen.dart';
+import '../technical_screen.dart';
 
 class ElectricPrv extends ChangeNotifier {
-  ElectricPrv() {
+  ElectricPrv({required this.year, required this.month}) {
     dateController.text = '$month/$year';
   }
   TextEditingController dateController = TextEditingController();
   DateTime? date;
   TextEditingController startController = TextEditingController();
-  TextEditingController endContrroller = TextEditingController();
+  TextEditingController endController = TextEditingController();
   List<File> listImages = [];
   List<FileUploadModel> existedImages = [];
+  List<FileUploadModel> uploadedImages = [];
   int year = DateTime.now().year;
   int month = DateTime.now().month;
   List<Apartment> apartments = [];
   final formatter = NumberFormat('#,###,###');
   String? startValidate;
   String? endValidate;
+  bool loading = false;
+  final formKey = GlobalKey<FormState>();
 
   Future getApartments(BuildContext context) async {
     await APIIndicator.getApartmentIndicator(year, month).then((v) {
@@ -72,21 +84,187 @@ class ElectricPrv extends ChangeNotifier {
     );
   }
 
+  geater() {
+    return ((double.tryParse(endController.text.trim()) != null
+                    ? double.parse(endController.text.trim())
+                    : 0) -
+                (double.tryParse(startController.text.trim()) != null
+                    ? double.parse(startController.text.trim())
+                    : 0) <
+            0) &&
+        endController.text.trim().isNotEmpty &&
+        startController.text.trim().isNotEmpty;
+  }
+
+  Future uploadImages(BuildContext context) async {
+    await APIFile.uploadSingleFile(files: listImages, context: context)
+        .then((v) {
+      if (v.isNotEmpty) {
+        for (var e in v) {
+          uploadedImages.add(
+            FileUploadModel(id: e.data, name: e.name),
+          );
+        }
+      }
+    }).catchError((e) {
+      throw (e);
+    });
+  }
+
+  validate() {
+    if (startController.text.trim().isEmpty) {
+      startValidate = S.current.not_empty;
+    } else if (geater()) {
+      startValidate = S.current.start_greater_end;
+    } else {
+      startValidate = null;
+    }
+    if (endController.text.trim().isEmpty) {
+      endValidate = S.current.not_empty;
+    } else if (geater()) {
+      endValidate = S.current.start_greater_end;
+    } else {
+      endValidate = null;
+    }
+  }
+
+  String? validateTextField(String? v) {
+    if (v!.trim().isEmpty) {
+      return '';
+    } else if (geater()) {
+      return '';
+    }
+
+    return null;
+  }
+
+  onSubmit(
+    setState,
+    BuildContext context,
+    Apartment e,
+  ) async {
+    if (formKey.currentState!.validate()) {
+      try {
+        setState(() {
+          loading = true;
+          validate();
+        });
+        await uploadImages(context);
+        var consumption = double.parse(endController.text.trim()) -
+            double.parse(startController.text.trim());
+        var indi = ElectricIndicator(
+          id: e.e?.id,
+          apartmentId: e.id,
+          electricity_head: double.tryParse(startController.text.trim()) != null
+              ? double.parse(startController.text.trim())
+              : 0,
+          electricity_last: double.tryParse(endController.text.trim()) != null
+              ? double.parse(endController.text.trim())
+              : 0,
+          electricity_consumption: consumption,
+          latch: true,
+          month: month,
+          year: year,
+        );
+        //  indicator
+        var connectivityResult = await (Connectivity().checkConnectivity());
+        if (connectivityResult == ConnectivityResult.none) {
+          var data =
+              await PrfData.shared.getIndicator(ApiService.shared.regCode);
+          if (data != null) {
+            var indicatorData = IndicatorData.fromJson(data);
+
+            var index = (indicatorData.electric ?? []).indexWhere(
+              (el) =>
+                  el.apartmentId == e.id &&
+                  el.year == year &&
+                  el.month == month,
+            );
+            if (index < 0) {
+              indicatorData.electric!.add(indi);
+            } else {
+              indicatorData.electric![index] = indi;
+            }
+
+            await PrfData.shared
+                .setIndicator(indicatorData.toJson())
+                .then((v) async {
+              Utils.showSnackBar(
+                context,
+                "Kết nối internet hiện tại không có sẵn ,dữ liệu sẽ gửi lên sau",
+              );
+              //  RunService Background
+              final service = FlutterBackgroundService();
+              //bool isRunning = await service.isRunning();
+              service.startService();
+              // if (isRunning) {
+              //   service.invoke("stopService");
+              // } else {
+              //   service.startService();
+              // }
+            });
+          }
+        } else {
+          await APIIndicator.saveIndicator(true, indi.toMap()).then((v) {
+            setState(() {
+              loading = false;
+            });
+            Utils.showSuccessMessage(
+              context: context,
+              e: "Chốt chỉ số điện thành công căn ${e.code}",
+              onClose: () {
+                Navigator.pushReplacementNamed(
+                  context,
+                  ElectricScreen.routeName,
+                  arguments: {
+                    "year": year,
+                    'month': month,
+                  },
+                );
+              },
+            );
+          });
+        }
+      } catch (e) {
+        setState(() {
+          loading = false;
+        });
+        Utils.showErrorMessage(context, e.toString());
+      }
+    } else {
+      setState(() {
+        loading = false;
+        validate();
+      });
+    }
+  }
+
+  validateForm(BuildContext context, setState) {
+    if (formKey.currentState!.validate()) {
+      validate();
+    } else {
+      validate();
+    }
+    setState(() {});
+  }
+
   tabRow(BuildContext context, Apartment e) {
     startController.text = formatter.format(e.e?.electricity_head ?? 0);
-    endContrroller.text = formatter.format(e.e?.electricity_last ?? 0);
+    endController.text = formatter.format(e.e?.electricity_last ?? 0);
     var cons = (e.e?.electricity_last ?? 0) - (e.e?.electricity_head ?? 0);
-    bool loading = false;
-    final formKey = GlobalKey<FormState>();
+
     Utils.showDialog(
       context: context,
       dialog: PrimaryDialog.custom(
         content: StatefulBuilder(
           builder: (context, setState) {
+            setState(() {
+              validate();
+            });
             return Form(
               autovalidateMode: AutovalidateMode.onUserInteraction,
               key: formKey,
-              onChanged: () {},
+              onChanged: () => validateForm(context, setState),
               child: Column(
                 children: [
                   Row(
@@ -110,9 +288,11 @@ class ElectricPrv extends ChangeNotifier {
                   const Divider(),
                   vpad(12),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
                         child: PrimaryTextField(
+                          validator: validateTextField,
                           validateString: startValidate,
                           onlyNum: true,
                           controller: startController,
@@ -125,8 +305,8 @@ class ElectricPrv extends ChangeNotifier {
                                       ? double.parse(startController.text)
                                       : 0;
                               double end =
-                                  double.tryParse(endContrroller.text) != null
-                                      ? double.parse(endContrroller.text)
+                                  double.tryParse(endController.text) != null
+                                      ? double.parse(endController.text)
                                       : 0;
                               cons = end - start;
                             });
@@ -136,20 +316,21 @@ class ElectricPrv extends ChangeNotifier {
                       hpad(10),
                       Expanded(
                         child: PrimaryTextField(
+                          validator: validateTextField,
                           validateString: endValidate,
-                          controller: endContrroller,
+                          controller: endController,
                           label: 'Chỉ số cuối',
                           onlyNum: true,
                           onChanged: (v) {
                             setState(() {
-                              endContrroller.text = v.trim();
+                              endController.text = v.trim();
                               double start =
                                   double.tryParse(startController.text) != null
                                       ? double.parse(startController.text)
                                       : 0;
                               double end =
-                                  double.tryParse(endContrroller.text) != null
-                                      ? double.parse(endContrroller.text)
+                                  double.tryParse(endController.text) != null
+                                      ? double.parse(endController.text)
                                       : 0;
                               cons = end - start;
                             });
@@ -212,18 +393,7 @@ class ElectricPrv extends ChangeNotifier {
                           isLoading: loading,
                           text: S.of(context).save,
                           buttonSize: ButtonSize.medium,
-                          onTap: () async {
-                            setState(() {
-                              loading = true;
-                            });
-                            await Future.delayed(const Duration(seconds: 2))
-                                .then((v) {
-                              setState(() {
-                                loading = false;
-                              });
-                              Navigator.pop(context);
-                            });
-                          },
+                          onTap: () => onSubmit(setState, context, e),
                         ),
                       ),
                     ],

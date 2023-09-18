@@ -36,12 +36,14 @@ class PrfData {
   final _signIn = Hive.box('SIGNIN');
   final _settingBox = Hive.box("SETTINGS");
   final _projectBox = Hive.box('PROJECT');
+  final _indicatorBox = Hive.box('INDICATOR');
 
   static Future open() async {
     await Hive.openBox("USER");
     await Hive.openBox("SIGNIN");
     await Hive.openBox("SETTINGS");
     await Hive.openBox("PROJECT");
+    await Hive.openBox("INDICATOR");
   }
 
   final String _tokenKey = "token";
@@ -53,6 +55,19 @@ class PrfData {
   final String _listApartment = "listapartment";
   final String _project = "project";
   final String _authState = "authState";
+  final String _indicator = "indicator";
+
+  Future<void> setIndicator(String v) async {
+    await _indicatorBox.put(_indicator, v);
+  }
+
+  Future<String?> getIndicator(String regCode) async {
+    return await _indicatorBox.get(regCode);
+  }
+
+  Future<void> deleteIndicator() async {
+    await _signIn.deleteAll([_indicator]);
+  }
 
   Future<void> setAuthState(String v) async {
     await _signIn.put(_authState, v);

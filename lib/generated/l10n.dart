@@ -3989,6 +3989,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Can not be empty`
+  String get not_empty {
+    return Intl.message(
+      'Can not be empty',
+      name: 'not_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start index can not be greater than end index`
+  String get start_greater_end {
+    return Intl.message(
+      'Start index can not be greater than end index',
+      name: 'start_greater_end',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong! Cannot upload file`
+  String get err_upload {
+    return Intl.message(
+      'Something went wrong! Cannot upload file',
+      name: 'err_upload',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Can not upload file larger 15MB`
+  String get not_upload_15mb {
+    return Intl.message(
+      'Can not upload file larger 15MB',
+      name: 'not_upload_15mb',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
