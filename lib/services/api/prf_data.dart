@@ -57,16 +57,26 @@ class PrfData {
   final String _authState = "authState";
   final String _indicator = "indicator";
 
-  Future<void> setIndicator(String v) async {
-    await _indicatorBox.put(_indicator, v);
+  List<dynamic> getAllValuesIndicator() {
+    var list = _indicatorBox.values.toList();
+    return list;
+  }
+
+  List<dynamic> getAllKeysIndicator() {
+    var list = _indicatorBox.keys.toList();
+    return list;
+  }
+
+  Future<void> setIndicator(String v, String regCode) async {
+    await _indicatorBox.put(regCode, v);
   }
 
   Future<String?> getIndicator(String regCode) async {
     return await _indicatorBox.get(regCode);
   }
 
-  Future<void> deleteIndicator() async {
-    await _signIn.deleteAll([_indicator]);
+  Future<void> deleteIndicator(listRegcode) async {
+    await _signIn.deleteAll([...listRegcode]);
   }
 
   Future<void> setAuthState(String v) async {

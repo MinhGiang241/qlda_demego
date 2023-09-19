@@ -168,6 +168,7 @@ class ElectricPrv extends ChangeNotifier {
         );
         //  indicator
         var connectivityResult = await (Connectivity().checkConnectivity());
+        // /connectivityResult == ConnectivityResult.
         if (connectivityResult == ConnectivityResult.none) {
           var data =
               await PrfData.shared.getIndicator(ApiService.shared.regCode);
@@ -187,23 +188,34 @@ class ElectricPrv extends ChangeNotifier {
             }
 
             await PrfData.shared
-                .setIndicator(indicatorData.toJson())
+                .setIndicator(indicatorData.toJson(), ApiService.shared.regCode)
                 .then((v) async {
               Utils.showSnackBar(
                 context,
                 "Kết nối internet hiện tại không có sẵn ,dữ liệu sẽ gửi lên sau",
               );
-              //  RunService Background
-              final service = FlutterBackgroundService();
-              //bool isRunning = await service.isRunning();
-              service.startService();
-              // if (isRunning) {
-              //   service.invoke("stopService");
-              // } else {
-              //   service.startService();
-              // }
+            });
+          } else {
+            var indicatorData = IndicatorData(
+              baseURL: ApiService.shared.baseUrl,
+              regCode: ApiService.shared.regCode,
+              access_token: ApiService.shared.access_token,
+              electric: [indi],
+            );
+            await PrfData.shared
+                .setIndicator(indicatorData.toJson(), ApiService.shared.regCode)
+                .then((v) async {
+              Utils.showSnackBar(
+                context,
+                "Kết nối internet hiện tại không có sẵn ,dữ liệu sẽ gửi lên sau",
+              );
             });
           }
+
+          //  RunService Background
+          final service = FlutterBackgroundService();
+
+          service.startService();
         } else {
           await APIIndicator.saveIndicator(true, indi.toMap()).then((v) {
             setState(() {

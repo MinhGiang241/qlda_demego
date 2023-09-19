@@ -65,4 +65,36 @@ class APIIndicator {
       return res.response.data;
     }
   }
+
+  static Future saveOfflineIndicatorData(
+    List<Map<String, dynamic>>? electric,
+    List<Map<String, dynamic>>? water,
+    String baseUrl,
+  ) async {
+    var query = '''
+mutation (\$water:Dictionary,\$electric:Dictionary){
+    response: indicator_mobile_save_offline_indicator_daa (water: \$water,electric: \$electric ) {
+        code
+        message
+        data
+    }
+}
+    
+  ''';
+
+    final MutationOptions options = MutationOptions(
+      document: gql(query),
+      variables: {
+        "water": water,
+        'electric': electric,
+      },
+    );
+    //final results = await ApiService.shared.mutationhqlQuery(options);
+    var graphqlLink = HttpLink('$baseUrl/graphql');
+    final GraphQLClient graphQLClient = GraphQLClient(
+      cache: GraphQLCache(),
+      link: graphqlLink,
+    );
+    var results = await graphQLClient.mutate(options);
+  }
 }
