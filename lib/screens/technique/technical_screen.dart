@@ -118,24 +118,24 @@ class TechnicalSceen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  PrimaryButton(
-                    text: "foreground",
-                    onTap: () {
-                      FlutterBackgroundService().invoke('setAsForeground');
-                    },
-                  ),
-                  PrimaryButton(
-                    text: "background",
-                    onTap: () async {
-                      final service = FlutterBackgroundService();
-                      bool isRunning = await service.isRunning();
-                      if (isRunning) {
-                        service.invoke("stopService");
-                      } else {
-                        service.startService();
-                      }
-                    },
-                  ),
+                  // PrimaryButton(
+                  //   text: "foreground",
+                  //   onTap: () {
+                  //     FlutterBackgroundService().invoke('setAsForeground');
+                  //   },
+                  // ),
+                  // PrimaryButton(
+                  //   text: "background",
+                  //   onTap: () async {
+                  //     final service = FlutterBackgroundService();
+                  //     bool isRunning = await service.isRunning();
+                  //     if (isRunning) {
+                  //       service.invoke("stopService");
+                  //     } else {
+                  //       service.startService();
+                  //     }
+                  //   },
+                  // ),
                 ],
               );
             },

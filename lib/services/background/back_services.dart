@@ -6,6 +6,8 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_background_service_android/flutter_background_service_android.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:qlda_demego/services/api/api_indicator.dart';
 import 'package:qlda_demego/services/api/api_services.dart';
 import 'package:qlda_demego/services/api/prf_data.dart';
@@ -47,7 +49,13 @@ Future<void> onStart(ServiceInstance service) async {
   service.on('stopService').listen((event) {
     service.stopSelf();
   });
-  Timer.periodic(const Duration(seconds: 30), (timer) async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Hive.openBox("INDICATOR");
+  var indicatorBox = Hive.box('INDICATOR');
+  var listIndiDataKey = indicatorBox.keys.toList();
+  var listIndiData = indicatorBox.values.toList();
+  Timer.periodic(const Duration(seconds: 60), (timer) async {
     if (service is AndroidServiceInstance) {
       if (await service.isForegroundService()) {
         service.setForegroundNotificationInfo(
@@ -62,9 +70,8 @@ Future<void> onStart(ServiceInstance service) async {
     service.invoke('update');
 
     // Send data
-    var listIndiDataKey = PrfData.shared.getAllKeysIndicator();
-    var listIndiData = PrfData.shared.getAllValuesIndicator();
-
+    print(listIndiDataKey);
+    print(listIndiData);
     if (listIndiData.isEmpty) {
       service.stopSelf();
     } else {
