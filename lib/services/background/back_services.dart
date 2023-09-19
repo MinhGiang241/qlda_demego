@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:ui';
 
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_background_service_android/flutter_background_service_android.dart';
@@ -67,17 +68,18 @@ Future<void> onStart(ServiceInstance service) async {
     if (listIndiData.isEmpty) {
       service.stopSelf();
     } else {
-      for (var i in listIndiData) {
-        var a = json.decode(i);
-        await APIIndicator.saveOfflineIndicatorData(
-          a['electric'],
-          a["water"],
-          a["baseUrl"],
-        );
+      var connectivityResult = await (Connectivity().checkConnectivity());
+      if (connectivityResult != ConnectivityResult.none) {
+        for (var i in listIndiData) {
+          var a = json.decode(i);
+          await APIIndicator.saveOfflineIndicatorData(
+            a['electric'],
+            a["water"],
+            a["baseUrl"],
+          );
+        }
+        await PrfData.shared.deleteIndicator(listIndiDataKey);
       }
-      await PrfData.shared.deleteIndicator(listIndiDataKey);
     }
   });
 }
-
-sendIndicationData() async {}
