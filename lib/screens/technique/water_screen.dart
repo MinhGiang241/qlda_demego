@@ -1,24 +1,45 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:qlda_demego/screens/technique/prv/water_prv.dart';
 import 'package:qlda_demego/widgets/primary_appbar.dart';
 import 'package:qlda_demego/widgets/primary_screen.dart';
 
 import '../../constant/constants.dart';
+import '../../models/apartment.dart';
 import '../../utils/utils.dart';
+import '../../widgets/primary_error_widget.dart';
 import '../../widgets/primary_icon.dart';
+import '../../widgets/primary_loading.dart';
 import '../../widgets/primary_text_field.dart';
 
-class WaterScreen extends StatelessWidget {
+class WaterScreen extends StatefulWidget {
   const WaterScreen({super.key});
   static const routeName = '/water';
 
   @override
+  State<WaterScreen> createState() => _WaterScreenState();
+}
+
+class _WaterScreenState extends State<WaterScreen> {
+  final RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
+  @override
   Widget build(BuildContext context) {
+    final formatter = NumberFormat('#,###,###');
+    final arg = ModalRoute.of(context)!.settings.arguments as Map?;
+    int year = DateTime.now().year;
+    int month = DateTime.now().month;
+
+    if (arg != null) {
+      year = arg['year'];
+      month = arg['month'];
+    }
     return ChangeNotifierProvider(
-      create: (context) => WaterPrv(),
+      create: (context) => WaterPrv(year: year, month: month),
       builder: (context, state) {
         return PrimaryScreen(
           appBar: PrimaryAppbar(
@@ -30,109 +51,195 @@ class WaterScreen extends StatelessWidget {
             ),
           ),
           body: FutureBuilder(
-            future: () {}(),
-            builder: (context, state) {
-              return ListView(
-                children: [
-                  vpad(10),
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: PrimaryTextField(
-                          validator: Utils.emptyValidator,
-                          isRequired: true,
-                          isReadOnly: true,
-                          hint: "mm/yyyy",
-                          onTap: () async {
-                            await context.read<WaterPrv>().pickDate(context);
-                          },
-                          suffixIcon: const PrimaryIcon(
-                            icons: PrimaryIcons.calendar,
+            future: context.read<WaterPrv>().getApartments(context),
+            builder: (context, snapshot) {
+              List<Apartment> apartments = context.watch<WaterPrv>().apartments;
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: PrimaryLoading());
+              } else if (snapshot.connectionState == ConnectionState.none) {
+                return PrimaryErrorWidget(
+                  code: snapshot.hasError ? "err" : "1",
+                  message: snapshot.data.toString(),
+                  onRetry: () async {
+                    setState(() {});
+                  },
+                );
+              }
+              return SafeArea(
+                child: Column(
+                  children: [
+                    vpad(10),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: PrimaryTextField(
+                            validator: Utils.emptyValidator,
+                            isRequired: true,
+                            isReadOnly: true,
+                            hint: "mm/yyyy",
+                            onTap: () async {
+                              final y = context.read<WaterPrv>().year;
+                              final m = context.read<WaterPrv>().month;
+                              await context
+                                  .read<WaterPrv>()
+                                  .pickDate(
+                                    context,
+                                  )
+                                  .then((v) {
+                                if (context.read<WaterPrv>().year != y ||
+                                    context.read<WaterPrv>().month != m) {
+                                  setState(() {});
+                                }
+                              });
+                            },
+                            suffixIcon: const PrimaryIcon(
+                              icons: PrimaryIcons.calendar,
+                            ),
+                            controller: context.read<WaterPrv>().dateController,
+                            // validateString: context.watch<ElectricPrv>().validateDate,
                           ),
-                          controller: context.read<WaterPrv>().dateController,
-                          // validateString: context.watch<ElectricPrv>().validateDate,
                         ),
-                      ),
-                      Expanded(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            "Chưa chốt",
-                            style: txtBold(14, orangeColor),
+                        Expanded(
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Chưa chốt",
+                              style: txtBold(14, orangeColor),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  vpad(12),
-                  Text("Đã nhập 14/300 căn", style: txtBold(14)),
-                  vpad(12),
-                  Table(
-                    columnWidths: const {
-                      0: FlexColumnWidth(1),
-                      1: FlexColumnWidth(1),
-                      2: FlexColumnWidth(1),
-                      3: FlexColumnWidth(1),
-                      4: FlexColumnWidth(1),
-                    },
-                    textBaseline: TextBaseline.ideographic,
-                    defaultVerticalAlignment:
-                        TableCellVerticalAlignment.baseline,
-                    border: TableBorder(
-                      horizontalInside: BorderSide(),
-                      verticalInside: BorderSide(),
-                      top: BorderSide(),
-                      bottom: BorderSide(),
-                      right: BorderSide(),
-                      left: BorderSide(),
+                      ],
                     ),
-                    children: [
-                      TableRow(
-                        children: [
-                          TableRowInkWell(
-                            onTap: () {
-                              context.read<WaterPrv>().tabRow(context);
-                            },
-                            child: Text("Mã căn"),
-                          ),
-                          TableRowInkWell(
-                            onTap: () {
-                              context.read<WaterPrv>().tabRow(context);
-                            },
-                            child: Text("Mã đồng hồ"),
-                          ),
-                          TableRowInkWell(
-                            onTap: () {
-                              context.read<WaterPrv>().tabRow(context);
-                            },
-                            child: Text("Đầu kỳ"),
-                          ),
-                          TableRowInkWell(
-                            onTap: () {
-                              context.read<WaterPrv>().tabRow(context);
-                            },
-                            child: Text("cuối kỳ"),
-                          ),
-                          TableRowInkWell(
-                            onTap: () {
-                              context.read<WaterPrv>().tabRow(context);
-                            },
-                            child: Text("Tiêu thụ"),
-                          ),
-                        ],
+                    vpad(12),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text("Đã nhập 14/300 căn", style: txtBold(14)),
+                    ),
+                    Expanded(
+                      child: SmartRefresher(
+                        enablePullDown: true,
+                        enablePullUp: false,
+                        onRefresh: () {
+                          setState(() {});
+                          _refreshController.refreshCompleted();
+                        },
+                        controller: _refreshController,
+                        header: WaterDropMaterialHeader(
+                          backgroundColor: Theme.of(context).primaryColor,
+                        ),
+                        onLoading: () {
+                          _refreshController.loadComplete();
+                        },
+                        child: ListView(
+                          children: [
+                            vpad(12),
+                            Table(
+                              columnWidths: const {
+                                0: FlexColumnWidth(1),
+                                1: FlexColumnWidth(1),
+                                2: FlexColumnWidth(1),
+                                3: FlexColumnWidth(1),
+                                4: FlexColumnWidth(1),
+                              },
+                              textBaseline: TextBaseline.ideographic,
+                              defaultVerticalAlignment:
+                                  TableCellVerticalAlignment.baseline,
+                              border: TableBorder(
+                                horizontalInside: BorderSide(),
+                                verticalInside: BorderSide(),
+                                top: BorderSide(),
+                                bottom: BorderSide(),
+                                right: BorderSide(),
+                                left: BorderSide(),
+                              ),
+                              children: [
+                                TableRow(
+                                  children: [
+                                    TableRowInkWell(
+                                      child: Text("Mã căn"),
+                                    ),
+                                    TableRowInkWell(
+                                      child: Text("Mã đồng hồ"),
+                                    ),
+                                    TableRowInkWell(
+                                      child: Text("Đầu kỳ"),
+                                    ),
+                                    TableRowInkWell(
+                                      child: Text("cuối kỳ"),
+                                    ),
+                                    TableRowInkWell(
+                                      child: Text("Tiêu thụ"),
+                                    ),
+                                  ],
+                                ),
+                                ...apartments.map(
+                                  (e) => TableRow(
+                                    children: [
+                                      TableRowInkWell(
+                                        onTap: () {
+                                          context
+                                              .read<WaterPrv>()
+                                              .tabRow(context, e);
+                                        },
+                                        child: Text(e.code ?? ''),
+                                      ),
+                                      TableRowInkWell(
+                                        onTap: () {
+                                          context
+                                              .read<WaterPrv>()
+                                              .tabRow(context, e);
+                                        },
+                                        child: Text(e.water_code ?? ""),
+                                      ),
+                                      TableRowInkWell(
+                                        onTap: () {
+                                          context
+                                              .read<WaterPrv>()
+                                              .tabRow(context, e);
+                                        },
+                                        child: Text(
+                                          formatter.format(
+                                            e.w?.water_head ?? 0,
+                                          ),
+                                        ),
+                                      ),
+                                      TableRowInkWell(
+                                        onTap: () {
+                                          context
+                                              .read<WaterPrv>()
+                                              .tabRow(context, e);
+                                        },
+                                        child: Text(
+                                          formatter.format(
+                                            e.w?.water_last ?? 0,
+                                          ),
+                                        ),
+                                      ),
+                                      TableRowInkWell(
+                                        onTap: () {
+                                          context
+                                              .read<WaterPrv>()
+                                              .tabRow(context, e);
+                                        },
+                                        child: Text(
+                                          formatter.format(
+                                            e.w?.water_consumption ?? 0,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            vpad(60),
+                          ],
+                        ),
                       ),
-
-                      // children: [
-                      //   Text("Mã căn"),
-                      //   Text('Mã đồng hồ'),
-                      //   Text('Đẩu kỳ'),
-                      //   Text('Cuối kỳ'),
-                      //   Text('Tiêu thụ'),
-                      // ],
-                    ],
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               );
             },
           ),
