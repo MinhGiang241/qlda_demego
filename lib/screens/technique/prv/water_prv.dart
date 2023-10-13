@@ -48,18 +48,36 @@ class WaterPrv extends ChangeNotifier {
   String? endValidate;
   bool loading = false;
   final formKey = GlobalKey<FormState>();
+  int count = 0;
+  int total = 0;
+  int skip = 0;
+  int limit = 20;
 
-  Future getApartments(BuildContext context) async {
-    await APIIndicator.getApartmentIndicator(year, month).then((v) {
+  Future getApartments(BuildContext context, bool init) async {
+    if (init) {
+      apartments.clear();
+      skip = 0;
+    } else {
+      skip += limit;
+    }
+    await APIIndicator.getApartmentIndicator(year, month, skip, limit)
+        .then((v) {
       if (v != null) {
         apartments.clear();
         for (var i in v) {
           apartments.add(Apartment.fromJson(i));
         }
       }
+      return APIIndicator.getApartmentIndicatorCount(false, null, month, year);
+    }).then((v) {
+      if (v != null) {
+        count = v['count'];
+        total = v['total'];
+      }
     }).catchError((e) {
       Utils.showErrorMessage(context, e);
     });
+    notifyListeners();
   }
 
   pickDate(BuildContext context) async {

@@ -325,6 +325,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_comment":
             MessageLookupByLibrary.simpleMessage("Chưa có bình luận nào"),
         "no_data": MessageLookupByLibrary.simpleMessage("Chưa có dữ liệu"),
+        "no_more_data":
+            MessageLookupByLibrary.simpleMessage("Không còn dữ liệu"),
         "no_project":
             MessageLookupByLibrary.simpleMessage("Không có dự án nào"),
         "not_active": MessageLookupByLibrary.simpleMessage(
@@ -398,6 +400,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "price": MessageLookupByLibrary.simpleMessage("Thành tiền"),
         "profession": MessageLookupByLibrary.simpleMessage("Nghề nghiệp"),
         "property": MessageLookupByLibrary.simpleMessage("Tài sản"),
+        "pull_load_failed":
+            MessageLookupByLibrary.simpleMessage("Load thất bại"),
+        "pull_to_load": MessageLookupByLibrary.simpleMessage("Kéo để xem thêm"),
         "purchase_req_letter": MessageLookupByLibrary.simpleMessage(
             "Tạo phiếu đề xuất mua sắm tài sản"),
         "qualification":
@@ -428,6 +433,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Phòng ban liên quan"),
         "related_info":
             MessageLookupByLibrary.simpleMessage("Thông tin liên quan"),
+        "release_to_load":
+            MessageLookupByLibrary.simpleMessage("Thả để xem thêm"),
         "reload": MessageLookupByLibrary.simpleMessage("Tải lại"),
         "remember_acc": MessageLookupByLibrary.simpleMessage("Lưu tài khoản"),
         "reply": MessageLookupByLibrary.simpleMessage("Phản hồi"),

@@ -13,6 +13,7 @@ import 'package:qlda_demego/widgets/primary_text_field.dart';
 import '../../constant/constants.dart';
 import '../../models/apartment.dart';
 import '../../utils/utils.dart';
+import '../../widgets/custom_footer.dart';
 import '../../widgets/primary_error_widget.dart';
 import '../../widgets/primary_icon.dart';
 import '../../widgets/primary_loading.dart';
@@ -56,10 +57,12 @@ class _ElectricScreenState extends State<ElectricScreen> {
             ),
           ),
           body: FutureBuilder(
-            future: context.read<ElectricPrv>().getApartments(context),
+            future: context.read<ElectricPrv>().getApartments(context, true),
             builder: (context, snapshot) {
               List<Apartment> apartments =
                   context.watch<ElectricPrv>().apartments;
+              var count = context.watch<ElectricPrv>().count;
+              var total = context.watch<ElectricPrv>().total;
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: PrimaryLoading());
               } else if (snapshot.connectionState == ConnectionState.none) {
@@ -111,8 +114,11 @@ class _ElectricScreenState extends State<ElectricScreen> {
                           child: Align(
                             alignment: Alignment.center,
                             child: Text(
-                              "Chưa chốt",
-                              style: txtBold(14, orangeColor),
+                              count == total ? 'Đã chốt' : "Chưa chốt",
+                              style: txtBold(
+                                14,
+                                count == total ? greenColor10 : orangeColor,
+                              ),
                             ),
                           ),
                         ),
@@ -121,12 +127,13 @@ class _ElectricScreenState extends State<ElectricScreen> {
                     vpad(12),
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Text("Đã nhập 14/300 căn", style: txtBold(14)),
+                      child:
+                          Text("Đã nhập $count/$total căn", style: txtBold(14)),
                     ),
                     Expanded(
                       child: SmartRefresher(
                         enablePullDown: true,
-                        enablePullUp: false,
+                        enablePullUp: true,
                         onRefresh: () {
                           setState(() {});
                           _refreshController.refreshCompleted();
@@ -135,7 +142,11 @@ class _ElectricScreenState extends State<ElectricScreen> {
                         header: WaterDropMaterialHeader(
                           backgroundColor: Theme.of(context).primaryColor,
                         ),
+                        footer: customFooter(),
                         onLoading: () {
+                          context
+                              .read<ElectricPrv>()
+                              .getApartments(context, false);
                           _refreshController.loadComplete();
                         },
                         child: ListView(

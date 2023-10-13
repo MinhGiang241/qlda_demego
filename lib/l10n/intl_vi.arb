@@ -397,5 +397,9 @@
   "not_empty": "Không được phép để trống",
   "start_greater_end": "Chỉ số đầu không được lớn hơn chỉ số cuối",
   "err_upload": "Có sự có xảy ra không tải được file",
-  "not_upload_15mb": "Không upload được file lớn hơn 15MB"
+  "not_upload_15mb": "Không upload được file lớn hơn 15MB",
+  "pull_to_load": "Kéo để xem thêm",
+  "pull_load_failed": "Load thất bại",
+  "release_to_load": "Thả để xem thêm",
+  "no_more_data": "Không còn dữ liệu"
 }

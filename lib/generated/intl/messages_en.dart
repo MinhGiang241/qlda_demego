@@ -324,6 +324,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Do not have any asset!"),
         "no_comment": MessageLookupByLibrary.simpleMessage("No comment"),
         "no_data": MessageLookupByLibrary.simpleMessage("Don\'t have any data"),
+        "no_more_data": MessageLookupByLibrary.simpleMessage("No more data"),
         "no_project":
             MessageLookupByLibrary.simpleMessage("Don\'t have any project"),
         "not_active": MessageLookupByLibrary.simpleMessage(
@@ -393,6 +394,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "price": MessageLookupByLibrary.simpleMessage("Price"),
         "profession": MessageLookupByLibrary.simpleMessage("Profession"),
         "property": MessageLookupByLibrary.simpleMessage("Property"),
+        "pull_load_failed":
+            MessageLookupByLibrary.simpleMessage("Load Failed!Click retry!"),
+        "pull_to_load": MessageLookupByLibrary.simpleMessage("Pull to load"),
         "purchase_req_letter":
             MessageLookupByLibrary.simpleMessage("Purchasing request letter"),
         "qualification": MessageLookupByLibrary.simpleMessage("Qualification"),
@@ -420,6 +424,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Related department"),
         "related_info":
             MessageLookupByLibrary.simpleMessage("Related information"),
+        "release_to_load":
+            MessageLookupByLibrary.simpleMessage("Release to load more"),
         "reload": MessageLookupByLibrary.simpleMessage("Reload"),
         "remember_acc": MessageLookupByLibrary.simpleMessage("Remember me"),
         "reply": MessageLookupByLibrary.simpleMessage("Reply"),

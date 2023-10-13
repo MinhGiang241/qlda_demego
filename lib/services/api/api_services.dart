@@ -165,6 +165,7 @@ class ApiService {
       final cli = await client.refreshCredentials();
       final path = await getApplicationDocumentsDirectory();
       final credentialsFile = File('${path.path}/credential.json');
+      await deleteCre();
 
       await credentialsFile.writeAsString(client.credentials.toJson());
 
@@ -442,6 +443,8 @@ class ApiService {
       }
     }
     Link link = authLink.concat(_graphqlLink);
+    var token = authLink.getToken();
+    print(token);
 
     final GraphQLClient graphQLClient = GraphQLClient(
       cache: GraphQLCache(),

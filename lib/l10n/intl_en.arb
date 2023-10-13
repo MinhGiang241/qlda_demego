@@ -396,5 +396,9 @@
   "not_empty": "Can not be empty",
   "start_greater_end": "Start index can not be greater than end index",
   "err_upload": "Something went wrong! Cannot upload file",
-  "not_upload_15mb": "Can not upload file larger 15MB"
+  "not_upload_15mb": "Can not upload file larger 15MB",
+  "pull_to_load": "Pull to load",
+  "pull_load_failed": "Load Failed!Click retry!",
+  "release_to_load": "Release to load more",
+  "no_more_data": "No more data"
 }

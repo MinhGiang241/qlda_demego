@@ -4029,6 +4029,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Pull to load`
+  String get pull_to_load {
+    return Intl.message(
+      'Pull to load',
+      name: 'pull_to_load',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Load Failed!Click retry!`
+  String get pull_load_failed {
+    return Intl.message(
+      'Load Failed!Click retry!',
+      name: 'pull_load_failed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Release to load more`
+  String get release_to_load {
+    return Intl.message(
+      'Release to load more',
+      name: 'release_to_load',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No more data`
+  String get no_more_data {
+    return Intl.message(
+      'No more data',
+      name: 'no_more_data',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -55,9 +55,11 @@ class _WaterScreenState extends State<WaterScreen> {
             ),
           ),
           body: FutureBuilder(
-            future: context.read<WaterPrv>().getApartments(context),
+            future: context.read<WaterPrv>().getApartments(context, true),
             builder: (context, snapshot) {
               List<Apartment> apartments = context.watch<WaterPrv>().apartments;
+              var count = context.watch<WaterPrv>().count;
+              var total = context.watch<WaterPrv>().total;
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: PrimaryLoading());
               } else if (snapshot.connectionState == ConnectionState.none) {
@@ -108,8 +110,9 @@ class _WaterScreenState extends State<WaterScreen> {
                           child: Align(
                             alignment: Alignment.center,
                             child: Text(
-                              "Chưa chốt",
-                              style: txtBold(14, orangeColor),
+                              count == total ? 'Đã chốt' : "Chưa chốt",
+                              style: txtBold(14,
+                                  count == total ? greenColor10 : orangeColor),
                             ),
                           ),
                         ),
@@ -118,12 +121,13 @@ class _WaterScreenState extends State<WaterScreen> {
                     vpad(12),
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Text("Đã nhập 14/300 căn", style: txtBold(14)),
+                      child:
+                          Text("Đã nhập $count/$total căn", style: txtBold(14)),
                     ),
                     Expanded(
                       child: SmartRefresher(
                         enablePullDown: true,
-                        enablePullUp: false,
+                        enablePullUp: true,
                         onRefresh: () {
                           setState(() {});
                           _refreshController.refreshCompleted();
@@ -133,6 +137,9 @@ class _WaterScreenState extends State<WaterScreen> {
                           backgroundColor: Theme.of(context).primaryColor,
                         ),
                         onLoading: () {
+                          context
+                              .read<WaterPrv>()
+                              .getApartments(context, false);
                           _refreshController.loadComplete();
                         },
                         child: ListView(
