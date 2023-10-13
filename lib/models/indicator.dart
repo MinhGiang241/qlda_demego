@@ -2,6 +2,8 @@
 
 import 'dart:convert';
 
+import 'file_upload_model.dart';
+
 class WaterIndicator {
   String? id;
   String? createdTime;
@@ -18,6 +20,7 @@ class WaterIndicator {
   bool? latch;
   String? owner_name;
   String? phone_number;
+  List<FileUploadModel>? image;
   WaterIndicator({
     this.id,
     this.water_last,
@@ -34,6 +37,7 @@ class WaterIndicator {
     this.latch,
     this.owner_name,
     this.phone_number,
+    this.image,
   });
 
   Map<String, dynamic> toMap() {
@@ -53,6 +57,7 @@ class WaterIndicator {
       'phone_number': phone_number,
       'water_last': water_last,
       'water_consumption': water_consumption,
+      'image': image?.map((i) => i.toMap()).toList(),
     };
   }
 
@@ -70,6 +75,13 @@ class WaterIndicator {
       employeeId:
           map['employeeId'] != null ? map['employeeId'] as String : null,
       phone: map['phone'] != null ? map['phone'] as String : null,
+      image: map['image'] != null
+          ? List<FileUploadModel>.from(
+              (map['image'] as List<dynamic>).map<FileUploadModel?>(
+                (x) => FileUploadModel.fromMap(x as Map<String, dynamic>),
+              ),
+            )
+          : null,
       water_head: double.tryParse(map['water_head'].toString()) != null
           ? double.parse(map['water_head'].toString())
           : null,
@@ -116,6 +128,7 @@ class ElectricIndicator {
   bool? latch;
   String? owner_name;
   String? phone_number;
+  List<FileUploadModel>? image;
   ElectricIndicator({
     this.id,
     this.electricity_last,
@@ -132,6 +145,7 @@ class ElectricIndicator {
     this.latch,
     this.owner_name,
     this.phone_number,
+    this.image,
   });
 
   Map<String, dynamic> toMap() {
@@ -151,6 +165,7 @@ class ElectricIndicator {
       'electricity_consumption': electricity_consumption,
       'phone_number': phone_number,
       'electricity_last': electricity_last,
+      'image': image?.map((i) => i.toMap()).toList(),
     };
   }
 
@@ -168,6 +183,13 @@ class ElectricIndicator {
       employeeId:
           map['employeeId'] != null ? map['employeeId'] as String : null,
       phone: map['phone'] != null ? map['phone'] as String : null,
+      image: map['image'] != null
+          ? List<FileUploadModel>.from(
+              (map['image'] as List<dynamic>).map<FileUploadModel?>(
+                (x) => FileUploadModel.fromMap(x as Map<String, dynamic>),
+              ),
+            )
+          : null,
       electricity_head:
           double.tryParse(map['electricity_head'].toString()) != null
               ? double.parse(map['electricity_head'].toString())

@@ -83,9 +83,11 @@ Future<void> onStart(ServiceInstance service) async {
             a['electric'],
             a["water"],
             a["baseUrl"],
-          );
+          ).then((v) async {
+            await PrfData.shared.deleteIndicator(listIndiDataKey);
+            service.stopSelf();
+          });
         }
-        await PrfData.shared.deleteIndicator(listIndiDataKey);
       }
     }
   });

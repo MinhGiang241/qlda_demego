@@ -153,6 +153,7 @@ class ElectricPrv extends ChangeNotifier {
         var consumption = double.parse(endController.text.trim()) -
             double.parse(startController.text.trim());
         var indi = ElectricIndicator(
+          image: existedImages + uploadedImages,
           id: e.e?.id,
           apartmentId: e.id,
           electricity_head: double.tryParse(startController.text.trim()) != null
@@ -264,6 +265,7 @@ class ElectricPrv extends ChangeNotifier {
     startController.text = formatter.format(e.e?.electricity_head ?? 0);
     endController.text = formatter.format(e.e?.electricity_last ?? 0);
     var cons = (e.e?.electricity_last ?? 0) - (e.e?.electricity_head ?? 0);
+    existedImages = [...(e.e?.image ?? [])];
 
     Utils.showDialog(
       context: context,
@@ -368,6 +370,12 @@ class ElectricPrv extends ChangeNotifier {
                   ),
                   vpad(12),
                   SelectMediaWidget(
+                    existImages: existedImages,
+                    onRemoveExist: (int index) {
+                      setState(() {
+                        existedImages.removeAt(index);
+                      });
+                    },
                     images: listImages,
                     title: S.of(context).add_photo,
                     onRemove: (int index) {

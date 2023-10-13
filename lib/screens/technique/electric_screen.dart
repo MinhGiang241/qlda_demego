@@ -16,6 +16,7 @@ import '../../utils/utils.dart';
 import '../../widgets/primary_error_widget.dart';
 import '../../widgets/primary_icon.dart';
 import '../../widgets/primary_loading.dart';
+import 'technical_screen.dart';
 
 class ElectricScreen extends StatefulWidget {
   const ElectricScreen({super.key});
@@ -47,7 +48,10 @@ class _ElectricScreenState extends State<ElectricScreen> {
             title: "Chỉ số điện",
             leading: BackButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pushReplacementNamed(
+                  context,
+                  TechnicalSceen.routeName,
+                );
               },
             ),
           ),

@@ -15,6 +15,7 @@ import '../../widgets/primary_error_widget.dart';
 import '../../widgets/primary_icon.dart';
 import '../../widgets/primary_loading.dart';
 import '../../widgets/primary_text_field.dart';
+import 'technical_screen.dart';
 
 class WaterScreen extends StatefulWidget {
   const WaterScreen({super.key});
@@ -46,7 +47,10 @@ class _WaterScreenState extends State<WaterScreen> {
             title: "Chỉ số nước",
             leading: BackButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pushReplacementNamed(
+                  context,
+                  TechnicalSceen.routeName,
+                );
               },
             ),
           ),

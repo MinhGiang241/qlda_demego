@@ -27,7 +27,10 @@ import '../../../widgets/select_media_widget.dart';
 import '../water_screen.dart';
 
 class WaterPrv extends ChangeNotifier {
-  WaterPrv({required this.year, required this.month}) {
+  WaterPrv({
+    required this.year,
+    required this.month,
+  }) {
     dateController.text = '$month/$year';
   }
   TextEditingController dateController = TextEditingController();
@@ -160,6 +163,7 @@ class WaterPrv extends ChangeNotifier {
         var consumption = double.parse(endController.text.trim()) -
             double.parse(startController.text.trim());
         var indi = WaterIndicator(
+          image: existedImages + uploadedImages,
           id: e.e?.id,
           apartmentId: e.id,
           water_head: double.tryParse(startController.text.trim()) != null
@@ -262,6 +266,7 @@ class WaterPrv extends ChangeNotifier {
     startController.text = formatter.format(e.w?.water_head ?? 0);
     endController.text = formatter.format(e.w?.water_last ?? 0);
     var cons = (e.w?.water_last ?? 0) - (e.w?.water_head ?? 0);
+    existedImages = [...(e.w?.image ?? [])];
 
     Utils.showDialog(
       context: context,
@@ -366,8 +371,14 @@ class WaterPrv extends ChangeNotifier {
                   ),
                   vpad(12),
                   SelectMediaWidget(
+                    existImages: existedImages,
                     images: listImages,
                     title: S.of(context).add_photo,
+                    onRemoveExist: (int index) {
+                      setState(() {
+                        existedImages.removeAt(index);
+                      });
+                    },
                     onRemove: (int index) {
                       setState(() {
                         listImages.removeAt(index);
