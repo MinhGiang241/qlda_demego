@@ -68,16 +68,16 @@ class MainDrawer extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            "Trương Minh Giang",
-                            textAlign: TextAlign.left,
-                            style: txtBodyMediumRegular(color: secondaryColor5),
-                          ),
-                          Text(
-                            "Vinhome Ocean Park",
-                            textAlign: TextAlign.left,
-                            style: txtBodySmallRegular(color: secondaryColor5),
-                          ),
+                          // Text(
+                          //   "Trương Minh Giang",
+                          //   textAlign: TextAlign.left,
+                          //   style: txtBodyMediumRegular(color: secondaryColor5),
+                          // ),
+                          // Text(
+                          //   "Vinhome Ocean Park",
+                          //   textAlign: TextAlign.left,
+                          //   style: txtBodySmallRegular(color: secondaryColor5),
+                          // ),
                           Text(
                             "Quản lý tòa nhà",
                             textAlign: TextAlign.left,
@@ -102,102 +102,102 @@ class MainDrawer extends StatelessWidget {
                     TechnicalSceen.routeName,
                   ),
                 ),
-                buildListTile(
-                  S.of(context).application,
-                  Icons.document_scanner,
-                  () => Navigator.pushReplacementNamed(
-                    context,
-                    ApplicationScreen.routeName,
-                  ),
-                ),
-                buildListTile(
-                  S.of(context).extr_tast,
-                  Icons.list_alt,
-                  () => Navigator.pushReplacementNamed(
-                    context,
-                    ExtraTaskListScreen.routeName,
-                  ),
-                ),
-                buildListTile(
-                  S.of(context).period_task,
-                  Icons.list_rounded,
-                  () => Navigator.pushReplacementNamed(
-                    context,
-                    PeriodTaskListScreen.routeName,
-                  ),
-                ),
-                buildListTile(
-                  S.of(context).asset_manage,
-                  Icons.money,
-                  () => Navigator.pushReplacementNamed(
-                    context,
-                    AssetScreen.routeName,
-                  ),
-                ),
-                buildListTile(
-                  S.of(context).req_letter_management,
-                  Icons.receipt,
-                  () => Navigator.pushReplacementNamed(
-                    context,
-                    RequestLetterListScreen.routeName,
-                  ),
-                ),
-                buildListTile(
-                  S.of(context).missing_obj_list,
-                  Icons.dangerous,
-                  () => Navigator.pushReplacementNamed(
-                    context,
-                    MissingObjectListScreen.routeName,
-                  ),
-                ),
-                buildListTile(
-                  S.of(context).parcel,
-                  Icons.gif_box,
-                  () => Navigator.pushReplacementNamed(
-                    context,
-                    ParcelListScreen.routeName,
-                  ),
-                ),
-                buildListTile(
-                  S.of(context).penetration,
-                  Icons.transform,
-                  () => Navigator.pushReplacementNamed(
-                    context,
-                    EntranceListScreen.routeName,
-                  ),
-                ),
-                buildListTile(
-                  S.of(context).resident_card,
-                  Icons.portrait,
-                  () => Navigator.pushReplacementNamed(
-                    context,
-                    ResidentCardListScreen.routeName,
-                  ),
-                ),
-                buildListTile(
-                  S.of(context).trans_card,
-                  Icons.car_rental,
-                  () => Navigator.pushReplacementNamed(
-                    context,
-                    TransportationCardList.routeName,
-                  ),
-                ),
-                buildListTile(
-                  S.of(context).customer,
-                  Icons.dashboard,
-                  () => Navigator.pushReplacementNamed(
-                    context,
-                    CustomerListScreen.routeName,
-                  ),
-                ),
-                buildListTile(
-                  S.of(context).info_reception,
-                  Icons.message,
-                  () => Navigator.pushReplacementNamed(
-                    context,
-                    InformationReceptionListScreen.routeName,
-                  ),
-                ),
+                // buildListTile(
+                //   S.of(context).application,
+                //   Icons.document_scanner,
+                //   () => Navigator.pushReplacementNamed(
+                //     context,
+                //     ApplicationScreen.routeName,
+                //   ),
+                // ),
+                // buildListTile(
+                //   S.of(context).extr_tast,
+                //   Icons.list_alt,
+                //   () => Navigator.pushReplacementNamed(
+                //     context,
+                //     ExtraTaskListScreen.routeName,
+                //   ),
+                // ),
+                // buildListTile(
+                //   S.of(context).period_task,
+                //   Icons.list_rounded,
+                //   () => Navigator.pushReplacementNamed(
+                //     context,
+                //     PeriodTaskListScreen.routeName,
+                //   ),
+                // ),
+                // buildListTile(
+                //   S.of(context).asset_manage,
+                //   Icons.money,
+                //   () => Navigator.pushReplacementNamed(
+                //     context,
+                //     AssetScreen.routeName,
+                //   ),
+                // ),
+                // buildListTile(
+                //   S.of(context).req_letter_management,
+                //   Icons.receipt,
+                //   () => Navigator.pushReplacementNamed(
+                //     context,
+                //     RequestLetterListScreen.routeName,
+                //   ),
+                // ),
+                // buildListTile(
+                //   S.of(context).missing_obj_list,
+                //   Icons.dangerous,
+                //   () => Navigator.pushReplacementNamed(
+                //     context,
+                //     MissingObjectListScreen.routeName,
+                //   ),
+                // ),
+                // buildListTile(
+                //   S.of(context).parcel,
+                //   Icons.gif_box,
+                //   () => Navigator.pushReplacementNamed(
+                //     context,
+                //     ParcelListScreen.routeName,
+                //   ),
+                // ),
+                // buildListTile(
+                //   S.of(context).penetration,
+                //   Icons.transform,
+                //   () => Navigator.pushReplacementNamed(
+                //     context,
+                //     EntranceListScreen.routeName,
+                //   ),
+                // ),
+                // buildListTile(
+                //   S.of(context).resident_card,
+                //   Icons.portrait,
+                //   () => Navigator.pushReplacementNamed(
+                //     context,
+                //     ResidentCardListScreen.routeName,
+                //   ),
+                // ),
+                // buildListTile(
+                //   S.of(context).trans_card,
+                //   Icons.car_rental,
+                //   () => Navigator.pushReplacementNamed(
+                //     context,
+                //     TransportationCardList.routeName,
+                //   ),
+                // ),
+                // buildListTile(
+                //   S.of(context).customer,
+                //   Icons.dashboard,
+                //   () => Navigator.pushReplacementNamed(
+                //     context,
+                //     CustomerListScreen.routeName,
+                //   ),
+                // ),
+                // buildListTile(
+                //   S.of(context).info_reception,
+                //   Icons.message,
+                //   () => Navigator.pushReplacementNamed(
+                //     context,
+                //     InformationReceptionListScreen.routeName,
+                //   ),
+                // ),
               ],
             ),
           ),

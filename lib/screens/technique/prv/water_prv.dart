@@ -63,7 +63,6 @@ class WaterPrv extends ChangeNotifier {
     await APIIndicator.getApartmentIndicator(year, month, skip, limit)
         .then((v) {
       if (v != null) {
-        apartments.clear();
         for (var i in v) {
           apartments.add(Apartment.fromJson(i));
         }

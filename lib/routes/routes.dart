@@ -95,7 +95,7 @@ class AppRoutes {
       case HomeScreen.routeName:
         return MaterialPageRoute(
           settings: routeSetting,
-          builder: (context) => HomeScreen(),
+          builder: (context) => TechnicalSceen(),
         );
       case ApplicationScreen.routeName:
         return MaterialPageRoute(
