@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:convert';
+import 'dart:io';
 
 import 'file_upload_model.dart';
 
@@ -21,6 +22,7 @@ class WaterIndicator {
   String? owner_name;
   String? phone_number;
   List<FileUploadModel>? image;
+  List<File>? offline_image;
   WaterIndicator({
     this.id,
     this.water_last,
@@ -38,6 +40,7 @@ class WaterIndicator {
     this.owner_name,
     this.phone_number,
     this.image,
+    this.offline_image,
   });
 
   Map<String, dynamic> toMap() {
@@ -58,6 +61,7 @@ class WaterIndicator {
       'water_last': water_last,
       'water_consumption': water_consumption,
       'image': image?.map((i) => i.toMap()).toList(),
+      'offline_image': offline_image?.map((i) => i.path).toList(),
     };
   }
 
@@ -79,6 +83,13 @@ class WaterIndicator {
           ? List<FileUploadModel>.from(
               (map['image'] as List<dynamic>).map<FileUploadModel?>(
                 (x) => FileUploadModel.fromMap(x as Map<String, dynamic>),
+              ),
+            )
+          : null,
+      offline_image: map['offline_image'] != null
+          ? List<File>.from(
+              (map['offline_image'] as List<dynamic>).map<File>(
+                (x) => File(x),
               ),
             )
           : null,
@@ -129,6 +140,7 @@ class ElectricIndicator {
   String? owner_name;
   String? phone_number;
   List<FileUploadModel>? image;
+  List<File>? offline_image;
   ElectricIndicator({
     this.id,
     this.electricity_last,
@@ -146,6 +158,7 @@ class ElectricIndicator {
     this.owner_name,
     this.phone_number,
     this.image,
+    this.offline_image,
   });
 
   Map<String, dynamic> toMap() {
@@ -166,6 +179,7 @@ class ElectricIndicator {
       'phone_number': phone_number,
       'electricity_last': electricity_last,
       'image': image?.map((i) => i.toMap()).toList(),
+      'offline_image': offline_image?.map((i) => i.path).toList(),
     };
   }
 
@@ -187,6 +201,13 @@ class ElectricIndicator {
           ? List<FileUploadModel>.from(
               (map['image'] as List<dynamic>).map<FileUploadModel?>(
                 (x) => FileUploadModel.fromMap(x as Map<String, dynamic>),
+              ),
+            )
+          : null,
+      offline_image: map['offline_image'] != null
+          ? List<File>.from(
+              (map['offline_image'] as List<dynamic>).map<File>(
+                (x) => File(x),
               ),
             )
           : null,

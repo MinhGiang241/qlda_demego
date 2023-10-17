@@ -152,7 +152,9 @@ class ApiService {
     if (credentialsFile.existsSync()) {
       try {
         await credentialsFile.delete();
-      } catch (e) {}
+      } catch (e) {
+        print(e);
+      }
     }
   }
 

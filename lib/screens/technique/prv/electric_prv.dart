@@ -27,10 +27,17 @@ import '../electric_screen.dart';
 import '../technical_screen.dart';
 
 class ElectricPrv extends ChangeNotifier {
-  ElectricPrv({required this.year, required this.month}) {
+  ElectricPrv({
+    required this.year,
+    required this.month,
+    required this.text,
+  }) {
     dateController.text = '$month/$year';
+    searchController.text = text;
   }
+  String text = '';
   TextEditingController dateController = TextEditingController();
+  TextEditingController searchController = TextEditingController();
   DateTime? date;
   TextEditingController startController = TextEditingController();
   TextEditingController endController = TextEditingController();
@@ -44,24 +51,31 @@ class ElectricPrv extends ChangeNotifier {
   String? startValidate;
   String? endValidate;
   bool loading = false;
+  bool initLoading = false;
   final formKey = GlobalKey<FormState>();
   int count = 0;
   int total = 0;
   int skip = 0;
-  int limit = 20;
+  int limit = 40;
 
   Future getApartments(BuildContext context, bool init) async {
+    if (init) {
+      initLoading = true;
+      // notifyListeners();
+    }
     if (init) {
       apartments.clear();
       skip = 0;
     } else {
       skip += limit;
     }
+    var textSearch = searchController.text.trim();
     await APIIndicator.getApartmentIndicator(
       year,
       month,
       skip,
       limit,
+      textSearch,
     ).then((v) {
       if (v != null) {
         for (var i in v) {
@@ -70,11 +84,17 @@ class ElectricPrv extends ChangeNotifier {
       }
       return APIIndicator.getApartmentIndicatorCount(true, null, month, year);
     }).then((v) {
+      if (init) {
+        initLoading = false;
+      }
       if (v != null) {
         count = v['count'];
         total = v['total'];
       }
     }).catchError((e) {
+      if (init) {
+        initLoading = false;
+      }
       Utils.showErrorMessage(context, e);
     });
     notifyListeners();
@@ -170,26 +190,34 @@ class ElectricPrv extends ChangeNotifier {
           loading = true;
           validate();
         });
-        await uploadImages(context);
+        var connectivityResult = await (Connectivity().checkConnectivity());
+        List<File> offlineImage = [];
+        if (connectivityResult != ConnectivityResult.none) {
+          await uploadImages(context);
+        } else {
+          offlineImage = listImages;
+        }
+
         var consumption = double.parse(endController.text.trim()) -
             double.parse(startController.text.trim());
         var indi = ElectricIndicator(
-          image: existedImages + uploadedImages,
-          id: e.e?.id,
-          apartmentId: e.id,
-          electricity_head: double.tryParse(startController.text.trim()) != null
-              ? double.parse(startController.text.trim())
-              : 0,
-          electricity_last: double.tryParse(endController.text.trim()) != null
-              ? double.parse(endController.text.trim())
-              : 0,
-          electricity_consumption: consumption,
-          latch: true,
-          month: month,
-          year: year,
-        );
+            image: existedImages + uploadedImages,
+            id: e.e?.id,
+            apartmentId: e.id,
+            electricity_head:
+                double.tryParse(startController.text.trim()) != null
+                    ? double.parse(startController.text.trim())
+                    : 0,
+            electricity_last: double.tryParse(endController.text.trim()) != null
+                ? double.parse(endController.text.trim())
+                : 0,
+            electricity_consumption: consumption,
+            latch: true,
+            month: month,
+            year: year,
+            offline_image: offlineImage);
         //  indicator
-        var connectivityResult = await (Connectivity().checkConnectivity());
+
         // /connectivityResult == ConnectivityResult.
         if (connectivityResult == ConnectivityResult.none) {
           var data =
@@ -231,6 +259,10 @@ class ElectricPrv extends ChangeNotifier {
                 context,
                 "Kết nối internet hiện tại không có sẵn ,dữ liệu sẽ gửi lên sau",
               );
+              setState(() {
+                loading = false;
+              });
+              Navigator.pop(context);
             });
           }
 
@@ -253,6 +285,7 @@ class ElectricPrv extends ChangeNotifier {
                   arguments: {
                     "year": year,
                     'month': month,
+                    'search': searchController.text.trim(),
                   },
                 );
               },

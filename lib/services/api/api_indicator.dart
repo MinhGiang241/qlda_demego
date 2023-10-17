@@ -9,15 +9,17 @@ class APIIndicator {
     int month,
     int skip,
     int limit,
+    String search,
   ) async {
     var query = '''
- mutation (\$year:Float,\$month:Float,\$skip:Float,\$limit:Float){
-    response: indicator_mobile_e_get_apartment_indicator_by_month_year (year: \$year,month: \$month,skip: \$skip,limit: \$limit ) {
+mutation (\$year:Float,\$month:Float,\$skip:Float,\$limit:Float,\$search:String){
+    response: indicator_mobile_e_get_apartment_indicator_by_month_year (year: \$year,month: \$month,skip: \$skip,limit: \$limit,search: \$search ) {
         code
         message
         data
     }
 }
+        
         
         
   ''';
@@ -29,6 +31,7 @@ class APIIndicator {
         'month': month,
         "skip": skip,
         'limit': limit,
+        'search': search,
       },
     );
     final results = await ApiService.shared.mutationhqlQuery(options);
@@ -43,7 +46,11 @@ class APIIndicator {
   }
 
   static Future getApartmentIndicatorCount(
-      bool isElectric, String? employeeId, int month, int year) async {
+    bool isElectric,
+    String? employeeId,
+    int month,
+    int year,
+  ) async {
     var query = '''
 mutation (\$isElectric:Boolean,\$employeeId:String,\$month:Float,\$year:Float){
     response: indicator_mobile_get_indicator_apartment_count_total (isElectric: \$isElectric,employeeId: \$employeeId,month: \$month,year: \$year ) {

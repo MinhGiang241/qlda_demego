@@ -30,10 +30,14 @@ class WaterPrv extends ChangeNotifier {
   WaterPrv({
     required this.year,
     required this.month,
+    required this.text,
   }) {
     dateController.text = '$month/$year';
+    searchController.text = text;
   }
+  String text = '';
   TextEditingController dateController = TextEditingController();
+  TextEditingController searchController = TextEditingController();
   DateTime? date;
   TextEditingController startController = TextEditingController();
   TextEditingController endController = TextEditingController();
@@ -47,21 +51,32 @@ class WaterPrv extends ChangeNotifier {
   String? startValidate;
   String? endValidate;
   bool loading = false;
+  bool initLoading = false;
   final formKey = GlobalKey<FormState>();
   int count = 0;
   int total = 0;
   int skip = 0;
-  int limit = 20;
+  int limit = 40;
 
   Future getApartments(BuildContext context, bool init) async {
+    if (init) {
+      initLoading = true;
+      // notifyListeners();
+    }
     if (init) {
       apartments.clear();
       skip = 0;
     } else {
       skip += limit;
     }
-    await APIIndicator.getApartmentIndicator(year, month, skip, limit)
-        .then((v) {
+    var textSearch = searchController.text.trim();
+    await APIIndicator.getApartmentIndicator(
+      year,
+      month,
+      skip,
+      limit,
+      textSearch,
+    ).then((v) {
       if (v != null) {
         for (var i in v) {
           apartments.add(Apartment.fromJson(i));
@@ -69,11 +84,19 @@ class WaterPrv extends ChangeNotifier {
       }
       return APIIndicator.getApartmentIndicatorCount(false, null, month, year);
     }).then((v) {
+      if (init) {
+        initLoading = false;
+      }
+
       if (v != null) {
         count = v['count'];
         total = v['total'];
       }
     }).catchError((e) {
+      if (init) {
+        initLoading = false;
+      }
+
       Utils.showErrorMessage(context, e);
     });
     notifyListeners();
@@ -176,7 +199,14 @@ class WaterPrv extends ChangeNotifier {
           loading = true;
           validate();
         });
-        await uploadImages(context);
+        //  indicator
+        var connectivityResult = await (Connectivity().checkConnectivity());
+        List<File> offlineImage = [];
+        if (connectivityResult != ConnectivityResult.none) {
+          await uploadImages(context);
+        } else {
+          offlineImage = listImages;
+        }
         var consumption = double.parse(endController.text.trim()) -
             double.parse(startController.text.trim());
         var indi = WaterIndicator(
@@ -193,9 +223,9 @@ class WaterPrv extends ChangeNotifier {
           latch: true,
           month: month,
           year: year,
+          offline_image: offlineImage,
         );
-        //  indicator
-        var connectivityResult = await (Connectivity().checkConnectivity());
+
         // /connectivityResult == ConnectivityResult.
         if (connectivityResult == ConnectivityResult.none) {
           var data =
@@ -222,6 +252,10 @@ class WaterPrv extends ChangeNotifier {
                 context,
                 "Kết nối internet hiện tại không có sẵn ,dữ liệu sẽ gửi lên sau",
               );
+              setState(() {
+                loading = false;
+              });
+              Navigator.pop(context);
             });
           } else {
             var indicatorData = IndicatorData(
@@ -259,6 +293,7 @@ class WaterPrv extends ChangeNotifier {
                   arguments: {
                     "year": year,
                     'month': month,
+                    "search": searchController.text.trim(),
                   },
                 );
               },
