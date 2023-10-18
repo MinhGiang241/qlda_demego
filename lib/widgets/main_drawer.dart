@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qlda_demego/constant/constants.dart';
 import 'package:provider/provider.dart';
+import 'package:qlda_demego/screens/home/home_screen.dart';
 import 'package:qlda_demego/screens/period_task/period_task_list_screen.dart';
 
 import '../generated/l10n.dart';
@@ -95,21 +96,21 @@ class MainDrawer extends StatelessWidget {
             child: ListView(
               children: [
                 buildListTile(
-                  "Kỹ thuật",
+                  "Trang chủ",
                   Icons.table_view,
+                  () => Navigator.pushReplacementNamed(
+                    context,
+                    HomeScreen.routeName,
+                  ),
+                ),
+                buildListTile(
+                  "Kỹ thuật",
+                  Icons.document_scanner,
                   () => Navigator.pushReplacementNamed(
                     context,
                     TechnicalSceen.routeName,
                   ),
                 ),
-                // buildListTile(
-                //   S.of(context).application,
-                //   Icons.document_scanner,
-                //   () => Navigator.pushReplacementNamed(
-                //     context,
-                //     ApplicationScreen.routeName,
-                //   ),
-                // ),
                 // buildListTile(
                 //   S.of(context).extr_tast,
                 //   Icons.list_alt,

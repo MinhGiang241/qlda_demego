@@ -83,7 +83,7 @@ Future<void> onStart(ServiceInstance service) async {
           await APIIndicator.saveOfflineIndicatorData(
             a['electric'],
             a["water"],
-            a["baseUrl"],
+            a["baseURL"],
             a['access_token'],
           ).then((v) async {});
         }
