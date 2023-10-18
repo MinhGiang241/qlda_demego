@@ -79,10 +79,12 @@ Future<void> onStart(ServiceInstance service) async {
       if (connectivityResult != ConnectivityResult.none) {
         for (var i in listIndiData) {
           var a = json.decode(i);
+
           await APIIndicator.saveOfflineIndicatorData(
             a['electric'],
             a["water"],
             a["baseUrl"],
+            a['access_token'],
           ).then((v) async {});
         }
         await PrfData.shared.deleteIndicator(listIndiDataKey);

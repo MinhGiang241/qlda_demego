@@ -5,7 +5,7 @@ class ApiConstants {
   static const String clientSecret = "g2RAXgZenebyybWmmfyDWprGhxe5CLAJ";
   static const String scope = "api openid profile";
   static const String baseURL =
-      "https://api.dev.buildingtenant.demego.vn/graphql";
+      "https://api.dev.buildingtenant.demego.vn/baseUrl";
   static const String uploadURL =
       'https://api.dev.buildingtenant.demego.vn/headless/stream/upload';
   static const String host = 'dev.buildingtenant.demego.vn';

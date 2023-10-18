@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:graphql/client.dart';
 
 import '../../models/response.dart';
@@ -117,9 +120,10 @@ mutation (\$isElectric:Boolean,\$employeeId:String,\$month:Float,\$year:Float){
   }
 
   static Future saveOfflineIndicatorData(
-    List<Map<String, dynamic>>? electric,
-    List<Map<String, dynamic>>? water,
+    List<dynamic>? electric,
+    List<dynamic>? water,
     String baseUrl,
+    String? accessToken,
   ) async {
     var query = '''
 mutation (\$water:Dictionary,\$electric:Dictionary){
@@ -131,6 +135,100 @@ mutation (\$water:Dictionary,\$electric:Dictionary){
 }
     
   ''';
+    Dio _dio = Dio(BaseOptions(baseUrl: baseUrl));
+    if (electric != null) {
+      for (var i in electric) {
+        var uploadImages = [];
+        if (i['offline_image'] != null) {
+          for (var j in i['offline_image']) {
+            try {
+              var file = File(j);
+              if (file.lengthSync() >= 15728640) {
+                continue;
+              }
+              final mpf = await MultipartFile.fromFile(j);
+              final map = {
+                'file': [mpf],
+                'name': file.path.split('/').last,
+              };
+              final body = FormData.fromMap(map);
+              var options = Options(
+                headers: {
+                  'Authorization': "Bearer ${accessToken}",
+                  "Accept": "application/json",
+                },
+              );
+              var path =
+                  baseUrl.replaceAll("baseUrl", "headless/stream/upload");
+              final data = await _dio.post(
+                path,
+                data: body,
+                options: options,
+              );
+              if (data.data != null) {
+                uploadImages.add(data.data.toString());
+              }
+            } catch (e) {
+              continue;
+            }
+          }
+        }
+        if (uploadImages.isNotEmpty) {
+          if (i['image'] == null) {
+            i['image'] = uploadImages;
+          } else {
+            i['image'] = i['image'] + uploadImages;
+          }
+        }
+      }
+    }
+
+    if (water != null) {
+      for (var i in water) {
+        var uploadImages = [];
+        if (i['offline_image'] != null) {
+          for (var j in i['offline_image']) {
+            try {
+              var file = File(j);
+              if (file.lengthSync() >= 15728640) {
+                continue;
+              }
+              final mpf = await MultipartFile.fromFile(j);
+              final map = {
+                'file': [mpf],
+                'name': file.path.split('/').last,
+              };
+              final body = FormData.fromMap(map);
+              var options = Options(
+                headers: {
+                  'Authorization': "Bearer ${accessToken}",
+                  "Accept": "application/json",
+                },
+              );
+              var path =
+                  baseUrl.replaceAll("baseUrl", "headless/stream/upload");
+              final data = await _dio.post(
+                path,
+                data: body,
+                options: options,
+              );
+              if (data.data != null) {
+                uploadImages.add(data.data.toString());
+              }
+            } catch (e) {
+              continue;
+            }
+          }
+        }
+        if (uploadImages.isNotEmpty) {
+          if (i['image'] == null) {
+            i['image'] = uploadImages;
+          } else {
+            i['image'] = i['image'] + uploadImages;
+          }
+        }
+      }
+    }
 
     final MutationOptions options = MutationOptions(
       document: gql(query),
@@ -141,9 +239,18 @@ mutation (\$water:Dictionary,\$electric:Dictionary){
     );
     //final results = await ApiService.shared.mutationhqlQuery(options);
     var graphqlLink = HttpLink('$baseUrl/graphql');
+    late AuthLink authLink;
+    if (accessToken == null) {
+      authLink = AuthLink(getToken: () => 'Bearer ');
+    } else {
+      authLink = AuthLink(
+        getToken: () async => 'Bearer ${accessToken}',
+      );
+    }
+    Link link = authLink.concat(graphqlLink);
     final GraphQLClient graphQLClient = GraphQLClient(
       cache: GraphQLCache(),
-      link: graphqlLink,
+      link: link,
     );
     var results = await graphQLClient.mutate(options);
   }
