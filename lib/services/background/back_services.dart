@@ -67,7 +67,7 @@ Future<void> onStart(ServiceInstance service) async {
 
     // Perform some operation on  background which is not noticeable to the used everytime
     print('background service  running');
-    service.invoke('update');
+    //service.invoke('update');
 
     // Send data
     print(listIndiDataKey);
@@ -88,6 +88,8 @@ Future<void> onStart(ServiceInstance service) async {
           ).then((v) async {});
         }
         await PrfData.shared.deleteIndicator(listIndiDataKey);
+        service.stopSelf();
+      } else {
         service.stopSelf();
       }
     }

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -16,12 +17,19 @@ import 'services/api/prf_data.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await FlutterDownloader.initialize(
+    debug:
+        true, // optional: set to false to disable printing logs to console (default: true)
+    ignoreSsl:
+        true, // option: set to false to disable working with http links (default: false)
+  );
+
   await Permission.notification.isDenied.then((value) {
     if (value) {
       Permission.notification.request();
     }
   });
-  await initializeService();
+  //await initializeService();
   ByteData data =
       await PlatformAssetBundle().load('assets/ca/lets-encrypt-r3.pem');
   SecurityContext.defaultContext

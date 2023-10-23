@@ -44,6 +44,7 @@ class PrimaryTextField extends StatefulWidget {
     this.isShow = true,
     this.onlyNum = false,
     this.textStyle,
+    this.onFieldSubmitted,
   });
   final TextStyle? textStyle;
   final String? label;
@@ -74,6 +75,7 @@ class PrimaryTextField extends StatefulWidget {
   final Color? textColor;
   final TextAlign? textAlign;
   final int? maxLength;
+  final void Function(String)? onFieldSubmitted;
   final List<TextInputFormatter>? filter;
   Function(String)? onChanged;
   EdgeInsetsGeometry? margin;
@@ -130,11 +132,7 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
                   margin: widget.margin,
                   child: TextFormField(
                     onChanged: widget.onChanged,
-                    onFieldSubmitted: widget.controller != null
-                        ? (text) {
-                            widget.controller!.text = text.trim();
-                          }
-                        : null,
+                    onFieldSubmitted: widget.onFieldSubmitted,
                     maxLength: widget.maxLength,
                     onTap: widget.enable ? widget.onTap : null,
                     textAlign: widget.textAlign ?? TextAlign.start,

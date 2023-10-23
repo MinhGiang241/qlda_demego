@@ -46,8 +46,14 @@ class _WaterScreenState extends State<WaterScreen> {
         return false;
       },
       child: ChangeNotifierProvider(
-        create: (context) => WaterPrv(year: year, month: month, text: text),
+        create: (context) =>
+            WaterPrv(context: context, year: year, month: month, text: text),
         builder: (context, state) {
+          List<Apartment> apartments = context.watch<WaterPrv>().apartments;
+          var count = context.watch<WaterPrv>().count;
+          var total = context.watch<WaterPrv>().total;
+          var latch = context.watch<WaterPrv>().latch;
+          var initLoad = context.watch<WaterPrv>().initLoading;
           return PrimaryScreen(
             appBar: PrimaryAppbar(
               title: "Chỉ số nước",
@@ -60,240 +66,274 @@ class _WaterScreenState extends State<WaterScreen> {
                 },
               ),
             ),
-            body: FutureBuilder(
-              future: context.read<WaterPrv>().getApartments(context, true),
-              builder: (context, snapshot) {
-                List<Apartment> apartments =
-                    context.watch<WaterPrv>().apartments;
-                var count = context.read<WaterPrv>().count;
-                var total = context.read<WaterPrv>().total;
-                var initLoad = context.read<WaterPrv>().initLoading;
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: PrimaryLoading());
-                } else if (snapshot.connectionState == ConnectionState.none) {
-                  return PrimaryErrorWidget(
-                    code: snapshot.hasError ? "err" : "1",
-                    message: snapshot.data.toString(),
-                    onRetry: () async {
-                      setState(() {});
-                    },
-                  );
-                }
-                return SafeArea(
-                  child: Column(
+            body: SafeArea(
+              child: Column(
+                children: [
+                  vpad(10),
+                  Row(
                     children: [
-                      vpad(10),
-                      Row(
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: PrimaryTextField(
-                              validator: Utils.emptyValidator,
-                              isRequired: true,
-                              isReadOnly: true,
-                              hint: "mm/yyyy",
-                              onTap: () async {
-                                final y = context.read<WaterPrv>().year;
-                                final m = context.read<WaterPrv>().month;
-                                await context
-                                    .read<WaterPrv>()
-                                    .pickDate(
-                                      context,
-                                    )
-                                    .then((v) {
-                                  if (context.read<WaterPrv>().year != y ||
-                                      context.read<WaterPrv>().month != m) {
-                                    // setState(() {});
-                                    context
-                                        .read<WaterPrv>()
-                                        .getApartments(context, true);
-                                  }
-                                });
-                              },
-                              suffixIcon: const PrimaryIcon(
-                                icons: PrimaryIcons.calendar,
-                              ),
-                              controller:
-                                  context.read<WaterPrv>().dateController,
-                              // validateString: context.watch<ElectricPrv>().validateDate,
-                            ),
-                          ),
-                          Expanded(
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Text(
-                                count == total ? 'Đã chốt' : "Chưa chốt",
-                                style: txtBold(
-                                  14,
-                                  count == total ? greenColor10 : orangeColor,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      vpad(12),
-                      PrimaryTextField(
-                        textInputAction: TextInputAction.go,
-                        controller: context.read<WaterPrv>().searchController,
-                        suffixIcon: IconButton(
-                          onPressed: () async {
+                      Expanded(
+                        flex: 1,
+                        child: PrimaryTextField(
+                          validator: Utils.emptyValidator,
+                          isRequired: true,
+                          isReadOnly: true,
+                          hint: "mm/yyyy",
+                          onTap: () async {
+                            final y = context.read<WaterPrv>().year;
+                            final m = context.read<WaterPrv>().month;
                             await context
                                 .read<WaterPrv>()
-                                .getApartments(context, true);
+                                .pickDate(
+                                  context,
+                                )
+                                .then((v) {
+                              if (context.read<WaterPrv>().year != y ||
+                                  context.read<WaterPrv>().month != m) {
+                                // setState(() {});
+                                context
+                                    .read<WaterPrv>()
+                                    .getApartments(context, true);
+                              }
+                            });
                           },
-                          icon: Icon(Icons.search),
+                          suffixIcon: const PrimaryIcon(
+                            icons: PrimaryIcons.calendar,
+                          ),
+                          controller: context.read<WaterPrv>().dateController,
+                          // validateString: context.watch<ElectricPrv>().validateDate,
                         ),
-                        hint: 'Tìm kiếm theo mã căn hộ',
-                      ),
-                      vpad(12),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text("Đã nhập $count/$total căn",
-                            style: txtBold(14)),
                       ),
                       Expanded(
-                        child: SmartRefresher(
-                          enablePullDown: true,
-                          enablePullUp: true,
-                          onRefresh: () async {
-                            await context
-                                .read<WaterPrv>()
-                                .getApartments(context, true);
-                            _refreshController.refreshCompleted();
-                          },
-                          controller: _refreshController,
-                          header: WaterDropMaterialHeader(
-                            backgroundColor: Theme.of(context).primaryColor,
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            total != 0 && latch == total
+                                ? 'Đã chốt'
+                                : "Chưa chốt",
+                            style: txtBold(
+                              14,
+                              count == total ? greenColor10 : orangeColor,
+                            ),
                           ),
-                          onLoading: () {
-                            context
-                                .read<WaterPrv>()
-                                .getApartments(context, false);
-                            _refreshController.loadComplete();
-                          },
-                          child: ListView(
-                            children: [
-                              vpad(12),
-                              if (initLoad)
-                                Expanded(
-                                    child: Center(child: PrimaryLoading())),
-                              if (apartments.isEmpty && !initLoad)
-                                Expanded(
-                                  child: PrimaryEmptyWidget(
-                                    icons: PrimaryIcons.water,
-                                    emptyText: 'Không có căn hộ nào',
-                                  ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  vpad(12),
+                  PrimaryTextField(
+                    onFieldSubmitted: (_) {
+                      context.read<WaterPrv>().getApartments(context, true);
+                    },
+                    textInputAction: TextInputAction.go,
+                    controller: context.read<WaterPrv>().searchController,
+                    suffixIcon: IconButton(
+                      onPressed: () async {
+                        await context
+                            .read<WaterPrv>()
+                            .getApartments(context, true);
+                      },
+                      icon: Icon(Icons.search),
+                    ),
+                    hint: 'Tìm kiếm theo mã căn hộ',
+                  ),
+                  vpad(12),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child:
+                        Text("Đã nhập $count/$total căn", style: txtBold(14)),
+                  ),
+                  if (initLoad)
+                    Expanded(child: Center(child: PrimaryLoading())),
+                  if (!initLoad)
+                    Expanded(
+                      child: SmartRefresher(
+                        enablePullDown: true,
+                        enablePullUp: true,
+                        onRefresh: () async {
+                          await context
+                              .read<WaterPrv>()
+                              .getApartments(context, true);
+                          _refreshController.refreshCompleted();
+                        },
+                        controller: _refreshController,
+                        header: WaterDropMaterialHeader(
+                          backgroundColor: Theme.of(context).primaryColor,
+                        ),
+                        onLoading: () {
+                          context
+                              .read<WaterPrv>()
+                              .getApartments(context, false);
+                          _refreshController.loadComplete();
+                        },
+                        child: ListView(
+                          children: [
+                            vpad(12),
+                            if (apartments.isEmpty && !initLoad)
+                              Center(
+                                child: PrimaryEmptyWidget(
+                                  icons: PrimaryIcons.water,
+                                  emptyText: 'Không có căn hộ nào',
                                 ),
-                              if (apartments.isNotEmpty && !initLoad)
-                                Table(
-                                  columnWidths: const {
-                                    0: FlexColumnWidth(1),
-                                    1: FlexColumnWidth(1),
-                                    2: FlexColumnWidth(1),
-                                    3: FlexColumnWidth(1),
-                                    4: FlexColumnWidth(1),
-                                  },
-                                  textBaseline: TextBaseline.ideographic,
-                                  defaultVerticalAlignment:
-                                      TableCellVerticalAlignment.baseline,
-                                  border: TableBorder(
-                                    horizontalInside: BorderSide(),
-                                    verticalInside: BorderSide(),
-                                    top: BorderSide(),
-                                    bottom: BorderSide(),
-                                    right: BorderSide(),
-                                    left: BorderSide(),
-                                  ),
-                                  children: [
-                                    TableRow(
-                                      children: [
-                                        TableRowInkWell(
+                              ),
+                            if (apartments.isNotEmpty && !initLoad)
+                              Table(
+                                columnWidths: const {
+                                  0: FlexColumnWidth(1),
+                                  1: FlexColumnWidth(1),
+                                  2: FlexColumnWidth(1),
+                                  3: FlexColumnWidth(1),
+                                  4: FlexColumnWidth(1),
+                                },
+                                textBaseline: TextBaseline.ideographic,
+                                defaultVerticalAlignment:
+                                    TableCellVerticalAlignment.baseline,
+                                border: TableBorder(
+                                  horizontalInside: BorderSide(),
+                                  verticalInside: BorderSide(),
+                                  top: BorderSide(),
+                                  bottom: BorderSide(),
+                                  right: BorderSide(),
+                                  left: BorderSide(),
+                                ),
+                                children: [
+                                  TableRow(
+                                    children: [
+                                      TableRowInkWell(
+                                        child: ConstrainedBox(
+                                          constraints: BoxConstraints(
+                                            minHeight: 50,
+                                          ),
                                           child: Text("Mã căn"),
                                         ),
-                                        TableRowInkWell(
+                                      ),
+                                      TableRowInkWell(
+                                        child: ConstrainedBox(
+                                          constraints: BoxConstraints(
+                                            minHeight: 50,
+                                          ),
                                           child: Text("Mã đồng hồ"),
                                         ),
-                                        TableRowInkWell(
+                                      ),
+                                      TableRowInkWell(
+                                        child: ConstrainedBox(
+                                          constraints: BoxConstraints(
+                                            minHeight: 50,
+                                          ),
                                           child: Text("Đầu kỳ"),
                                         ),
-                                        TableRowInkWell(
+                                      ),
+                                      TableRowInkWell(
+                                        child: ConstrainedBox(
+                                          constraints: BoxConstraints(
+                                            minHeight: 50,
+                                          ),
                                           child: Text("cuối kỳ"),
                                         ),
-                                        TableRowInkWell(
+                                      ),
+                                      TableRowInkWell(
+                                        child: ConstrainedBox(
+                                          constraints: BoxConstraints(
+                                            minHeight: 50,
+                                          ),
                                           child: Text("Tiêu thụ"),
                                         ),
-                                      ],
-                                    ),
-                                    ...apartments.map(
-                                      (e) => TableRow(
-                                        children: [
-                                          TableRowInkWell(
-                                            onTap: () {
-                                              context
-                                                  .read<WaterPrv>()
-                                                  .tabRow(context, e);
-                                            },
+                                      ),
+                                    ],
+                                  ),
+                                  ...apartments.map(
+                                    (e) => TableRow(
+                                      children: [
+                                        TableRowInkWell(
+                                          onTap: () {
+                                            context
+                                                .read<WaterPrv>()
+                                                .tabRow(context, e);
+                                          },
+                                          child: ConstrainedBox(
+                                            constraints: BoxConstraints(
+                                              minHeight: 50,
+                                            ),
                                             child: Text(e.code ?? ''),
                                           ),
-                                          TableRowInkWell(
-                                            onTap: () {
-                                              context
-                                                  .read<WaterPrv>()
-                                                  .tabRow(context, e);
-                                            },
+                                        ),
+                                        TableRowInkWell(
+                                          onTap: () {
+                                            context
+                                                .read<WaterPrv>()
+                                                .tabRow(context, e);
+                                          },
+                                          child: ConstrainedBox(
+                                            constraints: BoxConstraints(
+                                              minHeight: 50,
+                                            ),
                                             child: Text(e.water_code ?? ""),
                                           ),
-                                          TableRowInkWell(
-                                            onTap: () {
-                                              context
-                                                  .read<WaterPrv>()
-                                                  .tabRow(context, e);
-                                            },
+                                        ),
+                                        TableRowInkWell(
+                                          onTap: () {
+                                            context
+                                                .read<WaterPrv>()
+                                                .tabRow(context, e);
+                                          },
+                                          child: ConstrainedBox(
+                                            constraints: BoxConstraints(
+                                              minHeight: 50,
+                                            ),
                                             child: Text(
                                               formatter.format(
-                                                e.w?.water_head ?? 0,
+                                                e.lw?.water_last ?? 0,
                                               ),
                                             ),
                                           ),
-                                          TableRowInkWell(
-                                            onTap: () {
-                                              context
-                                                  .read<WaterPrv>()
-                                                  .tabRow(context, e);
-                                            },
+                                        ),
+                                        TableRowInkWell(
+                                          onTap: () {
+                                            context
+                                                .read<WaterPrv>()
+                                                .tabRow(context, e);
+                                          },
+                                          child: ConstrainedBox(
+                                            constraints: BoxConstraints(
+                                              minHeight: 50,
+                                            ),
                                             child: Text(
                                               formatter.format(
                                                 e.w?.water_last ?? 0,
                                               ),
                                             ),
                                           ),
-                                          TableRowInkWell(
-                                            onTap: () {
-                                              context
-                                                  .read<WaterPrv>()
-                                                  .tabRow(context, e);
-                                            },
+                                        ),
+                                        TableRowInkWell(
+                                          onTap: () {
+                                            context
+                                                .read<WaterPrv>()
+                                                .tabRow(context, e);
+                                          },
+                                          child: ConstrainedBox(
+                                            constraints: BoxConstraints(
+                                              minHeight: 50,
+                                            ),
                                             child: Text(
                                               formatter.format(
-                                                e.w?.water_consumption ?? 0,
+                                                (e.w?.water_last ?? 0) -
+                                                    (e.lw?.water_last ?? 0),
                                               ),
                                             ),
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                ),
-                              vpad(60),
-                            ],
-                          ),
+                                  ),
+                                ],
+                              ),
+                            vpad(60),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
-                );
-              },
+                    ),
+                ],
+              ),
             ),
           );
         },

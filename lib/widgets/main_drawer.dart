@@ -95,14 +95,14 @@ class MainDrawer extends StatelessWidget {
           Flexible(
             child: ListView(
               children: [
-                buildListTile(
-                  "Trang chủ",
-                  Icons.table_view,
-                  () => Navigator.pushReplacementNamed(
-                    context,
-                    HomeScreen.routeName,
-                  ),
-                ),
+                // buildListTile(
+                //   "Trang chủ",
+                //   Icons.table_view,
+                //   () => Navigator.pushReplacementNamed(
+                //     context,
+                //     HomeScreen.routeName,
+                //   ),
+                // ),
                 buildListTile(
                   "Kỹ thuật",
                   Icons.document_scanner,

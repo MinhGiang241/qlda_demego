@@ -60,6 +60,7 @@ class HOAccountServicePrv extends ChangeNotifier {
         e.d?.apiEndpoint,
         e.d?.domain,
       );
+      await ApiService.shared.deleteCre();
 
       PrfData.shared.setProjectInStore(e);
       // var a = await APITower.mobileMe();

@@ -37,11 +37,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     var accessToken = context.watch<AuthProvider>().accessToken;
     print(accessToken);
-    var initialUrl =
-        '${ApiService.shared.webUrl}?token=$accessToken&mobile=true';
-    var ac =
-        "https://dev.buildingtenant.demego.vn/l/bao-cao-tong-hop-theo-cong-ty";
-    var b = 'http://127.0.0.1/:3000';
+    var initialUrl = "https://dev.buildingtenant.demego.vn";
+    //  'https://${ApiService.shared.webUrl}?token=$accessToken&mobile=true';
     WebViewController controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
@@ -61,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
       )
-      ..loadRequest(Uri.parse(ac));
+      ..loadRequest(Uri.parse(initialUrl));
 
     return Scaffold(
       appBar: const PrimaryAppbar(

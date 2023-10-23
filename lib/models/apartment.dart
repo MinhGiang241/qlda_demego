@@ -22,7 +22,9 @@ class Apartment {
   Building? b;
   Floor? f;
   WaterIndicator? w;
+  WaterIndicator? lw;
   ElectricIndicator? e;
+  ElectricIndicator? le;
   Apartment({
     this.electrical_code,
     this.water_code,
@@ -30,6 +32,8 @@ class Apartment {
     this.f,
     this.b,
     this.w,
+    this.lw,
+    this.le,
     this.e,
     this.createdTime,
     this.id,
@@ -71,6 +75,8 @@ class Apartment {
 
     w = json['w'] != null ? WaterIndicator.fromMap(json['w']) : null;
     e = json['e'] != null ? ElectricIndicator.fromMap(json['e']) : null;
+    lw = json['lw'] != null ? WaterIndicator.fromMap(json['lw']) : null;
+    le = json['le'] != null ? ElectricIndicator.fromMap(json['le']) : null;
     f = json['f'] != null ? Floor.fromJson(json['f']) : null;
   }
 

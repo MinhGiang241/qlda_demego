@@ -31,10 +31,13 @@ class ElectricPrv extends ChangeNotifier {
     required this.year,
     required this.month,
     required this.text,
+    required this.context,
   }) {
     dateController.text = '$month/$year';
     searchController.text = text;
+    getApartments(context, true);
   }
+  BuildContext context;
   String text = '';
   TextEditingController dateController = TextEditingController();
   TextEditingController searchController = TextEditingController();
@@ -56,12 +59,13 @@ class ElectricPrv extends ChangeNotifier {
   int count = 0;
   int total = 0;
   int skip = 0;
+  int latch = 0;
   int limit = 40;
 
   Future getApartments(BuildContext context, bool init) async {
     if (init) {
       initLoading = true;
-      // notifyListeners();
+      notifyListeners();
     }
     if (init) {
       apartments.clear();
@@ -82,6 +86,7 @@ class ElectricPrv extends ChangeNotifier {
           apartments.add(Apartment.fromJson(i));
         }
       }
+
       return APIIndicator.getApartmentIndicatorCount(true, null, month, year);
     }).then((v) {
       if (init) {
@@ -90,6 +95,7 @@ class ElectricPrv extends ChangeNotifier {
       if (v != null) {
         count = v['count'];
         total = v['total'];
+        latch = v['latch'];
       }
     }).catchError((e) {
       if (init) {
@@ -212,7 +218,7 @@ class ElectricPrv extends ChangeNotifier {
                 ? double.parse(endController.text.trim())
                 : 0,
             electricity_consumption: consumption,
-            latch: true,
+            latch: false,
             month: month,
             year: year,
             offline_image: offlineImage);
@@ -220,6 +226,8 @@ class ElectricPrv extends ChangeNotifier {
 
         // /connectivityResult == ConnectivityResult.
         if (connectivityResult == ConnectivityResult.none) {
+          throw ("không có kết nối internet");
+          /** 
           var data =
               await PrfData.shared.getIndicator(ApiService.shared.regCode);
           if (data != null) {
@@ -270,6 +278,7 @@ class ElectricPrv extends ChangeNotifier {
           final service = FlutterBackgroundService();
 
           service.startService();
+          **/
         } else {
           await APIIndicator.saveIndicator(true, indi.toMap()).then((v) {
             setState(() {
@@ -277,7 +286,7 @@ class ElectricPrv extends ChangeNotifier {
             });
             Utils.showSuccessMessage(
               context: context,
-              e: "Chốt chỉ số điện thành công căn ${e.code}",
+              e: "Nhập chỉ số điện thành công căn ${e.code}",
               onClose: () {
                 Navigator.pushReplacementNamed(
                   context,
@@ -316,9 +325,9 @@ class ElectricPrv extends ChangeNotifier {
   }
 
   tabRow(BuildContext context, Apartment e) {
-    startController.text = formatter.format(e.e?.electricity_head ?? 0);
+    startController.text = formatter.format(e.le?.electricity_last ?? 0);
     endController.text = formatter.format(e.e?.electricity_last ?? 0);
-    var cons = (e.e?.electricity_last ?? 0) - (e.e?.electricity_head ?? 0);
+    var cons = (e.e?.electricity_last ?? 0) - (e.le?.electricity_last ?? 0);
     existedImages = [...(e.e?.image ?? [])];
 
     Utils.showDialog(
@@ -363,6 +372,7 @@ class ElectricPrv extends ChangeNotifier {
                           validator: validateTextField,
                           validateString: startValidate,
                           onlyNum: true,
+                          enable: false,
                           controller: startController,
                           label: 'Chỉ số đầu',
                           onChanged: (v) {

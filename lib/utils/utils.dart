@@ -786,7 +786,9 @@ class Utils {
     var status = await Permission.storage.request();
     if (status.isGranted) {
       showSnackBar(context!, S.current.file_downloading);
-      final baseStorage = await getExternalStorageDirectory();
+      final baseStorage = Platform.isIOS
+          ? (await getApplicationDocumentsDirectory())
+          : Directory('/storage/emulated/0/Download');
 
       var taskId = await FlutterDownloader.enqueue(
         url: url ?? "${ApiConstants.uploadURL}?load=$id ",
