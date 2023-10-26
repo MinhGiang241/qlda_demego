@@ -42,6 +42,7 @@ import '../screens/letter/detail_request_letter_screen.dart';
 import '../screens/letter/request_letter_list_screen.dart';
 import '../screens/missing/missing_object_detail_screen.dart';
 import '../screens/missing/missing_object_list_screen.dart';
+import '../screens/offline_tech/offline_tech.dart';
 import '../screens/parcel/add_parcel_screen.dart';
 import '../screens/parcel/parcel_detail_screen.dart';
 import '../screens/parcel/parcel_list_screen.dart';
@@ -57,6 +58,7 @@ import '../screens/resident_card/resident_card_details_screen.dart';
 import '../screens/resident_card/resident_card_list_screen.dart';
 import '../screens/resident_card/service_detail_screen.dart';
 import '../screens/technique/electric_screen.dart';
+import '../screens/technique/local_indicator_screen.dart';
 import '../screens/technique/technical_screen.dart';
 import '../screens/technique/water_screen.dart';
 import '../screens/transportation/add_transportation_card_screen.dart';
@@ -354,6 +356,17 @@ class AppRoutes {
           settings: routeSetting,
           builder: ((context) => ElectricScreen()),
         );
+      case LocalIndicatorScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => LocalIndicatorScreen()),
+        );
+      case OfflineTechScreen.routeName:
+        return MaterialPageRoute(
+          settings: routeSetting,
+          builder: ((context) => OfflineTechScreen()),
+        );
+
       default:
         return MaterialPageRoute(
           settings: routeSetting,

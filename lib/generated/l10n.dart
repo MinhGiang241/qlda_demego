@@ -4000,10 +4000,10 @@ class S {
     );
   }
 
-  /// `Start index can not be greater than end index`
+  /// `En index can not be less than start index`
   String get start_greater_end {
     return Intl.message(
-      'Start index can not be greater than end index',
+      'En index can not be less than start index',
       name: 'start_greater_end',
       desc: '',
       args: [],

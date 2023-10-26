@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:provider/provider.dart';
+import 'package:qlda_demego/screens/technique/local_indicator_screen.dart';
 import 'package:qlda_demego/screens/technique/prv/technique_prv.dart';
 import 'package:qlda_demego/widgets/main_drawer.dart';
 import 'package:qlda_demego/widgets/primary_appbar.dart';
@@ -35,53 +36,84 @@ class TechnicalSceen extends StatelessWidget {
               return ListView(
                 children: [
                   vpad(10),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: PrimaryCard(
-                          onTap: () {
-                            Navigator.pushNamed(
-                              context,
-                              ElectricScreen.routeName,
-                            );
-                          },
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 20,
-                            horizontal: 10,
-                          ),
-                          child: Row(
-                            children: [
-                              const PrimaryIcon(
-                                icons: PrimaryIcons.electricity,
-                              ),
-                              hpad(5),
-                              const Text("Chỉ số điện"),
-                            ],
-                          ),
-                        ),
-                      ),
-                      hpad(10),
-                      Expanded(
-                        child: PrimaryCard(
-                          onTap: () {
-                            Navigator.pushNamed(context, WaterScreen.routeName);
-                          },
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 20,
-                            horizontal: 10,
-                          ),
-                          child: Row(
-                            children: [
-                              const PrimaryIcon(
-                                icons: PrimaryIcons.water,
-                              ),
-                              hpad(5),
-                              const Text("Chỉ số nước"),
-                            ],
+                  IntrinsicHeight(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Expanded(
+                          child: PrimaryCard(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                ElectricScreen.routeName,
+                              );
+                            },
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 20,
+                              horizontal: 10,
+                            ),
+                            child: Row(
+                              children: [
+                                const PrimaryIcon(
+                                  icons: PrimaryIcons.electricity,
+                                ),
+                                hpad(5),
+                                Flexible(child: const Text("Chỉ số điện")),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                        hpad(10),
+                        Expanded(
+                          child: PrimaryCard(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, WaterScreen.routeName);
+                            },
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 20,
+                              horizontal: 10,
+                            ),
+                            child: Row(
+                              children: [
+                                const PrimaryIcon(
+                                  icons: PrimaryIcons.water,
+                                ),
+                                hpad(5),
+                                Flexible(child: const Text("Chỉ số nước")),
+                              ],
+                            ),
+                          ),
+                        ),
+                        hpad(10),
+                        Expanded(
+                          child: PrimaryCard(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                LocalIndicatorScreen.routeName,
+                              );
+                            },
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 20,
+                              horizontal: 10,
+                            ),
+                            child: Row(
+                              children: [
+                                const PrimaryIcon(
+                                  icons: PrimaryIcons.planet,
+                                ),
+                                hpad(5),
+                                Flexible(
+                                  child:
+                                      const Text("Dữ liệu chưa được gửi lên"),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   vpad(20),
                   Text(

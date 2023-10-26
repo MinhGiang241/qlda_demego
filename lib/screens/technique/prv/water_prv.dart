@@ -28,11 +28,11 @@ import '../water_screen.dart';
 
 class WaterPrv extends ChangeNotifier {
   WaterPrv({
-    required this.year,
-    required this.month,
-    required this.text,
+    this.text = '',
     required this.context,
   }) {
+    year = DateTime.now().year;
+    month = DateTime.now().month;
     dateController.text = '$month/$year';
     searchController.text = text;
     getApartments(context, true);
@@ -50,6 +50,8 @@ class WaterPrv extends ChangeNotifier {
   int year = DateTime.now().year;
   int month = DateTime.now().month;
   List<Apartment> apartments = [];
+  List<Apartment> apartmentSearch = [];
+  List<Apartment> apartmentView = [];
   final formatter = NumberFormat('#,###,###');
   String? startValidate;
   String? endValidate;
@@ -62,50 +64,110 @@ class WaterPrv extends ChangeNotifier {
   int skip = 0;
   int limit = 40;
 
-  Future getApartments(BuildContext context, bool init) async {
-    if (init) {
-      initLoading = true;
-      notifyListeners();
-    }
-    if (init) {
-      apartments.clear();
-      skip = 0;
+  clearApartment() {
+    apartmentSearch.clear();
+    apartmentView.clear();
+    apartments.clear();
+    notifyListeners();
+  }
+
+  void onSearchText(BuildContext context) {
+    FocusScope.of(context).unfocus();
+    text = searchController.text.trim();
+    initLoading = true;
+    notifyListeners();
+
+    apartmentView.clear();
+
+    apartmentSearch = apartments
+        .where(
+          (element) => RegExp(
+            text,
+            caseSensitive: false,
+            multiLine: false,
+          ).hasMatch(element.code ?? ''),
+        )
+        .toList();
+    if (limit < apartmentSearch.length) {
+      apartmentView = apartmentSearch.sublist(0, limit);
     } else {
-      skip += limit;
+      apartmentView = apartmentSearch;
     }
-    var textSearch = searchController.text.trim();
-    await APIIndicator.getApartmentIndicator(
-      year,
-      month,
-      skip,
-      limit,
-      textSearch,
-    ).then((v) {
-      if (v != null) {
-        for (var i in v) {
-          apartments.add(Apartment.fromJson(i));
+
+    initLoading = false;
+    notifyListeners();
+  }
+
+  Future getApartments(BuildContext context, bool init) async {
+    try {
+      if (init) {
+        apartments.clear();
+        apartmentSearch.clear();
+        apartmentView.clear();
+        skip = 0;
+        initLoading = true;
+        notifyListeners();
+        var textSearch = searchController.text.trim();
+        var v = await APIIndicator.getApartmentIndicator(
+          year,
+          month,
+          skip,
+          limit,
+          "",
+        );
+        if (v != null) {
+          for (var i in v) {
+            if (init) {
+              var apart = Apartment.fromJson(i);
+              apartments.add(apart);
+              if (RegExp(
+                textSearch,
+                caseSensitive: false,
+                multiLine: false,
+              ).hasMatch(apart.code ?? '')) {
+                apartmentSearch.add(apart);
+              }
+            }
+          }
+          if (limit <= apartmentSearch.length) {
+            apartmentView = apartmentSearch.sublist(0, limit);
+          } else {
+            apartmentView = apartmentSearch;
+          }
+
+          var v2 = await APIIndicator.getApartmentIndicatorCount(
+            true,
+            null,
+            month,
+            year,
+          );
+          count = v2['count'];
+          total = v2['total'];
+          latch = v2['latch'];
+          initLoading = false;
+          skip = limit;
+          notifyListeners();
         }
+      } else {
+        if ((skip + limit) <= apartmentSearch.length) {
+          var a = apartmentSearch.sublist(skip, skip + limit);
+          apartmentView = apartmentView + a;
+
+          skip += limit;
+        } else if (skip <= apartmentSearch.length) {
+          var b = apartmentSearch.sublist(skip);
+          apartmentView = apartmentView + b;
+          skip += limit;
+        }
+        notifyListeners();
       }
-      return APIIndicator.getApartmentIndicatorCount(false, null, month, year);
-    }).then((v) {
+    } catch (e) {
       if (init) {
         initLoading = false;
+        notifyListeners();
       }
-
-      if (v != null) {
-        count = v['count'];
-        total = v['total'];
-        latch = v['latch'];
-      }
-      notifyListeners();
-    }).catchError((e) {
-      if (init) {
-        initLoading = false;
-      }
-      notifyListeners();
-
-      Utils.showErrorMessage(context, e);
-    });
+      Utils.showErrorMessage(context, e.toString());
+    }
   }
 
   pickDate(BuildContext context) async {
@@ -162,7 +224,7 @@ class WaterPrv extends ChangeNotifier {
     if (startController.text.trim().isEmpty) {
       startValidate = S.current.not_empty;
     } else if (geater()) {
-      startValidate = S.current.start_greater_end;
+      startValidate = null;
     } else {
       startValidate = null;
     }
@@ -325,7 +387,8 @@ class WaterPrv extends ChangeNotifier {
 
   tabRow(BuildContext context, Apartment e) {
     startController.text = formatter.format(e.lw?.water_last ?? 0);
-    endController.text = formatter.format(e.w?.water_last ?? 0);
+    endController.text =
+        e.w?.water_last == null ? '' : formatter.format(e.w?.water_last ?? 0);
     var cons = (e.w?.water_last ?? 0) - (e.lw?.water_last ?? 0);
     existedImages = [...(e.w?.image ?? [])];
 
@@ -421,7 +484,7 @@ class WaterPrv extends ChangeNotifier {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: 'Mức tiêu thụ dự tính:',
+                          text: 'Mức tiêu thụ dự tính: ',
                           style: txtRegular(16, Colors.black),
                         ),
                         TextSpan(

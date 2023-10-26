@@ -510,7 +510,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Home Community Smart Living"),
         "start": MessageLookupByLibrary.simpleMessage("Bắt đầu"),
         "start_greater_end": MessageLookupByLibrary.simpleMessage(
-            "Chỉ số đầu không được lớn hơn chỉ số cuối"),
+            "Chỉ số cuối không được nhỏ hơn chỉ số đầu"),
         "start_time": MessageLookupByLibrary.simpleMessage("Giờ bắt đầu"),
         "status": MessageLookupByLibrary.simpleMessage("Trạng thái"),
         "stock": MessageLookupByLibrary.simpleMessage("Tồn kho"),

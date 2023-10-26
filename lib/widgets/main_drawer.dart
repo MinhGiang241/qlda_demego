@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qlda_demego/constant/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:qlda_demego/screens/home/home_screen.dart';
+import 'package:qlda_demego/screens/offline_tech/offline_tech.dart';
 import 'package:qlda_demego/screens/period_task/period_task_list_screen.dart';
 
 import '../generated/l10n.dart';
@@ -111,6 +112,15 @@ class MainDrawer extends StatelessWidget {
                     TechnicalSceen.routeName,
                   ),
                 ),
+                buildListTile(
+                  "Dữ liệu offline",
+                  Icons.document_scanner,
+                  () => Navigator.pushReplacementNamed(
+                    context,
+                    OfflineTechScreen.routeName,
+                  ),
+                ),
+
                 // buildListTile(
                 //   S.of(context).extr_tast,
                 //   Icons.list_alt,

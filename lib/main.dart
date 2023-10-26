@@ -13,6 +13,8 @@ import 'package:qlda_demego/services/provider/auth_provider.dart';
 import 'constant/theme.dart';
 import 'generated/l10n.dart';
 import 'screens/ho/prv/ho_account_service_prv.dart';
+import 'screens/technique/prv/electric_prv.dart';
+import 'screens/technique/prv/water_prv.dart';
 import 'services/api/prf_data.dart';
 
 void main() async {
@@ -76,6 +78,12 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => AuthProvider()..start(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ElectricPrv(context: context),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => WaterPrv(context: context),
         ),
       ],
       child: MaterialApp(

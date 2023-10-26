@@ -506,7 +506,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Home Community Smart Living"),
         "start": MessageLookupByLibrary.simpleMessage("Start"),
         "start_greater_end": MessageLookupByLibrary.simpleMessage(
-            "Start index can not be greater than end index"),
+            "En index can not be less than start index"),
         "start_time": MessageLookupByLibrary.simpleMessage("Start time"),
         "status": MessageLookupByLibrary.simpleMessage("Status"),
         "stock": MessageLookupByLibrary.simpleMessage("Stock"),

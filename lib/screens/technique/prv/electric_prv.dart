@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 import 'dart:io';
 
@@ -28,11 +30,11 @@ import '../technical_screen.dart';
 
 class ElectricPrv extends ChangeNotifier {
   ElectricPrv({
-    required this.year,
-    required this.month,
-    required this.text,
+    this.text = '',
     required this.context,
   }) {
+    year = DateTime.now().year;
+    month = DateTime.now().month;
     dateController.text = '$month/$year';
     searchController.text = text;
     getApartments(context, true);
@@ -47,9 +49,11 @@ class ElectricPrv extends ChangeNotifier {
   List<File> listImages = [];
   List<FileUploadModel> existedImages = [];
   List<FileUploadModel> uploadedImages = [];
-  int year = DateTime.now().year;
-  int month = DateTime.now().month;
+  late int year = DateTime.now().year;
+  late int month = DateTime.now().month;
   List<Apartment> apartments = [];
+  List<Apartment> apartmentView = [];
+  List<Apartment> apartmentSearch = [];
   final formatter = NumberFormat('#,###,###');
   String? startValidate;
   String? endValidate;
@@ -62,48 +66,136 @@ class ElectricPrv extends ChangeNotifier {
   int latch = 0;
   int limit = 40;
 
-  Future getApartments(BuildContext context, bool init) async {
-    if (init) {
-      initLoading = true;
-      notifyListeners();
-    }
-    if (init) {
-      apartments.clear();
-      skip = 0;
-    } else {
-      skip += limit;
-    }
-    var textSearch = searchController.text.trim();
-    await APIIndicator.getApartmentIndicator(
-      year,
-      month,
-      skip,
-      limit,
-      textSearch,
-    ).then((v) {
-      if (v != null) {
-        for (var i in v) {
-          apartments.add(Apartment.fromJson(i));
-        }
-      }
-
-      return APIIndicator.getApartmentIndicatorCount(true, null, month, year);
-    }).then((v) {
-      if (init) {
-        initLoading = false;
-      }
-      if (v != null) {
-        count = v['count'];
-        total = v['total'];
-        latch = v['latch'];
-      }
-    }).catchError((e) {
-      if (init) {
-        initLoading = false;
-      }
-      Utils.showErrorMessage(context, e);
-    });
+  clearApartment() {
+    apartmentSearch.clear();
+    apartmentView.clear();
+    apartments.clear();
     notifyListeners();
+  }
+
+  void onSearchText(BuildContext context) {
+    FocusScope.of(context).unfocus();
+    text = searchController.text.trim();
+    initLoading = true;
+    notifyListeners();
+
+    apartmentView.clear();
+
+    apartmentSearch = apartments
+        .where(
+          (element) => RegExp(
+            text,
+            caseSensitive: false,
+            multiLine: false,
+          ).hasMatch(element.code ?? ''),
+        )
+        .toList();
+    if (limit < apartmentSearch.length) {
+      apartmentView = apartmentSearch.sublist(0, limit);
+    } else {
+      apartmentView = apartmentSearch;
+    }
+
+    initLoading = false;
+    notifyListeners();
+  }
+
+  Future getApartments(BuildContext context, bool init) async {
+    try {
+      if (init) {
+        var connectivityResult = await (Connectivity().checkConnectivity());
+        if (connectivityResult == ConnectivityResult.none) {
+          Utils.showDialog(
+            context: context,
+            dialog: PrimaryDialog.custom(
+              title: "Không có kết nối",
+              content: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Không có kết nối internet, Dữ liệu nhập vào sẽ lưu vào bộ nhớ máy.",
+                    textAlign: TextAlign.center,
+                  ),
+                  vpad(20),
+                  PrimaryButton(
+                    buttonSize: ButtonSize.medium,
+                    text: S.of(context).close,
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ),
+            ),
+          );
+          return;
+        }
+        apartments.clear();
+        apartmentSearch.clear();
+        apartmentView.clear();
+        skip = 0;
+        initLoading = true;
+        notifyListeners();
+        var textSearch = searchController.text.trim();
+        var v = await APIIndicator.getApartmentIndicator(
+          year,
+          month,
+          skip,
+          limit,
+          "",
+        );
+        if (v != null) {
+          for (var i in v) {
+            if (init) {
+              var apart = Apartment.fromJson(i);
+              apartments.add(apart);
+              if (RegExp(
+                textSearch,
+                caseSensitive: false,
+                multiLine: false,
+              ).hasMatch(apart.code ?? '')) {
+                apartmentSearch.add(apart);
+              }
+            }
+          }
+          if (limit <= apartmentSearch.length) {
+            apartmentView = apartmentSearch.sublist(0, limit);
+          } else {
+            apartmentView = apartmentSearch;
+          }
+          var v2 = await APIIndicator.getApartmentIndicatorCount(
+            true,
+            null,
+            month,
+            year,
+          );
+          count = v2['count'];
+          total = v2['total'];
+          latch = v2['latch'];
+          initLoading = false;
+          skip = limit;
+          notifyListeners();
+        }
+      } else {
+        if ((skip + limit) <= apartmentSearch.length) {
+          var a = apartmentSearch.sublist(skip, skip + limit);
+          apartmentView = apartmentView + a;
+
+          skip += limit;
+        } else if (skip <= apartmentSearch.length) {
+          var b = apartmentSearch.sublist(skip);
+          apartmentView = apartmentView + b;
+          skip += limit;
+        }
+        notifyListeners();
+      }
+    } catch (e) {
+      if (init) {
+        initLoading = false;
+        notifyListeners();
+      }
+      Utils.showErrorMessage(context, e.toString());
+    }
   }
 
   pickDate(
@@ -162,7 +254,7 @@ class ElectricPrv extends ChangeNotifier {
     if (startController.text.trim().isEmpty) {
       startValidate = S.current.not_empty;
     } else if (geater()) {
-      startValidate = S.current.start_greater_end;
+      startValidate = null;
     } else {
       startValidate = null;
     }
@@ -207,21 +299,21 @@ class ElectricPrv extends ChangeNotifier {
         var consumption = double.parse(endController.text.trim()) -
             double.parse(startController.text.trim());
         var indi = ElectricIndicator(
-            image: existedImages + uploadedImages,
-            id: e.e?.id,
-            apartmentId: e.id,
-            electricity_head:
-                double.tryParse(startController.text.trim()) != null
-                    ? double.parse(startController.text.trim())
-                    : 0,
-            electricity_last: double.tryParse(endController.text.trim()) != null
-                ? double.parse(endController.text.trim())
-                : 0,
-            electricity_consumption: consumption,
-            latch: false,
-            month: month,
-            year: year,
-            offline_image: offlineImage);
+          image: existedImages + uploadedImages,
+          id: e.e?.id,
+          apartmentId: e.id,
+          electricity_head: double.tryParse(startController.text.trim()) != null
+              ? double.parse(startController.text.trim())
+              : 0,
+          electricity_last: double.tryParse(endController.text.trim()) != null
+              ? double.parse(endController.text.trim())
+              : 0,
+          electricity_consumption: consumption,
+          latch: false,
+          month: month,
+          year: year,
+          offline_image: offlineImage,
+        );
         //  indicator
 
         // /connectivityResult == ConnectivityResult.
@@ -326,7 +418,9 @@ class ElectricPrv extends ChangeNotifier {
 
   tabRow(BuildContext context, Apartment e) {
     startController.text = formatter.format(e.le?.electricity_last ?? 0);
-    endController.text = formatter.format(e.e?.electricity_last ?? 0);
+    endController.text = e.e?.electricity_last == null
+        ? ''
+        : formatter.format(e.e?.electricity_last ?? 0);
     var cons = (e.e?.electricity_last ?? 0) - (e.le?.electricity_last ?? 0);
     existedImages = [...(e.e?.image ?? [])];
 
@@ -422,7 +516,7 @@ class ElectricPrv extends ChangeNotifier {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: 'Mức tiêu thụ dự tính:',
+                          text: 'Mức tiêu thụ dự tính: ',
                           style: txtRegular(16, Colors.black),
                         ),
                         TextSpan(

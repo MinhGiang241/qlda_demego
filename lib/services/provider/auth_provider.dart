@@ -1,8 +1,11 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 import 'package:qlda_demego/screens/auth/sign_in/sign_in_screen.dart';
 import 'package:qlda_demego/screens/home/home_screen.dart';
+import 'package:qlda_demego/screens/technique/prv/electric_prv.dart';
+import 'package:qlda_demego/screens/technique/prv/water_prv.dart';
 import 'package:qlda_demego/services/api/api_auth.dart';
 import 'package:oauth2/oauth2.dart' as oauth2;
 
@@ -117,6 +120,8 @@ class AuthProvider with ChangeNotifier {
                     buttonType: ButtonType.secondary,
                     secondaryBackgroundColor: redColor2,
                     onTap: () async {
+                      context.read<ElectricPrv>().clearApartment();
+                      context.read<WaterPrv>().clearApartment();
                       await ApiAuth.signOut();
                       authStatus = AuthStatus.unauthen;
                       notifyListeners();

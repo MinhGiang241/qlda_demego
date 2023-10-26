@@ -395,7 +395,7 @@
   "month": "Tháng",
   "year": "Năm",
   "not_empty": "Không được phép để trống",
-  "start_greater_end": "Chỉ số đầu không được lớn hơn chỉ số cuối",
+  "start_greater_end": "Chỉ số cuối không được nhỏ hơn chỉ số đầu",
   "err_upload": "Có sự có xảy ra không tải được file",
   "not_upload_15mb": "Không upload được file lớn hơn 15MB",
   "pull_to_load": "Kéo để xem thêm",
