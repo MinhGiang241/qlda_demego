@@ -17,7 +17,7 @@ class Sqlflite {
       onCreate: (Database db, int version) async {
         await db.execute('''
           CREATE TABLE IF NOT EXISTS apartment (
-              id TEXT PRIMARY KEY,
+              _id TEXT PRIMARY KEY,
               code TEXT,
               electrical_code TEXT,
               water_code TEXT,
