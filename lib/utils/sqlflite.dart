@@ -3,8 +3,8 @@
 import 'package:qlda_demego/models/apartment.dart';
 import 'package:sqflite/sqflite.dart';
 
-class Sqlflite {
-  static final shared = Sqlflite();
+class SqlfliteServices {
+  static final shared = SqlfliteServices();
   Database? database;
 
   Future openSQLDatabase() async {
@@ -22,13 +22,14 @@ class Sqlflite {
               electrical_code TEXT,
               water_code TEXT,
               regCode TEXT,
-              month INT,
-              year INT,
-              offline_images TEXT[],
-              water_head INT,
-              water_last INT,
-              electric_head INT,
-              electric_last INT,
+              month INTEGER,
+              year INTEGER,
+              offline_images_e TEXT,
+              offline_images_w TEXT,
+              electric_last INTEGER,
+              electric_head INTEGER,
+              water_head INTEGER,
+              water_last INTEGER
           );
           ''');
       },
@@ -41,12 +42,36 @@ class Sqlflite {
     await database!.close();
   }
 
-  Future deleteSQLTable() async {
-    var count = await database!.rawDelete('DELETE FROM apartment ');
-    return count;
+  findAllIndicatorWithCodeAndMonthWithFilter(
+    int year,
+    int month,
+    int limit,
+    int skip,
+    String regCode,
+    String search,
+  ) async {
+    var list = await database!.rawQuery('''
+SELECT * FROM apartment WHERE 
+                            year = $year 
+                            AND month = $month 
+                            AND regCode = "${regCode.isEmpty ? '' : regCode}" 
+                            AND code LIKE  '%$search%'  
+                LIMIT $limit
+                OFFSET $skip
+''');
+    return list;
   }
 
-  Future findIndicator() async {}
+  Future findAllIndicatorWithCodeAndMonth(
+    int year,
+    int month,
+    String regCode,
+  ) async {
+    var list = await database!.rawQuery('''
+      SELECT * FROM apartment WHERE year = $year AND month = $month AND regCode = "${regCode.isEmpty ? '' : regCode}"
+''');
+    return list;
+  }
 
   Future saveApartment(
     Apartment newApartment,
@@ -54,10 +79,59 @@ class Sqlflite {
     int year,
     String regCode,
   ) async {
-    var apartment = await database!.rawQuery('''
-      SELECT * FROM apartment WHERE code = "${newApartment.code}"
+    var apartments = await database!.rawQuery('''
+      SELECT * FROM apartment WHERE code = "${newApartment.code}" AND year = $year AND month = $month AND regCode = "${regCode.isEmpty ? "" : regCode}"
       ''');
+    if (apartments.isNotEmpty) {
+      //var existedApartment = ApartmentFromSQL.fromMap(apartments[0]);
 
-    print(apartment);
+      int count = await database!.rawUpdate(
+        ''' UPDATE apartment SET electric_last = ${newApartment.e?.electricity_last ?? "NULL"},
+                                 electric_head = ${newApartment.e?.electricity_head ?? "NULL"},
+                                 water_last = ${newApartment.w?.water_last ?? "NULL"},
+                                 water_head = ${newApartment.w?.water_head ?? "NULL"},
+                                 offline_images_e = ${newApartment.e?.offline_image == null ? 'NULL' : newApartment.e!.offline_image!.isEmpty ? "''" : '"${newApartment.e?.offline_image!.map((i) => i.path).join(',')}"'},
+                                 offline_images_w = ${newApartment.e?.offline_image == null ? 'NULL' : newApartment.e!.offline_image!.isEmpty ? "''" : '"${newApartment.e?.offline_image!.map((i) => i.path).join(',')}"'}
+            WHERE code = "${newApartment.code}"
+              AND year = $year
+              AND month = $month
+              AND regCode = ${regCode.isEmpty ? '""' : regCode}
+        ''',
+      );
+      print('updated: $count');
+    } else {
+      await database!.transaction((txn) async {
+        int id1 = await txn.rawInsert('''
+            INSERT INTO apartment(
+              _id,
+              code,
+              electrical_code,
+              water_code,
+              electric_last, 
+              electric_head,
+               water_last, 
+               water_head,
+               offline_images_e ,
+               offline_images_w,
+               year, month, regCode)
+                   VALUES (
+                    "${newApartment.id}",
+                    "${newApartment.code}",
+                    "${newApartment.electrical_code}",
+                    "${newApartment.water_code}",
+                          ${newApartment.e?.electricity_last?.toInt() ?? 'NULL'},
+                           ${newApartment.e?.electricity_head?.toInt() ?? 'NULL'},
+                           ${newApartment.w?.water_head?.toInt() ?? 'NULL'},
+                           ${newApartment.w?.water_last?.toInt() ?? 'NULL'},
+                           ${newApartment.e?.offline_image == null ? 'NULL' : newApartment.e!.offline_image!.isEmpty ? "''" : "'${newApartment.e?.offline_image!.map((i) => i.path).join(',')}'"},
+                           ${newApartment.w?.offline_image == null ? 'NULL' : newApartment.w!.offline_image!.isEmpty ? "''" : "'${newApartment.w?.offline_image!.map((i) => i.path).join(',')}'"},
+                           $year, $month, ${regCode.isEmpty ? "''" : regCode}
+                          ) 
+          ''');
+        return id1;
+      });
+    }
+
+    print(apartments);
   }
 }

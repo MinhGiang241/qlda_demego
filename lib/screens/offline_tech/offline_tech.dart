@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qlda_demego/services/api/api_services.dart';
+import 'package:qlda_demego/utils/sqlflite.dart';
 import 'package:qlda_demego/widgets/main_drawer.dart';
 import 'package:qlda_demego/widgets/primary_appbar.dart';
 import 'package:qlda_demego/widgets/primary_button.dart';
@@ -62,6 +64,24 @@ class OfflineTechScreen extends StatelessWidget {
                   buttonSize: ButtonSize.small,
                   onTap: () {
                     context.read<OfflineTechPrv>().findSQLDatabase();
+                  },
+                  text: "tìm dữ liệu căn hộ",
+                ),
+                PrimaryButton(
+                  buttonSize: ButtonSize.small,
+                  onTap: () async {
+                    var a = await SqlfliteServices.shared
+                        .findAllIndicatorWithCodeAndMonthWithFilter(
+                      2023,
+                      10,
+                      10,
+                      0,
+                      ApiService.shared.regCode,
+                      "CH",
+                    );
+                    var b = a[0];
+                    var c = b['code'];
+                    print(c);
                   },
                   text: "tìm dữ liệu căn hộ",
                 ),

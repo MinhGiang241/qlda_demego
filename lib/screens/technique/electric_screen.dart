@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'package:qlda_demego/screens/technique/prv/electric_prv.dart';
+import 'package:qlda_demego/utils/sqlflite.dart';
 import 'package:qlda_demego/widgets/primary_appbar.dart';
 import 'package:qlda_demego/widgets/primary_screen.dart';
 import 'package:qlda_demego/widgets/primary_text_field.dart';
@@ -17,6 +18,7 @@ import '../../widgets/custom_footer.dart';
 import '../../widgets/primary_empty_widget.dart';
 import '../../widgets/primary_icon.dart';
 import '../../widgets/primary_loading.dart';
+import 'prv/apartment_prv.dart';
 import 'technical_screen.dart';
 
 class ElectricScreen extends StatefulWidget {
@@ -28,6 +30,7 @@ class ElectricScreen extends StatefulWidget {
 }
 
 class _ElectricScreenState extends State<ElectricScreen> {
+  final formatter = NumberFormat('#,###,###');
   final RefreshController _refreshController =
       RefreshController(initialRefresh: false);
 
@@ -35,7 +38,7 @@ class _ElectricScreenState extends State<ElectricScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      if (context.read<ElectricPrv>().apartments.isEmpty) {
+      if (context.read<ApartmentPrv>().apartments.isEmpty) {
         await context.read<ElectricPrv>().getApartments(context, true);
       }
     });
@@ -43,7 +46,6 @@ class _ElectricScreenState extends State<ElectricScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final formatter = NumberFormat('#,###,###');
     final arg = ModalRoute.of(context)!.settings.arguments as Map?;
     int year = DateTime.now().year;
     int month = DateTime.now().month;
@@ -55,7 +57,7 @@ class _ElectricScreenState extends State<ElectricScreen> {
       text = arg['search'];
     }
 
-    List<Apartment> apartments = context.watch<ElectricPrv>().apartments;
+    List<Apartment> apartments = context.watch<ApartmentPrv>().apartments;
     List<Apartment> view = context.watch<ElectricPrv>().apartmentView;
     var count = context.watch<ElectricPrv>().count;
     var latch = context.watch<ElectricPrv>().latch;
@@ -196,6 +198,7 @@ class _ElectricScreenState extends State<ElectricScreen> {
                               2: FlexColumnWidth(1),
                               3: FlexColumnWidth(1),
                               4: FlexColumnWidth(1),
+                              5: FlexColumnWidth(1),
                             },
                             textBaseline: TextBaseline.ideographic,
                             defaultVerticalAlignment:
@@ -211,154 +214,17 @@ class _ElectricScreenState extends State<ElectricScreen> {
                             children: [
                               TableRow(
                                 children: [
-                                  TableRowInkWell(
-                                    child: ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                        minHeight: 50,
-                                      ),
-                                      child: Text(
-                                        "Mã căn",
-                                      ),
-                                    ),
-                                  ),
-                                  TableRowInkWell(
-                                    child: ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                        minHeight: 50,
-                                      ),
-                                      child: Text("Mã đồng hồ"),
-                                    ),
-                                  ),
-                                  TableRowInkWell(
-                                    child: ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                        minHeight: 50,
-                                      ),
-                                      child: Text("Đầu kỳ"),
-                                    ),
-                                  ),
-                                  TableRowInkWell(
-                                    child: ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                        minHeight: 50,
-                                      ),
-                                      child: Text("Cuối kỳ"),
-                                    ),
-                                  ),
-                                  TableRowInkWell(
-                                    child: ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                        minHeight: 50,
-                                      ),
-                                      child: Text("Tiêu thụ"),
-                                    ),
-                                  ),
+                                  ...genCell([
+                                    Text("STT"),
+                                    Text("Mã căn"),
+                                    Text("Mã đồng hồ"),
+                                    Text("Đầu kỳ"),
+                                    Text("Cuối kỳ"),
+                                    Text("Tiêu thụ"),
+                                  ]),
                                 ],
                               ),
-                              ...view.map(
-                                (e) => TableRow(
-                                  children: [
-                                    TableRowInkWell(
-                                      onTap: () {
-                                        context
-                                            .read<ElectricPrv>()
-                                            .tabRow(context, e);
-                                      },
-                                      child: SizedBox(
-                                        height: 50,
-                                        child: Text(e.code ?? ''),
-                                      ),
-                                    ),
-                                    TableRowInkWell(
-                                      onTap: () {
-                                        context
-                                            .read<ElectricPrv>()
-                                            .tabRow(context, e);
-                                      },
-                                      child: ConstrainedBox(
-                                        constraints: BoxConstraints(
-                                          minHeight: 50,
-                                        ),
-                                        child: Text(
-                                          e.electrical_code ?? "",
-                                        ),
-                                      ),
-                                    ),
-                                    TableRowInkWell(
-                                      onTap: () {
-                                        context
-                                            .read<ElectricPrv>()
-                                            .tabRow(context, e);
-                                      },
-                                      child: ConstrainedBox(
-                                        constraints: BoxConstraints(
-                                          minHeight: 50,
-                                        ),
-                                        child: Text(
-                                          e.le?.electricity_last == null
-                                              ? ''
-                                              : formatter.format(
-                                                  e.le?.electricity_last ?? 0,
-                                                ),
-                                        ),
-                                      ),
-                                    ),
-                                    TableRowInkWell(
-                                      onTap: () {
-                                        context
-                                            .read<ElectricPrv>()
-                                            .tabRow(context, e);
-                                      },
-                                      child: ConstrainedBox(
-                                        constraints: BoxConstraints(
-                                          minHeight: 50,
-                                        ),
-                                        child: Text(
-                                          e.e?.electricity_last == null
-                                              ? ''
-                                              : formatter.format(
-                                                  e.e?.electricity_last ?? 0,
-                                                ),
-                                        ),
-                                      ),
-                                    ),
-                                    TableRowInkWell(
-                                      onTap: () {
-                                        context
-                                            .read<ElectricPrv>()
-                                            .tabRow(context, e);
-                                      },
-                                      child: ConstrainedBox(
-                                        constraints: BoxConstraints(
-                                          minHeight: 50,
-                                        ),
-                                        child: Text(
-                                          (e.le?.electricity_head == null ||
-                                                  e.e?.electricity_last == null)
-                                              ? ''
-                                              : formatter.format(
-                                                  (e.e?.electricity_last ?? 0) -
-                                                      (e.le?.electricity_last ??
-                                                          e.e?.electricity_head ??
-                                                          0),
-                                                ),
-                                          style: (e.le?.electricity_last !=
-                                                      null &&
-                                                  e.e?.electricity_last !=
-                                                      null &&
-                                                  ((e.e?.electricity_last ??
-                                                              0) -
-                                                          (e.le?.electricity_last ??
-                                                              0) <
-                                                      0))
-                                              ? txtBold(12, redColor)
-                                              : null,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
+                              ...genTable(view),
                             ],
                           ),
                         vpad(60),
@@ -368,6 +234,74 @@ class _ElectricScreenState extends State<ElectricScreen> {
                 ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Iterable<TableRow> genTable(List<Apartment> apartments) {
+    return apartments.asMap().entries.map(
+          (e) => (TableRow(
+            children: [
+              ...genCell(
+                [
+                  Text('${e.key}'),
+                  Text(e.value.code ?? ''),
+                  Text(e.value.electrical_code ?? ""),
+                  Text(
+                    e.value.le?.electricity_last == null
+                        ? ''
+                        : formatter.format(
+                            e.value.le?.electricity_last ?? 0,
+                          ),
+                  ),
+                  Text(
+                    e.value.e?.electricity_last == null
+                        ? ''
+                        : formatter.format(
+                            e.value.e?.electricity_last ?? 0,
+                          ),
+                  ),
+                  Text(
+                    (e.value.le?.electricity_head == null ||
+                            e.value.e?.electricity_last == null)
+                        ? ''
+                        : formatter.format(
+                            (e.value.e?.electricity_last ?? 0) -
+                                (e.value.le?.electricity_last ??
+                                    e.value.e?.electricity_head ??
+                                    0),
+                          ),
+                    style: (e.value.le?.electricity_last != null &&
+                            e.value.e?.electricity_last != null &&
+                            ((e.value.e?.electricity_last ?? 0) -
+                                    (e.value.le?.electricity_last ?? 0) <
+                                0))
+                        ? txtBold(12, redColor)
+                        : null,
+                  ),
+                ],
+                onTap: () {
+                  context.read<ElectricPrv>().tabRow(context, e.value);
+                },
+              ),
+            ],
+          )),
+        );
+  }
+
+  Iterable<TableRowInkWell> genCell(
+    List<Widget> listHeader, {
+    Function()? onTap,
+  }) {
+    return listHeader.map(
+      (e) => TableRowInkWell(
+        onTap: onTap,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(
+            minHeight: 50,
+          ),
+          child: e,
         ),
       ),
     );

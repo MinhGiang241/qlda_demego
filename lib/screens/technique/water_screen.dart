@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:qlda_demego/screens/technique/prv/apartment_prv.dart';
 import 'package:qlda_demego/screens/technique/prv/water_prv.dart';
 import 'package:qlda_demego/widgets/primary_appbar.dart';
 import 'package:qlda_demego/widgets/primary_empty_widget.dart';
@@ -34,7 +35,7 @@ class _WaterScreenState extends State<WaterScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      if (context.read<WaterPrv>().apartments.isEmpty) {
+      if (context.read<ApartmentPrv>().apartments.isEmpty) {
         await context.read<WaterPrv>().getApartments(context, true);
       }
     });

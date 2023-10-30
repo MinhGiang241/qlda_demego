@@ -8,14 +8,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:qlda_demego/models/file_upload_model.dart';
 import 'package:qlda_demego/models/indicator.dart';
 import 'package:qlda_demego/models/indicator_data.dart';
+import 'package:qlda_demego/screens/technique/prv/apartment_prv.dart';
 import 'package:qlda_demego/services/api/api_file.dart';
 import 'package:qlda_demego/services/api/api_indicator.dart';
 import 'package:qlda_demego/services/api/api_services.dart';
 import 'package:qlda_demego/services/api/prf_data.dart';
+import 'package:qlda_demego/utils/sqlflite.dart';
 import 'package:qlda_demego/widgets/select_media_widget.dart';
+import 'package:sqflite/sqflite.dart';
 
 import '../../../constant/constants.dart';
 import '../../../generated/l10n.dart';
@@ -37,6 +41,8 @@ class ElectricPrv extends ChangeNotifier {
     month = DateTime.now().month;
     dateController.text = '$month/$year';
     searchController.text = text;
+    SqlfliteServices.shared.openSQLDatabase();
+    //apartments = context.read<ApartmentPrv>().apartments;
     getApartments(context, true);
   }
   BuildContext context;
@@ -49,9 +55,10 @@ class ElectricPrv extends ChangeNotifier {
   List<File> listImages = [];
   List<FileUploadModel> existedImages = [];
   List<FileUploadModel> uploadedImages = [];
+
   late int year = DateTime.now().year;
   late int month = DateTime.now().month;
-  List<Apartment> apartments = [];
+  // List<Apartment> apartments = [];
   List<Apartment> apartmentView = [];
   List<Apartment> apartmentSearch = [];
   final formatter = NumberFormat('#,###,###');
@@ -64,12 +71,12 @@ class ElectricPrv extends ChangeNotifier {
   int total = 0;
   int skip = 0;
   int latch = 0;
-  int limit = 40;
+  int limit = 20;
 
-  clearApartment() {
+  clearApartment(BuildContext context) {
     apartmentSearch.clear();
     apartmentView.clear();
-    apartments.clear();
+    context.read<ApartmentPrv>().clearApartment();
     notifyListeners();
   }
 
@@ -81,7 +88,9 @@ class ElectricPrv extends ChangeNotifier {
 
     apartmentView.clear();
 
-    apartmentSearch = apartments
+    apartmentSearch = context
+        .watch<ApartmentPrv>()
+        .apartments
         .where(
           (element) => RegExp(
             text,
@@ -130,9 +139,7 @@ class ElectricPrv extends ChangeNotifier {
           );
           return;
         }
-        apartments.clear();
-        apartmentSearch.clear();
-        apartmentView.clear();
+
         skip = 0;
         initLoading = true;
         notifyListeners();
@@ -145,10 +152,11 @@ class ElectricPrv extends ChangeNotifier {
           "",
         );
         if (v != null) {
+          clearApartment(context);
           for (var i in v) {
             if (init) {
               var apart = Apartment.fromJson(i);
-              apartments.add(apart);
+              context.read<ApartmentPrv>().addApartment(apart);
               if (RegExp(
                 textSearch,
                 caseSensitive: false,
@@ -293,7 +301,7 @@ class ElectricPrv extends ChangeNotifier {
         if (connectivityResult != ConnectivityResult.none) {
           await uploadImages(context);
         } else {
-          offlineImage = listImages;
+          offlineImage = listImages.map((e) => File(e.path)).toList();
         }
 
         var consumption = double.parse(endController.text.trim()) -
@@ -318,59 +326,51 @@ class ElectricPrv extends ChangeNotifier {
 
         // /connectivityResult == ConnectivityResult.
         if (connectivityResult == ConnectivityResult.none) {
-          throw ("không có kết nối internet");
-          /** 
-          var data =
-              await PrfData.shared.getIndicator(ApiService.shared.regCode);
-          if (data != null) {
-            var indicatorData = IndicatorData.fromJson(data);
+          await SqlfliteServices.shared.openSQLDatabase();
+          setState(() {
+            loading = false;
+          });
+          var apartmentCopy = e.copyWith();
+          apartmentCopy.e = indi;
 
-            var index = (indicatorData.electric ?? []).indexWhere(
-              (el) =>
-                  el.apartmentId == e.id &&
-                  el.year == year &&
-                  el.month == month,
-            );
-            if (index < 0) {
-              indicatorData.electric!.add(indi);
-            } else {
-              indicatorData.electric![index] = indi;
-            }
+          Utils.showDialog(
+            context: context,
+            dialog: PrimaryDialog.custom(
+              title: "Không có kết nối",
+              content: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Không có kết nối internet, Dữ liệu nhập vào sẽ lưu vào bộ nhớ máy.",
+                    textAlign: TextAlign.center,
+                  ),
+                  vpad(20),
+                  PrimaryButton(
+                    buttonSize: ButtonSize.medium,
+                    text: S.of(context).close,
+                    onTap: () async {
+                      Navigator.pop(context);
+                      Navigator.pop(context);
 
-            await PrfData.shared
-                .setIndicator(indicatorData.toJson(), ApiService.shared.regCode)
-                .then((v) async {
-              Utils.showSnackBar(
-                context,
-                "Kết nối internet hiện tại không có sẵn ,dữ liệu sẽ gửi lên sau",
-              );
-            });
-          } else {
-            var indicatorData = IndicatorData(
-              baseURL: ApiService.shared.baseUrl,
-              regCode: ApiService.shared.regCode,
-              access_token: ApiService.shared.access_token,
-              electric: [indi],
-            );
-            await PrfData.shared
-                .setIndicator(indicatorData.toJson(), ApiService.shared.regCode)
-                .then((v) async {
-              Utils.showSnackBar(
-                context,
-                "Kết nối internet hiện tại không có sẵn ,dữ liệu sẽ gửi lên sau",
-              );
-              setState(() {
-                loading = false;
-              });
-              Navigator.pop(context);
-            });
-          }
-
-          //  RunService Background
-          final service = FlutterBackgroundService();
-
-          service.startService();
-          **/
+                      try {
+                        await SqlfliteServices.shared.saveApartment(
+                          apartmentCopy,
+                          month,
+                          year,
+                          ApiService.shared.regCode,
+                        );
+                        e.e = indi;
+                        print(e);
+                        notifyListeners();
+                      } catch (e) {
+                        Utils.showErrorMessage(context, e.toString());
+                      }
+                    },
+                  ),
+                ],
+              ),
+            ),
+          );
         } else {
           await APIIndicator.saveIndicator(true, indi.toMap()).then((v) {
             setState(() {
@@ -423,6 +423,11 @@ class ElectricPrv extends ChangeNotifier {
         : formatter.format(e.e?.electricity_last ?? 0);
     var cons = (e.e?.electricity_last ?? 0) - (e.le?.electricity_last ?? 0);
     existedImages = [...(e.e?.image ?? [])];
+    listImages.clear();
+    if (e.e?.offline_image != null && e.e!.offline_image!.isNotEmpty) {
+      listImages = listImages + e.e!.offline_image!;
+    }
+    print(listImages);
 
     Utils.showDialog(
       context: context,

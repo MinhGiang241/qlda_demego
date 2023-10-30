@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_build_context_synchronously
 
 import 'dart:io';
 
@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:qlda_demego/models/indicator.dart';
 import 'package:qlda_demego/widgets/primary_text_field.dart';
 
@@ -19,12 +20,14 @@ import '../../../services/api/api_file.dart';
 import '../../../services/api/api_indicator.dart';
 import '../../../services/api/api_services.dart';
 import '../../../services/api/prf_data.dart';
+import '../../../utils/sqlflite.dart';
 import '../../../utils/utils.dart';
 import '../../../widgets/choose_month_year.dart';
 import '../../../widgets/primary_button.dart';
 import '../../../widgets/primary_dialog.dart';
 import '../../../widgets/select_media_widget.dart';
 import '../water_screen.dart';
+import 'apartment_prv.dart';
 
 class WaterPrv extends ChangeNotifier {
   WaterPrv({
@@ -49,7 +52,6 @@ class WaterPrv extends ChangeNotifier {
   List<FileUploadModel> uploadedImages = [];
   int year = DateTime.now().year;
   int month = DateTime.now().month;
-  List<Apartment> apartments = [];
   List<Apartment> apartmentSearch = [];
   List<Apartment> apartmentView = [];
   final formatter = NumberFormat('#,###,###');
@@ -64,10 +66,10 @@ class WaterPrv extends ChangeNotifier {
   int skip = 0;
   int limit = 40;
 
-  clearApartment() {
+  clearApartment(BuildContext context) {
     apartmentSearch.clear();
     apartmentView.clear();
-    apartments.clear();
+    context.read<ApartmentPrv>().clearApartment();
     notifyListeners();
   }
 
@@ -79,7 +81,9 @@ class WaterPrv extends ChangeNotifier {
 
     apartmentView.clear();
 
-    apartmentSearch = apartments
+    apartmentSearch = context
+        .watch<ApartmentPrv>()
+        .apartments
         .where(
           (element) => RegExp(
             text,
@@ -101,9 +105,33 @@ class WaterPrv extends ChangeNotifier {
   Future getApartments(BuildContext context, bool init) async {
     try {
       if (init) {
-        apartments.clear();
-        apartmentSearch.clear();
-        apartmentView.clear();
+        var connectivityResult = await (Connectivity().checkConnectivity());
+        if (connectivityResult == ConnectivityResult.none) {
+          Utils.showDialog(
+            context: context,
+            dialog: PrimaryDialog.custom(
+              title: "Không có kết nối",
+              content: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Không có kết nối internet, Dữ liệu nhập vào sẽ lưu vào bộ nhớ máy.",
+                    textAlign: TextAlign.center,
+                  ),
+                  vpad(20),
+                  PrimaryButton(
+                    buttonSize: ButtonSize.medium,
+                    text: S.of(context).close,
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ),
+            ),
+          );
+          return;
+        }
         skip = 0;
         initLoading = true;
         notifyListeners();
@@ -116,10 +144,11 @@ class WaterPrv extends ChangeNotifier {
           "",
         );
         if (v != null) {
+          clearApartment(context);
           for (var i in v) {
             if (init) {
               var apart = Apartment.fromJson(i);
-              apartments.add(apart);
+              context.read<ApartmentPrv>().addApartment(apart);
               if (RegExp(
                 textSearch,
                 caseSensitive: false,
@@ -273,7 +302,7 @@ class WaterPrv extends ChangeNotifier {
         if (connectivityResult != ConnectivityResult.none) {
           await uploadImages(context);
         } else {
-          offlineImage = listImages;
+          offlineImage = listImages.map((e) => File(e.path)).toList();
         }
         var consumption = double.parse(endController.text.trim()) -
             double.parse(startController.text.trim());
@@ -296,59 +325,51 @@ class WaterPrv extends ChangeNotifier {
 
         // /connectivityResult == ConnectivityResult.
         if (connectivityResult == ConnectivityResult.none) {
-          throw ("không có kết nối internet");
-          /** 
-          var data =
-              await PrfData.shared.getIndicator(ApiService.shared.regCode);
-          if (data != null) {
-            var indicatorData = IndicatorData.fromJson(data);
+          await SqlfliteServices.shared.openSQLDatabase();
+          setState(() {
+            loading = false;
+          });
+          var apartmentCopy = e.copyWith();
+          apartmentCopy.w = indi;
 
-            var index = (indicatorData.water ?? []).indexWhere(
-              (el) =>
-                  el.apartmentId == e.id &&
-                  el.year == year &&
-                  el.month == month,
-            );
-            if (index < 0) {
-              indicatorData.water!.add(indi);
-            } else {
-              indicatorData.water![index] = indi;
-            }
+          Utils.showDialog(
+            context: context,
+            dialog: PrimaryDialog.custom(
+              title: "Không có kết nối",
+              content: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Không có kết nối internet, Dữ liệu nhập vào sẽ lưu vào bộ nhớ máy.",
+                    textAlign: TextAlign.center,
+                  ),
+                  vpad(20),
+                  PrimaryButton(
+                    buttonSize: ButtonSize.medium,
+                    text: S.of(context).close,
+                    onTap: () async {
+                      Navigator.pop(context);
+                      Navigator.pop(context);
 
-            await PrfData.shared
-                .setIndicator(indicatorData.toJson(), ApiService.shared.regCode)
-                .then((v) async {
-              Utils.showSnackBar(
-                context,
-                "Kết nối internet hiện tại không có sẵn ,dữ liệu sẽ gửi lên sau",
-              );
-              setState(() {
-                loading = false;
-              });
-              Navigator.pop(context);
-            });
-          } else {
-            var indicatorData = IndicatorData(
-              baseURL: ApiService.shared.baseUrl,
-              regCode: ApiService.shared.regCode,
-              access_token: ApiService.shared.access_token,
-              water: [indi],
-            );
-            await PrfData.shared
-                .setIndicator(indicatorData.toJson(), ApiService.shared.regCode)
-                .then((v) async {
-              Utils.showSnackBar(
-                context,
-                "Kết nối internet hiện tại không có sẵn ,dữ liệu sẽ gửi lên sau",
-              );
-            });
-          }
-
-          //  RunService Background
-          final service = FlutterBackgroundService();
-
-          service.startService();
-          **/
+                      try {
+                        await SqlfliteServices.shared.saveApartment(
+                          apartmentCopy,
+                          month,
+                          year,
+                          ApiService.shared.regCode,
+                        );
+                        e.w = indi;
+                        print(e);
+                        notifyListeners();
+                      } catch (e) {
+                        Utils.showErrorMessage(context, e.toString());
+                      }
+                    },
+                  ),
+                ],
+              ),
+            ),
+          );
         } else {
           await APIIndicator.saveIndicator(false, indi.toMap()).then((v) {
             setState(() {
@@ -391,7 +412,11 @@ class WaterPrv extends ChangeNotifier {
         e.w?.water_last == null ? '' : formatter.format(e.w?.water_last ?? 0);
     var cons = (e.w?.water_last ?? 0) - (e.lw?.water_last ?? 0);
     existedImages = [...(e.w?.image ?? [])];
-
+    listImages.clear();
+    if (e.w?.offline_image != null && e.w!.offline_image!.isNotEmpty) {
+      listImages = listImages + e.w!.offline_image!;
+    }
+    print(listImages);
     Utils.showDialog(
       context: context,
       dialog: PrimaryDialog.custom(

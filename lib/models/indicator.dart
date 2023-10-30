@@ -61,7 +61,7 @@ class WaterIndicator {
       'water_last': water_last,
       'water_consumption': water_consumption,
       'image': image?.map((i) => i.toMap()).toList(),
-      'offline_image': offline_image?.map((i) => i.path).toList(),
+      'offline_image': offline_image?.map((i) => i.path).toList().join(','),
     };
   }
 
@@ -88,7 +88,7 @@ class WaterIndicator {
           : null,
       offline_image: map['offline_image'] != null
           ? List<File>.from(
-              (map['offline_image'] as List<dynamic>).map<File>(
+              (map['offline_image'].split(',') as List<dynamic>).map<File>(
                 (x) => File(x),
               ),
             )
@@ -179,7 +179,7 @@ class ElectricIndicator {
       'phone_number': phone_number,
       'electricity_last': electricity_last,
       'image': image?.map((i) => i.toMap()).toList(),
-      'offline_image': offline_image?.map((i) => i.path).toList(),
+      'offline_image': offline_image?.map((i) => i.path).toList().join(','),
     };
   }
 
@@ -206,7 +206,7 @@ class ElectricIndicator {
           : null,
       offline_image: map['offline_image'] != null
           ? List<File>.from(
-              (map['offline_image'] as List<dynamic>).map<File>(
+              (map['offline_image'].split(',') as List<dynamic>).map<File>(
                 (x) => File(x),
               ),
             )

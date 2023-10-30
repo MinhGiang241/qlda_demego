@@ -21,6 +21,14 @@ class LocalIndicatorScreen extends StatefulWidget {
 class _LocalIndicatorScreenState extends State<LocalIndicatorScreen>
     with TickerProviderStateMixin {
   @override
+  void initState() {
+    super.initState();
+    // WidgetsBinding.instance.addPostFrameCallback((_) async {
+    //   await context.read<LocalIndicatorPrv>().getAllApartmentFromLocal();
+    // });
+  }
+
+  @override
   Widget build(BuildContext context) {
     late TabController tabController = TabController(length: 2, vsync: this);
     return ChangeNotifierProvider(
@@ -54,9 +62,13 @@ class _LocalIndicatorScreenState extends State<LocalIndicatorScreen>
                         controller: context
                             .watch<LocalIndicatorPrv>()
                             .searchConttroller,
-                        hint: "Nhập tên căn hộ cân tìm kiếm",
+                        hint: "Nhập tên căn hộ cần tìm kiếm",
                         suffixIcon: IconButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            await context
+                                .read<LocalIndicatorPrv>()
+                                .getAllApartmentFromLocal(true);
+                          },
                           icon: const Icon(
                             Icons.search,
                           ),
@@ -83,12 +95,16 @@ class _LocalIndicatorScreenState extends State<LocalIndicatorScreen>
                 Flexible(
                   child: TabBarView(
                     controller: tabController,
-                    children: [
-                      IndicatorTab(),
-                      IndicatorTab(),
+                    children: const [
+                      IndicatorTab(
+                        isElectric: true,
+                      ),
+                      IndicatorTab(
+                        isElectric: false,
+                      ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),

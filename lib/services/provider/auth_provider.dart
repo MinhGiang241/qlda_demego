@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:qlda_demego/screens/auth/sign_in/sign_in_screen.dart';
 import 'package:qlda_demego/screens/home/home_screen.dart';
+import 'package:qlda_demego/screens/technique/prv/apartment_prv.dart';
 import 'package:qlda_demego/screens/technique/prv/electric_prv.dart';
 import 'package:qlda_demego/screens/technique/prv/water_prv.dart';
 import 'package:qlda_demego/services/api/api_auth.dart';
@@ -120,8 +121,8 @@ class AuthProvider with ChangeNotifier {
                     buttonType: ButtonType.secondary,
                     secondaryBackgroundColor: redColor2,
                     onTap: () async {
-                      context.read<ElectricPrv>().clearApartment();
-                      context.read<WaterPrv>().clearApartment();
+                      context.read<ApartmentPrv>().clearApartment();
+
                       await ApiAuth.signOut();
                       authStatus = AuthStatus.unauthen;
                       notifyListeners();
