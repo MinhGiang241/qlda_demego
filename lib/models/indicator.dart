@@ -23,6 +23,7 @@ class WaterIndicator {
   String? phone_number;
   List<FileUploadModel>? image;
   List<File>? offline_image;
+  bool? isLocal;
   WaterIndicator({
     this.id,
     this.water_last,
@@ -41,6 +42,7 @@ class WaterIndicator {
     this.phone_number,
     this.image,
     this.offline_image,
+    this.isLocal = false,
   });
 
   Map<String, dynamic> toMap() {
@@ -141,6 +143,7 @@ class ElectricIndicator {
   String? phone_number;
   List<FileUploadModel>? image;
   List<File>? offline_image;
+  bool? isLocal;
   ElectricIndicator({
     this.id,
     this.electricity_last,
@@ -159,6 +162,7 @@ class ElectricIndicator {
     this.phone_number,
     this.image,
     this.offline_image,
+    this.isLocal = false,
   });
 
   Map<String, dynamic> toMap() {

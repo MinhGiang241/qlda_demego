@@ -5,6 +5,8 @@ import 'dart:convert';
 
 import 'package:qlda_demego/models/indicator.dart';
 
+import 'file_upload_model.dart';
+
 class Apartment {
   String? id;
   String? createdTime;
@@ -293,6 +295,8 @@ class ApartmentFromSQL {
   int? electric_head;
   int? water_head;
   int? water_last;
+  List<FileUploadModel>? uploaded_images_e;
+  List<FileUploadModel>? uploaded_images_w;
   ApartmentFromSQL({
     this.id,
     this.code,
@@ -307,6 +311,8 @@ class ApartmentFromSQL {
     this.electric_head,
     this.water_head,
     this.water_last,
+    this.uploaded_images_e,
+    this.uploaded_images_w,
   });
 
   Map<String, dynamic> toMap() {
@@ -324,6 +330,8 @@ class ApartmentFromSQL {
       'electric_head': electric_head,
       'water_head': water_head,
       'water_last': water_last,
+      'uploaded_images_e': uploaded_images_e,
+      'uploaded_images_w': uploaded_images_w,
     };
   }
 
@@ -351,6 +359,20 @@ class ApartmentFromSQL {
           map['electric_head'] != null ? map['electric_head'] as int : null,
       water_head: map['water_head'] != null ? map['water_head'] as int : null,
       water_last: map['water_last'] != null ? map['water_last'] as int : null,
+      uploaded_images_e: map['uploaded_images_e'] != null
+          ? List<FileUploadModel>.from(
+              (map['uploaded_images_e'] as List<dynamic>).map<FileUploadModel?>(
+                (x) => FileUploadModel.fromMap(x as Map<String, dynamic>),
+              ),
+            )
+          : null,
+      uploaded_images_w: map['uploaded_images_w'] != null
+          ? List<FileUploadModel>.from(
+              (map['uploaded_images_w'] as List<dynamic>).map<FileUploadModel?>(
+                (x) => FileUploadModel.fromMap(x as Map<String, dynamic>),
+              ),
+            )
+          : null,
     );
   }
 

@@ -358,7 +358,9 @@ class ElectricPrv extends ChangeNotifier {
                           month,
                           year,
                           ApiService.shared.regCode,
+                          true,
                         );
+                        indi.isLocal = true;
                         e.e = indi;
                         print(e);
                         notifyListeners();
@@ -391,6 +393,8 @@ class ElectricPrv extends ChangeNotifier {
                 );
               },
             );
+            e.e = indi;
+            notifyListeners();
           });
         }
       } catch (e) {

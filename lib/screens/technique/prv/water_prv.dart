@@ -357,7 +357,9 @@ class WaterPrv extends ChangeNotifier {
                           month,
                           year,
                           ApiService.shared.regCode,
+                          false,
                         );
+                        indi.isLocal = true;
                         e.w = indi;
                         print(e);
                         notifyListeners();
@@ -390,6 +392,8 @@ class WaterPrv extends ChangeNotifier {
                 );
               },
             );
+            e.w = indi;
+            notifyListeners();
           });
         }
       } catch (e) {

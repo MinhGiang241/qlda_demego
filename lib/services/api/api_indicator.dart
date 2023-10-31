@@ -119,6 +119,41 @@ mutation (\$isElectric:Boolean,\$employeeId:String,\$month:Float,\$year:Float){
     }
   }
 
+  static Future saveManyIndicator(
+    List<dynamic>? electric,
+    List<dynamic>? water,
+  ) async {
+    var query = '''
+mutation (\$water:Dictionary,\$electric:Dictionary){
+    response: indicator_mobile_save_offline_indicator_data (water: \$water,electric: \$electric ) {
+        code
+        message
+        data
+    }
+}
+        
+        
+        
+  ''';
+
+    final MutationOptions options = MutationOptions(
+      document: gql(query),
+      variables: {
+        "water": water,
+        'electric': electric,
+      },
+    );
+    final results = await ApiService.shared.mutationhqlQuery(options);
+
+    var res = ResponseModule.fromJson(results);
+
+    if (res.response.code != 0) {
+      throw (res.response.message ?? "");
+    } else {
+      return res.response.data;
+    }
+  }
+
   static Future saveOfflineIndicatorData(
     List<dynamic>? electric,
     List<dynamic>? water,
@@ -127,7 +162,7 @@ mutation (\$isElectric:Boolean,\$employeeId:String,\$month:Float,\$year:Float){
   ) async {
     var query = '''
 mutation (\$water:Dictionary,\$electric:Dictionary){
-    response: indicator_mobile_save_offline_indicator_daa (water: \$water,electric: \$electric ) {
+    response: indicator_mobile_save_offline_indicator_data (water: \$water,electric: \$electric ) {
         code
         message
         data

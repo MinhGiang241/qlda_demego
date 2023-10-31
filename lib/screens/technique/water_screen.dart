@@ -28,6 +28,7 @@ class WaterScreen extends StatefulWidget {
 }
 
 class _WaterScreenState extends State<WaterScreen> {
+  final formatter = NumberFormat('#,###,###');
   final RefreshController _refreshController =
       RefreshController(initialRefresh: false);
 
@@ -43,7 +44,6 @@ class _WaterScreenState extends State<WaterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final formatter = NumberFormat('#,###,###');
     final arg = ModalRoute.of(context)!.settings.arguments as Map?;
     int year = DateTime.now().year;
     int month = DateTime.now().month;
@@ -180,211 +180,144 @@ class _WaterScreenState extends State<WaterScreen> {
                           ),
                         if (view.isNotEmpty && !initLoad)
                           Table(
-                            columnWidths: const {
-                              0: FlexColumnWidth(1),
-                              1: FlexColumnWidth(1),
-                              2: FlexColumnWidth(1),
-                              3: FlexColumnWidth(1),
-                              4: FlexColumnWidth(1),
-                              5: FlexColumnWidth(1),
-                            },
-                            textBaseline: TextBaseline.ideographic,
-                            defaultVerticalAlignment:
-                                TableCellVerticalAlignment.baseline,
-                            border: TableBorder(
-                              horizontalInside: BorderSide(),
-                              verticalInside: BorderSide(),
-                              top: BorderSide(),
-                              bottom: BorderSide(),
-                              right: BorderSide(),
-                              left: BorderSide(),
-                            ),
-                            children: [
-                              TableRow(
-                                children: [
-                                  TableRowInkWell(
-                                    child: ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                        minHeight: 50,
-                                      ),
-                                      child: Text("Mã căn"),
-                                    ),
-                                  ),
-                                  TableRowInkWell(
-                                    child: ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                        minHeight: 50,
-                                      ),
-                                      child: Text("Mã căn"),
-                                    ),
-                                  ),
-                                  TableRowInkWell(
-                                    child: ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                        minHeight: 50,
-                                      ),
-                                      child: Text("Mã đồng hồ"),
-                                    ),
-                                  ),
-                                  TableRowInkWell(
-                                    child: ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                        minHeight: 50,
-                                      ),
-                                      child: Text("Đầu kỳ"),
-                                    ),
-                                  ),
-                                  TableRowInkWell(
-                                    child: ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                        minHeight: 50,
-                                      ),
-                                      child: Text("Cuối kỳ"),
-                                    ),
-                                  ),
-                                  TableRowInkWell(
-                                    child: ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                        minHeight: 50,
-                                      ),
-                                      child: Text("Tiêu thụ"),
-                                    ),
-                                  ),
-                                ],
+                              columnWidths: const {
+                                0: FlexColumnWidth(1),
+                                1: FlexColumnWidth(1),
+                                2: FlexColumnWidth(1),
+                                3: FlexColumnWidth(1),
+                                4: FlexColumnWidth(1),
+                              },
+                              textBaseline: TextBaseline.ideographic,
+                              defaultVerticalAlignment:
+                                  TableCellVerticalAlignment.middle,
+                              border: TableBorder(
+                                horizontalInside: BorderSide(),
+                                verticalInside: BorderSide(),
+                                top: BorderSide(),
+                                bottom: BorderSide(),
+                                right: BorderSide(),
+                                left: BorderSide(),
                               ),
-                              ...view.asMap().entries.map(
-                                    (e) => TableRow(
-                                      children: [
-                                        TableRowInkWell(
-                                          onTap: () {
-                                            context
-                                                .read<WaterPrv>()
-                                                .tabRow(context, e.value);
-                                          },
-                                          child: ConstrainedBox(
-                                            constraints: BoxConstraints(
-                                              minHeight: 50,
-                                            ),
-                                            child: Text(e.key.toString() ?? ''),
-                                          ),
-                                        ),
-                                        TableRowInkWell(
-                                          onTap: () {
-                                            context
-                                                .read<WaterPrv>()
-                                                .tabRow(context, e.value);
-                                          },
-                                          child: ConstrainedBox(
-                                            constraints: BoxConstraints(
-                                              minHeight: 50,
-                                            ),
-                                            child: Text(e.value.code ?? ''),
-                                          ),
-                                        ),
-                                        TableRowInkWell(
-                                          onTap: () {
-                                            context
-                                                .read<WaterPrv>()
-                                                .tabRow(context, e.value);
-                                          },
-                                          child: ConstrainedBox(
-                                            constraints: BoxConstraints(
-                                              minHeight: 50,
-                                            ),
-                                            child:
-                                                Text(e.value.water_code ?? ""),
-                                          ),
-                                        ),
-                                        TableRowInkWell(
-                                          onTap: () {
-                                            context
-                                                .read<WaterPrv>()
-                                                .tabRow(context, e.value);
-                                          },
-                                          child: ConstrainedBox(
-                                            constraints: BoxConstraints(
-                                              minHeight: 50,
-                                            ),
-                                            child: Text(
-                                              e.value.w?.water_last != null &&
-                                                      e.value.lw?.water_last ==
-                                                          null
-                                                  ? ''
-                                                  : formatter.format(
-                                                      e.value.lw?.water_last ??
-                                                          0,
-                                                    ),
-                                            ),
-                                          ),
-                                        ),
-                                        TableRowInkWell(
-                                          onTap: () {
-                                            context
-                                                .read<WaterPrv>()
-                                                .tabRow(context, e.value);
-                                          },
-                                          child: ConstrainedBox(
-                                            constraints: BoxConstraints(
-                                              minHeight: 50,
-                                            ),
-                                            child: Text(
-                                              e.value.w?.water_last == null
-                                                  ? ''
-                                                  : formatter.format(
-                                                      e.value.w?.water_last ??
-                                                          0,
-                                                    ),
-                                            ),
-                                          ),
-                                        ),
-                                        TableRowInkWell(
-                                          onTap: () {
-                                            context
-                                                .read<WaterPrv>()
-                                                .tabRow(context, e.value);
-                                          },
-                                          child: ConstrainedBox(
-                                            constraints: BoxConstraints(
-                                              minHeight: 50,
-                                            ),
-                                            child: Text(
-                                              (e.value.lw?.water_last == null ||
-                                                      e.value.w?.water_last ==
-                                                          null)
-                                                  ? ''
-                                                  : formatter.format(
-                                                      (e.value.w?.water_last ??
-                                                              0) -
-                                                          (e.value.lw
-                                                                  ?.water_last ??
-                                                              0),
-                                                    ),
-                                              style: (e.value.lw?.water_last !=
-                                                          null &&
-                                                      e.value.w?.water_last !=
-                                                          null &&
-                                                      ((e.value.w?.water_last ??
-                                                                  0) -
-                                                              (e.value.lw
-                                                                      ?.water_last ??
-                                                                  0) <
-                                                          0))
-                                                  ? txtBold(12, redColor)
-                                                  : null,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                            ],
-                          ),
+                              children: [
+                                TableRow(
+                                  children: [
+                                    ...genCell([
+                                      Text(
+                                        "Mã căn",
+                                        style: txtBold(12),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      Text(
+                                        "Mã đồng hồ",
+                                        style: txtBold(12),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      Text(
+                                        "Đầu kỳ",
+                                        style: txtBold(12),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      Text(
+                                        "Cuối kỳ",
+                                        style: txtBold(12),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      Text(
+                                        "Tiêu thụ",
+                                        style: txtBold(12),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ]),
+                                  ],
+                                ),
+                                ...genTable(view),
+                              ]),
                         vpad(60),
                       ],
                     ),
                   ),
                 ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Iterable<TableRow> genTable(List<Apartment> apartments) {
+    return apartments.asMap().entries.map(
+          (e) => (TableRow(
+            children: [
+              ...genCell(
+                color:
+                    e.value.w?.isLocal == true ? grayScaleColor4 : Colors.white,
+                [
+                  Text(
+                    e.value.code ?? '',
+                  ),
+                  Text(e.value.water_code ?? ""),
+                  Text(
+                    e.value.lw?.water_last == null
+                        ? ''
+                        : formatter.format(
+                            e.value.lw?.water_last ?? 0,
+                          ),
+                  ),
+                  Text(
+                    e.value.w?.water_last == null
+                        ? ''
+                        : formatter.format(
+                            e.value.w?.water_last ?? 0,
+                          ),
+                  ),
+                  Text(
+                    (e.value.lw?.water_head == null ||
+                            e.value.w?.water_last == null)
+                        ? ''
+                        : formatter.format(
+                            (e.value.w?.water_last ?? 0) -
+                                (e.value.lw?.water_last ??
+                                    e.value.w?.water_head ??
+                                    0),
+                          ),
+                    style: (e.value.lw?.water_last != null &&
+                            e.value.w?.water_last != null &&
+                            ((e.value.w?.water_last ?? 0) -
+                                        (e.value.lw?.water_last ?? 0) <
+                                    0 ||
+                                (e.value.w?.water_last ?? 0) -
+                                        (e.value.lw?.water_last ?? 0) >=
+                                    30))
+                        ? txtBold(12, redColor)
+                        : null,
+                  ),
+                ],
+                onTap: () {
+                  context.read<WaterPrv>().tabRow(context, e.value);
+                },
+              ),
+            ],
+          )),
+        );
+  }
+
+  Iterable<TableRowInkWell> genCell(
+    List<Widget> listHeader, {
+    Function()? onTap,
+    Color? color,
+  }) {
+    return listHeader.map(
+      (e) => TableRowInkWell(
+        onTap: onTap,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(
+            minHeight: 50,
+          ),
+          child: Container(
+            color: color,
+            child: Center(
+              child: e,
+            ),
           ),
         ),
       ),

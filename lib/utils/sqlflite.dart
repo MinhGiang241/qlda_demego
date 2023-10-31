@@ -38,8 +38,53 @@ class SqlfliteServices {
     print(database);
   }
 
+  Future deleteAll() async {
+    await database!.rawDelete('''
+DELETE FROM apartment
+''');
+  }
+
   Future closeSQLDatabase() async {
     await database!.close();
+  }
+
+  Future deleteDataWhenFinishSend(
+    String dataIds,
+    int year,
+    int month,
+    String regCode,
+    bool isElectric,
+  ) async {
+    if (isElectric) {
+      await database!.rawUpdate('''
+      UPDATE apartment SET electric_last = NULL ,
+                                             electric_head = NULL
+                                      WHERE _id In ($dataIds)
+                                       AND year = $year
+                                  AND month = $month
+                                  AND regCode = "$regCode"
+      ''');
+    } else {
+      await database!.rawUpdate('''
+      UPDATE apartment SET water_last = NULL ,
+                                             water_head = NULL
+                                      WHERE _id In ($dataIds)
+                                      AND year = $year
+                                      AND month = $month
+                                      AND regCode = "$regCode"
+      ''');
+    }
+
+    await database!.rawDelete('''
+      DELETE FROM apartment WHERE 
+                                   year = $year
+                                  AND month = $month
+                                  AND regCode = "$regCode"
+                                  AND water_last IS NULL
+                                  AND water_head IS NULL
+                                  AND electric_last IS NULL
+                                  AND electric_head IS NULL
+      ''');
   }
 
   findAllIndicatorWithCodeAndMonthWithFilter(
@@ -78,6 +123,7 @@ SELECT * FROM apartment WHERE
     int month,
     int year,
     String regCode,
+    bool isElectric,
   ) async {
     var apartments = await database!.rawQuery('''
       SELECT * FROM apartment WHERE code = "${newApartment.code}" AND year = $year AND month = $month AND regCode = "${regCode.isEmpty ? "" : regCode}"
@@ -86,12 +132,20 @@ SELECT * FROM apartment WHERE
       //var existedApartment = ApartmentFromSQL.fromMap(apartments[0]);
 
       int count = await database!.rawUpdate(
-        ''' UPDATE apartment SET electric_last = ${newApartment.e?.electricity_last ?? "NULL"},
+        ''' UPDATE apartment SET
+                                 ${isElectric ? '''
+
+                                  electric_last = ${newApartment.e?.electricity_last ?? "NULL"},
                                  electric_head = ${newApartment.e?.electricity_head ?? "NULL"},
-                                 water_last = ${newApartment.w?.water_last ?? "NULL"},
+                                 offline_images_e = ${newApartment.e?.offline_image == null ? 'NULL' : newApartment.e!.offline_image!.isEmpty ? "''" : '"${newApartment.e?.offline_image!.map((i) => i.path).join(',')}"'}
+                                 
+                                  ''' : '''
+
+                                  water_last = ${newApartment.w?.water_last ?? "NULL"},
                                  water_head = ${newApartment.w?.water_head ?? "NULL"},
-                                 offline_images_e = ${newApartment.e?.offline_image == null ? 'NULL' : newApartment.e!.offline_image!.isEmpty ? "''" : '"${newApartment.e?.offline_image!.map((i) => i.path).join(',')}"'},
                                  offline_images_w = ${newApartment.e?.offline_image == null ? 'NULL' : newApartment.e!.offline_image!.isEmpty ? "''" : '"${newApartment.e?.offline_image!.map((i) => i.path).join(',')}"'}
+                                 
+                                  '''}               
             WHERE code = "${newApartment.code}"
               AND year = $year
               AND month = $month
@@ -107,24 +161,32 @@ SELECT * FROM apartment WHERE
               code,
               electrical_code,
               water_code,
+              ${isElectric ? '''
               electric_last, 
               electric_head,
-               water_last, 
-               water_head,
-               offline_images_e ,
-               offline_images_w,
+              offline_images_e ,
+              ''' : '''
+              water_last, 
+              water_head,
+              offline_images_w,
+              '''}
+              
                year, month, regCode)
                    VALUES (
                     "${newApartment.id}",
-                    "${newApartment.code}",
+                    "${newApartment.code}",                 
                     "${newApartment.electrical_code}",
                     "${newApartment.water_code}",
-                          ${newApartment.e?.electricity_last?.toInt() ?? 'NULL'},
-                           ${newApartment.e?.electricity_head?.toInt() ?? 'NULL'},
-                           ${newApartment.w?.water_head?.toInt() ?? 'NULL'},
-                           ${newApartment.w?.water_last?.toInt() ?? 'NULL'},
-                           ${newApartment.e?.offline_image == null ? 'NULL' : newApartment.e!.offline_image!.isEmpty ? "''" : "'${newApartment.e?.offline_image!.map((i) => i.path).join(',')}'"},
-                           ${newApartment.w?.offline_image == null ? 'NULL' : newApartment.w!.offline_image!.isEmpty ? "''" : "'${newApartment.w?.offline_image!.map((i) => i.path).join(',')}'"},
+
+                          ${isElectric ? '''
+                              ${newApartment.e?.electricity_last?.toInt() ?? 'NULL'},
+                              ${newApartment.e?.electricity_head?.toInt() ?? 'NULL'},
+                              ${newApartment.e?.offline_image == null ? 'NULL' : newApartment.e!.offline_image!.isEmpty ? "''" : "'${newApartment.e?.offline_image!.map((i) => i.path).join(',')}'"},
+                            ''' : '''
+                              ${newApartment.w?.water_last?.toInt() ?? 'NULL'},
+                              ${newApartment.w?.water_head?.toInt() ?? 'NULL'},
+                              ${newApartment.w?.offline_image == null ? 'NULL' : newApartment.w!.offline_image!.isEmpty ? "''" : "'${newApartment.w?.offline_image!.map((i) => i.path).join(',')}'"},
+                            '''}
                            $year, $month, ${regCode.isEmpty ? "''" : regCode}
                           ) 
           ''');

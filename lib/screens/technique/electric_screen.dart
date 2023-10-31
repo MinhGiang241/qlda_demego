@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'package:qlda_demego/screens/technique/prv/electric_prv.dart';
-import 'package:qlda_demego/utils/sqlflite.dart';
 import 'package:qlda_demego/widgets/primary_appbar.dart';
 import 'package:qlda_demego/widgets/primary_screen.dart';
 import 'package:qlda_demego/widgets/primary_text_field.dart';
@@ -198,11 +197,10 @@ class _ElectricScreenState extends State<ElectricScreen> {
                               2: FlexColumnWidth(1),
                               3: FlexColumnWidth(1),
                               4: FlexColumnWidth(1),
-                              5: FlexColumnWidth(1),
                             },
                             textBaseline: TextBaseline.ideographic,
                             defaultVerticalAlignment:
-                                TableCellVerticalAlignment.baseline,
+                                TableCellVerticalAlignment.middle,
                             border: TableBorder(
                               horizontalInside: BorderSide(),
                               verticalInside: BorderSide(),
@@ -215,12 +213,31 @@ class _ElectricScreenState extends State<ElectricScreen> {
                               TableRow(
                                 children: [
                                   ...genCell([
-                                    Text("STT"),
-                                    Text("Mã căn"),
-                                    Text("Mã đồng hồ"),
-                                    Text("Đầu kỳ"),
-                                    Text("Cuối kỳ"),
-                                    Text("Tiêu thụ"),
+                                    Text(
+                                      "Mã căn",
+                                      style: txtBold(12),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Text(
+                                      "Mã đồng hồ",
+                                      style: txtBold(12),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Text(
+                                      "Đầu kỳ",
+                                      style: txtBold(12),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Text(
+                                      "Cuối kỳ",
+                                      style: txtBold(12),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Text(
+                                      "Tiêu thụ",
+                                      style: txtBold(12),
+                                      textAlign: TextAlign.center,
+                                    ),
                                   ]),
                                 ],
                               ),
@@ -244,9 +261,13 @@ class _ElectricScreenState extends State<ElectricScreen> {
           (e) => (TableRow(
             children: [
               ...genCell(
+                color: (e.value.e?.isLocal == true)
+                    ? grayScaleColor4
+                    : Colors.white,
                 [
-                  Text('${e.key}'),
-                  Text(e.value.code ?? ''),
+                  Text(
+                    e.value.code ?? '',
+                  ),
                   Text(e.value.electrical_code ?? ""),
                   Text(
                     e.value.le?.electricity_last == null
@@ -293,6 +314,7 @@ class _ElectricScreenState extends State<ElectricScreen> {
   Iterable<TableRowInkWell> genCell(
     List<Widget> listHeader, {
     Function()? onTap,
+    Color? color,
   }) {
     return listHeader.map(
       (e) => TableRowInkWell(
@@ -301,7 +323,12 @@ class _ElectricScreenState extends State<ElectricScreen> {
           constraints: const BoxConstraints(
             minHeight: 50,
           ),
-          child: e,
+          child: Container(
+            color: color,
+            child: Center(
+              child: e,
+            ),
+          ),
         ),
       ),
     );

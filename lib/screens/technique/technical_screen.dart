@@ -1,13 +1,11 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:provider/provider.dart';
 import 'package:qlda_demego/screens/technique/local_indicator_screen.dart';
 import 'package:qlda_demego/screens/technique/prv/technique_prv.dart';
 import 'package:qlda_demego/widgets/main_drawer.dart';
 import 'package:qlda_demego/widgets/primary_appbar.dart';
-import 'package:qlda_demego/widgets/primary_button.dart';
 import 'package:qlda_demego/widgets/primary_card.dart';
 import 'package:qlda_demego/widgets/primary_icon.dart';
 import 'package:qlda_demego/widgets/primary_screen.dart';

@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:qlda_demego/screens/technique/prv/local_indicator_prv.dart';
 
+import '../../../constant/constants.dart';
 import '../../../models/apartment.dart';
 import '../../../widgets/custom_footer.dart';
 
@@ -64,12 +65,32 @@ class _IndicatorTabState extends State<IndicatorTab> {
             children: [
               TableRow(
                 children: [
-                  ...genCell(const [
-                    Text("Mã căn"),
-                    Text("Mã đồng hồ"),
-                    Text("Đầu kỳ"),
-                    Text("Cuối kỳ"),
-                    Text("Tiêu thụ"),
+                  ...genCell([
+                    Text(
+                      "Mã căn",
+                      style: txtBold(12),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      "Mã đồng hồ",
+                      style: txtBold(12),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      "Đầu kỳ",
+                      style: txtBold(12),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      "Cuối kỳ",
+                      style: txtBold(12),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      "Tiêu thụ",
+                      style: txtBold(12),
+                      textAlign: TextAlign.center,
+                    ),
                   ]),
                 ],
               ),
@@ -140,7 +161,9 @@ class _IndicatorTabState extends State<IndicatorTab> {
           constraints: const BoxConstraints(
             minHeight: 50,
           ),
-          child: e,
+          child: Center(
+            child: e,
+          ),
         ),
       ),
     );
