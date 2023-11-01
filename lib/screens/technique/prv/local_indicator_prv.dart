@@ -14,7 +14,6 @@ import 'package:qlda_demego/services/api/api_file.dart';
 import 'package:qlda_demego/services/api/api_indicator.dart';
 import 'package:qlda_demego/services/api/api_services.dart';
 import 'package:qlda_demego/utils/sqlflite.dart';
-import 'package:sqflite/sqflite.dart';
 
 import '../../../constant/constants.dart';
 import '../../../generated/l10n.dart';
@@ -25,6 +24,7 @@ import '../../../widgets/primary_button.dart';
 import '../../../widgets/primary_dialog.dart';
 import '../../../widgets/primary_text_field.dart';
 import '../../../widgets/select_media_widget.dart';
+import 'apartment_prv.dart';
 
 class LocalIndicatorPrv extends ChangeNotifier {
   LocalIndicatorPrv() {
@@ -216,7 +216,8 @@ class LocalIndicatorPrv extends ChangeNotifier {
     } catch (e) {
       Utils.showErrorMessage(context, e.toString());
     }
-    await context.read<ElectricPrv>().getApartments(context, true);
+    //await context.read<ElectricPrv>().getApartments(context, true);
+    context.read<ApartmentPrv>().deleteLocalIndicator(isElectric, id);
     loading = false;
     notifyListeners();
   }
