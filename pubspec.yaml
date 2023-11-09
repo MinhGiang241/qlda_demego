@@ -51,7 +51,6 @@ dependencies:
   bloc: ^8.1.0
   dotted_border: ^2.0.0+2
   multi_select_flutter: ^4.1.2
-  boardview: ^0.2.2
   file_picker: ^5.0.1
   flutter_downloader: ^1.10.4
   package_info_plus: ^4.0.1

@@ -58,7 +58,7 @@ class HOAccountServicePrv extends ChangeNotifier {
         e.d?.tokenEndpoint,
         e.code,
         e.d?.apiEndpoint,
-        e.d?.domain,
+        e.p?.domain,
       );
       await ApiService.shared.deleteCre();
 

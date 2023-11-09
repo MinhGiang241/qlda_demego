@@ -119,35 +119,35 @@ class TechnicalSceen extends StatelessWidget {
                     style: txtBold(14),
                   ),
                   vpad(5),
-                  Table(
-                    columnWidths: const {
-                      0: FlexColumnWidth(1),
-                      1: FlexColumnWidth(1),
-                      2: FlexColumnWidth(1),
-                      3: FlexColumnWidth(1),
-                    },
-                    textBaseline: TextBaseline.ideographic,
-                    defaultVerticalAlignment:
-                        TableCellVerticalAlignment.baseline,
-                    border: TableBorder(
-                      horizontalInside: BorderSide(),
-                      verticalInside: BorderSide(),
-                      top: BorderSide(),
-                      bottom: BorderSide(),
-                      right: BorderSide(),
-                      left: BorderSide(),
-                    ),
-                    children: [
-                      TableRow(
-                        children: [
-                          Text('Tên việc (job title)'),
-                          Text('Hạn cuối'),
-                          Text('Địa điểm'),
-                          Text('Tình trạng'),
-                        ],
-                      ),
-                    ],
-                  ),
+                  // Table(
+                  //   columnWidths: const {
+                  //     0: FlexColumnWidth(1),
+                  //     1: FlexColumnWidth(1),
+                  //     2: FlexColumnWidth(1),
+                  //     3: FlexColumnWidth(1),
+                  //   },
+                  //   textBaseline: TextBaseline.ideographic,
+                  //   defaultVerticalAlignment:
+                  //       TableCellVerticalAlignment.baseline,
+                  //   border: TableBorder(
+                  //     horizontalInside: BorderSide(),
+                  //     verticalInside: BorderSide(),
+                  //     top: BorderSide(),
+                  //     bottom: BorderSide(),
+                  //     right: BorderSide(),
+                  //     left: BorderSide(),
+                  //   ),
+                  //   children: [
+                  //     TableRow(
+                  //       children: [
+                  //         Text('Tên việc (job title)'),
+                  //         Text('Hạn cuối'),
+                  //         Text('Địa điểm'),
+                  //         Text('Tình trạng'),
+                  //       ],
+                  //     ),
+                  //   ],
+                  // ),
                   // PrimaryButton(
                   //   text: "foreground",
                   //   onTap: () {

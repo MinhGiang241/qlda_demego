@@ -30,12 +30,6 @@ import '../screens/customer/customer_list_screen.dart';
 import '../screens/entrance/add_entrance_screen.dart';
 import '../screens/entrance/entrance_detail_screen.dart';
 import '../screens/entrance/entrance_list_screen.dart';
-import '../screens/extra_task/create_extra_task_screen.dart';
-import '../screens/extra_task/edit_extra_task_screen.dart';
-import '../screens/extra_task/extra_task_detail_screen.dart';
-import '../screens/extra_task/extra_task_list_screen.dart';
-import '../screens/extra_task/kanban_assign_screen.dart';
-import '../screens/extra_task/kanban_task_screen.dart';
 import '../screens/ho/select_project_screen.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/letter/detail_request_letter_screen.dart';
@@ -97,7 +91,7 @@ class AppRoutes {
       case HomeScreen.routeName:
         return MaterialPageRoute(
           settings: routeSetting,
-          builder: (context) => TechnicalSceen(),
+          builder: (context) => HomeScreen(),
         );
       case ApplicationScreen.routeName:
         return MaterialPageRoute(
@@ -180,36 +174,7 @@ class AppRoutes {
           settings: routeSetting,
           builder: ((context) => DetailRequestLetterScreen()),
         );
-      case ExtraTaskListScreen.routeName:
-        return MaterialPageRoute(
-          settings: routeSetting,
-          builder: ((context) => ExtraTaskListScreen()),
-        );
-      case CreateExtraTaskScreen.routeName:
-        return MaterialPageRoute(
-          settings: routeSetting,
-          builder: ((context) => CreateExtraTaskScreen()),
-        );
-      case ExtraTaskDetailScreen.routeName:
-        return MaterialPageRoute(
-          settings: routeSetting,
-          builder: ((context) => ExtraTaskDetailScreen()),
-        );
-      case EditExtraTaskScreen.routeName:
-        return MaterialPageRoute(
-          settings: routeSetting,
-          builder: ((context) => EditExtraTaskScreen()),
-        );
-      case KanbanTaskScreen.routeName:
-        return MaterialPageRoute(
-          settings: routeSetting,
-          builder: ((context) => KanbanTaskScreen()),
-        );
-      case KanbanAssignTask.routeName:
-        return MaterialPageRoute(
-          settings: routeSetting,
-          builder: ((context) => KanbanAssignTask()),
-        );
+
       case PeriodTaskListScreen.routeName:
         return MaterialPageRoute(
           settings: routeSetting,

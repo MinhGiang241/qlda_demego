@@ -261,16 +261,20 @@ class ElectricPrv extends ChangeNotifier {
   validate() {
     if (startController.text.trim().isEmpty) {
       startValidate = S.current.not_empty;
-    } else if (geater()) {
-      startValidate = null;
-    } else {
+    }
+    //  else if (geater()) {
+    //   startValidate = null;
+    // }
+    else {
       startValidate = null;
     }
     if (endController.text.trim().isEmpty) {
       endValidate = S.current.not_empty;
-    } else if (geater()) {
-      endValidate = S.current.start_greater_end;
-    } else {
+    }
+    //  else if (geater()) {
+    //   endValidate = S.current.start_greater_end;
+    // }
+    else {
       endValidate = null;
     }
   }
@@ -278,9 +282,10 @@ class ElectricPrv extends ChangeNotifier {
   String? validateTextField(String? v) {
     if (v!.trim().isEmpty) {
       return '';
-    } else if (geater()) {
-      return '';
     }
+    // else if (geater()) {
+    //   return '';
+    // }
 
     return null;
   }
@@ -290,7 +295,11 @@ class ElectricPrv extends ChangeNotifier {
     BuildContext context,
     Apartment e,
   ) async {
-    if (formKey.currentState!.validate()) {
+    if (listImages.isEmpty && existedImages.isEmpty) {
+      Utils.showErrorMessage(context, "Hình ảnh không được để trống");
+    } else if (endController.text.isEmpty) {
+      Utils.showErrorMessage(context, "Chỉ số cuối không được để trống");
+    } else if (formKey.currentState!.validate()) {
       try {
         setState(() {
           loading = true;
@@ -351,7 +360,6 @@ class ElectricPrv extends ChangeNotifier {
                     onTap: () async {
                       Navigator.pop(context);
                       Navigator.pop(context);
-
                       try {
                         await SqlfliteServices.shared.saveApartment(
                           apartmentCopy,
@@ -498,6 +506,7 @@ class ElectricPrv extends ChangeNotifier {
                       Expanded(
                         child: PrimaryTextField(
                           validator: validateTextField,
+                          keyboardType: TextInputType.number,
                           validateString: endValidate,
                           controller: endController,
                           label: 'Chỉ số cuối',

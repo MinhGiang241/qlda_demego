@@ -10,7 +10,6 @@ import '../screens/application/application_screen.dart';
 import '../screens/assets/asset_screen.dart';
 import '../screens/customer/customer_list_screen.dart';
 import '../screens/entrance/entrance_list_screen.dart';
-import '../screens/extra_task/extra_task_list_screen.dart';
 import '../screens/letter/request_letter_list_screen.dart';
 import '../screens/missing/missing_object_list_screen.dart';
 import '../screens/parcel/parcel_list_screen.dart';
@@ -96,14 +95,14 @@ class MainDrawer extends StatelessWidget {
           Flexible(
             child: ListView(
               children: [
-                // buildListTile(
-                //   "Trang chủ",
-                //   Icons.table_view,
-                //   () => Navigator.pushReplacementNamed(
-                //     context,
-                //     HomeScreen.routeName,
-                //   ),
-                // ),
+                buildListTile(
+                  "Trang chủ",
+                  Icons.table_view,
+                  () => Navigator.pushReplacementNamed(
+                    context,
+                    HomeScreen.routeName,
+                  ),
+                ),
                 buildListTile(
                   "Kỹ thuật",
                   Icons.document_scanner,
@@ -112,14 +111,14 @@ class MainDrawer extends StatelessWidget {
                     TechnicalSceen.routeName,
                   ),
                 ),
-                buildListTile(
-                  "Dữ liệu offline",
-                  Icons.document_scanner,
-                  () => Navigator.pushReplacementNamed(
-                    context,
-                    OfflineTechScreen.routeName,
-                  ),
-                ),
+                // buildListTile(
+                //   "Dữ liệu offline",
+                //   Icons.document_scanner,
+                //   () => Navigator.pushReplacementNamed(
+                //     context,
+                //     OfflineTechScreen.routeName,
+                //   ),
+                // ),
 
                 // buildListTile(
                 //   S.of(context).extr_tast,

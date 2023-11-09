@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:qlda_demego/services/provider/auth_provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../../services/api/api_services.dart';
 import '../../widgets/main_drawer.dart';
 import '../../widgets/primary_appbar.dart';
 
@@ -33,8 +34,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     var accessToken = context.watch<AuthProvider>().accessToken;
     print(accessToken);
-    var initialUrl = "https://dev.buildingtenant.demego.vn";
-    //  'https://${ApiService.shared.webUrl}?token=$accessToken&mobile=true';
+    var initialUrl = 
+    'https://${ApiService.shared.webUrl}?token=$accessToken&mobile=true';
     WebViewController controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
@@ -46,12 +47,12 @@ class _HomeScreenState extends State<HomeScreen> {
           onPageStarted: (String url) {},
           onPageFinished: (String url) {},
           onWebResourceError: (WebResourceError error) {},
-          onNavigationRequest: (NavigationRequest request) {
-            if (request.url.startsWith(initialUrl)) {
-              return NavigationDecision.prevent;
-            }
-            return NavigationDecision.navigate;
-          },
+          // onNavigationRequest: (NavigationRequest request) {
+          //   if (request.url.startsWith(initialUrl)) {
+          //     return NavigationDecision.prevent;
+          //   }
+          //   return NavigationDecision.navigate;
+          // },
         ),
       )
       ..loadRequest(Uri.parse(initialUrl));
