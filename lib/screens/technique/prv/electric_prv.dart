@@ -89,7 +89,7 @@ class ElectricPrv extends ChangeNotifier {
     apartmentView.clear();
 
     apartmentSearch = context
-        .watch<ApartmentPrv>()
+        .read<ApartmentPrv>()
         .apartments
         .where(
           (element) => RegExp(
@@ -259,15 +259,15 @@ class ElectricPrv extends ChangeNotifier {
   }
 
   validate() {
-    if (startController.text.trim().isEmpty) {
-      startValidate = S.current.not_empty;
-    }
+    // if (startController.text.trim().isEmpty) {
+    //   startValidate = S.current.not_empty;
+    // }
     //  else if (geater()) {
     //   startValidate = null;
     // }
-    else {
-      startValidate = null;
-    }
+    // else {
+    //   startValidate = null;
+    // }
     if (endController.text.trim().isEmpty) {
       endValidate = S.current.not_empty;
     }
@@ -288,6 +288,15 @@ class ElectricPrv extends ChangeNotifier {
     // }
 
     return null;
+  }
+
+  validateForm(BuildContext context, setState) {
+    if (formKey.currentState!.validate()) {
+      validate();
+    } else {
+      validate();
+    }
+    setState(() {});
   }
 
   onSubmit(
@@ -313,26 +322,27 @@ class ElectricPrv extends ChangeNotifier {
           offlineImage = listImages.map((e) => File(e.path)).toList();
         }
 
-        var consumption = double.parse(endController.text.trim()) -
-            double.parse(startController.text.trim());
+        var consumption = (endController.text.trim().isEmpty ||
+                startController.text.trim().isEmpty)
+            ? null
+            : double.parse(endController.text.trim()) -
+                double.parse(startController.text.trim());
         var indi = ElectricIndicator(
           image: existedImages + uploadedImages,
           id: e.e?.id,
           apartmentId: e.id,
           electricity_head: double.tryParse(startController.text.trim()) != null
               ? double.parse(startController.text.trim())
-              : 0,
+              : null,
           electricity_last: double.tryParse(endController.text.trim()) != null
               ? double.parse(endController.text.trim())
-              : 0,
+              : null,
           electricity_consumption: consumption,
           latch: false,
           month: month,
           year: year,
           offline_image: offlineImage,
         );
-        //  indicator
-
         // /connectivityResult == ConnectivityResult.
         if (connectivityResult == ConnectivityResult.none) {
           await SqlfliteServices.shared.openSQLDatabase();
@@ -360,6 +370,9 @@ class ElectricPrv extends ChangeNotifier {
                     onTap: () async {
                       Navigator.pop(context);
                       Navigator.pop(context);
+                      listImages.clear();
+                      existedImages.clear();
+                      uploadedImages.clear();
                       try {
                         await SqlfliteServices.shared.saveApartment(
                           apartmentCopy,
@@ -390,6 +403,9 @@ class ElectricPrv extends ChangeNotifier {
               context: context,
               e: "Nhập chỉ số điện thành công căn ${e.code}",
               onClose: () {
+                listImages.clear();
+                existedImages.clear();
+                uploadedImages.clear();
                 Navigator.pushReplacementNamed(
                   context,
                   ElectricScreen.routeName,
@@ -419,21 +435,16 @@ class ElectricPrv extends ChangeNotifier {
     }
   }
 
-  validateForm(BuildContext context, setState) {
-    if (formKey.currentState!.validate()) {
-      validate();
-    } else {
-      validate();
-    }
-    setState(() {});
-  }
-
   tabRow(BuildContext context, Apartment e) {
-    startController.text = formatter.format(e.le?.electricity_last ?? 0);
+    startController.text = e.le?.electricity_last == null
+        ? ''
+        : formatter.format(e.le?.electricity_last ?? 0);
     endController.text = e.e?.electricity_last == null
         ? ''
         : formatter.format(e.e?.electricity_last ?? 0);
-    var cons = (e.e?.electricity_last ?? 0) - (e.le?.electricity_last ?? 0);
+    var cons = (e.e?.electricity_last == null || e.le?.electricity_last == null)
+        ? null
+        : (e.e?.electricity_last ?? 0) - (e.le?.electricity_last ?? 0);
     existedImages = [...(e.e?.image ?? [])];
     listImages.clear();
     if (e.e?.offline_image != null && e.e!.offline_image!.isNotEmpty) {
@@ -497,7 +508,10 @@ class ElectricPrv extends ChangeNotifier {
                                   double.tryParse(endController.text) != null
                                       ? double.parse(endController.text)
                                       : 0;
-                              cons = end - start;
+                              if (startController.text.trim().isNotEmpty &&
+                                  endController.text.trim().isNotEmpty) {
+                                cons = end - start;
+                              }
                             });
                           },
                         ),
@@ -522,7 +536,11 @@ class ElectricPrv extends ChangeNotifier {
                                   double.tryParse(endController.text) != null
                                       ? double.parse(endController.text)
                                       : 0;
-                              cons = end - start;
+
+                              if (startController.text.trim().isNotEmpty &&
+                                  endController.text.trim().isNotEmpty) {
+                                cons = end - start;
+                              }
                             });
                           },
                         ),
@@ -538,7 +556,7 @@ class ElectricPrv extends ChangeNotifier {
                           style: txtRegular(16, Colors.black),
                         ),
                         TextSpan(
-                          text: formatter.format(cons),
+                          text: cons == null ? '' : formatter.format(cons),
                           style: txtBold(16, Colors.black),
                         ),
                       ],
@@ -580,6 +598,9 @@ class ElectricPrv extends ChangeNotifier {
                           buttonSize: ButtonSize.medium,
                           onTap: () {
                             Navigator.pop(context);
+                            listImages.clear();
+                            existedImages.clear();
+                            uploadedImages.clear();
                           },
                         ),
                       ),

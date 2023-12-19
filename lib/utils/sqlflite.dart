@@ -135,7 +135,7 @@ SELECT * FROM apartment WHERE
         ''' UPDATE apartment SET
                                  ${isElectric ? '''
 
-                                  electric_last = ${newApartment.e?.electricity_last ?? "NULL"},
+                                                   electric_last = ${newApartment.e?.electricity_last ?? "NULL"}, 
                                  electric_head = ${newApartment.e?.electricity_head ?? "NULL"},
                                  offline_images_e = ${newApartment.e?.offline_image == null ? 'NULL' : newApartment.e!.offline_image!.isEmpty ? "''" : '"${newApartment.e?.offline_image!.map((i) => i.path).join(',')}"'}
                                  

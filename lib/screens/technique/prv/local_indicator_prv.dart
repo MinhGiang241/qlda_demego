@@ -243,10 +243,10 @@ class LocalIndicatorPrv extends ChangeNotifier {
       if (v != null) {
         for (var i in v) {
           var a = ApartmentFromSQL.fromMap(i);
-          if (a.electric_last != null && a.electric_head != null) {
+          if (a.electric_last != null) {
             electricApartments.add(a);
           }
-          if (a.water_head != null && a.water_last != null) {
+          if (a.water_last != null) {
             waterApartments.add(a);
           }
         }

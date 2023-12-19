@@ -82,7 +82,7 @@ class WaterPrv extends ChangeNotifier {
     apartmentView.clear();
 
     apartmentSearch = context
-        .watch<ApartmentPrv>()
+        .read<ApartmentPrv>()
         .apartments
         .where(
           (element) => RegExp(
@@ -250,15 +250,15 @@ class WaterPrv extends ChangeNotifier {
   }
 
   validate() {
-    if (startController.text.trim().isEmpty) {
-      startValidate = S.current.not_empty;
-    }
+    // if (startController.text.trim().isEmpty) {
+    //   startValidate = S.current.not_empty;
+    // }
     //  else if (geater()) {
     //   startValidate = null;
     // }
-    else {
-      startValidate = null;
-    }
+    // else {
+    //   startValidate = null;
+    // }
     if (endController.text.trim().isEmpty) {
       endValidate = S.current.not_empty;
     }
@@ -295,18 +295,16 @@ class WaterPrv extends ChangeNotifier {
     BuildContext context,
     Apartment e,
   ) async {
-    var a = formKey.currentState!.validate();
     if (listImages.isEmpty && existedImages.isEmpty) {
       Utils.showErrorMessage(context, "Hình ảnh không được để trống");
     } else if (endController.text.isEmpty) {
       Utils.showErrorMessage(context, "Chỉ số cuối không được để trống");
-    } else if (a) {
+    } else if (formKey.currentState!.validate()) {
       try {
         setState(() {
           loading = true;
           validate();
         });
-        //  indicator
         var connectivityResult = await (Connectivity().checkConnectivity());
         List<File> offlineImage = [];
         if (connectivityResult != ConnectivityResult.none) {
@@ -314,11 +312,14 @@ class WaterPrv extends ChangeNotifier {
         } else {
           offlineImage = listImages.map((e) => File(e.path)).toList();
         }
-        var consumption = double.parse(endController.text.trim()) -
-            double.parse(startController.text.trim());
+        var consumption = (endController.text.trim().isEmpty ||
+                startController.text.trim().isEmpty)
+            ? null
+            : double.parse(endController.text.trim()) -
+                double.parse(startController.text.trim());
         var indi = WaterIndicator(
           image: existedImages + uploadedImages,
-          id: e.e?.id,
+          id: e.w?.id,
           apartmentId: e.id,
           water_head: double.tryParse(startController.text.trim()) != null
               ? double.parse(startController.text.trim())
@@ -360,7 +361,9 @@ class WaterPrv extends ChangeNotifier {
                     onTap: () async {
                       Navigator.pop(context);
                       Navigator.pop(context);
-
+                      listImages.clear();
+                      existedImages.clear();
+                      uploadedImages.clear();
                       try {
                         await SqlfliteServices.shared.saveApartment(
                           apartmentCopy,
@@ -371,7 +374,7 @@ class WaterPrv extends ChangeNotifier {
                         );
                         indi.isLocal = true;
                         e.w = indi;
-                        print(e);
+
                         notifyListeners();
                       } catch (e) {
                         Utils.showErrorMessage(context, e.toString());
@@ -391,6 +394,9 @@ class WaterPrv extends ChangeNotifier {
               context: context,
               e: "Nhập chỉ số nước thành công căn ${e.code}",
               onClose: () {
+                listImages.clear();
+                existedImages.clear();
+                uploadedImages.clear();
                 Navigator.pushReplacementNamed(
                   context,
                   WaterScreen.routeName,
@@ -421,10 +427,13 @@ class WaterPrv extends ChangeNotifier {
   }
 
   tabRow(BuildContext context, Apartment e) {
-    startController.text = formatter.format(e.lw?.water_last ?? 0);
+    startController.text =
+        e.lw?.water_last == null ? '' : formatter.format(e.lw?.water_last ?? 0);
     endController.text =
         e.w?.water_last == null ? '' : formatter.format(e.w?.water_last ?? 0);
-    var cons = (e.w?.water_last ?? 0) - (e.lw?.water_last ?? 0);
+    var cons = (e.w?.water_last == null || e.lw?.water_last == null)
+        ? null
+        : (e.w?.water_last ?? 0) - (e.lw?.water_last ?? 0);
     existedImages = [...(e.w?.image ?? [])];
     listImages.clear();
     if (e.w?.offline_image != null && e.w!.offline_image!.isNotEmpty) {
@@ -487,7 +496,10 @@ class WaterPrv extends ChangeNotifier {
                                   double.tryParse(endController.text) != null
                                       ? double.parse(endController.text)
                                       : 0;
-                              cons = end - start;
+                              if (startController.text.trim().isNotEmpty &&
+                                  endController.text.trim().isNotEmpty) {
+                                cons = end - start;
+                              }
                             });
                           },
                         ),
@@ -512,7 +524,11 @@ class WaterPrv extends ChangeNotifier {
                                   double.tryParse(endController.text) != null
                                       ? double.parse(endController.text)
                                       : 0;
-                              cons = end - start;
+
+                              if (startController.text.trim().isNotEmpty &&
+                                  endController.text.trim().isNotEmpty) {
+                                cons = end - start;
+                              }
                             });
                           },
                         ),
@@ -528,7 +544,7 @@ class WaterPrv extends ChangeNotifier {
                           style: txtRegular(16, Colors.black),
                         ),
                         TextSpan(
-                          text: formatter.format(cons),
+                          text: cons == null ? '' : formatter.format(cons),
                           style: txtBold(16, Colors.black),
                         ),
                       ],
@@ -570,6 +586,9 @@ class WaterPrv extends ChangeNotifier {
                           buttonSize: ButtonSize.medium,
                           onTap: () {
                             Navigator.pop(context);
+                            listImages.clear();
+                            existedImages.clear();
+                            uploadedImages.clear();
                           },
                         ),
                       ),

@@ -48,7 +48,6 @@ class _WaterScreenState extends State<WaterScreen> {
     int year = DateTime.now().year;
     int month = DateTime.now().month;
     List<Apartment> view = context.watch<WaterPrv>().apartmentView;
-    // List<Apartment> view = context.watch<WaterPrv>().apartmentView;
     var count = context.watch<WaterPrv>().count;
     var total = context.watch<WaterPrv>().total;
     var latch = context.watch<WaterPrv>().latch;
@@ -231,7 +230,7 @@ class _WaterScreenState extends State<WaterScreen> {
                                   ],
                                 ),
                                 ...genTable(view),
-                              ]),
+                              ],),
                         vpad(60),
                       ],
                     ),
@@ -264,30 +263,37 @@ class _WaterScreenState extends State<WaterScreen> {
                           ),
                   ),
                   Text(
-                    e.value.w?.water_last == null
-                        ? ''
-                        : formatter.format(
-                            e.value.w?.water_last ?? 0,
-                          ),
+                    e.value.w?.water_last == null    ? ''
+                        : formatter.format(  e.value.w?.water_last)
+                    // e.value.w?.water_last == null
+                    //     ? ''
+                    //     : formatter.format(
+                    //         e.value.w?.water_last ?? 0,
+                    //       ),
                   ),
                   Text(
-                    (e.value.lw?.water_head == null ||
-                            e.value.w?.water_last == null)
-                        ? ''
-                        : formatter.format(
-                            (e.value.w?.water_last ?? 0) -
-                                (e.value.lw?.water_last ??
-                                    e.value.w?.water_head ??
-                                    0),
-                          ),
-                    style: (e.value.lw?.water_last != null &&
-                            e.value.w?.water_last != null &&
-                            ((e.value.w?.water_last ?? 0) -
-                                        (e.value.lw?.water_last ?? 0) <
-                                    0 ||
-                                (e.value.w?.water_last ?? 0) -
-                                        (e.value.lw?.water_last ?? 0) >=
-                                    30))
+                    (e.value.w?.water_consumption) == null ?'':
+                    formatter.format(e.value.w?.water_consumption)
+                      ,
+                    // (e.value.lw?.water_head == null ||
+                    //         e.value.w?.water_last == null)
+                    //     ? ''
+                    //     : formatter.format(
+                    //         (e.value.w?.water_last ?? 0) -
+                    //             (e.value.lw?.water_last ??
+                    //                 e.value.w?.water_head ??
+                    //                 0),
+                    //       ),
+                    style:
+                    (e.value.w?.water_consumption != null && ((e.value.w?.water_consumption ?? 0)<0 || (e.value.w?.water_consumption??0)>=30) )
+                    // (e.value.lw?.water_last != null &&
+                    //         e.value.w?.water_last != null &&
+                    //         ((e.value.w?.water_last ?? 0) -
+                    //                     (e.value.lw?.water_last ?? 0) <
+                    //                 0 ||
+                    //             (e.value.w?.water_last ?? 0) -
+                    //                     (e.value.lw?.water_last ?? 0) >=
+                    //                 30))
                         ? txtBold(12, redColor)
                         : null,
                   ),

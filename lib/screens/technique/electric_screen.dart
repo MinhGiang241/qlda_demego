@@ -133,7 +133,6 @@ class _ElectricScreenState extends State<ElectricScreen> {
               vpad(12),
               PrimaryTextField(
                 onFieldSubmitted: (_) {
-                  //context.read<ElectricPrv>().getApartments(context, true);
                   context.read<ElectricPrv>().onSearchText(context);
                 },
                 textInputAction: TextInputAction.go,
@@ -182,14 +181,14 @@ class _ElectricScreenState extends State<ElectricScreen> {
                     child: ListView(
                       children: [
                         vpad(12),
-                        if (apartments.isEmpty && !initLoad)
+                        if (view.isEmpty && !initLoad)
                           Center(
                             child: PrimaryEmptyWidget(
                               icons: PrimaryIcons.water,
                               emptyText: 'Không có căn hộ nào',
                             ),
                           ),
-                        if (apartments.isNotEmpty && !initLoad)
+                        if (view.isNotEmpty && !initLoad)
                           Table(
                             columnWidths: const {
                               0: FlexColumnWidth(1),
@@ -284,20 +283,23 @@ class _ElectricScreenState extends State<ElectricScreen> {
                           ),
                   ),
                   Text(
-                    (e.value.le?.electricity_head == null ||
-                            e.value.e?.electricity_last == null)
-                        ? ''
-                        : formatter.format(
-                            (e.value.e?.electricity_last ?? 0) -
-                                (e.value.le?.electricity_last ??
-                                    e.value.e?.electricity_head ??
-                                    0),
+                    // (e.value.le?.electricity_head == null ||
+                    //         e.value.e?.electricity_last == null)
+                    e.value.e?.electricity_consumption == null    ? ''
+                        : formatter.format(  e.value.e?.electricity_consumption
+                            // (e.value.e?.electricity_last ?? 0) -
+                            //     (e.value.le?.electricity_last ??
+                            //         e.value.e?.electricity_head ??
+                            //         0),
                           ),
-                    style: (e.value.le?.electricity_last != null &&
-                            e.value.e?.electricity_last != null &&
-                            ((e.value.e?.electricity_last ?? 0) -
-                                    (e.value.le?.electricity_last ?? 0) <
-                                0))
+                    style: (
+                      (e.value.e?.electricity_consumption??0)<0
+                      // e.value.le?.electricity_last != null &&
+                      //       e.value.e?.electricity_last != null &&
+                      //       ((e.value.e?.electricity_last ?? 0) -
+                      //               (e.value.le?.electricity_last ?? 0) <
+                      //           0)
+                                )
                         ? txtBold(12, redColor)
                         : null,
                   ),
