@@ -128,7 +128,7 @@ SELECT * FROM apartment WHERE
     var apartments = await database!.rawQuery('''
       SELECT * FROM apartment WHERE code = "${newApartment.code}" AND year = $year AND month = $month AND regCode = "${regCode.isEmpty ? "" : regCode}"
       ''');
-    if (apartments.isNotEmpty) {
+    if (apartments.length >= 1) {
       //var existedApartment = ApartmentFromSQL.fromMap(apartments[0]);
 
       int count = await database!.rawUpdate(

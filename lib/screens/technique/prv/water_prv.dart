@@ -323,10 +323,10 @@ class WaterPrv extends ChangeNotifier {
           apartmentId: e.id,
           water_head: double.tryParse(startController.text.trim()) != null
               ? double.parse(startController.text.trim())
-              : 0,
+              : null,
           water_last: double.tryParse(endController.text.trim()) != null
               ? double.parse(endController.text.trim())
-              : 0,
+              : null,
           water_consumption: consumption,
           latch: false,
           month: month,
