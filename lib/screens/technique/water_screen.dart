@@ -179,58 +179,59 @@ class _WaterScreenState extends State<WaterScreen> {
                           ),
                         if (view.isNotEmpty && !initLoad)
                           Table(
-                              columnWidths: const {
-                                0: FlexColumnWidth(1),
-                                1: FlexColumnWidth(1),
-                                2: FlexColumnWidth(1),
-                                3: FlexColumnWidth(1),
-                                4: FlexColumnWidth(1),
-                              },
-                              textBaseline: TextBaseline.ideographic,
-                              defaultVerticalAlignment:
-                                  TableCellVerticalAlignment.middle,
-                              border: TableBorder(
-                                horizontalInside: BorderSide(),
-                                verticalInside: BorderSide(),
-                                top: BorderSide(),
-                                bottom: BorderSide(),
-                                right: BorderSide(),
-                                left: BorderSide(),
+                            columnWidths: const {
+                              0: FlexColumnWidth(1),
+                              1: FlexColumnWidth(1),
+                              2: FlexColumnWidth(1),
+                              3: FlexColumnWidth(1),
+                              4: FlexColumnWidth(1),
+                            },
+                            textBaseline: TextBaseline.ideographic,
+                            defaultVerticalAlignment:
+                                TableCellVerticalAlignment.middle,
+                            border: TableBorder(
+                              horizontalInside: BorderSide(),
+                              verticalInside: BorderSide(),
+                              top: BorderSide(),
+                              bottom: BorderSide(),
+                              right: BorderSide(),
+                              left: BorderSide(),
+                            ),
+                            children: [
+                              TableRow(
+                                children: [
+                                  ...genCell([
+                                    Text(
+                                      "Mã căn",
+                                      style: txtBold(12),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Text(
+                                      "Mã đồng hồ",
+                                      style: txtBold(12),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Text(
+                                      "Đầu kỳ",
+                                      style: txtBold(12),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Text(
+                                      "Cuối kỳ",
+                                      style: txtBold(12),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Text(
+                                      "Tiêu thụ",
+                                      style: txtBold(12),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ]),
+                                ],
                               ),
-                              children: [
-                                TableRow(
-                                  children: [
-                                    ...genCell([
-                                      Text(
-                                        "Mã căn",
-                                        style: txtBold(12),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Text(
-                                        "Mã đồng hồ",
-                                        style: txtBold(12),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Text(
-                                        "Đầu kỳ",
-                                        style: txtBold(12),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Text(
-                                        "Cuối kỳ",
-                                        style: txtBold(12),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Text(
-                                        "Tiêu thụ",
-                                        style: txtBold(12),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ]),
-                                  ],
-                                ),
-                                ...genTable(view),
-                              ],),
+                              ...genTable(view),
+                            ],
+                          ),
                         vpad(60),
                       ],
                     ),
@@ -262,40 +263,42 @@ class _WaterScreenState extends State<WaterScreen> {
                             e.value.lw?.water_last ?? 0,
                           ),
                   ),
+                  Text(e.value.w?.water_last == null
+                          ? ''
+                          : formatter.format(e.value.w?.water_last)
+                      // e.value.w?.water_last == null
+                      //     ? ''
+                      //     : formatter.format(
+                      //         e.value.w?.water_last ?? 0,
+                      //       ),
+                      ),
                   Text(
-                    e.value.w?.water_last == null    ? ''
-                        : formatter.format(  e.value.w?.water_last)
-                    // e.value.w?.water_last == null
+                    // (e.value.w?.water_consumption) == null
                     //     ? ''
-                    //     : formatter.format(
-                    //         e.value.w?.water_last ?? 0,
-                    //       ),
-                  ),
-                  Text(
-                    (e.value.w?.water_consumption) == null ?'':
-                    formatter.format(e.value.w?.water_consumption)
-                      ,
-                    // (e.value.lw?.water_head == null ||
-                    //         e.value.w?.water_last == null)
-                    //     ? ''
-                    //     : formatter.format(
-                    //         (e.value.w?.water_last ?? 0) -
-                    //             (e.value.lw?.water_last ??
-                    //                 e.value.w?.water_head ??
-                    //                 0),
-                    //       ),
+                    //     : formatter.format(e.value.w?.water_consumption),
+                    (e.value.lw?.water_head == null ||
+                            e.value.w?.water_last == null)
+                        ? ''
+                        : formatter.format(
+                            (e.value.w?.water_last ?? 0) -
+                                (e.value.lw?.water_last ??
+                                    e.value.w?.water_head ??
+                                    0),
+                          ),
                     style:
-                    (e.value.w?.water_consumption != null && ((e.value.w?.water_consumption ?? 0)<0 || (e.value.w?.water_consumption??0)>=30) )
-                    // (e.value.lw?.water_last != null &&
-                    //         e.value.w?.water_last != null &&
-                    //         ((e.value.w?.water_last ?? 0) -
-                    //                     (e.value.lw?.water_last ?? 0) <
-                    //                 0 ||
-                    //             (e.value.w?.water_last ?? 0) -
-                    //                     (e.value.lw?.water_last ?? 0) >=
-                    //                 30))
-                        ? txtBold(12, redColor)
-                        : null,
+                        //  (e.value.w?.water_consumption != null &&
+                        //         ((e.value.w?.water_consumption ?? 0) < 0 ||
+                        //             (e.value.w?.water_consumption ?? 0) >= 30))
+                        (e.value.lw?.water_last != null &&
+                                e.value.w?.water_last != null &&
+                                ((e.value.w?.water_last ?? 0) -
+                                            (e.value.lw?.water_last ?? 0) <
+                                        0 ||
+                                    (e.value.w?.water_last ?? 0) -
+                                            (e.value.lw?.water_last ?? 0) >=
+                                        30))
+                            ? txtBold(12, redColor)
+                            : null,
                   ),
                 ],
                 onTap: () {
