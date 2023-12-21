@@ -273,32 +273,31 @@ class _WaterScreenState extends State<WaterScreen> {
                       //       ),
                       ),
                   Text(
-                    // (e.value.w?.water_consumption) == null
-                    //     ? ''
-                    //     : formatter.format(e.value.w?.water_consumption),
-                    (e.value.lw?.water_head == null ||
-                            e.value.w?.water_last == null)
+                    (e.value.w?.water_consumption) == null
                         ? ''
-                        : formatter.format(
-                            (e.value.w?.water_last ?? 0) -
-                                (e.value.lw?.water_last ??
-                                    e.value.w?.water_head ??
-                                    0),
-                          ),
-                    style:
-                        //  (e.value.w?.water_consumption != null &&
-                        //         ((e.value.w?.water_consumption ?? 0) < 0 ||
-                        //             (e.value.w?.water_consumption ?? 0) >= 30))
-                        (e.value.lw?.water_last != null &&
-                                e.value.w?.water_last != null &&
-                                ((e.value.w?.water_last ?? 0) -
-                                            (e.value.lw?.water_last ?? 0) <
-                                        0 ||
-                                    (e.value.w?.water_last ?? 0) -
-                                            (e.value.lw?.water_last ?? 0) >=
-                                        30))
-                            ? txtBold(12, redColor)
-                            : null,
+                        : formatter.format(e.value.w?.water_consumption),
+                    // (e.value.lw?.water_head == null ||
+                    //         e.value.w?.water_last == null)
+                    //     ? ''
+                    //     : formatter.format(
+                    //         (e.value.w?.water_last ?? 0) -
+                    //             (e.value.lw?.water_last ??
+                    //                 e.value.w?.water_head ??
+                    //                 0),
+                    //       ),
+                    style: (e.value.w?.water_consumption != null &&
+                            ((e.value.w?.water_consumption ?? 0) < 0 ||
+                                (e.value.w?.water_consumption ?? 0) >= 30))
+                        // (e.value.lw?.water_last != null &&
+                        //         e.value.w?.water_last != null &&
+                        //         ((e.value.w?.water_last ?? 0) -
+                        //                     (e.value.lw?.water_last ?? 0) <
+                        //                 0 ||
+                        //             (e.value.w?.water_last ?? 0) -
+                        //                     (e.value.lw?.water_last ?? 0) >=
+                        //                 30))
+                        ? txtBold(12, redColor)
+                        : null,
                   ),
                 ],
                 onTap: () {

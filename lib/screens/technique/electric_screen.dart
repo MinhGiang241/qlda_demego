@@ -283,22 +283,22 @@ class _ElectricScreenState extends State<ElectricScreen> {
                           ),
                   ),
                   Text(
-                    // e.value.e?.electricity_consumption == null    ? ''
-                    //   : formatter.format(  e.value.e?.electricity_consumption
-                    (e.value.le?.electricity_head == null ||
-                            e.value.e?.electricity_last == null)
+                    e.value.e?.electricity_consumption == null
                         ? ''
-                        : formatter.format(
-                            (e.value.e?.electricity_last ?? 0) -
-                                (e.value.le?.electricity_last ?? 0),
-                          ),
-                    style: (
-                            // (e.value.e?.electricity_consumption ?? 0) < 0
-                            e.value.le?.electricity_last != null &&
-                                e.value.e?.electricity_last != null &&
-                                ((e.value.e?.electricity_last ?? 0) -
-                                        (e.value.le?.electricity_last ?? 0) <
-                                    0))
+                        : formatter.format(e.value.e?.electricity_consumption),
+                    // (e.value.le?.electricity_head == null ||
+                    //         e.value.e?.electricity_last == null)
+                    //     ? ''
+                    //     : formatter.format(
+                    //         (e.value.e?.electricity_last ?? 0) -
+                    //             (e.value.le?.electricity_last ?? 0),
+                    // ),
+                    style: (e.value.e?.electricity_consumption ?? 0) < 0
+                        // e.value.le?.electricity_last != null &&
+                        //     e.value.e?.electricity_last != null &&
+                        //     ((e.value.e?.electricity_last ?? 0) -
+                        //             (e.value.le?.electricity_last ?? 0) <
+                        //         0))
                         ? txtBold(12, redColor)
                         : null,
                   ),

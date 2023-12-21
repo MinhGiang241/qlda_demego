@@ -200,26 +200,34 @@ class WaterPrv extends ChangeNotifier {
   }
 
   pickDate(BuildContext context) async {
-    await DatePicker.showPicker(
-      context,
-      onChanged: (v) {},
-      onConfirm: (v) {
-        year = v.year;
-        month = v.month;
-        dateController.text = '$month/$year';
-      },
-      pickerModel: CustomMonthPicker(
-        minTime: DateTime(DateTime.now().year - 40, 1, 1),
-        maxTime: DateTime(DateTime.now().year, 12, 31),
-        currentTime: DateTime(
-          year,
-          month,
-          1,
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult != ConnectivityResult.none) {
+      await DatePicker.showPicker(
+        context,
+        onChanged: (v) {},
+        onConfirm: (v) {
+          year = v.year;
+          month = v.month;
+          dateController.text = '$month/$year';
+        },
+        pickerModel: CustomMonthPicker(
+          minTime: DateTime(DateTime.now().year - 40, 1, 1),
+          maxTime: DateTime(DateTime.now().year, 12, 31),
+          currentTime: DateTime(
+            year,
+            month,
+            1,
+          ),
+          custom: [1, 1, 0],
+          locale: LocaleType.vi,
         ),
-        custom: [1, 1, 0],
-        locale: LocaleType.vi,
-      ),
-    );
+      );
+    } else {
+      Utils.showErrorMessage(
+        context,
+        "Không lấy dược chỉ số của tháng khác khi offline",
+      );
+    }
   }
 
   geater() {
