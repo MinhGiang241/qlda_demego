@@ -124,15 +124,16 @@ class LocalIndicatorPrv extends ChangeNotifier {
               .toList();
         }
 
-        if (isElectric &&
-            apartment.electric_last != null &&
-            apartment.electric_head != null) {
+        if (isElectric && apartment.electric_last != null
+            //  && apartment.electric_head != null
+
+            ) {
           dataAparment.add(apartment);
         }
 
-        if (!isElectric &&
-            apartment.water_last != null &&
-            apartment.water_head != null) {
+        if (!isElectric && apartment.water_last != null
+            // && apartment.water_head != null
+            ) {
           dataAparment.add(apartment);
         }
       }
@@ -149,7 +150,9 @@ class LocalIndicatorPrv extends ChangeNotifier {
                 image: e.uploaded_images_e,
                 year: year,
                 month: month,
-                electricity_head: (e.electric_head ?? 0).toDouble(),
+                electricity_head: e.electric_head != null
+                    ? e.electric_head!.toDouble()
+                    : null,
                 electricity_last: (e.electric_last ?? 0).toDouble(),
               ).toMap(),
             )
@@ -162,7 +165,8 @@ class LocalIndicatorPrv extends ChangeNotifier {
                 image: e.uploaded_images_w,
                 year: year,
                 month: month,
-                water_head: (e.water_head ?? 0).toDouble(),
+                water_head:
+                    e.water_head == null ? null : e.water_head!.toDouble(),
                 water_last: (e.water_last ?? 0).toDouble(),
               ).toMap(),
             )

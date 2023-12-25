@@ -15,7 +15,7 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     
    <application
-        android:label="Kythuat"
+        android:label="DEMEPRO"
         android:name="${applicationName}"
         android:usesCleartextTraffic="true"
         android:networkSecurityConfig="@xml/network_security_config"

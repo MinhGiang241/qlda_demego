@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
@@ -34,8 +36,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     var accessToken = context.watch<AuthProvider>().accessToken;
     print(accessToken);
-    var initialUrl = 
-    'https://${ApiService.shared.webUrl}?token=$accessToken&mobile=true';
+    var initialUrl =
+        'https://${ApiService.shared.webUrl}?token=$accessToken&mobile=true';
+
+    log(initialUrl);
     WebViewController controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
@@ -46,7 +50,10 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           onPageStarted: (String url) {},
           onPageFinished: (String url) {},
-          onWebResourceError: (WebResourceError error) {},
+          onWebResourceError: (WebResourceError error) {
+            print(error);
+          },
+
           // onNavigationRequest: (NavigationRequest request) {
           //   if (request.url.startsWith(initialUrl)) {
           //     return NavigationDecision.prevent;
