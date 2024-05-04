@@ -8,7 +8,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:qlda_demego/routes/routes.dart';
-import 'package:qlda_demego/services/background/back_services.dart';
 import 'package:qlda_demego/services/provider/auth_provider.dart';
 import 'constant/theme.dart';
 import 'generated/l10n.dart';

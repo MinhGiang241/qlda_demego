@@ -2,21 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:qlda_demego/constant/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:qlda_demego/screens/home/home_screen.dart';
-import 'package:qlda_demego/screens/offline_tech/offline_tech.dart';
-import 'package:qlda_demego/screens/period_task/period_task_list_screen.dart';
-
 import '../generated/l10n.dart';
-import '../screens/application/application_screen.dart';
-import '../screens/assets/asset_screen.dart';
-import '../screens/customer/customer_list_screen.dart';
-import '../screens/entrance/entrance_list_screen.dart';
-import '../screens/letter/request_letter_list_screen.dart';
-import '../screens/missing/missing_object_list_screen.dart';
-import '../screens/parcel/parcel_list_screen.dart';
-import '../screens/reception/information_reception_list_screen.dart';
-import '../screens/resident_card/resident_card_list_screen.dart';
 import '../screens/technique/technical_screen.dart';
-import '../screens/transportation/transportation_card_list_screen.dart';
 import '../services/provider/auth_provider.dart';
 
 class MainDrawer extends StatelessWidget {
