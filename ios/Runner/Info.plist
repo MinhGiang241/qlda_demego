@@ -4,6 +4,14 @@
 <dict>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app need to access your library</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Permit this app know your location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Permit this app know your location</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
