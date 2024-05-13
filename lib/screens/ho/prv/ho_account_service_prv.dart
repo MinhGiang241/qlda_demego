@@ -248,6 +248,8 @@ class HOAccountServicePrv extends ChangeNotifier {
           tenantList.add(TenantRegistration.fromMap(i));
         }
       }
+    }).catchError((e) {
+      Utils.showErrorMessage(context, e);
     });
   }
 
