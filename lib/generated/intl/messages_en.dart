@@ -291,6 +291,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "info_type": MessageLookupByLibrary.simpleMessage("Information type"),
         "invalid_code":
             MessageLookupByLibrary.simpleMessage("Invalid authentication code"),
+        "invalid_number":
+            MessageLookupByLibrary.simpleMessage("Invalid number"),
         "inventory": MessageLookupByLibrary.simpleMessage("Inventory"),
         "issue_date": MessageLookupByLibrary.simpleMessage("Issue date"),
         "job_title": MessageLookupByLibrary.simpleMessage("Job title"),
@@ -553,6 +555,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "transfer": MessageLookupByLibrary.simpleMessage("Transfer"),
         "transfer_parcel":
             MessageLookupByLibrary.simpleMessage("Transfer parcel"),
+        "two_digit": MessageLookupByLibrary.simpleMessage(
+            "Only 2 decimal places are allowed after the ."),
         "type": MessageLookupByLibrary.simpleMessage("Type"),
         "unit": MessageLookupByLibrary.simpleMessage("Unit"),
         "update": MessageLookupByLibrary.simpleMessage("Update"),

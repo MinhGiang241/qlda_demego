@@ -400,5 +400,7 @@
   "pull_to_load": "Pull to load",
   "pull_load_failed": "Load Failed!Click retry!",
   "release_to_load": "Release to load more",
-  "no_more_data": "No more data"
+  "no_more_data": "No more data",
+  "invalid_number": "Invalid number",
+  "two_digit": "Only 2 decimal places are allowed after the ."
 }
