@@ -4069,6 +4069,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Invalid number`
+  String get invalid_number {
+    return Intl.message(
+      'Invalid number',
+      name: 'invalid_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Only 2 decimal places are allowed after the .`
+  String get two_digit {
+    return Intl.message(
+      'Only 2 decimal places are allowed after the .',
+      name: 'two_digit',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

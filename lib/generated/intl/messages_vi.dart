@@ -289,6 +289,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "info_type": MessageLookupByLibrary.simpleMessage("Loại thông tin"),
         "invalid_code":
             MessageLookupByLibrary.simpleMessage("Mã xác thực không hợp lệ"),
+        "invalid_number":
+            MessageLookupByLibrary.simpleMessage("Chỉ số không hợp lệ"),
         "inventory": MessageLookupByLibrary.simpleMessage("Kiểm kê"),
         "issue_date": MessageLookupByLibrary.simpleMessage("Ngày cấp"),
         "job_title": MessageLookupByLibrary.simpleMessage("Chức vụ"),
@@ -558,6 +560,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "transfer": MessageLookupByLibrary.simpleMessage("Giao"),
         "transfer_parcel":
             MessageLookupByLibrary.simpleMessage("Giao bưu phẩm"),
+        "two_digit": MessageLookupByLibrary.simpleMessage(
+            "Chỉ cho phép 2 chữ số thập phân sau dấu ."),
         "type": MessageLookupByLibrary.simpleMessage("Loại"),
         "unit": MessageLookupByLibrary.simpleMessage("Đơn vị"),
         "update": MessageLookupByLibrary.simpleMessage("Cập nhật"),

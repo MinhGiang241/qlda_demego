@@ -266,8 +266,13 @@ class WaterPrv extends ChangeNotifier {
     // else {
     //   startValidate = null;
     // }
+    var val = double.tryParse(endController.text.trim());
     if (endController.text.trim().isEmpty) {
       endValidate = S.current.not_empty;
+    } else if (val == null) {
+      endValidate = S.current.invalid_number;
+    } else if (RegExp(r'\d+\.\d{2,}').hasMatch(endController.text.trim())) {
+      endValidate = S.current.two_digit;
     }
     // else if (geater()) {
     //   endValidate = S.current.start_greater_end;
@@ -279,6 +284,10 @@ class WaterPrv extends ChangeNotifier {
 
   String? validateTextField(String? v) {
     if (v!.trim().isEmpty) {
+      return '';
+    } else if (double.tryParse(v.trim()) == null) {
+      return '';
+    } else if (RegExp(r'\d+\.\d{2,}').hasMatch(v)) {
       return '';
     }
     // else if (geater()) {

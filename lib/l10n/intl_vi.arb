@@ -401,5 +401,7 @@
   "pull_to_load": "Kéo để xem thêm",
   "pull_load_failed": "Load thất bại",
   "release_to_load": "Thả để xem thêm",
-  "no_more_data": "Không còn dữ liệu"
+  "no_more_data": "Không còn dữ liệu",
+  "invalid_number": "Chỉ số không hợp lệ",
+  "two_digit": "Chỉ cho phép 2 chữ số thập phân sau dấu ."
 }

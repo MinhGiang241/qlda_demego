@@ -5,6 +5,7 @@ import 'dart:io';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -275,8 +276,14 @@ class ElectricPrv extends ChangeNotifier {
     // else {
     //   startValidate = null;
     // }
+    //
+    var val = double.tryParse(endController.text.trim());
     if (endController.text.trim().isEmpty) {
       endValidate = S.current.not_empty;
+    } else if (val == null) {
+      endValidate = S.current.invalid_number;
+    } else if (RegExp(r'\d+\.\d{2,}').hasMatch(endController.text.trim())) {
+      endValidate = S.current.two_digit;
     }
     //  else if (geater()) {
     //   endValidate = S.current.start_greater_end;
@@ -289,7 +296,12 @@ class ElectricPrv extends ChangeNotifier {
   String? validateTextField(String? v) {
     if (v!.trim().isEmpty) {
       return '';
+    } else if (double.tryParse(v.trim()) == null) {
+      return '';
+    } else if (RegExp(r'\d+\.\d{2,}').hasMatch(v)) {
+      return '';
     }
+
     // else if (geater()) {
     //   return '';
     // }
@@ -527,18 +539,23 @@ class ElectricPrv extends ChangeNotifier {
                       Expanded(
                         child: PrimaryTextField(
                           validator: validateTextField,
+                          filter: [
+                            FilteringTextInputFormatter.allow(
+                              RegExp(r'[0-9\.]'),
+                            ),
+                          ],
                           keyboardType: TextInputType.number,
                           validateString: endValidate,
                           controller: endController,
                           label: 'Chỉ số cuối',
-                          onlyNum: true,
+                          // onlyNum: true,
                           onChanged: (v) {
                             setState(() {
                               endController.text = v.trim();
                               double start =
-                                  double.tryParse(startController.text) != null
-                                      ? double.parse(startController.text)
-                                      : 0;
+                                  (double.tryParse(startController.text) != null
+                                      ? double.parse((startController.text))
+                                      : 0);
                               double end =
                                   double.tryParse(endController.text) != null
                                       ? double.parse(endController.text)
