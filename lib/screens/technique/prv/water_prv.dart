@@ -567,7 +567,7 @@ class WaterPrv extends ChangeNotifier {
                           style: txtRegular(16, Colors.black),
                         ),
                         TextSpan(
-                          text: cons == null ? '' : formatter.format(cons),
+                          text: cons == null ? '' : '$cons', //formatter.format(cons),
                           style: txtBold(16, Colors.black),
                         ),
                       ],
