@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -497,7 +498,7 @@ class WaterPrv extends ChangeNotifier {
                         child: PrimaryTextField(
                           validator: validateTextField,
                           validateString: startValidate,
-                          onlyNum: true,
+                          //onlyNum: true,
                           enable: false,
                           controller: startController,
                           label: 'Chỉ số đầu',
@@ -523,12 +524,18 @@ class WaterPrv extends ChangeNotifier {
                       hpad(10),
                       Expanded(
                         child: PrimaryTextField(
-                          keyboardType: TextInputType.number,
+                          filter: [
+                            FilteringTextInputFormatter.allow(
+                              RegExp(r'[0-9\.]'),
+                            ),
+                          ],
+
+                          //keyboardType: TextInputType.number,
                           validator: validateTextField,
                           validateString: endValidate,
                           controller: endController,
                           label: 'Chỉ số cuối',
-                          onlyNum: true,
+                          // onlyNum: true,
                           onChanged: (v) {
                             setState(() {
                               endController.text = v.trim();
@@ -560,7 +567,7 @@ class WaterPrv extends ChangeNotifier {
                           style: txtRegular(16, Colors.black),
                         ),
                         TextSpan(
-                          text: cons == null ? '' : formatter.format(cons),
+                          text: cons == null ? '' : '$cons', //formatter.format(cons),
                           style: txtBold(16, Colors.black),
                         ),
                       ],

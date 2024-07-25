@@ -511,7 +511,7 @@ class ElectricPrv extends ChangeNotifier {
                         child: PrimaryTextField(
                           validator: validateTextField,
                           validateString: startValidate,
-                          onlyNum: true,
+                          // onlyNum: true,
                           enable: false,
                           controller: startController,
                           label: 'Chỉ số đầu',
@@ -543,7 +543,7 @@ class ElectricPrv extends ChangeNotifier {
                               RegExp(r'[0-9\.]'),
                             ),
                           ],
-                          keyboardType: TextInputType.number,
+                          // keyboardType: TextInputType.number,
                           validateString: endValidate,
                           controller: endController,
                           label: 'Chỉ số cuối',
@@ -579,7 +579,9 @@ class ElectricPrv extends ChangeNotifier {
                           style: txtRegular(16, Colors.black),
                         ),
                         TextSpan(
-                          text: cons == null ? '' : formatter.format(cons),
+                          text: cons == null
+                              ? ''
+                              : "$cons", //formatter.format(cons),
                           style: txtBold(16, Colors.black),
                         ),
                       ],
